@@ -1,0 +1,705 @@
+<div class="module-container">
+
+
+
+<div class="metrekup-container">
+    <div class="metrekup-body">
+
+        <div id="hesaplama-container" class="metrekup-main-container">
+            
+            <div class="metrekup-list-header">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h3 class="metrekup-list-title">📦 Metreküp Hesaplama</h3>
+                        <p class="metrekup-list-subtitle">Eşyalarınızın boyutlarını girin</p>
+                    </div>
+                    <div class="metrekup-buttons">
+                        <button onclick="addItem()" class="metrekup-btn-add">➕ Yeni Eşya</button>
+                        <button onclick="clearAll()" class="metrekup-btn-clear">🗑️ Temizle</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="esya-listesi" class="metrekup-items-grid">
+                <!-- Eşya girişleri dinamik olarak eklenecek -->
+            </div>
+            
+            <div class="metrekup-bottom-section">
+                <div class="metrekup-transport-section">
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <h4 class="metrekup-transport-title">🚚 Taşıma Türü Seçiniz</h4>
+                        <p class="metrekup-transport-subtitle">En uygun taşıma yöntemini belirleyin</p>
+                    </div>
+                    <div class="metrekup-transport-grid">
+                        <label class="metrekup-transport-option">
+                            <input type="radio" name="transport" value="karayolu" checked onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
+                            <div class="metrekup-transport-icon">🚛</div>
+                            <span class="metrekup-transport-label">Karayolu</span>
+                        </label>
+                        <label class="metrekup-transport-option">
+                            <input type="radio" name="transport" value="havayolu" onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
+                            <div class="metrekup-transport-icon">✈️</div>
+                            <span class="metrekup-transport-label">Havayolu</span>
+                        </label>
+                        <label class="metrekup-transport-option">
+                            <input type="radio" name="transport" value="denizyolu" onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
+                            <div class="metrekup-transport-icon">🚢</div>
+                            <span class="metrekup-transport-label">Denizyolu</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="metrekup-results-section">
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <h4 class="metrekup-results-title">📊 Hesaplama Sonuçları</h4> 
+                        <p class="metrekup-results-subtitle">Toplam hacim ve ağırlık bilgileri</p>
+                    </div>
+                    <div class="metrekup-results-grid">
+                        <div class="metrekup-result-card">
+                            <div class="metrekup-result-icon">📦</div>
+                            <div class="metrekup-result-label">TOPLAM HACİM</div>
+                            <div class="metrekup-result-value">
+                                <span id="total-volume">0</span> <span class="metrekup-result-unit">m³</span>
+                            </div>
+                        </div>
+                        <div class="metrekup-result-card">
+                            <div class="metrekup-result-icon">⚖️</div>
+                            <div class="metrekup-result-label">TOPLAM AĞIRLIK</div>
+                            <div class="metrekup-result-value">
+                                <span id="total-weight">0</span> <span class="metrekup-result-unit">kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<script>
+// Eşya listesi ve hesaplama değişkenleri
+let items = [];
+let currentTransportType = 'karayolu';
+let itemCounter = 0;
+
+// Sayfa yüklendiğinde
+setTimeout(() => {
+    initializeCalculator();
+}, 100);
+
+function initializeCalculator() {
+    // İlk 3 eşya alanını oluştur
+    for (let i = 1; i <= 3; i++) {
+        addItem();
+    }
+    updateTotals();
+}
+
+function addItem() {
+    itemCounter++;
+    const container = document.getElementById('esya-listesi');
+    const itemId = itemCounter;
+    
+    const itemHtml = `
+        <div class="metrekup-item-card" id="item-${itemId}">
+            <div class="metrekup-item-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="metrekup-item-number">${itemId}</div>
+                    <h4 class="metrekup-item-title">Eşya ${itemId}</h4>
+                </div>
+                ${itemId > 3 ? `<button onclick="removeItem(${itemId})" class="metrekup-btn-remove">×</button>` : ''}
+            </div>
+            
+            <div class="metrekup-inputs-grid">
+               
+                <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">📏 Uzunluk (cm)</label>
+                    <input type="number" id="length-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+                <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">📐 Genişlik (cm)</label>
+                    <input type="number" id="width-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+                <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">📏 Yükseklik (cm)</label>
+                    <input type="number" id="height-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+
+                 <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">📦 Adet</label>
+                    <input type="number" id="quantity-${itemId}" placeholder="1" step="1" min="1" value="1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+                <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">⚖️ Ağırlık (kg)</label>
+                    <input type="number" id="weight-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+            </div>
+        </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', itemHtml);
+    
+    // Eşya objesi oluştur
+    items.push({
+        id: itemId,
+        quantity: 1,
+        length: 0,
+        width: 0,
+        height: 0,
+        weight: 0,
+        volume: 0
+    });
+}
+
+function removeItem(itemId) {
+    const itemElement = document.getElementById(`item-${itemId}`);
+    if (itemElement) {
+        itemElement.remove();
+    }
+    
+    // Array'den kaldır
+    items = items.filter(item => item.id !== itemId);
+    updateTotals();
+}
+
+function calculateItem(itemId) {
+    const quantityInput = document.getElementById(`quantity-${itemId}`);
+    const lengthInput = document.getElementById(`length-${itemId}`);
+    const widthInput = document.getElementById(`width-${itemId}`);
+    const heightInput = document.getElementById(`height-${itemId}`);
+    const weightInput = document.getElementById(`weight-${itemId}`);
+    
+    if (!quantityInput || !lengthInput || !widthInput || !heightInput || !weightInput) {
+        return;
+    }
+    
+    const quantity = parseInt(quantityInput.value) || 1;
+    const length = parseFloat(lengthInput.value) || 0;
+    const width = parseFloat(widthInput.value) || 0;
+    const height = parseFloat(heightInput.value) || 0;
+    const weight = parseFloat(weightInput.value) || 0;
+    
+    // Metreküp hesapla (cm³'den m³'e çevir) ve adet ile çarp
+    const singleVolume = (length * width * height) / 1000000;
+    const totalVolume = singleVolume * quantity;
+    const totalWeight = weight * quantity;
+    
+    // Array'i güncelle veya oluştur
+    const itemIndex = items.findIndex(item => item.id === itemId);
+    if (itemIndex !== -1) {
+        items[itemIndex] = {
+            id: itemId,
+            quantity: quantity,
+            length: length,
+            width: width,
+            height: height,
+            weight: totalWeight,
+            singleWeight: weight,
+            volume: totalVolume,
+            singleVolume: singleVolume
+        };
+    } else {
+        items.push({
+            id: itemId,
+            quantity: quantity,
+            length: length,
+            width: width,
+            height: height,
+            weight: totalWeight,
+            singleWeight: weight,
+            volume: totalVolume,
+            singleVolume: singleVolume
+        });
+    }
+    
+    updateTotals();
+}
+
+function updateTotals() {
+    const totalVolumeElement = document.getElementById('total-volume');
+    const totalWeightElement = document.getElementById('total-weight');
+    
+    if (!totalVolumeElement || !totalWeightElement) {
+        return;
+    }
+    
+    const totalVolume = items.reduce((sum, item) => sum + (item.volume || 0), 0);
+    const totalWeight = items.reduce((sum, item) => sum + (item.weight || 0), 0);
+    
+    totalVolumeElement.textContent = totalVolume.toFixed(2);
+    totalWeightElement.textContent = totalWeight.toFixed(2);
+}
+
+function updateTransportType(radio) {
+    if (radio && radio.value) {
+        currentTransportType = radio.value;
+        console.log('Taşıma türü güncellendi:', currentTransportType);
+    }
+}
+
+function clearAll() {
+    // Tüm input alanlarını temizle
+    items.forEach(item => {
+        const quantityInput = document.getElementById(`quantity-${item.id}`);
+        const lengthInput = document.getElementById(`length-${item.id}`);
+        const widthInput = document.getElementById(`width-${item.id}`);
+        const heightInput = document.getElementById(`height-${item.id}`);
+        const weightInput = document.getElementById(`weight-${item.id}`);
+        
+        if (quantityInput) quantityInput.value = '1';
+        if (lengthInput) lengthInput.value = '';
+        if (widthInput) widthInput.value = '';
+        if (heightInput) heightInput.value = '';
+        if (weightInput) weightInput.value = '';
+    });
+    
+    // Items array'ini sıfırla
+    items = items.map(item => ({
+        id: item.id,
+        quantity: 1,
+        length: 0,
+        width: 0,
+        height: 0,
+        weight: 0,
+        singleWeight: 0,
+        volume: 0,
+        singleVolume: 0
+    }));
+    
+    updateTotals();
+}
+
+// Debug için console log
+console.log('Metreküp hesaplama modülü yüklendi');
+</script>
+
+<style>
+
+    .module-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color: #006B65;
+        width: 100%;
+        padding: 10px 0px 10px 0px;
+    }
+.metrekup-container {
+    background: linear-gradient(135deg, --bgcolor-- 0%, #ffffff 100%);
+    border-radius: --border_radius--;
+    box-shadow: --card_shadow--;
+    padding: 0;
+    max-width: var(--max);
+    overflow: hidden;
+}
+
+
+.metrekup-body {
+    color: --color--;
+}
+
+.metrekup-main-container {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+}
+
+.metrekup-list-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px 30px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.metrekup-list-title {
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+}
+
+.metrekup-list-subtitle {
+    color: #6c757d;
+    font-size: 14px;
+    margin: 0;
+}
+
+.metrekup-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.metrekup-btn-add {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.metrekup-btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.metrekup-btn-clear {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.metrekup-btn-clear:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.metrekup-items-grid {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+@media screen and (max-width: 1400px) {
+    .metrekup-items-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .metrekup-items-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .metrekup-items-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metrekup-item-card {
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.metrekup-item-card:hover {
+    border-color: #006B65;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.metrekup-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.metrekup-item-number {
+    width: 40px;
+    height: 40px;
+    background-color: #cedc00;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.metrekup-item-title {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.metrekup-btn-remove {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    transition: all 0.3s ease;
+}
+
+.metrekup-btn-remove:hover {
+    transform: scale(1.1);
+}
+
+.metrekup-inputs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .metrekup-inputs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .metrekup-inputs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metrekup-input-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.metrekup-input-label {
+    font-size: 12px;
+    color: #6c757d;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.metrekup-input {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: #fafafa;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.metrekup-input:focus {
+    border-color: #006B65;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+    outline: none;
+}
+
+.metrekup-bottom-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid #dee2e6;
+}
+
+.metrekup-transport-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-right: 1px solid #dee2e6;
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 1000px) {
+    .metrekup-bottom-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .metrekup-transport-section {
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+    }
+}
+
+.metrekup-transport-title {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.metrekup-transport-subtitle {
+    color: #6c757d;
+    font-size: 14px;
+    margin: 0;
+}
+
+.metrekup-transport-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    align-items: center;
+}
+
+.metrekup-transport-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px 15px;
+    background: white;
+    border-radius: 15px;
+    border: 3px solid #dee2e6;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.metrekup-transport-option:hover {
+    border-color: #006B65;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.metrekup-transport-icon {
+    font-size: 24px;
+}
+
+.metrekup-transport-label {
+    font-weight: 600;
+    color: #495057;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.metrekup-results-section {
+    background-color: #d8d8d8;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.metrekup-results-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.3;
+}
+
+.metrekup-results-content {
+    position: relative;
+    z-index: 2;
+}
+
+.metrekup-results-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+}
+
+.metrekup-results-subtitle {
+    opacity: 0.9;
+    font-size: 12px;
+    margin: 0;
+}
+
+ 
+
+.metrekup-results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+}
+
+.metrekup-result-card {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    border: 3px solid rgba(255,255,255,0.3);
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.metrekup-result-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.metrekup-result-label {
+    font-size: 12px;
+    color: #6c757d;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    flex: 1;
+    text-align: left;
+}
+
+.metrekup-result-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #006B65;
+}
+
+.metrekup-result-unit {
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+</style>
+

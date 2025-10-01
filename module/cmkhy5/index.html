@@ -1,0 +1,360 @@
+<div class="modulex">
+  <div class="modulextitle">
+    <div class="modulextitlebody">
+      <div class="modulextitlebodytitle">
+        {{web-name}} Web Sitemize Hoşgeldiniz
+      </div>
+      <div class="modulextitlebodylang">
+        <ul>
+          {{langhtml}}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="modulexbody">
+    <a href="/{{lang}}/"
+      ><img
+        src="/img/{{logo}}?v={{random}}"
+        class="module-logo"
+        alt="{{web-name}} Logo"
+    /></a> 
+    
+      <div class="header-actions">
+        <div class="contact-buttons">
+          <a href="/{{lang}}/gonderi-takip/" class="btn-track">
+            <i class="icon">🚛</i>
+            <span>Gönderi Takip</span>
+          </a>
+          <a href="/{{lang}}/teklif-al/" class="btn-quote">
+            <i class="icon">✏️</i>
+            <span>Teklif Al</span>
+          </a>
+        </div>
+      </div>
+  </div>
+  <div class="modulexmenubody">
+    <div class="modulexmenu">
+      <div class="modulexmenulistbody">
+        <div class="modulexmenulist">{{html}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .modulexmenulist-menu:hover .dropdown-content-modulex {
+    display: flex;
+    flex-direction: column;
+  }
+  .modulexmenulist-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .modulexmenulist-menu:hover {
+    background-color: #cedc00;
+    border-radius: 5px;
+    color: #000 !important;
+    cursor: pointer;
+  }
+  .modulexmenulist-menu:hover > a {
+    color: #000 !important;
+  }
+
+  .modulexmenulist-menu > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff !important;
+  }
+
+  .dropdown-content-active-modulex {
+    background-color: #cedc00;
+    border-radius: 5px;
+    color: #000 !important;
+    cursor: pointer;
+  }
+
+  .dropdown-content-active-modulex > a {
+    color: #000 !important;
+  }
+
+  .dropdown-content-modulex {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    z-index: 102;
+    margin-top: 10px;
+    padding: 5px;
+  }
+  .dropdown-content-modulex > a {
+    width: inherit;
+    padding: 10px;
+    border: solid;
+    border-width: 0px 0px 1px 0px;
+    text-align: left;
+    color: #fff;
+  }
+  .dropdown-content-modulex > a:hover {
+    background-color: #000;
+  }
+  .module-logo {
+    width: 300px;
+  }
+  .modulexbody {
+    width: var(--max);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+  }
+  .modulexbody > a {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    position: relative;
+    gap: 10px;
+  }
+  .modulex-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #006B65;
+  }
+  .modulex-spot {
+    font-size: 16px;
+    color: #006B65;
+  }
+  .modulex-icon {
+    font-size: 36px !important;
+    color: #006B65;
+  }
+  .modulex {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .modulextitle {
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modulextitlebody {
+    color: #fff;
+    width: var(--max);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px 10px 0px;
+  }
+  .modulextitlebodytitle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+  .modulextitlebodylang {
+    width: auto;
+    margin: -5px 0px -5px 0px;
+  }
+  .modulextitlebodylang ul {
+    display: flex;
+    gap: 5px;
+    position: relative;
+  }
+  .modulextitlebodylang li {
+    position: relative;
+    list-style: none;
+  }
+  .modulexmenu {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: var(--max);
+  }
+  .modulexmenulist {
+    width: calc(100% - 20px);
+    background-color: #006B65;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .modulexmenubody {
+    width: 100%;
+    background-color:#006B65;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modulexmenulist {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    padding: 10px;
+    /* overflow-x: auto; */
+  }
+  .modulexmenulistbody {
+    width: 100%;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .contact-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .contact-buttons a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    min-width: 140px;
+    justify-content: center;
+  }
+  
+  .contact-buttons a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .contact-buttons a:hover::before {
+    left: 100%;
+  }
+  
+  .btn-track {
+    background: white;
+    color: #006B65;
+    border: 2px solid #006B65;
+  }
+  
+  .btn-track:hover {
+    background: #006B65;
+    color: white;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 107, 100, 0.25);
+    border-color: #004d47;
+  }
+  
+  .btn-quote {
+    background: linear-gradient(135deg, #006B65, #008a7d);
+    color: white !important;
+    border: 2px solid #006B65;
+  }
+  
+  .btn-quote:hover {
+    background: linear-gradient(135deg, #004d47, #006B65);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 107, 100, 0.25);
+    border-color: #004d47;
+  }
+  
+  .contact-buttons .icon {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-buttons a:hover .icon {
+    transform: scale(1.1);
+  }
+  
+  .contact-buttons span {
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+  @media screen and (max-width: 1024px) {
+    .modulexmenu {
+      overflow-x: auto;
+    }
+    .modulexmenulist {
+      flex-direction: row;
+    }
+    .module-logo {
+      width: 200px;
+    }
+    .modulexbody {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .header-actions {
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .contact-buttons {
+      flex-direction: row;
+      gap: 12px;
+      justify-content: center;
+    }
+    .contact-buttons a {
+      font-size: 14px;
+      padding: 12px 20px;
+      border-radius: 25px;
+      min-width: 120px;
+    }
+    .contact-buttons .icon {
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .modulexbody {
+      flex-direction: column;
+      text-align: center;
+    }
+    .module-logo {
+      width: 180px;
+    }
+    .header-actions {
+      margin-top: 15px;
+    }
+    .contact-buttons {
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 320px;
+    }
+    .contact-buttons a {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+      font-size: 15px;
+    }
+  }
+</style>
