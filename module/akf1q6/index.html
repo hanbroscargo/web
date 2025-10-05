@@ -1,0 +1,34 @@
+ <div>
+    
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script>
+          async function getUrunler() {
+            try {
+    let response = await fetch('https://api.hanbroscargo.com/urunler.php');
+    let data = await response.json();
+    return data;
+            } catch (error) {
+                console.error('API hatası:', error);
+                return [];
+            }
+        }
+ </script>
