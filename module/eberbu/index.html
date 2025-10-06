@@ -711,7 +711,7 @@
                 fabButton.onclick = () => searchTracking(trackingNumber);
             }
 
-            fetch(`https://api.eski.hanbroscargo.com/index.php?id=${trackingNumber}`)
+            fetch(`https://api.hanbroscargo.com/index.php?id=${trackingNumber}`)
                 .then(response => response.json())
                 .then(data => {
                     displayTrackingData(data);
