@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uluslararası Evden Eve Taşımacılık - Teklif Al</title>
+    <link rel="stylesheet" href="teklif-al-4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Form Section -->
+            <section class="form-section">
+                <div class="form-container">
+                    <h3>Teklif Al</h3>
+                    
+                    <!-- Step 1: Adres Bilgileri -->
+                    <div class="step active" id="step1">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>Adres Bilgileri</h4>
+                        </div>
+                        <div class="address-form">
+                            <div class="country-selector">
+                                <div class="form-group">
+                                    <label>Nereden (Ülke/Şehir):</label>
+                                    <select id="fromCountry">
+                                        <option value="">Ülke Seçin</option>
+                                        <option value="turkiye">Türkiye</option>
+                                        <option value="almanya">Almanya</option>
+                                        <option value="ingiltere">İngiltere</option>
+                                        <option value="fransa">Fransa</option>
+                                        <option value="hollanda">Hollanda</option>
+                                        <option value="avusturya">Avusturya</option>
+                                        <option value="isvicre">İsviçre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="fromCity" placeholder="Şehir">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="fromAddress" placeholder="Detaylı adres">
+                                </div>
+                            </div>
+                            
+                            <div class="country-selector">
+                                <div class="form-group">
+                                    <label>Nereye (Ülke/Şehir):</label>
+                                    <select id="toCountry">
+                                        <option value="">Ülke Seçin</option>
+                                        <option value="turkiye">Türkiye</option>
+                                        <option value="almanya">Almanya</option>
+                                        <option value="ingiltere">İngiltere</option>
+                                        <option value="fransa">Fransa</option>
+                                        <option value="hollanda">Hollanda</option>
+                                        <option value="avusturya">Avusturya</option>
+                                        <option value="isvicre">İsviçre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="toCity" placeholder="Şehir">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="toAddress" placeholder="Detaylı adres">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Taşınacak Eşya Türü:</label>
+                                    <select id="itemType">
+                                        <option value="">Seçiniz</option>
+                                        <option value="komple">Komple Ev Eşyası</option>
+                                        <option value="kismi">Kısmi Ev Eşyası</option>
+                                        <option value="mobilya">Sadece Mobilya</option>
+                                        <option value="esya">Kişisel Eşyalar</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tahmini M3:</label>
+                                    <input type="number" id="volume" placeholder="Metreküp">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                    </div>
+
+                    <!-- Step 2: İletişim Bilgileri -->
+                    <div class="step" id="step2">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>İletişim Bilgileri</h4>
+                        </div>
+                        <div class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ad Soyad:</label>
+                                    <input type="text" id="fullName" placeholder="Adınızı ve soyadınızı girin">
+                                </div>
+                                <div class="form-group">
+                                    <label>Telefon:</label>
+                                    <input type="tel" id="phone" placeholder="Telefon numaranız">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>E-posta:</label>
+                                <input type="email" id="email" placeholder="E-posta adresiniz">
+                            </div>
+                            <div class="form-group">
+                                <label>Özel Talimatlar:</label>
+                                <textarea id="specialInstructions" placeholder="Taşıma için özel talimatlarınız (opsiyonel)"></textarea>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="calculatePrice()">Fiyat Hesapla</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Fiyat Sonucu -->
+                    <div class="step" id="step3">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>Teklif Sonucu</h4>
+                        </div>
+                        <div class="price-result">
+                            <div class="price-card">
+                                <h5>Uluslararası Taşıma Fiyatı</h5>
+                                <div class="price-range">
+                                    <span class="min-price">₺2,500</span>
+                                    <span class="separator">-</span>
+                                    <span class="max-price">₺5,000</span>
+                                </div>
+                                <p class="price-note">*Fiyatlar yaklaşık olup, kesin fiyat için iletişime geçiniz.</p>
+                            </div>
+                            
+                            <div class="international-info">
+                                <h6>Uluslararası Hizmet Detayları</h6>
+                                <div class="info-grid">
+                                    <div class="info-card">
+                                        <i class="fas fa-ship"></i>
+                                        <h6>Deniz Yolu</h6>
+                                        <p>Konteyner taşımacılığı</p>
+                                    </div>
+                                    <div class="info-card">
+                                        <i class="fas fa-plane"></i>
+                                        <h6>Hava Yolu</h6>
+                                        <p>Hızlı teslimat seçeneği</p>
+                                    </div>
+                                    <div class="info-card">
+                                        <i class="fas fa-file-alt"></i>
+                                        <h6>Gümrük İşlemleri</h6>
+                                        <p>Tam gümrük hizmeti</p>
+                                    </div>
+                                    <div class="info-card">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <h6>Uluslararası Sigorta</h6>
+                                        <p>Tam kapsamlı sigorta</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tracking-info">
+                                <h6>Takip Numarası: <span id="trackingNumber">INT456789</span></h6>
+                                <p>Uluslararası takip sistemi ile takip edebilirsiniz</p>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-primary" onclick="submitRequest()">Teklifi Onayla</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+
+        function calculatePrice() {
+            // Fiyat hesaplama simülasyonu
+            nextStep();
+        }
+
+        function submitRequest() {
+            alert('Uluslararası taşıma talebiniz başarıyla gönderildi!');
+        }
+
+        // Ülke seçimi değiştiğinde şehir önerileri
+        document.getElementById('fromCountry').addEventListener('change', function() {
+            updateCityOptions('fromCity', this.value);
+        });
+
+        document.getElementById('toCountry').addEventListener('change', function() {
+            updateCityOptions('toCity', this.value);
+        });
+
+        function updateCityOptions(citySelectId, country) {
+            const citySelect = document.getElementById(citySelectId);
+            citySelect.innerHTML = '<option value="">Şehir seçin</option>';
+            
+            const cities = {
+                'turkiye': ['İstanbul', 'Ankara', 'İzmir', 'Bursa', 'Antalya'],
+                'almanya': ['Berlin', 'Hamburg', 'Münih', 'Köln', 'Frankfurt'],
+                'ingiltere': ['Londra', 'Manchester', 'Birmingham', 'Liverpool', 'Leeds'],
+                'fransa': ['Paris', 'Lyon', 'Marsilya', 'Toulouse', 'Nice'],
+                'hollanda': ['Amsterdam', 'Rotterdam', 'Den Haag', 'Utrecht', 'Eindhoven'],
+                'avusturya': ['Viyana', 'Graz', 'Linz', 'Salzburg', 'Innsbruck'],
+                'isvicre': ['Zürih', 'Cenevre', 'Basel', 'Bern', 'Lozan']
+            };
+
+            if (cities[country]) {
+                cities[country].forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        }
+
+        // Form validation
+        function validateCurrentStep() {
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                }
+            });
+            
+            const nextButton = currentStepElement.querySelector('.btn-next');
+            if (nextButton) {
+                nextButton.disabled = !isValid;
+            }
+        }
+
+        // Add event listeners for form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', validateCurrentStep);
+                input.addEventListener('change', validateCurrentStep);
+            });
+        });
+    </script>
+</body>
+</html>

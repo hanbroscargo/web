@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araç ve Motosiklet Taşımacılığı - Teklif Al</title>
+    <link rel="stylesheet" href="teklif-al-5.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Form Section -->
+            <section class="form-section">
+                <div class="form-container">
+                    <h3>Teklif Al</h3>
+                    
+                    <!-- Step 1: Araç Seçimi -->
+                    <div class="step active" id="step1">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>Araç Türünü Seçin</h4>
+                        </div>
+                        <div class="vehicle-grid">
+                            <div class="vehicle-card" data-vehicle="otomobil">
+                                <img src="images/arac-tasimaciligi.jpg" alt="Otomobil">
+                                <h5>Otomobil</h5>
+                                <p>Binek araçlar</p>
+                            </div>
+                            <div class="vehicle-card" data-vehicle="motosiklet">
+                                <img src="images/motor-bike.jpg" alt="Motosiklet">
+                                <h5>Motosiklet</h5>
+                                <p>Motorlu iki tekerlekli araçlar</p>
+                            </div>
+                            <div class="vehicle-card" data-vehicle="ticari">
+                                <img src="images/arac-tasimaciligi.jpg" alt="Ticari Araç">
+                                <h5>Ticari Araç</h5>
+                                <p>Minibüs, kamyonet, panelvan</p>
+                            </div>
+                            <div class="vehicle-card" data-vehicle="suv">
+                                <img src="images/4-4-car.jpg" alt="SUV">
+                                <h5>SUV</h5>
+                                <p>Spor araçlar ve jeep</p>
+                            </div>
+                        </div>
+                        <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                    </div>
+
+                    <!-- Step 2: Araç Detayları -->
+                    <div class="step" id="step2">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>Araç Detayları</h4>
+                        </div>
+                        <div class="vehicle-details-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Marka:</label>
+                                    <input type="text" id="brand" placeholder="Araç markası">
+                                </div>
+                                <div class="form-group">
+                                    <label>Model:</label>
+                                    <input type="text" id="model" placeholder="Araç modeli">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Model Yılı:</label>
+                                    <input type="number" id="year" placeholder="Model yılı" min="1990" max="2024">
+                                </div>
+                                <div class="form-group">
+                                    <label>Yakıt Türü:</label>
+                                    <select id="fuelType">
+                                        <option value="">Seçiniz</option>
+                                        <option value="benzin">Benzin</option>
+                                        <option value="dizel">Dizel</option>
+                                        <option value="hibrit">Hibrit</option>
+                                        <option value="elektrik">Elektrik</option>
+                                        <option value="lpg">LPG</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Boyutlar (cm):</label>
+                                    <input type="number" id="length" placeholder="Uzunluk">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="width" placeholder="Genişlik">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="height" placeholder="Yükseklik">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ağırlık (kg):</label>
+                                    <input type="number" id="weight" placeholder="Ağırlık">
+                                </div>
+                                <div class="form-group">
+                                    <label>Araç Durumu:</label>
+                                    <select id="condition">
+                                        <option value="">Seçiniz</option>
+                                        <option value="calisir">Çalışır durumda</option>
+                                        <option value="calismaz">Çalışmaz durumda</option>
+                                        <option value="hasarli">Hasarlı</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Adres Bilgileri -->
+                    <div class="step" id="step3">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>Adres Bilgileri</h4>
+                        </div>
+                        <div class="address-form">
+                            <div class="form-group">
+                                <label>Yükleme Adresi:</label>
+                                <input type="text" id="fromAddress" placeholder="Aracın bulunduğu adres">
+                            </div>
+                            <div class="form-group">
+                                <label>Teslimat Adresi:</label>
+                                <input type="text" id="toAddress" placeholder="Teslimat adresi">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Yükleme Zorluğu:</label>
+                                    <select id="loadingDifficulty">
+                                        <option value="">Seçiniz</option>
+                                        <option value="kolay">Kolay (Açık alan)</option>
+                                        <option value="orta">Orta (Dar sokak)</option>
+                                        <option value="zor">Zor (Kapalı garaj)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mesafe (km):</label>
+                                    <input type="number" id="distance" placeholder="Tahmini mesafe">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: İletişim Bilgileri -->
+                    <div class="step" id="step4">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h4>İletişim Bilgileri</h4>
+                        </div>
+                        <div class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ad Soyad:</label>
+                                    <input type="text" id="fullName" placeholder="Adınızı ve soyadınızı girin">
+                                </div>
+                                <div class="form-group">
+                                    <label>Telefon:</label>
+                                    <input type="tel" id="phone" placeholder="Telefon numaranız">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>E-posta:</label>
+                                <input type="email" id="email" placeholder="E-posta adresiniz">
+                            </div>
+                            <div class="form-group">
+                                <label>Özel Talimatlar:</label>
+                                <textarea id="specialInstructions" placeholder="Araç taşıma için özel talimatlarınız (opsiyonel)"></textarea>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="calculatePrice()">Fiyat Hesapla</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Fiyat Sonucu -->
+                    <div class="step" id="step5">
+                        <div class="step-header">
+                            <span class="step-number">5</span>
+                            <h4>Teklif Sonucu</h4>
+                        </div>
+                        <div class="price-result">
+                            <div class="price-card">
+                                <h5>Araç Taşıma Fiyatı</h5>
+                                <div class="price-range">
+                                    <span class="min-price">₺600</span>
+                                    <span class="separator">-</span>
+                                    <span class="max-price">₺1,200</span>
+                                </div>
+                                <p class="price-note">*Fiyatlar yaklaşık olup, kesin fiyat için iletişime geçiniz.</p>
+                            </div>
+                            
+                            <div class="service-details">
+                                <h6>Dahil Olan Hizmetler</h6>
+                                <div class="services-list">
+                                    <div class="service-item">
+                                        <i class="fas fa-truck"></i>
+                                        <span>Özel araç taşıma aracı</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Tam sigorta kapsamı</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <i class="fas fa-user-friends"></i>
+                                        <span>Uzman şoför ekibi</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <i class="fas fa-route"></i>
+                                        <span>Kapıdan kapıya teslimat</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <i class="fas fa-clipboard-check"></i>
+                                        <span>Hasarsız teslimat garantisi</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>7/24 takip sistemi</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tracking-info">
+                                <h6>Takip Numarası: <span id="trackingNumber">VEH567890</span></h6>
+                                <p>Araç taşıma takip sistemi ile takip edebilirsiniz</p>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-primary" onclick="submitRequest()">Teklifi Onayla</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+
+        function calculatePrice() {
+            // Fiyat hesaplama simülasyonu
+            nextStep();
+        }
+
+        function submitRequest() {
+            alert('Araç taşıma talebiniz başarıyla gönderildi!');
+        }
+
+        // Araç seçimi
+        document.querySelectorAll('.vehicle-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.vehicle-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Form validation
+        function validateCurrentStep() {
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                }
+            });
+            
+            const nextButton = currentStepElement.querySelector('.btn-next');
+            if (nextButton) {
+                nextButton.disabled = !isValid;
+            }
+        }
+
+        // Add event listeners for form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', validateCurrentStep);
+                input.addEventListener('change', validateCurrentStep);
+            });
+        });
+
+        // Araç türüne göre varsayılan değerler
+        function setDefaultValues(vehicleType) {
+            const defaults = {
+                'otomobil': { length: 450, width: 180, height: 150, weight: 1500 },
+                'motosiklet': { length: 200, width: 80, height: 120, weight: 200 },
+                'ticari': { length: 550, width: 200, height: 220, weight: 2500 },
+                'suv': { length: 480, width: 190, height: 180, weight: 2000 }
+            };
+
+            if (defaults[vehicleType]) {
+                const values = defaults[vehicleType];
+                document.getElementById('length').value = values.length;
+                document.getElementById('width').value = values.width;
+                document.getElementById('height').value = values.height;
+                document.getElementById('weight').value = values.weight;
+            }
+        }
+
+        // Araç seçimi değiştiğinde varsayılan değerleri ayarla
+        document.querySelectorAll('.vehicle-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const vehicleType = this.dataset.vehicle;
+                setDefaultValues(vehicleType);
+            });
+        });
+    </script>
+</body>
+</html>

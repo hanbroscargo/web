@@ -1,0 +1,475 @@
+/* Yeni Mobilya Taşımacılığı CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Removed header and hero styles */
+
+/* Form Section */
+.form-section {
+    padding: 3rem 0;
+    background: white;
+}
+
+.form-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+.form-container h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #8e44ad;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Step Styles */
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.step-number {
+    background: #8e44ad;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.step-header h4 {
+    font-size: 1.5rem;
+    color: #8e44ad;
+    font-weight: 600;
+}
+
+/* Furniture Grid */
+.furniture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.furniture-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.furniture-card:hover {
+    border-color: #8e44ad;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(142, 68, 173, 0.15);
+}
+
+.furniture-card.selected {
+    border-color: #8e44ad;
+    background: #f8f4ff;
+    box-shadow: 0 5px 15px rgba(142, 68, 173, 0.2);
+}
+
+.furniture-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.furniture-card h5 {
+    font-size: 1.1rem;
+    color: #8e44ad;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.furniture-card p {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Form Styles */
+.details-form, .address-form, .contact-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #8e44ad;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #9b59b6;
+    box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.1);
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Button Styles */
+.btn-next, .btn-back, .btn-primary {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-next, .btn-primary {
+    background: #8e44ad;
+    color: white;
+}
+
+.btn-next:hover, .btn-primary:hover {
+    background: #9b59b6;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(142, 68, 173, 0.3);
+}
+
+.btn-next:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-back {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-back:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+.step-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Price Result */
+.price-result {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.price-card {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+}
+
+.price-card h5 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.price-range {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.min-price, .max-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f39c12;
+}
+
+.separator {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.price-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.service-details {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.service-details h6 {
+    color: #8e44ad;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.5rem 0;
+}
+
+.service-item i {
+    color: #8e44ad;
+    font-size: 1.2rem;
+}
+
+.service-item span {
+    color: #333;
+    font-weight: 500;
+}
+
+.tracking-info {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #8e44ad;
+}
+
+.tracking-info h6 {
+    color: #8e44ad;
+    font-size: 1.1rem;
+}
+
+.tracking-info span {
+    font-weight: 700;
+    color: #9b59b6;
+}
+
+/* Removed features, protection info and footer styles */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header .logo {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .form-container {
+        padding: 1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .step-buttons {
+        flex-direction: column;
+    }
+    
+    .features-grid, .protection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .price-range {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .min-price, .max-price {
+        font-size: 2rem;
+    }
+    
+    .services-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .furniture-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .step-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .protection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .furniture-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Form Validation Styles */
+.form-group input:invalid,
+.form-group select:invalid {
+    border-color: #e74c3c;
+}
+
+.form-group input:valid,
+.form-group select:valid {
+    border-color: #27ae60;
+}
+
+/* Loading Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #9b59b6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+/* Success Message */
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.success-message.show {
+    display: block;
+}
+
+/* Furniture Card Animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.furniture-card.selected {
+    animation: bounce 0.6s ease;
+}

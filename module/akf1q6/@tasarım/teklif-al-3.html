@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Mobilya Taşımacılığı - Teklif Al</title>
+    <link rel="stylesheet" href="teklif-al-3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Form Section -->
+            <section class="form-section">
+                <div class="form-container">
+                    <h3>Teklif Al</h3>
+                    
+                    <!-- Step 1: Mobilya Seçimi -->
+                    <div class="step active" id="step1">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>Mobilya Türünü Seçin</h4>
+                        </div>
+                        <div class="furniture-grid">
+                            <div class="furniture-card" data-item="koltuk">
+                                <img src="images/mobilya-tasimaciligi.jpg" alt="Koltuk">
+                                <h5>Koltuk Takımı</h5>
+                                <p>2+1, 3+2 koltuk takımları</p>
+                            </div>
+                            <div class="furniture-card" data-item="yatak">
+                                <img src="images/mobilya-tasimaciligi.jpg" alt="Yatak">
+                                <h5>Yatak Odası</h5>
+                                <p>Yatak, gardırop, komodin</p>
+                            </div>
+                            <div class="furniture-card" data-item="mutfak">
+                                <img src="images/mobilya-tasimaciligi.jpg" alt="Mutfak">
+                                <h5>Mutfak Takımı</h5>
+                                <p>Mutfak dolapları ve tezgahlar</p>
+                            </div>
+                            <div class="furniture-card" data-item="masa">
+                                <img src="images/mobilya-tasimaciligi.jpg" alt="Masa">
+                                <h5>Yemek Masası</h5>
+                                <p>Yemek masası ve sandalyeler</p>
+                            </div>
+                            <div class="furniture-card" data-item="diger">
+                                <img src="images/mobilya-tasimaciligi.jpg" alt="Diğer">
+                                <h5>Diğer Mobilyalar</h5>
+                                <p>Kitaplık, vitrin, sehpa vb.</p>
+                            </div>
+                        </div>
+                        <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                    </div>
+
+                    <!-- Step 2: Detay Bilgileri -->
+                    <div class="step" id="step2">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>Detay Bilgileri</h4>
+                        </div>
+                        <div class="details-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Mobilya Markası:</label>
+                                    <input type="text" id="brand" placeholder="Mobilya markası">
+                                </div>
+                                <div class="form-group">
+                                    <label>Satın Alma Tarihi:</label>
+                                    <input type="date" id="purchaseDate">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Boyutlar (cm):</label>
+                                    <input type="number" id="length" placeholder="Uzunluk">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="width" placeholder="Genişlik">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="height" placeholder="Yükseklik">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ağırlık (kg):</label>
+                                    <input type="number" id="weight" placeholder="Ağırlık">
+                                </div>
+                                <div class="form-group">
+                                    <label>Değer (₺):</label>
+                                    <input type="number" id="value" placeholder="Mobilya değeri">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Özel Durumlar:</label>
+                                <select id="specialCondition">
+                                    <option value="">Seçiniz</option>
+                                    <option value="cam">Cam yüzeyler var</option>
+                                    <option value="ahsap">Ahşap işçiliği hassas</option>
+                                    <option value="dokuma">Dokuma/deri yüzey</option>
+                                    <option value="metal">Metal detaylar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Adres Bilgileri -->
+                    <div class="step" id="step3">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>Adres Bilgileri</h4>
+                        </div>
+                        <div class="address-form">
+                            <div class="form-group">
+                                <label>Yükleme Adresi:</label>
+                                <input type="text" id="fromAddress" placeholder="Mağaza/Depo adresi">
+                            </div>
+                            <div class="form-group">
+                                <label>Teslimat Adresi:</label>
+                                <input type="text" id="toAddress" placeholder="Ev/Ofis adresi">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Kat Bilgisi:</label>
+                                    <select id="floor">
+                                        <option value="">Seçiniz</option>
+                                        <option value="zemin">Zemin Kat</option>
+                                        <option value="1">1. Kat</option>
+                                        <option value="2">2. Kat</option>
+                                        <option value="3">3. Kat</option>
+                                        <option value="4">4+ Kat</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Asansör Durumu:</label>
+                                    <select id="elevator">
+                                        <option value="">Seçiniz</option>
+                                        <option value="var">Asansör var</option>
+                                        <option value="yok">Asansör yok</option>
+                                        <option value="kucuk">Küçük asansör</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: İletişim Bilgileri -->
+                    <div class="step" id="step4">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h4>İletişim Bilgileri</h4>
+                        </div>
+                        <div class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ad Soyad:</label>
+                                    <input type="text" id="fullName" placeholder="Adınızı ve soyadınızı girin">
+                                </div>
+                                <div class="form-group">
+                                    <label>Telefon:</label>
+                                    <input type="tel" id="phone" placeholder="Telefon numaranız">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>E-posta:</label>
+                                <input type="email" id="email" placeholder="E-posta adresiniz">
+                            </div>
+                            <div class="form-group">
+                                <label>Özel Talimatlar:</label>
+                                <textarea id="specialInstructions" placeholder="Teslimat için özel talimatlarınız (opsiyonel)"></textarea>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="calculatePrice()">Fiyat Hesapla</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Fiyat Sonucu -->
+                    <div class="step" id="step5">
+                        <div class="step-header">
+                            <span class="step-number">5</span>
+                            <h4>Teklif Sonucu</h4>
+                        </div>
+                        <div class="price-result">
+                            <div class="price-card">
+                                <h5>Mobilya Taşıma Fiyatı</h5>
+                                <div class="price-range">
+                                    <span class="min-price">₺400</span>
+                                    <span class="separator">-</span>
+                                    <span class="max-price">₺800</span>
+                                </div>
+                                <p class="price-note">*Fiyatlar yaklaşık olup, kesin fiyat için iletişime geçiniz.</p>
+                            </div>
+                            <div class="service-details">
+                                <h6>Dahil Olan Hizmetler</h6>
+                                <div class="services-list">
+                                    <div class="service-item">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Özel koruma paketleme</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <i class="fas fa-truck"></i>
+                                        <span>Özel mobilya aracı</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <i class="fas fa-user-friends"></i>
+                                        <span>Uzman montaj ekibi</span>
+                                    </div>
+                                    <div class="service-item">
+                                        <i class="fas fa-clipboard-check"></i>
+                                        <span>Hasarsız teslimat garantisi</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tracking-info">
+                                <h6>Takip Numarası: <span id="trackingNumber">TEST345678</span></h6>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-primary" onclick="submitRequest()">Teklifi Onayla</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+
+        function calculatePrice() {
+            // Fiyat hesaplama simülasyonu
+            nextStep();
+        }
+
+        function submitRequest() {
+            alert('Mobilya taşıma talebiniz başarıyla gönderildi!');
+        }
+
+        // Mobilya seçimi
+        document.querySelectorAll('.furniture-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.furniture-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Form validation
+        function validateCurrentStep() {
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                }
+            });
+            
+            const nextButton = currentStepElement.querySelector('.btn-next');
+            if (nextButton) {
+                nextButton.disabled = !isValid;
+            }
+        }
+
+        // Add event listeners for form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', validateCurrentStep);
+                input.addEventListener('change', validateCurrentStep);
+            });
+        });
+    </script>
+</body>
+</html>

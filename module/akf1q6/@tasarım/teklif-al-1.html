@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kargo ve Paket Taşımacılığı - Teklif Al</title>
+    <link rel="stylesheet" href="teklif-al-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Form Section -->
+            <section class="form-section">
+                <div class="form-container">
+                    <h3>Teklif Al</h3>
+                    
+                    <!-- Step 1: Eşya Seçimi -->
+                    <div class="step active" id="step1">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>Eşya Türünü Seçin</h4>
+                        </div>
+                        <div class="items-grid">
+                            <div class="item-card" data-item="paket">
+                                <img src="images/kargo-tasimaciligi.jpg" alt="Paket">
+                                <h5>Paket</h5>
+                                <p>Küçük ve orta boy paketler</p>
+                            </div>
+                            <div class="item-card" data-item="kutu">
+                                <img src="images/kargo-tasimaciligi.jpg" alt="Kutu">
+                                <h5>Kutu</h5>
+                                <p>Standart kutu gönderileri</p>
+                            </div>
+                            <div class="item-card" data-item="dokuman">
+                                <img src="images/kargo-tasimaciligi.jpg" alt="Döküman">
+                                <h5>Döküman</h5>
+                                <p>Önemli evraklar</p>
+                            </div>
+                        </div>
+                        <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                    </div>
+
+                    <!-- Step 2: Adres Bilgileri -->
+                    <div class="step" id="step2">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>Adres Bilgileri</h4>
+                        </div>
+                        <div class="address-form">
+                            <div class="form-group">
+                                <label>Nereden:</label>
+                                <input type="text" id="fromAddress" placeholder="Gönderi adresini girin">
+                            </div>
+                            <div class="form-group">
+                                <label>Nereye:</label>
+                                <input type="text" id="toAddress" placeholder="Teslimat adresini girin">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Boyut (cm):</label>
+                                    <input type="number" id="length" placeholder="Uzunluk">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="width" placeholder="Genişlik">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="height" placeholder="Yükseklik">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Ağırlık (kg):</label>
+                                <input type="number" id="weight" placeholder="Ağırlık">
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: İletişim Bilgileri -->
+                    <div class="step" id="step3">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>İletişim Bilgileri</h4>
+                        </div>
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <label>Ad Soyad:</label>
+                                <input type="text" id="fullName" placeholder="Adınızı ve soyadınızı girin">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefon:</label>
+                                <input type="tel" id="phone" placeholder="Telefon numaranız">
+                            </div>
+                            <div class="form-group">
+                                <label>E-posta:</label>
+                                <input type="email" id="email" placeholder="E-posta adresiniz">
+                            </div>
+                            <div class="form-group">
+                                <label>Notlar:</label>
+                                <textarea id="notes" placeholder="Ek notlarınız (opsiyonel)"></textarea>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-next" onclick="calculatePrice()">Fiyat Hesapla</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Fiyat Sonucu -->
+                    <div class="step" id="step4">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h4>Teklif Sonucu</h4>
+                        </div>
+                        <div class="price-result">
+                            <div class="price-card">
+                                <h5>Tahmini Fiyat Aralığı</h5>
+                                <div class="price-range">
+                                    <span class="min-price">₺150</span>
+                                    <span class="separator">-</span>
+                                    <span class="max-price">₺300</span>
+                                </div>
+                                <p class="price-note">*Fiyatlar yaklaşık olup, kesin fiyat için iletişime geçiniz.</p>
+                            </div>
+                            <div class="tracking-info">
+                                <h6>Takip Numarası: <span id="trackingNumber">TEST123456</span></h6>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn-back" onclick="prevStep()">Geri</button>
+                            <button class="btn-primary" onclick="submitRequest()">Teklifi Onayla</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+            }
+        }
+
+        function calculatePrice() {
+            // Fiyat hesaplama simülasyonu
+            nextStep();
+        }
+
+        function submitRequest() {
+            alert('Teklif talebiniz başarıyla gönderildi!');
+        }
+
+        // Eşya seçimi
+        document.querySelectorAll('.item-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.item-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
