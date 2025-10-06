@@ -30,7 +30,7 @@ if (pagesettingjson) {
 langhtml = "";
 for (const key in webmakerdata.setting.langs) {
   if (webmakerdata.setting.langs[key] == true) {
-    langhtml += `<li><a href="/${key}/"><img height="25" src="/src/lang/${key}.png"  alt="${key}"></a></li>`;
+    langhtml += `<li a href="/${key}/"><img height="25" src="/src/lang/${key}.png"  alt="${key}"></li>`;
   }
 }
 html = html.replace(new RegExp("{{langhtml}}", "g"), langhtml);

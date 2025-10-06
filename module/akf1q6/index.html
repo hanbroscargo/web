@@ -4,10 +4,25 @@
 
 
 <div class="modulex" id="modulex-1" style="display: none;">
-
-    sssssssssssss
+  1
 </div>
 
+<div class="modulex" id="modulex-2" style="display: none;">
+  2
+</div>
+
+<div class="modulex" id="modulex-3" style="display: none;">
+  3
+</div>
+
+<div class="modulex" id="modulex-4" style="display: none;">
+  4
+</div>
+
+
+<div class="modulex" id="modulex-5" style="display: none;">
+  5
+</div>
 
 
 
@@ -25,7 +40,7 @@
         align-items: flex-start;
         width: var(--max);
     }
-    
+
     .modulex-item {
         display: flex;
         flex-direction: column;
@@ -37,15 +52,15 @@
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-   
+
         cursor: pointer;
     }
-    
+
     .modulex-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
     }
-    
+
     .modulex-item-img {
         width: 100%;
         height: 150px;
@@ -53,11 +68,11 @@
         border-radius: 8px;
         transition: transform 0.3s ease;
     }
-    
+
     .modulex-item:hover .modulex-item-img {
         transform: scale(1.05);
     }
-    
+
     .modulex-item-title {
         font-weight: 600;
         color: var(--colortitle, #2c3e50);
@@ -65,23 +80,23 @@
         line-height: 1.4;
         margin: 0;
     }
-    
+
     @media (max-width: 768px) {
         .modulex {
             padding: 15px;
             gap: 15px;
         }
-        
+
         .modulex-item {
             min-width: 150px;
             max-width: 200px;
             padding: 15px;
         }
-        
+
         .modulex-item-img {
             height: 120px;
         }
-        
+
         .modulex-item-title {
             font-size: 14px;
         }
@@ -89,37 +104,20 @@
 </style>
 
 
-
-
-
-
- <script>
-
-
-function pageteklif(id) {
-    console.log(id);
-    document.getElementById('modulex').style.display = 'none';
-    document.getElementById(id).style.display = 'block';
-}
-
-
-
-
-
-
-
-
-
-
-
-          async function getUrunler() {
-            try {
-    let response = await fetch('https://api.hanbroscargo.com/urunler.php');
-    let data = await response.json();
-    return data;
-            } catch (error) {
-                console.error('API hatası:', error);
-                return [];
-            }
+<script>
+    function pageteklif(id) {
+        console.log(id);
+        document.getElementById('modulex').style.display = 'none';
+        document.getElementById(id).style.display = 'block';
+    }
+    async function getUrunler() {
+        try {
+            let response = await fetch('https://api.hanbroscargo.com/urunler.php');
+            let data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('API hatası:', error);
+            return [];
         }
- </script>
+    }
+</script>
