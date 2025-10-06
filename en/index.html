@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Page-Exit" content="BlendTrans(Duration"="0)" />
+  <meta http-equiv="Page-Enter" content="BlendTrans(Duration"="0)" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta http-equiv="Cache-Control" content="max-age=3600, public" />
+  <meta http-equiv="Pragma" content="cache" />
+  <meta http-equiv="Expires" content="3600" />
+  <title>Han Bros Cargo</title>
+  <meta name="description" content="undefined" />
+  <meta name="keywords" content="undefined" />
+  <meta property="og:title" content="Han Bros Cargo" />
+  <meta property="og:description" content="undefined" />
+  <meta property="og:image" content="https://hanbroscargo.com/img/icon.png" />
+  <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="/src/css.css?v=bzh1q" />
+  <link rel="shortcut icon" href="/img/icon.png?v=bzh1q" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
+  <script src="/src/swiper-bundle.min.js"></script>
+  
+
+  <script type="text/javascript" src="/src/firebase.js?v=bzh1q"></script>
+<link rel="stylesheet" href="style.css?v=bzh1q">
+</head>
+
+<body>
+  <div id="header"><div class="t0v1h">
+  <div class="t0v1htitle">
+    <div class="t0v1htitlebody">
+      <div class="t0v1htitlebodytitle">
+        Han Bros Cargo Web Sitemize Hoşgeldiniz
+      </div>
+      <div class="t0v1htitlebodylang">
+        <ul>
+          <li a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></li><li a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="t0v1hbody">
+    <a href="/en/"
+      ><img
+        src="/img/logo.png?v=bzh1q"
+        class="module-logo"
+        alt="Han Bros Cargo Logo"
+    /></a> 
+    
+      <div class="header-actions">
+        <div class="contact-buttons">
+          <a href="/en/gonderi-takip/" class="btn-track">
+            <i class="icon">🚛</i>
+            <span>Gönderi Takip</span>
+          </a>
+          <a href="/en/teklif-al/" class="btn-quote">
+            <i class="icon">✏️</i>
+            <span>Teklif Al</span>
+          </a>
+        </div>
+      </div>
+  </div>
+  <div class="t0v1hmenubody">
+    <div class="t0v1hmenu">
+      <div class="t0v1hmenulistbody">
+        <div class="t0v1hmenulist"><a class="t0v1hmenulist-menu" href="/en/">Home </a><div class="t0v1hmenulist-menu " >
+
+      <a href="/en/hakkimizda/">
+       Corporate
+      </a>
+     
+                    </div>
+    <div class="t0v1hmenulist-menu " >
+
+      <a href="/en/ulkeler/">
+       Countries
+      </a>
+     
+                    </div>
+    <div class="t0v1hmenulist-menu " >
+
+      <a href="/en/hizmetlerimiz/">
+       Our Services
+      </a>
+     
+                    </div>
+    <div class="t0v1hmenulist-menu " >
+
+      <a href="/en/bilgi-bankasi/">
+       Knowledge Base
+      </a>
+     
+                    </div>
+    <div class="t0v1hmenulist-menu " >
+
+      <a href="/en/iletisim/">
+       Contact
+      </a>
+     
+                    </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swiper-container zp7ww">
+  <div class="swiper-wrapper" id="zp7ww"><div class="swiper-slide" data-href="/en/"><img src="/img/mvh4ob/en/index.webp" alt="Han Bros Cargo" /></div><div class="swiper-slide" data-href="/en/"><img src="/img/mvh4ob/en/ev.webp" alt="Han Bros Cargo" /></div><div class="swiper-slide" data-href="/en/"><img src="/img/mvh4ob/en/kargo.webp" alt="Han Bros Cargo" /></div><div class="swiper-slide" data-href="/en/"><img src="/img/mvh4ob/en/mobilya.webp" alt="Han Bros Cargo" /></div><div class="swiper-slide" data-href="/en/"><img src="/img/mvh4ob/en/ticari.webp" alt="Han Bros Cargo" /></div><div class="swiper-slide" data-href="/en/"><img src="/img/mvh4ob/en/arac.webp" alt="Han Bros Cargo" /></div></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<script>
+
+setTimeout(() => {
+  var swiper = new Swiper(".zp7ww", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: "3000",
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
+  // Slide tıklama eventi
+  document.querySelectorAll('.swiper-slide').forEach(slide => {
+    slide.addEventListener('click', function() {
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+}, 100);
+</script>
+</div>
+  <div id="content"><div class="sliderxl7qxs">
+  <div class="slider-l7qxst-itle"></div>
+  <div class="l7qxs swiper-container">
+    <div class="swiper-wrapper">
+    <a href="/en/evden-eve-tasimacilik" class="swiper-slide">
+      <div class="swiper-l7qxs">
+        <img class="img-l7qxs" src="/page/ic2xbd0uch/j7uyj.webp" alt="Door-to-Door Transportation" />
+        <div class="title-spot-l7qxs">
+          <div class="title-l7qxs">Door-to-Door Transportation</div>
+          <div class="spot-l7qxs">International door-to-door transportation service with Han Bros Cargo. We transport your belongings safely. Insured, customs cleared and professional service.</div>
+        </div>
+        <div class="button-l7qxs">Read more...</div>
+      </div>
+    </a>
+  
+    <a href="/en/arac-tasimaciligi" class="swiper-slide">
+      <div class="swiper-l7qxs">
+        <img class="img-l7qxs" src="/page/wco1sqi58n/qdg37.webp" alt="Vehicle Transportation" />
+        <div class="title-spot-l7qxs">
+          <div class="title-l7qxs">Vehicle Transportation</div>
+          <div class="spot-l7qxs">Vehicle transportation service with Han Bros Cargo. We transport your cars, motorcycles and other vehicles safely. International vehicle logistics.</div>
+        </div>
+        <div class="button-l7qxs">Read more...</div>
+      </div>
+    </a>
+  
+    <a href="/en/yeni-mobilya-tasimaciligi" class="swiper-slide">
+      <div class="swiper-l7qxs">
+        <img class="img-l7qxs" src="/page/k8k36eulrc/swxi9.webp" alt="New Furniture Transportation" />
+        <div class="title-spot-l7qxs">
+          <div class="title-l7qxs">New Furniture Transportation</div>
+          <div class="spot-l7qxs">New furniture transportation service with Han Bros Cargo. Furniture shipment from Turkey abroad. Professional packaging and secure shipping.</div>
+        </div>
+        <div class="button-l7qxs">Read more...</div>
+      </div>
+    </a>
+  
+    <a href="/en/taicari-esya-tasimaciligi" class="swiper-slide">
+      <div class="swiper-l7qxs">
+        <img class="img-l7qxs" src="/page/jg1oria5p8/kpxm0.webp" alt="Commercial Goods Transportation" />
+        <div class="title-spot-l7qxs">
+          <div class="title-l7qxs">Commercial Goods Transportation</div>
+          <div class="spot-l7qxs">Commercial goods transportation service with Han Bros Cargo. Commercial cargo and goods transportation. International commercial logistics solutions.</div>
+        </div>
+        <div class="button-l7qxs">Read more...</div>
+      </div>
+    </a>
+  
+    <a href="/en/kargo-tasimaciligi" class="swiper-slide">
+      <div class="swiper-l7qxs">
+        <img class="img-l7qxs" src="/page/ddiaiud1q3/b572p.webp" alt="Cargo Transportation" />
+        <div class="title-spot-l7qxs">
+          <div class="title-l7qxs">Cargo Transportation</div>
+          <div class="spot-l7qxs">Cargo transportation service with Han Bros Cargo. Package and cargo shipping service. International cargo logistics solutions.</div>
+        </div>
+        <div class="button-l7qxs">Read more...</div>
+      </div>
+    </a>
+  </div>
+    <div class="swiper-pagination-l7qxs"></div>
+  </div>
+  <div class="swiper-button-next swiper-button-next-l7qxs"></div>
+  <div class="swiper-button-prev swiper-button-prev-l7qxs"></div>
+</div>
+
+<script> setTimeout(() => {
+  new Swiper(".l7qxs", {
+    slidesPerView: 2,
+    simulateTouch: true,
+    loop: true,
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      768: { slidesPerView: 3 },
+      1024: { slidesPerView: 4 },
+    },
+    autoplay: {
+      delay: "3000",
+      disableOnInteraction: true,
+    },
+    pagination: {
+      el: ".swiper-pagination-l7qxs",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next-l7qxs",
+      prevEl: ".swiper-button-prev-l7qxs",
+    },
+  });}, 500);
+</script>
+<div class="module-container">
+
+
+
+<div class="metrekup-container">
+    <div class="metrekup-body">
+
+        <div id="hesaplama-container" class="metrekup-main-container">
+            
+            <div class="metrekup-list-header">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h3 class="metrekup-list-title">📦 Metreküp Hesaplama</h3>
+                        <p class="metrekup-list-subtitle">Eşyalarınızın boyutlarını girin</p>
+                    </div>
+                    <div class="metrekup-buttons">
+                        <button onclick="addItem()" class="metrekup-btn-add">➕ Yeni Eşya</button>
+                        <button onclick="clearAll()" class="metrekup-btn-clear">🗑️ Temizle</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="esya-listesi" class="metrekup-items-grid">
+                <!-- Eşya girişleri dinamik olarak eklenecek -->
+            </div>
+            
+            <div class="metrekup-bottom-section">
+                <div class="metrekup-transport-section">
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <h4 class="metrekup-transport-title">🚚 Taşıma Türü Seçiniz</h4>
+                        <p class="metrekup-transport-subtitle">En uygun taşıma yöntemini belirleyin</p>
+                    </div>
+                    <div class="metrekup-transport-grid">
+                        <label class="metrekup-transport-option">
+                            <input type="radio" name="transport" value="karayolu" checked onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
+                            <div class="metrekup-transport-icon">🚛</div>
+                            <span class="metrekup-transport-label">Karayolu</span>
+                        </label>
+                        <label class="metrekup-transport-option">
+                            <input type="radio" name="transport" value="havayolu" onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
+                            <div class="metrekup-transport-icon">✈️</div>
+                            <span class="metrekup-transport-label">Havayolu</span>
+                        </label>
+                        <label class="metrekup-transport-option">
+                            <input type="radio" name="transport" value="denizyolu" onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
+                            <div class="metrekup-transport-icon">🚢</div>
+                            <span class="metrekup-transport-label">Denizyolu</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="metrekup-results-section">
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <h4 class="metrekup-results-title">📊 Hesaplama Sonuçları</h4> 
+                        <p class="metrekup-results-subtitle">Toplam hacim ve ağırlık bilgileri</p>
+                    </div>
+                    <div class="metrekup-results-grid">
+                        <div class="metrekup-result-card">
+                            <div class="metrekup-result-icon">📦</div>
+                            <div class="metrekup-result-label">TOPLAM HACİM</div>
+                            <div class="metrekup-result-value">
+                                <span id="total-volume">0</span> <span class="metrekup-result-unit">m³</span>
+                            </div>
+                        </div>
+                        <div class="metrekup-result-card">
+                            <div class="metrekup-result-icon">⚖️</div>
+                            <div class="metrekup-result-label">TOPLAM AĞIRLIK</div>
+                            <div class="metrekup-result-value">
+                                <span id="total-weight">0</span> <span class="metrekup-result-unit">kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<script>
+// Eşya listesi ve hesaplama değişkenleri
+let items = [];
+let currentTransportType = 'karayolu';
+let itemCounter = 0;
+
+// Sayfa yüklendiğinde
+setTimeout(() => {
+    initializeCalculator();
+}, 100);
+
+function initializeCalculator() {
+    // İlk 3 eşya alanını oluştur
+    for (let i = 1; i <= 3; i++) {
+        addItem();
+    }
+    updateTotals();
+}
+
+function addItem() {
+    itemCounter++;
+    const container = document.getElementById('esya-listesi');
+    const itemId = itemCounter;
+    
+    const itemHtml = `
+        <div class="metrekup-item-card" id="item-${itemId}">
+            <div class="metrekup-item-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="metrekup-item-number">${itemId}</div>
+                    <h4 class="metrekup-item-title">Eşya ${itemId}</h4>
+                </div>
+                ${itemId > 3 ? `<button onclick="removeItem(${itemId})" class="metrekup-btn-remove">×</button>` : ''}
+            </div>
+            
+            <div class="metrekup-inputs-grid">
+               
+                <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">📏 Uzunluk (cm)</label>
+                    <input type="number" id="length-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+                <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">📐 Genişlik (cm)</label>
+                    <input type="number" id="width-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+                <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">📏 Yükseklik (cm)</label>
+                    <input type="number" id="height-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+
+                 <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">📦 Adet</label>
+                    <input type="number" id="quantity-${itemId}" placeholder="1" step="1" min="1" value="1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+                <div class="metrekup-input-group">
+                    <label class="metrekup-input-label">⚖️ Ağırlık (kg)</label>
+                    <input type="number" id="weight-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
+                </div>
+            </div>
+        </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', itemHtml);
+    
+    // Eşya objesi oluştur
+    items.push({
+        id: itemId,
+        quantity: 1,
+        length: 0,
+        width: 0,
+        height: 0,
+        weight: 0,
+        volume: 0
+    });
+}
+
+function removeItem(itemId) {
+    const itemElement = document.getElementById(`item-${itemId}`);
+    if (itemElement) {
+        itemElement.remove();
+    }
+    
+    // Array'den kaldır
+    items = items.filter(item => item.id !== itemId);
+    updateTotals();
+}
+
+function calculateItem(itemId) {
+    const quantityInput = document.getElementById(`quantity-${itemId}`);
+    const lengthInput = document.getElementById(`length-${itemId}`);
+    const widthInput = document.getElementById(`width-${itemId}`);
+    const heightInput = document.getElementById(`height-${itemId}`);
+    const weightInput = document.getElementById(`weight-${itemId}`);
+    
+    if (!quantityInput || !lengthInput || !widthInput || !heightInput || !weightInput) {
+        return;
+    }
+    
+    const quantity = parseInt(quantityInput.value) || 1;
+    const length = parseFloat(lengthInput.value) || 0;
+    const width = parseFloat(widthInput.value) || 0;
+    const height = parseFloat(heightInput.value) || 0;
+    const weight = parseFloat(weightInput.value) || 0;
+    
+    // Metreküp hesapla (cm³'den m³'e çevir) ve adet ile çarp
+    const singleVolume = (length * width * height) / 1000000;
+    const totalVolume = singleVolume * quantity;
+    const totalWeight = weight * quantity;
+    
+    // Array'i güncelle veya oluştur
+    const itemIndex = items.findIndex(item => item.id === itemId);
+    if (itemIndex !== -1) {
+        items[itemIndex] = {
+            id: itemId,
+            quantity: quantity,
+            length: length,
+            width: width,
+            height: height,
+            weight: totalWeight,
+            singleWeight: weight,
+            volume: totalVolume,
+            singleVolume: singleVolume
+        };
+    } else {
+        items.push({
+            id: itemId,
+            quantity: quantity,
+            length: length,
+            width: width,
+            height: height,
+            weight: totalWeight,
+            singleWeight: weight,
+            volume: totalVolume,
+            singleVolume: singleVolume
+        });
+    }
+    
+    updateTotals();
+}
+
+function updateTotals() {
+    const totalVolumeElement = document.getElementById('total-volume');
+    const totalWeightElement = document.getElementById('total-weight');
+    
+    if (!totalVolumeElement || !totalWeightElement) {
+        return;
+    }
+    
+    const totalVolume = items.reduce((sum, item) => sum + (item.volume || 0), 0);
+    const totalWeight = items.reduce((sum, item) => sum + (item.weight || 0), 0);
+    
+    totalVolumeElement.textContent = totalVolume.toFixed(2);
+    totalWeightElement.textContent = totalWeight.toFixed(2);
+}
+
+function updateTransportType(radio) {
+    if (radio && radio.value) {
+        currentTransportType = radio.value;
+        console.log('Taşıma türü güncellendi:', currentTransportType);
+    }
+}
+
+function clearAll() {
+    // Tüm input alanlarını temizle
+    items.forEach(item => {
+        const quantityInput = document.getElementById(`quantity-${item.id}`);
+        const lengthInput = document.getElementById(`length-${item.id}`);
+        const widthInput = document.getElementById(`width-${item.id}`);
+        const heightInput = document.getElementById(`height-${item.id}`);
+        const weightInput = document.getElementById(`weight-${item.id}`);
+        
+        if (quantityInput) quantityInput.value = '1';
+        if (lengthInput) lengthInput.value = '';
+        if (widthInput) widthInput.value = '';
+        if (heightInput) heightInput.value = '';
+        if (weightInput) weightInput.value = '';
+    });
+    
+    // Items array'ini sıfırla
+    items = items.map(item => ({
+        id: item.id,
+        quantity: 1,
+        length: 0,
+        width: 0,
+        height: 0,
+        weight: 0,
+        singleWeight: 0,
+        volume: 0,
+        singleVolume: 0
+    }));
+    
+    updateTotals();
+}
+
+// Debug için console log
+console.log('Metreküp hesaplama modülü yüklendi');
+</script>
+
+
+
+<div class="sliderxc72tv">
+  <div class="slider-c72tvt-itle"></div>
+  <div class="c72tv swiper-container">
+    <div class="swiper-wrapper"><a href="/en/turkiyeden-almanyaya-yeni-mobilya-gonderebilir-miyim" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Can I send new furniture from Turkey to Germany?</div>
+          <div class="spot-c72tv">Information about our furniture transportation services</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/turkiyeden-hollandaya-ev-esyalarimizi-gonderebilir-miyiz" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Can we send our household goods from Turkey to Netherlands?</div>
+          <div class="spot-c72tv">Household goods transportation to Netherlands</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/esyalarimizi-depolarinizda-uzun-sureli-bekletebilir-misiniz" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Can you keep our belongings in your warehouses for a long time?</div>
+          <div class="spot-c72tv">Our storage services</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/gumrukleme-islemleri-ile-de-siz-mi-ilgileniyorsunuz" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Do you also handle customs clearance procedures?</div>
+          <div class="spot-c72tv">Our customs clearance services</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/esyalarimizin-kolilenmesini-de-siz-mi-yapiyorsunuz" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Do you also pack our belongings?</div>
+          <div class="spot-c72tv">Our packaging services</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/ileri-tarihli-teslim-mumkun-mu" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Is future date delivery possible?</div>
+          <div class="spot-c72tv">Future date delivery service</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/adanadan-almanyaya-ev-esyalarimi-tasiyabilir-misiniz" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Can you transport my household goods from Adana to Germany?</div>
+          <div class="spot-c72tv">Household goods transportation service from Adana to Germany</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/istanbuldan-hollandaya-ev-esyalarimi-tasiyabilir-misiniz" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Can you transport my household goods from Istanbul to Netherlands?</div>
+          <div class="spot-c72tv">Household goods transportation service from Istanbul to Netherlands</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/ankaradan-ingiltereye-ev-esyalarimi-tasiyabilir-misiniz" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Can you transport my household goods from Ankara to England?</div>
+          <div class="spot-c72tv">Household goods transportation service from Ankara to England</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a><a href="/en/izmir-fransaya-ev-esyalarimi-tasiyabilir-misiniz" class="swiper-slide">
+        <div class="swiper-c72tv">
+          <div class="title-c72tv">Can you transport my household goods from Izmir to France?</div>
+          <div class="spot-c72tv">Household goods transportation service from Izmir to France</div>
+           <div class="button-c72tv">
+          <div class="w100">Read more...</div>
+<span class="material-symbols-outlined">
+arrow_forward_ios
+</span>
+          </div>
+        </div>
+      </a></div>
+    <div class="swiper-pagination-c72tv"></div>
+  </div>
+  <div class="swiper-button-next swiper-button-next-c72tv"></div>
+  <div class="swiper-button-prev swiper-button-prev-c72tv"></div>
+</div>
+
+<script>
+  setTimeout(() => {
+    var Swiper640 = "2";
+    var Swiper768 = "3";
+    var Swiper1024 = "4";
+    var Swiper1200 = "5";
+
+    Swiper640 = parseInt(Swiper640) || 2;
+    Swiper768 = parseInt(Swiper768) || 3;
+    Swiper1024 = parseInt(Swiper1024) || 4;
+    Swiper1200 = parseInt(Swiper1200) || 5;
+
+
+
+  new Swiper('.c72tv', {
+    slidesPerView: 2,
+    simulateTouch: true,
+    loop: true,
+    breakpoints: {
+      640: { slidesPerView: Swiper640 },
+      768: { slidesPerView: Swiper768 },
+      1024: { slidesPerView: Swiper1024 },
+      1200: { slidesPerView: Swiper1200 },
+      
+    },
+    pagination: {
+      el: '.swiper-pagination-c72tv',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next-c72tv',
+      prevEl: '.swiper-button-prev-c72tv',
+    },
+  });}, 500);
+</script>
+<div class="sliderxx6jndbody">
+  <div class="sliderxx6jnd">
+    <div class="sliderxx6jndtitle"></div>
+    <div class="x6jnd">
+        <a href="undefined" target="_blank" style="text-decoration: none;">
+            <img src="/src/icon/facebook.png" alt="undefined" class="x6jnd-media" />
+        </a>
+        <a href="undefined" target="_blank" style="text-decoration: none;">
+            <img src="/src/icon/instagram.png" alt="undefined" class="x6jnd-media" />
+        </a>
+        <a href="undefined" target="_blank" style="text-decoration: none;">
+            <img src="/src/icon/linkedin.png" alt="undefined" class="x6jnd-media" />
+        </a>
+        <a href="undefined" target="_blank" style="text-decoration: none;">
+            <img src="/src/icon/youtube.png" alt="undefined" class="x6jnd-media" />
+        </a>
+        <a href="undefined" target="_blank" style="text-decoration: none;">
+            <img src="/src/icon/x.png" alt="undefined" class="x6jnd-media" />
+        </a>
+        <a href="undefined" target="_blank" style="text-decoration: none;">
+            <img src="/src/icon/whatsapp.png" alt="undefined" class="x6jnd-media" />
+        </a>
+        <a href="undefined" target="_blank" style="text-decoration: none;">
+            <img src="/src/icon/google-maps.png" alt="undefined" class="x6jnd-media" />
+        </a></div>
+  </div>
+</div>
+
+</div>
+  <div id="footer"><div class="sk7p9-wa-advanced" id="sk7p9WaAdvanced">
+  <div class="sk7p9-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="sk7p9-wa-advanced-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <path
+          d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
+          fill-rule="evenodd"
+        ></path>
+      </svg>
+    </div>
+    <div class="sk7p9-wa-advanced-pulse"></div>
+  </div>
+
+  <div class="sk7p9-wa-advanced-panel" id="sk7p9WaPanel">
+    <div class="sk7p9-wa-advanced-header">
+      <div class="sk7p9-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=bzh1q" alt="Support Agent" />
+        <div class="sk7p9-wa-advanced-status online"></div>
+      </div>
+      <div class="sk7p9-wa-advanced-info">
+        <h4>Bize Ulaşın</h4>
+        <p>Şu anda çevrimiçi</p>
+      </div>
+      <button
+        class="sk7p9-wa-advanced-close"
+        onclick="closeModulexAdvanced()"
+      >
+        ×
+      </button>
+    </div>
+
+    <div class="sk7p9-wa-advanced-body">
+      <div class="sk7p9-wa-advanced-message">
+        <p>Merhaba! Size nasıl yardımcı olabilirim?</p>
+        <span class="sk7p9-wa-advanced-time">Şimdi</span>
+      </div>
+    </div>
+
+    <div class="sk7p9-wa-advanced-footer">
+      <a
+        href="https://wa.me/905418504646"
+        target="_blank"
+        class="sk7p9-wa-advanced-chat-btn"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          width="20"
+          height="20"
+        >
+          <path
+            d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
+            fill-rule="evenodd"
+            fill="#fff"
+          ></path>
+        </svg>
+        Sohbete Başla
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  function toggleModulexAdvanced() {
+    const panel = document.getElementById("sk7p9WaPanel");
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  }
+
+  function closeModulexAdvanced() {
+    document.getElementById("sk7p9WaPanel").style.display = "none";
+  }
+</script>
+<footer class="footer">
+  <div class="waves">
+    <div class="wave" id="wave1"></div>
+    <div class="wave" id="wave2"></div>
+    <div class="wave" id="wave3"></div>
+    <div class="wave" id="wave4"></div>
+  </div>
+  <ul class="social-icon">
+
+
+
+    <div class="moduleimg">
+  <img src="/img/lzeoqf/imza.jpg" alt="Logo" />
+</div>
+    
+
+ 
+
+
+    <li class="social-icon__item">
+      <a class="social-icon__link" href="#">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </a>
+    </li>
+    <li class="social-icon__item">
+      <a class="social-icon__link" href="#">
+        <ion-icon name="logo-x"></ion-icon>
+      </a>
+    </li>
+    <li class="social-icon__item">
+      <a class="social-icon__link" href="#">
+        <ion-icon name="logo-linkedin"></ion-icon>
+      </a>
+    </li>
+    <li class="social-icon__item">
+      <a class="social-icon__link" href="#">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </a>
+    </li>
+  </ul>
+  <ul class="menu">
+    <li class="menu__item"><a class="menu__link" href="/en">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/bilgi-bankasi">Knowledge Base</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+  </ul>
+  <p>Han Bros Cargo 2025 cognite. &copy;</p>
+</footer>
+
+</div>
+</body>
+
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBVTN13ZPZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZBVTN13ZPZ');
+</script>
+
+
+<script type="text/javascript" src="/src/js.js?v=bzh1q"></script>
+<script src="/src/cookie.js?v=bzh1q"></script>
+
+</html>
