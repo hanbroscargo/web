@@ -1,4 +1,16 @@
 // Find the page with `modulestatus.page` set to true
+
+
+
+
+
+
+
+
+
+
+
+
 const pagesettingjson = webmakerdata.pagesetting.data.find(
   (item) => item.modulestatus && item.modulestatus.page,
 );
@@ -30,10 +42,23 @@ if (pagesettingjson) {
 langhtml = "";
 for (const key in webmakerdata.setting.langs) {
   if (webmakerdata.setting.langs[key] == true) {
-    langhtml += `<a href="/${key}/"><img height="25" src="/src/lang/${key}.png"  alt="${key}"></li>`;
+    langhtml += `<a href="/${key}/"><img height="25" src="/src/lang/${key}.png"  alt="${key}"></a>`;
   }
 }
 html = html.replace(new RegExp("{{langhtml}}", "g"), langhtml);
+
+
+
+
+html = html.replace(new RegExp("{{gonder}}", "g"), json.desing.gonder[json.lang]);
+html = html.replace(new RegExp("{{teklifal}}", "g"), json.desing.teklifal[json.lang]);
+
+
+
+
+
+
+
 function pagecategory(path) {
   let backhtml = "";
   if (path != undefined && path != "") {
@@ -60,3 +85,6 @@ function pagecategory(path) {
   }
   return backhtml;
 }
+
+
+ 
