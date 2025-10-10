@@ -746,7 +746,8 @@
                     <div class="eberbu-timeline-item">
                         <div class="eberbu-timeline-icon">${iconContent}</div>
                         <div class="eberbu-timeline-content">
-                            <div class="eberbu-timeline-id">${transaction.TransactionDetail || ''}</div>
+                            <div class="eberbu-timeline-id">${transaction.TransactionDescription || transaction.TransactionDetail || ''}</div>
+                            ${transaction.TransactionDetail ? `<div class="eberbu-timeline-details" style="margin-bottom: 8px;">${transaction.TransactionDetail}</div>` : ''}
                             <div class="eberbu-timeline-details">
                                 ${transaction.TransactionDate} | ${transaction.OperationCenter}
                             </div>
