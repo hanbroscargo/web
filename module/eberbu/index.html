@@ -401,6 +401,11 @@
             animation: timelineIconBounce 2s ease-in-out infinite;
         }
         
+        .eberbu-timeline-item.delivered .eberbu-timeline-icon {
+            background: linear-gradient(135deg, #cedc00 0%, #b8c300 100%);
+            box-shadow: 0 8px 25px rgba(206, 220, 0, 0.4);
+        }
+        
         @keyframes timelineIconBounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-8px); }
@@ -742,8 +747,15 @@
                 const isFirst = index === 0;
                 const iconContent = isFirst ? '✓' : 'i';
                 
+                // İlk öğe "Teslim Edildi" mi kontrol et
+                const isDelivered = isFirst && (
+                    (transaction.TransactionDescription && transaction.TransactionDescription.includes('Teslim Edildi')) ||
+                    (transaction.TransactionDetail && transaction.TransactionDetail.includes('Teslim Edildi'))
+                );
+                const deliveredClass = isDelivered ? ' delivered' : '';
+                
                 timelineHTML += `
-                    <div class="eberbu-timeline-item">
+                    <div class="eberbu-timeline-item${deliveredClass}">
                         <div class="eberbu-timeline-icon">${iconContent}</div>
                         <div class="eberbu-timeline-content">
                             <div class="eberbu-timeline-id">${transaction.TransactionDescription || transaction.TransactionDetail || ''}</div>
