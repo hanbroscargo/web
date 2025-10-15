@@ -744,14 +744,14 @@
             let timelineHTML = '';
             
             sortedHistory.forEach((transaction, index) => {
-                const isFirst = index === 0;
-                const iconContent = isFirst ? '✓' : 'i';
-                
-                // İlk öğe "Teslim Edildi" mi kontrol et
-                const isDelivered = isFirst && (
+                // "Teslim Edildi" kontrolü
+                const isDelivered = (
                     (transaction.TransactionDescription && transaction.TransactionDescription.includes('Teslim Edildi')) ||
                     (transaction.TransactionDetail && transaction.TransactionDetail.includes('Teslim Edildi'))
                 );
+                
+                // Sadece teslim edildiyse "✓", değilse "i"
+                const iconContent = isDelivered ? '✓' : 'i';
                 const deliveredClass = isDelivered ? ' delivered' : '';
                 
                 timelineHTML += `
