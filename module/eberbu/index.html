@@ -738,8 +738,10 @@
                 return;
             }
 
-            // TransactionHistory'yi TransactionOrder'a göre sırala (en yüksek önce)
-            const sortedHistory = data.TransactionHistory.sort((a, b) => b.TransactionOrder - a.TransactionOrder);
+            // TransactionHistory'yi Date'e göre sırala (en yeni önce)
+            const sortedHistory = data.TransactionHistory.sort((a, b) => {
+                return new Date(b.Date) - new Date(a.Date);
+            });
             
             let timelineHTML = '';
             
