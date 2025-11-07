@@ -39,6 +39,13 @@
   </div>
   <div class="modulexmenubody">
     <div class="modulexmenu">
+      <div class="mobile-menu-toggle" aria-expanded="false">
+        <span class="mobile-menu-toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
       <div class="modulexmenulistbody">
         <div class="modulexmenulist">{{html}}</div>
       </div>
@@ -46,6 +53,21 @@
   </div>
 </div>
 <style>
+
+.wa-advanced {
+  position: fixed;
+  bottom: 70px !important;
+  right: 0px !important;
+}
+
+
+
+
+
+
+
+
+
   .modulexmenulist-menu:hover .dropdown-content-modulex {
     display: flex;
     flex-direction: column;
@@ -300,6 +322,52 @@
     white-space: nowrap;
     letter-spacing: 0.5px;
   }
+  .mobile-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    background: transparent;
+    color: #fff;
+    padding: 12px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .mobile-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .mobile-menu-toggle:focus-visible {
+    outline: none;
+  }
+  .mobile-menu-toggle-icon {
+    position: relative;
+    width: 20px;
+    height: 14px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 10px;
+  }
+  .mobile-menu-toggle-icon span {
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .mobile-menu-toggle.is-active {
+    background: #cedc00;
+    color: #000;
+  }
+  .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
   @media screen and (max-width: 1024px) {
     .modulexmenu {
       overflow-x: auto;
@@ -321,11 +389,23 @@
       width: 100%;
       justify-content: center;
       margin-top: 10px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #006B65;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
     }
     .contact-buttons {
+      display: flex !important;
+      width: 100% !important;
       flex-direction: row;
       gap: 12px;
       justify-content: center;
+
     }
     .contact-buttons a {
       font-size: 14px;
@@ -337,29 +417,133 @@
       font-size: 16px;
     }
   }
-  
   @media screen and (max-width: 768px) {
-    .modulexbody {
+    .modulexmenu {
       flex-direction: column;
-      text-align: center;
+      gap: 0;
+      width: 100%;
     }
-    .module-logo {
-      width: 180px;
+    .mobile-menu-toggle {
+      display: flex;
+      width: 100%;
     }
-    .header-actions {
-      margin-top: 15px;
+    .modulexmenulistbody {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      width: 100%;
     }
-    .contact-buttons {
+    .modulexmenulistbody.is-visible {
+      max-height: 1000px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modulexmenulist {
       flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      max-width: 320px;
+      gap: 4px;
+      padding: 10px 0;
     }
-    .contact-buttons a {
+    .modulexmenulist-menu {
+      justify-content: flex-start;
+      text-align: left;
       width: 100%;
-      justify-content: center;
-      padding: 14px 24px;
-      font-size: 15px;
+      padding: 12px 16px;
+      border-radius: 6px;
+    }
+    .modulexmenulist-menu > a {
+      text-align: left;
+    }
+    .dropdown-content-modulex {
+      display: flex;
+      position: static;
+      background-color: rgba(0, 0, 0, 0.12);
+      color: #fff;
+      margin-top: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      gap: 4px;
+    }
+    .dropdown-content-modulex > a {
+      border: 0;
+      padding: 8px 0;
+      color: #fff;
     }
   }
 </style>
+<script>
+(function () {
+  try {
+    var scriptEl = document.currentScript;
+    if (!scriptEl) {
+      return;
+    }
+    var moduleRoot = null;
+    var sibling = scriptEl.previousElementSibling;
+    while (sibling) {
+      if (sibling.classList && sibling.classList.contains("modulex")) {
+        moduleRoot = sibling;
+        break;
+      }
+      sibling = sibling.previousElementSibling;
+    }
+    if (!moduleRoot) {
+      return;
+    }
+    var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
+    var menuBody = moduleRoot.querySelector(".modulexmenulistbody");
+    if (!toggle || !menuBody) {
+      return;
+    }
+    var mql = window.matchMedia("(max-width: 768px)");
+    function closeMenu() {
+      menuBody.classList.remove("is-visible");
+      toggle.classList.remove("is-active");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function openMenu() {
+      menuBody.classList.add("is-visible");
+      toggle.classList.add("is-active");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    toggle.addEventListener("click", function () {
+      if (!mql.matches) {
+        return;
+      }
+      if (menuBody.classList.contains("is-visible")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    menuBody.addEventListener("click", function (event) {
+      if (!mql.matches) {
+        return;
+      }
+      var link = event.target.closest("a");
+      if (!link) {
+        return;
+      }
+      closeMenu();
+    });
+    function handleBreakpoint() {
+      if (mql.matches) {
+        closeMenu();
+      } else {
+        menuBody.classList.remove("is-visible");
+        toggle.classList.remove("is-active");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    }
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", handleBreakpoint);
+    } else if (typeof mql.addListener === "function") {
+      mql.addListener(handleBreakpoint);
+    }
+    handleBreakpoint();
+  } catch (error) {
+    console.error("cmkhy5 mobil menü hatası:", error);
+  }
+})();
+</script>

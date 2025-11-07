@@ -21,25 +21,25 @@
 
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=bf4yv" />
-  <link rel="shortcut icon" href="/img/icon.png?v=bf4yv" type="image/png" />
+  <link rel="stylesheet" href="/src/css.css?v=uj0t8" />
+  <link rel="shortcut icon" href="/img/icon.png?v=uj0t8" type="image/png" />
 
   <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   <script src="/src/swiper-bundle.min.js"></script>
   
 
-  <script type="text/javascript" src="/src/firebase.js?v=bf4yv"></script>
-<link rel="stylesheet" href="style.css?v=bf4yv">
+  <script type="text/javascript" src="/src/firebase.js?v=uj0t8"></script>
+<link rel="stylesheet" href="style.css?v=uj0t8">
 </head>
 
 <body>
-  <div id="header"><div class="mjq5i">
-  <div class="mjq5ititle">
-    <div class="mjq5ititlebody">
-      <div class="mjq5ititlebodytitle">
+  <div id="header"><div class="qzp2a">
+  <div class="qzp2atitle">
+    <div class="qzp2atitlebody">
+      <div class="qzp2atitlebodytitle">
         Han Bros Cargo
       </div>
-      <div class="mjq5ititlebodylang">
+      <div class="qzp2atitlebodylang">
         <ul>
           <a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></a><a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></a>
         </ul>
@@ -51,10 +51,10 @@
 
 
 
-  <div class="mjq5ibody">
+  <div class="qzp2abody">
     <a href="/en/"
       ><img
-        src="/img/logo.png?v=bf4yv"
+        src="/img/logo.png?v=uj0t8"
         class="module-logo"
         alt="Han Bros Cargo Logo"
     /></a> 
@@ -72,38 +72,45 @@
         </div>
       </div>
   </div>
-  <div class="mjq5imenubody">
-    <div class="mjq5imenu">
-      <div class="mjq5imenulistbody">
-        <div class="mjq5imenulist"><a class="mjq5imenulist-menu" href="/en/">Home </a><div class="mjq5imenulist-menu " >
+  <div class="qzp2amenubody">
+    <div class="qzp2amenu">
+      <div class="mobile-menu-toggle" aria-expanded="false">
+        <span class="mobile-menu-toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div class="qzp2amenulistbody">
+        <div class="qzp2amenulist"><a class="qzp2amenulist-menu" href="/en/">Home </a><div class="qzp2amenulist-menu " >
 
       <a href="/en/hakkimizda/">
        Corporate
       </a>
      
                     </div>
-    <div class="mjq5imenulist-menu " >
+    <div class="qzp2amenulist-menu " >
 
       <a href="/en/ulkeler/">
        Countries
       </a>
      
                     </div>
-    <div class="mjq5imenulist-menu " >
+    <div class="qzp2amenulist-menu " >
 
       <a href="/en/hizmetlerimiz/">
        Our Services
       </a>
      
                     </div>
-    <div class="mjq5imenulist-menu " >
+    <div class="qzp2amenulist-menu " >
 
       <a href="/en/bilgi-bankasi/">
        Knowledge Base
       </a>
      
                     </div>
-    <div class="mjq5imenulist-menu " >
+    <div class="qzp2amenulist-menu " >
 
       <a href="/en/iletisim/">
        Contact
@@ -116,30 +123,105 @@
   </div>
 </div>
 
+<script>
+(function () {
+  try {
+    var scriptEl = document.currentScript;
+    if (!scriptEl) {
+      return;
+    }
+    var moduleRoot = null;
+    var sibling = scriptEl.previousElementSibling;
+    while (sibling) {
+      if (sibling.classList && sibling.classList.contains("qzp2a")) {
+        moduleRoot = sibling;
+        break;
+      }
+      sibling = sibling.previousElementSibling;
+    }
+    if (!moduleRoot) {
+      return;
+    }
+    var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
+    var menuBody = moduleRoot.querySelector(".qzp2amenulistbody");
+    if (!toggle || !menuBody) {
+      return;
+    }
+    var mql = window.matchMedia("(max-width: 768px)");
+    function closeMenu() {
+      menuBody.classList.remove("is-visible");
+      toggle.classList.remove("is-active");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function openMenu() {
+      menuBody.classList.add("is-visible");
+      toggle.classList.add("is-active");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    toggle.addEventListener("click", function () {
+      if (!mql.matches) {
+        return;
+      }
+      if (menuBody.classList.contains("is-visible")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    menuBody.addEventListener("click", function (event) {
+      if (!mql.matches) {
+        return;
+      }
+      var link = event.target.closest("a");
+      if (!link) {
+        return;
+      }
+      closeMenu();
+    });
+    function handleBreakpoint() {
+      if (mql.matches) {
+        closeMenu();
+      } else {
+        menuBody.classList.remove("is-visible");
+        toggle.classList.remove("is-active");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    }
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", handleBreakpoint);
+    } else if (typeof mql.addListener === "function") {
+      mql.addListener(handleBreakpoint);
+    }
+    handleBreakpoint();
+  } catch (error) {
+    console.error("cmkhy5 mobil menü hatası:", error);
+  }
+})();
+</script>
 </div>
-  <div id="content"><div class="ldlg3-title f36">
+  <div id="content"><div class="vn4qv-title f36">
   <span>cargo transportation</span>
 </div>
-<div class="ldlg3">
-  <div class="ldlg3-menu-btn">
+<div class="vn4qv">
+  <div class="vn4qv-menu-btn">
     <span>Menu</span>
     <i class="fas fa-bars"></i>
   </div>
-  <div class="ldlg3-menu"><a   href="/en/evden-eve-tasimacilik" >Door-to-Door Transportation</a><a   href="/en/arac-tasimaciligi" >Vehicle Transportation</a><a   href="/en/yeni-mobilya-tasimaciligi" >New Furniture Transportation</a><a   href="/en/taicari-esya-tasimaciligi" >Commercial Goods Transportation</a><a class="active"  href="/en/kargo-tasimaciligi" >Cargo Transportation</a></div>
-  <div class="ldlg3-desc">
+  <div class="vn4qv-menu"><a   href="/en/evden-eve-tasimacilik" >Door-to-Door Transportation</a><a   href="/en/arac-tasimaciligi" >Vehicle Transportation</a><a   href="/en/yeni-mobilya-tasimaciligi" >New Furniture Transportation</a><a   href="/en/taicari-esya-tasimaciligi" >Commercial Goods Transportation</a><a class="active"  href="/en/kargo-tasimaciligi" >Cargo Transportation</a></div>
+  <div class="vn4qv-desc">
     
-    <div class="ldlg3-desc-body">
-            <img src="/page/ddiaiud1q3/b572p.webp?v=bf4yv" width="100%" alt="{{title}}" />
+    <div class="vn4qv-desc-body">
+            <img src="/page/ddiaiud1q3/b572p.webp?v=uj0t8" width="100%" alt="{{title}}" />
     </div>
-    <div class="ldlg3-body"><p><h2>cargo transportation servicei</h2><p>Han Bros Cargo olarak cargo transportation servicelerimizde expertız. Koli ve kargo gönderim servicei sunuyoruz.</p><h3>cargo transportation servicelerimiz</h3><ul><li><strong>Koli Gönderimi:</strong> Koli ve paketlerinizi güvenle gönderiyoruz</li><li><strong>cargo transportation:</strong> Kargo eşyalarınızı taşıyoruz</li><li><strong>customs clearance:</strong> Kargo customs proceduresnizi hallediyoruz</li><li><strong>Sigortalı shipping:</strong> Kargo eşyalarınız tam fully insured</li><li><strong>tracking system:</strong> 7/24 kargo takip servicei</li><li><strong>fast delivery:</strong> fast ve secure delivery</li></ul><h3>Taşınan Kargo Türleri</h3><ul><li><strong>personal items:</strong> Kişisel kullanım eşyaları</li><li><strong>Hediyelik Eşyalar:</strong> Hediyelik ve özel eşyalar</li><li><strong>Dokümanlar:</strong> Önemli evraklar ve dokümanlar</li><li><strong>Elektronik Ürünler:</strong> Elektronik cihazlar</li><li><strong>Tekstil Ürünleri:</strong> Giyim ve tekstil ürünleri</li><li><strong>Gıda Ürünleri:</strong> Gıda ve içecek ürünleri</li></ul><h3>service Süreci</h3><ol><li><strong>Kargo Teslimi:</strong> Kargonuzu belirlenen noktadan teslim alıyoruz</li><li><strong>packaging:</strong> secure packaging işlemi</li><li><strong>loading:</strong> secure loading</li><li><strong>shipping:</strong> customs proceduresyle birlikte shipping</li><li><strong>delivery:</strong> Alıcıya teslim</li></ol><h3>Neden Han Bros Cargo?</h3><ul><li>cargo transportationnda expert ekibimiz</li><li>7/24 tracking system</li><li>customs proceduresnde deneyim</li><li>fast delivery guaranteesi</li><li>competitive prices</li><li>secure ve sigortalı shipping</li><li>customer memnuniyeti odaklı service</li></ul><p>cargo transportation için hemen bizimle contact us ve free price quote alın.</p></p></div>
+    <div class="vn4qv-body"><p><h2>cargo transportation servicei</h2><p>Han Bros Cargo olarak cargo transportation servicelerimizde expertız. Koli ve kargo gönderim servicei sunuyoruz.</p><h3>cargo transportation servicelerimiz</h3><ul><li><strong>Koli Gönderimi:</strong> Koli ve paketlerinizi güvenle gönderiyoruz</li><li><strong>cargo transportation:</strong> Kargo eşyalarınızı taşıyoruz</li><li><strong>customs clearance:</strong> Kargo customs proceduresnizi hallediyoruz</li><li><strong>Sigortalı shipping:</strong> Kargo eşyalarınız tam fully insured</li><li><strong>tracking system:</strong> 7/24 kargo takip servicei</li><li><strong>fast delivery:</strong> fast ve secure delivery</li></ul><h3>Taşınan Kargo Türleri</h3><ul><li><strong>personal items:</strong> Kişisel kullanım eşyaları</li><li><strong>Hediyelik Eşyalar:</strong> Hediyelik ve özel eşyalar</li><li><strong>Dokümanlar:</strong> Önemli evraklar ve dokümanlar</li><li><strong>Elektronik Ürünler:</strong> Elektronik cihazlar</li><li><strong>Tekstil Ürünleri:</strong> Giyim ve tekstil ürünleri</li><li><strong>Gıda Ürünleri:</strong> Gıda ve içecek ürünleri</li></ul><h3>service Süreci</h3><ol><li><strong>Kargo Teslimi:</strong> Kargonuzu belirlenen noktadan teslim alıyoruz</li><li><strong>packaging:</strong> secure packaging işlemi</li><li><strong>loading:</strong> secure loading</li><li><strong>shipping:</strong> customs proceduresyle birlikte shipping</li><li><strong>delivery:</strong> Alıcıya teslim</li></ol><h3>Neden Han Bros Cargo?</h3><ul><li>cargo transportationnda expert ekibimiz</li><li>7/24 tracking system</li><li>customs proceduresnde deneyim</li><li>fast delivery guaranteesi</li><li>competitive prices</li><li>secure ve sigortalı shipping</li><li>customer memnuniyeti odaklı service</li></ul><p>cargo transportation için hemen bizimle contact us ve free price quote alın.</p></p></div>
   </div>
 </div>
 
 <script>
   document
-    .querySelector(".ldlg3-menu-btn")
+    .querySelector(".vn4qv-menu-btn")
     .addEventListener("click", function () {
-      document.querySelector(".ldlg3-menu").classList.toggle("active");
+      document.querySelector(".vn4qv-menu").classList.toggle("active");
       const icon = this.querySelector("i");
       icon.classList.toggle("fa-bars");
       icon.classList.toggle("fa-times");
@@ -152,73 +234,73 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
 </head>
-<div class="sliderxoxjca">
-  <div class="slider-oxjcat-itle">Our Services</div>
-  <div class="oxjca swiper-container">
+<div class="sliderxbdcmh">
+  <div class="slider-bdcmht-itle">Our Services</div>
+  <div class="bdcmh swiper-container">
     <div class="swiper-wrapper">
     <a href="/en/evden-eve-tasimacilik" class="swiper-slide">
-      <div class="swiper-oxjca">
-        <img class="img-oxjca" src="/page/ic2xbd0uch/j7uyj.webp" alt="Door-to-Door Transportation" />
-        <div class="title-spot-oxjca">
-          <div class="title-oxjca">Door-to-Door Transportation</div>
-          <div class="spot-oxjca">International door-to-door transportation service with Han Bros Cargo. We transport your belongings safely. Insured, customs cleared and professional service.</div>
+      <div class="swiper-bdcmh">
+        <img class="img-bdcmh" src="/page/ic2xbd0uch/j7uyj.webp" alt="Door-to-Door Transportation" />
+        <div class="title-spot-bdcmh">
+          <div class="title-bdcmh">Door-to-Door Transportation</div>
+          <div class="spot-bdcmh">International door-to-door transportation service with Han Bros Cargo. We transport your belongings safely. Insured, customs cleared and professional service.</div>
         </div>
-        <div class="button-oxjca">Read more...</div>
+        <div class="button-bdcmh">Read more...</div>
       </div>
     </a>
   
     <a href="/en/arac-tasimaciligi" class="swiper-slide">
-      <div class="swiper-oxjca">
-        <img class="img-oxjca" src="/page/wco1sqi58n/qdg37.webp" alt="Vehicle Transportation" />
-        <div class="title-spot-oxjca">
-          <div class="title-oxjca">Vehicle Transportation</div>
-          <div class="spot-oxjca">Vehicle transportation service with Han Bros Cargo. We transport your cars, motorcycles and other vehicles safely. International vehicle logistics.</div>
+      <div class="swiper-bdcmh">
+        <img class="img-bdcmh" src="/page/wco1sqi58n/qdg37.webp" alt="Vehicle Transportation" />
+        <div class="title-spot-bdcmh">
+          <div class="title-bdcmh">Vehicle Transportation</div>
+          <div class="spot-bdcmh">Vehicle transportation service with Han Bros Cargo. We transport your cars, motorcycles and other vehicles safely. International vehicle logistics.</div>
         </div>
-        <div class="button-oxjca">Read more...</div>
+        <div class="button-bdcmh">Read more...</div>
       </div>
     </a>
   
     <a href="/en/yeni-mobilya-tasimaciligi" class="swiper-slide">
-      <div class="swiper-oxjca">
-        <img class="img-oxjca" src="/page/k8k36eulrc/swxi9.webp" alt="New Furniture Transportation" />
-        <div class="title-spot-oxjca">
-          <div class="title-oxjca">New Furniture Transportation</div>
-          <div class="spot-oxjca">New furniture transportation service with Han Bros Cargo. Furniture shipment from Turkey abroad. Professional packaging and secure shipping.</div>
+      <div class="swiper-bdcmh">
+        <img class="img-bdcmh" src="/page/k8k36eulrc/swxi9.webp" alt="New Furniture Transportation" />
+        <div class="title-spot-bdcmh">
+          <div class="title-bdcmh">New Furniture Transportation</div>
+          <div class="spot-bdcmh">New furniture transportation service with Han Bros Cargo. Furniture shipment from Turkey abroad. Professional packaging and secure shipping.</div>
         </div>
-        <div class="button-oxjca">Read more...</div>
+        <div class="button-bdcmh">Read more...</div>
       </div>
     </a>
   
     <a href="/en/taicari-esya-tasimaciligi" class="swiper-slide">
-      <div class="swiper-oxjca">
-        <img class="img-oxjca" src="/page/jg1oria5p8/kpxm0.webp" alt="Commercial Goods Transportation" />
-        <div class="title-spot-oxjca">
-          <div class="title-oxjca">Commercial Goods Transportation</div>
-          <div class="spot-oxjca">Commercial goods transportation service with Han Bros Cargo. Commercial cargo and goods transportation. International commercial logistics solutions.</div>
+      <div class="swiper-bdcmh">
+        <img class="img-bdcmh" src="/page/jg1oria5p8/kpxm0.webp" alt="Commercial Goods Transportation" />
+        <div class="title-spot-bdcmh">
+          <div class="title-bdcmh">Commercial Goods Transportation</div>
+          <div class="spot-bdcmh">Commercial goods transportation service with Han Bros Cargo. Commercial cargo and goods transportation. International commercial logistics solutions.</div>
         </div>
-        <div class="button-oxjca">Read more...</div>
+        <div class="button-bdcmh">Read more...</div>
       </div>
     </a>
   
     <a href="/en/kargo-tasimaciligi" class="swiper-slide">
-      <div class="swiper-oxjca">
-        <img class="img-oxjca" src="/page/ddiaiud1q3/b572p.webp" alt="Cargo Transportation" />
-        <div class="title-spot-oxjca">
-          <div class="title-oxjca">Cargo Transportation</div>
-          <div class="spot-oxjca">Cargo transportation service with Han Bros Cargo. Package and cargo shipping service. International cargo logistics solutions.</div>
+      <div class="swiper-bdcmh">
+        <img class="img-bdcmh" src="/page/ddiaiud1q3/b572p.webp" alt="Cargo Transportation" />
+        <div class="title-spot-bdcmh">
+          <div class="title-bdcmh">Cargo Transportation</div>
+          <div class="spot-bdcmh">Cargo transportation service with Han Bros Cargo. Package and cargo shipping service. International cargo logistics solutions.</div>
         </div>
-        <div class="button-oxjca">Read more...</div>
+        <div class="button-bdcmh">Read more...</div>
       </div>
     </a>
   </div>
-    <div class="swiper-pagination-oxjca"></div>
+    <div class="swiper-pagination-bdcmh"></div>
   </div>
-  <div class="swiper-button-next swiper-button-next-oxjca"></div>
-  <div class="swiper-button-prev swiper-button-prev-oxjca"></div>
+  <div class="swiper-button-next swiper-button-next-bdcmh"></div>
+  <div class="swiper-button-prev swiper-button-prev-bdcmh"></div>
 </div>
 
 <script> setTimeout(() => {
-  new Swiper(".oxjca", {
+  new Swiper(".bdcmh", {
     slidesPerView: 2,
     simulateTouch: true,
     loop: true,
@@ -232,19 +314,19 @@
       disableOnInteraction: true,
     },
     pagination: {
-      el: ".swiper-pagination-oxjca",
+      el: ".swiper-pagination-bdcmh",
       clickable: true,
     },
     navigation: {
-      nextEl: ".swiper-button-next-oxjca",
-      prevEl: ".swiper-button-prev-oxjca",
+      nextEl: ".swiper-button-next-bdcmh",
+      prevEl: ".swiper-button-prev-bdcmh",
     },
   });}, 500);
 </script>
 </div>
-  <div id="footer"><div class="uit3n-wa-advanced" id="uit3nWaAdvanced">
-  <div class="uit3n-wa-advanced-button" onclick="toggleModulexAdvanced()">
-    <div class="uit3n-wa-advanced-icon">
+  <div id="footer"><div class="wa-advanced" id="wbi4xWaAdvanced">
+  <div class="wbi4x-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="wbi4x-wa-advanced-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
@@ -252,39 +334,39 @@
         ></path>
       </svg>
     </div>
-    <div class="uit3n-wa-advanced-pulse"></div>
+    <div class="wbi4x-wa-advanced-pulse"></div>
   </div>
 
-  <div class="uit3n-wa-advanced-panel" id="uit3nWaPanel">
-    <div class="uit3n-wa-advanced-header">
-      <div class="uit3n-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=bf4yv" alt="Support Agent" />
-        <div class="uit3n-wa-advanced-status online"></div>
+  <div class="wbi4x-wa-advanced-panel" id="wbi4xWaPanel">
+    <div class="wbi4x-wa-advanced-header">
+      <div class="wbi4x-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=uj0t8" alt="Support Agent" />
+        <div class="wbi4x-wa-advanced-status online"></div>
       </div>
-      <div class="uit3n-wa-advanced-info">
+      <div class="wbi4x-wa-advanced-info">
         <h4>Contact Us</h4>
         <p>Currently online</p>
       </div>
       <button
-        class="uit3n-wa-advanced-close"
+        class="wbi4x-wa-advanced-close"
         onclick="closeModulexAdvanced()"
       >
         ×
       </button>
     </div>
 
-    <div class="uit3n-wa-advanced-body">
-      <div class="uit3n-wa-advanced-message">
+    <div class="wbi4x-wa-advanced-body">
+      <div class="wbi4x-wa-advanced-message">
         <p>Hello! How can I help you?</p>
-        <span class="uit3n-wa-advanced-time">Now</span>
+        <span class="wbi4x-wa-advanced-time">Now</span>
       </div>
     </div>
 
-    <div class="uit3n-wa-advanced-footer">
+    <div class="wbi4x-wa-advanced-footer">
       <a
         href="https://wa.me/905418504646"
         target="_blank"
-        class="uit3n-wa-advanced-chat-btn"
+        class="wbi4x-wa-advanced-chat-btn"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -308,12 +390,12 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("uit3nWaPanel");
+    const panel = document.getElementById("wbi4xWaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
   function closeModulexAdvanced() {
-    document.getElementById("uit3nWaPanel").style.display = "none";
+    document.getElementById("wbi4xWaPanel").style.display = "none";
   }
 </script>
 <footer class="footer">
@@ -377,7 +459,7 @@
 </script>
 
 
-<script type="text/javascript" src="/src/js.js?v=bf4yv"></script>
-<script src="/src/cookie.js?v=bf4yv"></script>
+<script type="text/javascript" src="/src/js.js?v=uj0t8"></script>
+<script src="/src/cookie.js?v=uj0t8"></script>
 
 </html>

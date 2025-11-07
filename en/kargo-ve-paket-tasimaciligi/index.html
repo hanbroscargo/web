@@ -12,34 +12,34 @@
   <meta http-equiv="Pragma" content="cache" />
   <meta http-equiv="Expires" content="3600" />
   <title>Kargo ve Paket shippingcılığı</title>
-  <meta name="description" content="undefined" />
-  <meta name="keywords" content="undefined" />
+  <meta name="description" content="Han Bros Cargo compares express, economy and dedicated delivery models for your parcel and partial shipments. We recommend the best route and service mix based on your origin and destination." />
+  <meta name="keywords" content="parcel shipping solutions, partial load logistics, express delivery quote, Han Bros Cargo" />
   <meta property="og:title" content="Kargo ve Paket shippingcılığı" />
-  <meta property="og:description" content="undefined" />
+  <meta property="og:description" content="Han Bros Cargo compares express, economy and dedicated delivery models for your parcel and partial shipments. We recommend the best route and service mix based on your origin and destination." />
   <meta property="og:image" content="https://hanbroscargo.com/page/yw6p6vlbay/go0iq.webp" />
   <meta name="robots" content="index, follow" />
 
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=zgx1w" />
-  <link rel="shortcut icon" href="/img/icon.png?v=zgx1w" type="image/png" />
+  <link rel="stylesheet" href="/src/css.css?v=f866z" />
+  <link rel="shortcut icon" href="/img/icon.png?v=f866z" type="image/png" />
 
   <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   <script src="/src/swiper-bundle.min.js"></script>
   
 
-  <script type="text/javascript" src="/src/firebase.js?v=zgx1w"></script>
-<link rel="stylesheet" href="style.css?v=zgx1w">
+  <script type="text/javascript" src="/src/firebase.js?v=f866z"></script>
+<link rel="stylesheet" href="style.css?v=f866z">
 </head>
 
 <body>
-  <div id="header"><div class="rs7rh">
-  <div class="rs7rhtitle">
-    <div class="rs7rhtitlebody">
-      <div class="rs7rhtitlebodytitle">
+  <div id="header"><div class="rqa40">
+  <div class="rqa40title">
+    <div class="rqa40titlebody">
+      <div class="rqa40titlebodytitle">
         Han Bros Cargo
       </div>
-      <div class="rs7rhtitlebodylang">
+      <div class="rqa40titlebodylang">
         <ul>
           <a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></a><a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></a>
         </ul>
@@ -51,10 +51,10 @@
 
 
 
-  <div class="rs7rhbody">
+  <div class="rqa40body">
     <a href="/en/"
       ><img
-        src="/img/logo.png?v=zgx1w"
+        src="/img/logo.png?v=f866z"
         class="module-logo"
         alt="Han Bros Cargo Logo"
     /></a> 
@@ -72,38 +72,45 @@
         </div>
       </div>
   </div>
-  <div class="rs7rhmenubody">
-    <div class="rs7rhmenu">
-      <div class="rs7rhmenulistbody">
-        <div class="rs7rhmenulist"><a class="rs7rhmenulist-menu" href="/en/">Home </a><div class="rs7rhmenulist-menu " >
+  <div class="rqa40menubody">
+    <div class="rqa40menu">
+      <div class="mobile-menu-toggle" aria-expanded="false">
+        <span class="mobile-menu-toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div class="rqa40menulistbody">
+        <div class="rqa40menulist"><a class="rqa40menulist-menu" href="/en/">Home </a><div class="rqa40menulist-menu " >
 
       <a href="/en/hakkimizda/">
        Corporate
       </a>
      
                     </div>
-    <div class="rs7rhmenulist-menu " >
+    <div class="rqa40menulist-menu " >
 
       <a href="/en/ulkeler/">
        Countries
       </a>
      
                     </div>
-    <div class="rs7rhmenulist-menu " >
+    <div class="rqa40menulist-menu " >
 
       <a href="/en/hizmetlerimiz/">
        Our Services
       </a>
      
                     </div>
-    <div class="rs7rhmenulist-menu " >
+    <div class="rqa40menulist-menu " >
 
       <a href="/en/bilgi-bankasi/">
        Knowledge Base
       </a>
      
                     </div>
-    <div class="rs7rhmenulist-menu " >
+    <div class="rqa40menulist-menu " >
 
       <a href="/en/iletisim/">
        Contact
@@ -116,11 +123,86 @@
   </div>
 </div>
 
+<script>
+(function () {
+  try {
+    var scriptEl = document.currentScript;
+    if (!scriptEl) {
+      return;
+    }
+    var moduleRoot = null;
+    var sibling = scriptEl.previousElementSibling;
+    while (sibling) {
+      if (sibling.classList && sibling.classList.contains("rqa40")) {
+        moduleRoot = sibling;
+        break;
+      }
+      sibling = sibling.previousElementSibling;
+    }
+    if (!moduleRoot) {
+      return;
+    }
+    var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
+    var menuBody = moduleRoot.querySelector(".rqa40menulistbody");
+    if (!toggle || !menuBody) {
+      return;
+    }
+    var mql = window.matchMedia("(max-width: 768px)");
+    function closeMenu() {
+      menuBody.classList.remove("is-visible");
+      toggle.classList.remove("is-active");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function openMenu() {
+      menuBody.classList.add("is-visible");
+      toggle.classList.add("is-active");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    toggle.addEventListener("click", function () {
+      if (!mql.matches) {
+        return;
+      }
+      if (menuBody.classList.contains("is-visible")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    menuBody.addEventListener("click", function (event) {
+      if (!mql.matches) {
+        return;
+      }
+      var link = event.target.closest("a");
+      if (!link) {
+        return;
+      }
+      closeMenu();
+    });
+    function handleBreakpoint() {
+      if (mql.matches) {
+        closeMenu();
+      } else {
+        menuBody.classList.remove("is-visible");
+        toggle.classList.remove("is-active");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    }
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", handleBreakpoint);
+    } else if (typeof mql.addListener === "function") {
+      mql.addListener(handleBreakpoint);
+    }
+    handleBreakpoint();
+  } catch (error) {
+    console.error("cmkhy5 mobil menü hatası:", error);
+  }
+})();
+</script>
 </div>
   <div id="content"></div>
-  <div id="footer"><div class="yg8ow-wa-advanced" id="yg8owWaAdvanced">
-  <div class="yg8ow-wa-advanced-button" onclick="toggleModulexAdvanced()">
-    <div class="yg8ow-wa-advanced-icon">
+  <div id="footer"><div class="wa-advanced" id="l9j7lWaAdvanced">
+  <div class="l9j7l-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="l9j7l-wa-advanced-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
@@ -128,39 +210,39 @@
         ></path>
       </svg>
     </div>
-    <div class="yg8ow-wa-advanced-pulse"></div>
+    <div class="l9j7l-wa-advanced-pulse"></div>
   </div>
 
-  <div class="yg8ow-wa-advanced-panel" id="yg8owWaPanel">
-    <div class="yg8ow-wa-advanced-header">
-      <div class="yg8ow-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=zgx1w" alt="Support Agent" />
-        <div class="yg8ow-wa-advanced-status online"></div>
+  <div class="l9j7l-wa-advanced-panel" id="l9j7lWaPanel">
+    <div class="l9j7l-wa-advanced-header">
+      <div class="l9j7l-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=f866z" alt="Support Agent" />
+        <div class="l9j7l-wa-advanced-status online"></div>
       </div>
-      <div class="yg8ow-wa-advanced-info">
+      <div class="l9j7l-wa-advanced-info">
         <h4>Contact Us</h4>
         <p>Currently online</p>
       </div>
       <button
-        class="yg8ow-wa-advanced-close"
+        class="l9j7l-wa-advanced-close"
         onclick="closeModulexAdvanced()"
       >
         ×
       </button>
     </div>
 
-    <div class="yg8ow-wa-advanced-body">
-      <div class="yg8ow-wa-advanced-message">
+    <div class="l9j7l-wa-advanced-body">
+      <div class="l9j7l-wa-advanced-message">
         <p>Hello! How can I help you?</p>
-        <span class="yg8ow-wa-advanced-time">Now</span>
+        <span class="l9j7l-wa-advanced-time">Now</span>
       </div>
     </div>
 
-    <div class="yg8ow-wa-advanced-footer">
+    <div class="l9j7l-wa-advanced-footer">
       <a
         href="https://wa.me/905418504646"
         target="_blank"
-        class="yg8ow-wa-advanced-chat-btn"
+        class="l9j7l-wa-advanced-chat-btn"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -184,12 +266,12 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("yg8owWaPanel");
+    const panel = document.getElementById("l9j7lWaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
   function closeModulexAdvanced() {
-    document.getElementById("yg8owWaPanel").style.display = "none";
+    document.getElementById("l9j7lWaPanel").style.display = "none";
   }
 </script>
 <footer class="footer">
@@ -253,7 +335,7 @@
 </script>
 
 
-<script type="text/javascript" src="/src/js.js?v=zgx1w"></script>
-<script src="/src/cookie.js?v=zgx1w"></script>
+<script type="text/javascript" src="/src/js.js?v=f866z"></script>
+<script src="/src/cookie.js?v=f866z"></script>
 
 </html>

@@ -16,31 +16,30 @@
   <meta name="keywords" content="Han Bros Cargo bilgi bankası, sık sorulan sorular, taşımacılık FAQ, nakliyat soruları, cargo bilgi, taşıma bilgileri" />
   <meta property="og:title" content="Bilgi Bankası" />
   <meta property="og:description" content="Han Bros Cargo bilgi bankası. Sık sorulan sorular ve cevapları. Taşımacılık hizmetleri hakkında detaylı bilgiler. FAQ sayfası." />
-  <meta property="og:image" content="https://hanbroscargo.com/img/icon.png" />
+  <meta property="og:image" content="https://hanbroscargo.com/page/bilgi-bankasi/info.png" />
   <meta name="robots" content="index, follow" />
-  <link rel="stylesheet" href="/src/css.css?v=scvju" />
-  <link rel="shortcut icon" href="/img/icon.png?v=scvju" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet" />
+
+
+  <link rel="stylesheet" href="/src/rubik.css" />
+  <link rel="stylesheet" href="/src/css.css?v=xsbqd" />
+  <link rel="shortcut icon" href="/img/icon.png?v=xsbqd" type="image/png" />
 
   <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   <script src="/src/swiper-bundle.min.js"></script>
   
 
-  <script type="text/javascript" src="/src/firebase.js?v=scvju"></script>
-<link rel="stylesheet" href="style.css?v=scvju">
+  <script type="text/javascript" src="/src/firebase.js?v=xsbqd"></script>
+<link rel="stylesheet" href="style.css?v=xsbqd">
 </head>
 
 <body>
-  <div id="header"><div class="quv0h">
-  <div class="quv0htitle">
-    <div class="quv0htitlebody">
-      <div class="quv0htitlebodytitle">
+  <div id="header"><div class="t01hx">
+  <div class="t01hxtitle">
+    <div class="t01hxtitlebody">
+      <div class="t01hxtitlebodytitle">
         Han Bros Cargo
       </div>
-      <div class="quv0htitlebodylang">
+      <div class="t01hxtitlebodylang">
         <ul>
           <a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></a><a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></a>
         </ul>
@@ -52,10 +51,10 @@
 
 
 
-  <div class="quv0hbody">
+  <div class="t01hxbody">
     <a href="/tr/"
       ><img
-        src="/img/logo.png?v=scvju"
+        src="/img/logo.png?v=xsbqd"
         class="module-logo"
         alt="Han Bros Cargo Logo"
     /></a> 
@@ -73,38 +72,45 @@
         </div>
       </div>
   </div>
-  <div class="quv0hmenubody">
-    <div class="quv0hmenu">
-      <div class="quv0hmenulistbody">
-        <div class="quv0hmenulist"><a class="quv0hmenulist-menu" href="/tr/">Anasayfa </a><div class="quv0hmenulist-menu " >
+  <div class="t01hxmenubody">
+    <div class="t01hxmenu">
+      <div class="mobile-menu-toggle" aria-expanded="false">
+        <span class="mobile-menu-toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div class="t01hxmenulistbody">
+        <div class="t01hxmenulist"><a class="t01hxmenulist-menu" href="/tr/">Anasayfa </a><div class="t01hxmenulist-menu " >
 
       <a href="/tr/hakkimizda/">
        Kurumsal
       </a>
      
                     </div>
-    <div class="quv0hmenulist-menu " >
+    <div class="t01hxmenulist-menu " >
 
       <a href="/tr/ulkeler/">
        Ülkeler
       </a>
      
                     </div>
-    <div class="quv0hmenulist-menu " >
+    <div class="t01hxmenulist-menu " >
 
       <a href="/tr/hizmetlerimiz/">
        Hizmetlerimiz
       </a>
      
                     </div>
-    <div class="quv0hmenulist-menu dropdown-content-active-quv0h" >
+    <div class="t01hxmenulist-menu dropdown-content-active-t01hx" >
 
       <a href="/tr/bilgi-bankasi/">
        Bilgi Bankası
       </a>
      
                     </div>
-    <div class="quv0hmenulist-menu " >
+    <div class="t01hxmenulist-menu " >
 
       <a href="/tr/iletisim/">
        İletişim
@@ -117,515 +123,590 @@
   </div>
 </div>
 
+<script>
+(function () {
+  try {
+    var scriptEl = document.currentScript;
+    if (!scriptEl) {
+      return;
+    }
+    var moduleRoot = null;
+    var sibling = scriptEl.previousElementSibling;
+    while (sibling) {
+      if (sibling.classList && sibling.classList.contains("t01hx")) {
+        moduleRoot = sibling;
+        break;
+      }
+      sibling = sibling.previousElementSibling;
+    }
+    if (!moduleRoot) {
+      return;
+    }
+    var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
+    var menuBody = moduleRoot.querySelector(".t01hxmenulistbody");
+    if (!toggle || !menuBody) {
+      return;
+    }
+    var mql = window.matchMedia("(max-width: 768px)");
+    function closeMenu() {
+      menuBody.classList.remove("is-visible");
+      toggle.classList.remove("is-active");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function openMenu() {
+      menuBody.classList.add("is-visible");
+      toggle.classList.add("is-active");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    toggle.addEventListener("click", function () {
+      if (!mql.matches) {
+        return;
+      }
+      if (menuBody.classList.contains("is-visible")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    menuBody.addEventListener("click", function (event) {
+      if (!mql.matches) {
+        return;
+      }
+      var link = event.target.closest("a");
+      if (!link) {
+        return;
+      }
+      closeMenu();
+    });
+    function handleBreakpoint() {
+      if (mql.matches) {
+        closeMenu();
+      } else {
+        menuBody.classList.remove("is-visible");
+        toggle.classList.remove("is-active");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    }
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", handleBreakpoint);
+    } else if (typeof mql.addListener === "function") {
+      mql.addListener(handleBreakpoint);
+    }
+    handleBreakpoint();
+  } catch (error) {
+    console.error("cmkhy5 mobil menü hatası:", error);
+  }
+})();
+</script>
 </div>
-  <div id="content"><div class="usj80">
-  <div class="usj80head">
+  <div id="content"><div class="j7t3h">
+  <div class="j7t3hhead">
     <div class="search-container">
       <div class="search-icon">🔍</div>
       <input type="text" id="searchInput" placeholder="Sayfa ara..." class="search-input">
       <div class="search-counter" id="searchCounter">0 sonuç</div>
     </div>
   </div>
-  <div class="usj80body" id="usj80body"> <a href="/tr/turkiyeden-almanyaya-yeni-mobilya-gonderebilir-miyim" class="usj80bodyitem" data-search="türkiye'den almanya'ya yeni mobilya gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+  <div class="j7t3hbody" id="j7t3hbody"> <a href="/tr/turkiyeden-almanyaya-yeni-mobilya-gonderebilir-miyim" class="j7t3hbodyitem" data-search="türkiye'den almanya'ya yeni mobilya gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Türkiye'den Almanya'ya yeni mobilya gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/turkiyeden-hollandaya-ev-esyalarimizi-gonderebilir-miyiz" class="usj80bodyitem" data-search="türkiye'den hollanda'ya ev eşyalarımızı gönderebilir miyiz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/turkiyeden-hollandaya-ev-esyalarimizi-gonderebilir-miyiz" class="j7t3hbodyitem" data-search="türkiye'den hollanda'ya ev eşyalarımızı gönderebilir miyiz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Türkiye'den Hollanda'ya ev eşyalarımızı gönderebilir miyiz?
                     </div>
   </div>
-</a> <a href="/tr/esyalarimizi-depolarinizda-uzun-sureli-bekletebilir-misiniz" class="usj80bodyitem" data-search="eşyalarımızı depolarınızda uzun süreli bekletebilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/esyalarimizi-depolarinizda-uzun-sureli-bekletebilir-misiniz" class="j7t3hbodyitem" data-search="eşyalarımızı depolarınızda uzun süreli bekletebilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Eşyalarımızı depolarınızda uzun süreli bekletebilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/gumrukleme-islemleri-ile-de-siz-mi-ilgileniyorsunuz" class="usj80bodyitem" data-search="gümrükleme işlemleri ile de siz mi ilgileniyorsunuz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/gumrukleme-islemleri-ile-de-siz-mi-ilgileniyorsunuz" class="j7t3hbodyitem" data-search="gümrükleme işlemleri ile de siz mi ilgileniyorsunuz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Gümrükleme işlemleri ile de siz mi ilgileniyorsunuz?
                     </div>
   </div>
-</a> <a href="/tr/esyalarimizin-kolilenmesini-de-siz-mi-yapiyorsunuz" class="usj80bodyitem" data-search="eşyalarımızın kolilenmesini de siz mi yapıyorsunuz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/esyalarimizin-kolilenmesini-de-siz-mi-yapiyorsunuz" class="j7t3hbodyitem" data-search="eşyalarımızın kolilenmesini de siz mi yapıyorsunuz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Eşyalarımızın kolilenmesini de siz mi yapıyorsunuz?
                     </div>
   </div>
-</a> <a href="/tr/ileri-tarihli-teslim-mumkun-mu" class="usj80bodyitem" data-search="i̇leri tarihli teslim mümkün mü?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ileri-tarihli-teslim-mumkun-mu" class="j7t3hbodyitem" data-search="i̇leri tarihli teslim mümkün mü?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     İleri tarihli teslim mümkün mü?
                     </div>
   </div>
-</a> <a href="/tr/adanadan-almanyaya-ev-esyalarimi-tasiyabilir-misiniz" class="usj80bodyitem" data-search="adana'dan almanya'ya ev eşyalarımı taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/adanadan-almanyaya-ev-esyalarimi-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="adana'dan almanya'ya ev eşyalarımı taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Adana'dan Almanya'ya ev eşyalarımı taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/istanbuldan-hollandaya-ev-esyalarimi-tasiyabilir-misiniz" class="usj80bodyitem" data-search="i̇stanbul'dan hollanda'ya ev eşyalarımı taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/istanbuldan-hollandaya-ev-esyalarimi-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="i̇stanbul'dan hollanda'ya ev eşyalarımı taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     İstanbul'dan Hollanda'ya ev eşyalarımı taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/ankaradan-ingiltereye-ev-esyalarimi-tasiyabilir-misiniz" class="usj80bodyitem" data-search="ankara'dan i̇ngiltere'ye ev eşyalarımı taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ankaradan-ingiltereye-ev-esyalarimi-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="ankara'dan i̇ngiltere'ye ev eşyalarımı taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Ankara'dan İngiltere'ye ev eşyalarımı taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/izmir-fransaya-ev-esyalarimi-tasiyabilir-misiniz" class="usj80bodyitem" data-search="i̇zmir'den fransa'ya ev eşyalarımı taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/izmir-fransaya-ev-esyalarimi-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="i̇zmir'den fransa'ya ev eşyalarımı taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     İzmir'den Fransa'ya ev eşyalarımı taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/bursadan-belcikaya-ev-esyalarimi-tasiyabilir-misiniz" class="usj80bodyitem" data-search="bursa'dan belçika'ya ev eşyalarımı taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/bursadan-belcikaya-ev-esyalarimi-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="bursa'dan belçika'ya ev eşyalarımı taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Bursa'dan Belçika'ya ev eşyalarımı taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/antalyadan-avusturyaya-ev-esyalarimi-tasiyabilir-misiniz" class="usj80bodyitem" data-search="antalya'dan avusturya'ya ev eşyalarımı taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/antalyadan-avusturyaya-ev-esyalarimi-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="antalya'dan avusturya'ya ev eşyalarımı taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Antalya'dan Avusturya'ya ev eşyalarımı taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/gaziantep-luksemburg-ev-esyalarimi-tasiyabilir-misiniz" class="usj80bodyitem" data-search="gaziantep'ten lüksemburg'a ev eşyalarımı taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/gaziantep-luksemburg-ev-esyalarimi-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="gaziantep'ten lüksemburg'a ev eşyalarımı taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Gaziantep'ten Lüksemburg'a ev eşyalarımı taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/konyadan-almanyaya-yeni-mobilya-gonderebilir-miyim" class="usj80bodyitem" data-search="konya'dan almanya'ya yeni mobilya gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/konyadan-almanyaya-yeni-mobilya-gonderebilir-miyim" class="j7t3hbodyitem" data-search="konya'dan almanya'ya yeni mobilya gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Konya'dan Almanya'ya yeni mobilya gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/trabzondan-hollandaya-yeni-mobilya-gonderebilir-miyim" class="usj80bodyitem" data-search="trabzon'dan hollanda'ya yeni mobilya gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/trabzondan-hollandaya-yeni-mobilya-gonderebilir-miyim" class="j7t3hbodyitem" data-search="trabzon'dan hollanda'ya yeni mobilya gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Trabzon'dan Hollanda'ya yeni mobilya gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/samsundan-ingiltereye-yeni-mobilya-gonderebilir-miyim" class="usj80bodyitem" data-search="samsun'dan i̇ngiltere'ye yeni mobilya gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/samsundan-ingiltereye-yeni-mobilya-gonderebilir-miyim" class="j7t3hbodyitem" data-search="samsun'dan i̇ngiltere'ye yeni mobilya gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Samsun'dan İngiltere'ye yeni mobilya gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/mersinden-fransaya-yeni-mobilya-gonderebilir-miyim" class="usj80bodyitem" data-search="mersin'den fransa'ya yeni mobilya gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/mersinden-fransaya-yeni-mobilya-gonderebilir-miyim" class="j7t3hbodyitem" data-search="mersin'den fransa'ya yeni mobilya gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Mersin'den Fransa'ya yeni mobilya gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/eskisehirden-belcikaya-yeni-mobilya-gonderebilir-miyim" class="usj80bodyitem" data-search="eskişehir'den belçika'ya yeni mobilya gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/eskisehirden-belcikaya-yeni-mobilya-gonderebilir-miyim" class="j7t3hbodyitem" data-search="eskişehir'den belçika'ya yeni mobilya gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Eskişehir'den Belçika'ya yeni mobilya gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/diyarbakirdan-avusturyaya-yeni-mobilya-gonderebilir-miyim" class="usj80bodyitem" data-search="diyarbakır'dan avusturya'ya yeni mobilya gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/diyarbakirdan-avusturyaya-yeni-mobilya-gonderebilir-miyim" class="j7t3hbodyitem" data-search="diyarbakır'dan avusturya'ya yeni mobilya gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Diyarbakır'dan Avusturya'ya yeni mobilya gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/kayseriden-luksemburg-yeni-mobilya-gonderebilir-miyim" class="usj80bodyitem" data-search="kayseri'den lüksemburg'a yeni mobilya gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/kayseriden-luksemburg-yeni-mobilya-gonderebilir-miyim" class="j7t3hbodyitem" data-search="kayseri'den lüksemburg'a yeni mobilya gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Kayseri'den Lüksemburg'a yeni mobilya gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/erzurumdan-almanyaya-arac-tasiyabilir-misiniz" class="usj80bodyitem" data-search="erzurum'dan almanya'ya araç taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/erzurumdan-almanyaya-arac-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="erzurum'dan almanya'ya araç taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Erzurum'dan Almanya'ya araç taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/malatyadan-hollandaya-arac-tasiyabilir-misiniz" class="usj80bodyitem" data-search="malatya'dan hollanda'ya araç taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/malatyadan-hollandaya-arac-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="malatya'dan hollanda'ya araç taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Malatya'dan Hollanda'ya araç taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/sivastan-ingiltereye-arac-tasiyabilir-misiniz" class="usj80bodyitem" data-search="sivas'tan i̇ngiltere'ye araç taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/sivastan-ingiltereye-arac-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="sivas'tan i̇ngiltere'ye araç taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Sivas'tan İngiltere'ye araç taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/denizliden-fransaya-arac-tasiyabilir-misiniz" class="usj80bodyitem" data-search="denizli'den fransa'ya araç taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/denizliden-fransaya-arac-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="denizli'den fransa'ya araç taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Denizli'den Fransa'ya araç taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/kahramanmarastan-belcikaya-arac-tasiyabilir-misiniz" class="usj80bodyitem" data-search="kahramanmaraş'tan belçika'ya araç taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/kahramanmarastan-belcikaya-arac-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="kahramanmaraş'tan belçika'ya araç taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Kahramanmaraş'tan Belçika'ya araç taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/vandan-avusturyaya-arac-tasiyabilir-misiniz" class="usj80bodyitem" data-search="van'dan avusturya'ya araç taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/vandan-avusturyaya-arac-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="van'dan avusturya'ya araç taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Van'dan Avusturya'ya araç taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/sanliurfadan-luksemburg-arac-tasiyabilir-misiniz" class="usj80bodyitem" data-search="şanlıurfa'dan lüksemburg'a araç taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/sanliurfadan-luksemburg-arac-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="şanlıurfa'dan lüksemburg'a araç taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Şanlıurfa'dan Lüksemburg'a araç taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/balikesirden-almanyaya-ticari-esya-tasiyabilir-misiniz" class="usj80bodyitem" data-search="balıkesir'den almanya'ya ticari eşya taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/balikesirden-almanyaya-ticari-esya-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="balıkesir'den almanya'ya ticari eşya taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Balıkesir'den Almanya'ya ticari eşya taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/sakaryadan-hollandaya-ticari-esya-tasiyabilir-misiniz" class="usj80bodyitem" data-search="sakarya'dan hollanda'ya ticari eşya taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/sakaryadan-hollandaya-ticari-esya-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="sakarya'dan hollanda'ya ticari eşya taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Sakarya'dan Hollanda'ya ticari eşya taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/tekirdagdan-ingiltereye-ticari-esya-tasiyabilir-misiniz" class="usj80bodyitem" data-search="tekirdağ'dan i̇ngiltere'ye ticari eşya taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/tekirdagdan-ingiltereye-ticari-esya-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="tekirdağ'dan i̇ngiltere'ye ticari eşya taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Tekirdağ'dan İngiltere'ye ticari eşya taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/manisadan-fransaya-ticari-esya-tasiyabilir-misiniz" class="usj80bodyitem" data-search="manisa'dan fransa'ya ticari eşya taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/manisadan-fransaya-ticari-esya-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="manisa'dan fransa'ya ticari eşya taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Manisa'dan Fransa'ya ticari eşya taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/hataydan-belcikaya-ticari-esya-tasiyabilir-misiniz" class="usj80bodyitem" data-search="hatay'dan belçika'ya ticari eşya taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/hataydan-belcikaya-ticari-esya-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="hatay'dan belçika'ya ticari eşya taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Hatay'dan Belçika'ya ticari eşya taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/aydindan-avusturyaya-ticari-esya-tasiyabilir-misiniz" class="usj80bodyitem" data-search="aydın'dan avusturya'ya ticari eşya taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/aydindan-avusturyaya-ticari-esya-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="aydın'dan avusturya'ya ticari eşya taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Aydın'dan Avusturya'ya ticari eşya taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/mugladan-luksemburg-ticari-esya-tasiyabilir-misiniz" class="usj80bodyitem" data-search="muğla'dan lüksemburg'a ticari eşya taşıyabilir misiniz?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/mugladan-luksemburg-ticari-esya-tasiyabilir-misiniz" class="j7t3hbodyitem" data-search="muğla'dan lüksemburg'a ticari eşya taşıyabilir misiniz?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Muğla'dan Lüksemburg'a ticari eşya taşıyabilir misiniz?
                     </div>
   </div>
-</a> <a href="/tr/zonguldaktan-almanyaya-kargo-gonderebilir-miyim" class="usj80bodyitem" data-search="zonguldak'tan almanya'ya kargo gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/zonguldaktan-almanyaya-kargo-gonderebilir-miyim" class="j7t3hbodyitem" data-search="zonguldak'tan almanya'ya kargo gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Zonguldak'tan Almanya'ya kargo gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/kocaeliden-hollandaya-kargo-gonderebilir-miyim" class="usj80bodyitem" data-search="kocaeli'den hollanda'ya kargo gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/kocaeliden-hollandaya-kargo-gonderebilir-miyim" class="j7t3hbodyitem" data-search="kocaeli'den hollanda'ya kargo gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Kocaeli'den Hollanda'ya kargo gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/corumdan-ingiltereye-kargo-gonderebilir-miyim" class="usj80bodyitem" data-search="çorum'dan i̇ngiltere'ye kargo gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/corumdan-ingiltereye-kargo-gonderebilir-miyim" class="j7t3hbodyitem" data-search="çorum'dan i̇ngiltere'ye kargo gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Çorum'dan İngiltere'ye kargo gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/ordudan-fransaya-kargo-gonderebilir-miyim" class="usj80bodyitem" data-search="ordu'dan fransa'ya kargo gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ordudan-fransaya-kargo-gonderebilir-miyim" class="j7t3hbodyitem" data-search="ordu'dan fransa'ya kargo gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Ordu'dan Fransa'ya kargo gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/tokattan-belcikaya-kargo-gonderebilir-miyim" class="usj80bodyitem" data-search="tokat'tan belçika'ya kargo gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/tokattan-belcikaya-kargo-gonderebilir-miyim" class="j7t3hbodyitem" data-search="tokat'tan belçika'ya kargo gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Tokat'tan Belçika'ya kargo gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/cankiridan-avusturyaya-kargo-gonderebilir-miyim" class="usj80bodyitem" data-search="çankırı'dan avusturya'ya kargo gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/cankiridan-avusturyaya-kargo-gonderebilir-miyim" class="j7t3hbodyitem" data-search="çankırı'dan avusturya'ya kargo gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Çankırı'dan Avusturya'ya kargo gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/kirikkaleden-luksemburg-kargo-gonderebilir-miyim" class="usj80bodyitem" data-search="kırıkkale'den lüksemburg'a kargo gönderebilir miyim?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/kirikkaleden-luksemburg-kargo-gonderebilir-miyim" class="j7t3hbodyitem" data-search="kırıkkale'den lüksemburg'a kargo gönderebilir miyim?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Kırıkkale'den Lüksemburg'a kargo gönderebilir miyim?
                     </div>
   </div>
-</a> <a href="/tr/evden-eve-tasimacilik-hizmeti-nedir" class="usj80bodyitem" data-search="evden eve taşımacılık hizmeti nedir?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/evden-eve-tasimacilik-hizmeti-nedir" class="j7t3hbodyitem" data-search="evden eve taşımacılık hizmeti nedir?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Evden Eve Taşımacılık Hizmeti Nedir?
                     </div>
   </div>
-</a> <a href="/tr/yeni-mobilya-tasimaciligi-nasil-yapilir" class="usj80bodyitem" data-search="yeni mobilya taşımacılığı nasıl yapılır?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/yeni-mobilya-tasimaciligi-nasil-yapilir" class="j7t3hbodyitem" data-search="yeni mobilya taşımacılığı nasıl yapılır?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Yeni Mobilya Taşımacılığı Nasıl Yapılır?
                     </div>
   </div>
-</a> <a href="/tr/arac-tasimaciligi-hizmeti-nasil-calisir" class="usj80bodyitem" data-search="araç taşımacılığı hizmeti nasıl çalışır?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/arac-tasimaciligi-hizmeti-nasil-calisir" class="j7t3hbodyitem" data-search="araç taşımacılığı hizmeti nasıl çalışır?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Araç Taşımacılığı Hizmeti Nasıl Çalışır?
                     </div>
   </div>
-</a> <a href="/tr/ticari-esya-tasimaciligi-hizmeti-nedir" class="usj80bodyitem" data-search="ticari eşya taşımacılığı hizmeti nedir?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ticari-esya-tasimaciligi-hizmeti-nedir" class="j7t3hbodyitem" data-search="ticari eşya taşımacılığı hizmeti nedir?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Ticari Eşya Taşımacılığı Hizmeti Nedir?
                     </div>
   </div>
-</a> <a href="/tr/kargo-tasimaciligi-hizmeti-nasil-yapilir" class="usj80bodyitem" data-search="kargo taşımacılığı hizmeti nasıl yapılır?">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/kargo-tasimaciligi-hizmeti-nasil-yapilir" class="j7t3hbodyitem" data-search="kargo taşımacılığı hizmeti nasıl yapılır?">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Kargo Taşımacılığı Hizmeti Nasıl Yapılır?
                     </div>
   </div>
-</a> <a href="/tr/almanyaya-ev-esyasi-tasimaciligi-fiyatlari" class="usj80bodyitem" data-search="almanya'ya ev eşyası taşımacılığı fiyatları">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/almanyaya-ev-esyasi-tasimaciligi-fiyatlari" class="j7t3hbodyitem" data-search="almanya'ya ev eşyası taşımacılığı fiyatları">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Almanya'ya Ev Eşyası Taşımacılığı Fiyatları
                     </div>
   </div>
-</a> <a href="/tr/hollandaya-ev-esyasi-tasimaciligi-fiyatlari" class="usj80bodyitem" data-search="hollanda'ya ev eşyası taşımacılığı fiyatları">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/hollandaya-ev-esyasi-tasimaciligi-fiyatlari" class="j7t3hbodyitem" data-search="hollanda'ya ev eşyası taşımacılığı fiyatları">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Hollanda'ya Ev Eşyası Taşımacılığı Fiyatları
                     </div>
   </div>
-</a> <a href="/tr/ingiltereye-ev-esyasi-tasimaciligi-fiyatlari" class="usj80bodyitem" data-search="i̇ngiltere'ye ev eşyası taşımacılığı fiyatları">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ingiltereye-ev-esyasi-tasimaciligi-fiyatlari" class="j7t3hbodyitem" data-search="i̇ngiltere'ye ev eşyası taşımacılığı fiyatları">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     İngiltere'ye Ev Eşyası Taşımacılığı Fiyatları
                     </div>
   </div>
-</a> <a href="/tr/fransaya-ev-esyasi-tasimaciligi-fiyatlari" class="usj80bodyitem" data-search="fransa'ya ev eşyası taşımacılığı fiyatları">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/fransaya-ev-esyasi-tasimaciligi-fiyatlari" class="j7t3hbodyitem" data-search="fransa'ya ev eşyası taşımacılığı fiyatları">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Fransa'ya Ev Eşyası Taşımacılığı Fiyatları
                     </div>
   </div>
-</a> <a href="/tr/belcikaya-ev-esyasi-tasimaciligi-fiyatlari" class="usj80bodyitem" data-search="belçika'ya ev eşyası taşımacılığı fiyatları">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/belcikaya-ev-esyasi-tasimaciligi-fiyatlari" class="j7t3hbodyitem" data-search="belçika'ya ev eşyası taşımacılığı fiyatları">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Belçika'ya Ev Eşyası Taşımacılığı Fiyatları
                     </div>
   </div>
-</a> <a href="/tr/avusturyaya-ev-esyasi-tasimaciligi-fiyatlari" class="usj80bodyitem" data-search="avusturya'ya ev eşyası taşımacılığı fiyatları">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/avusturyaya-ev-esyasi-tasimaciligi-fiyatlari" class="j7t3hbodyitem" data-search="avusturya'ya ev eşyası taşımacılığı fiyatları">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Avusturya'ya Ev Eşyası Taşımacılığı Fiyatları
                     </div>
   </div>
-</a> <a href="/tr/luksemburg-ev-esyasi-tasimaciligi-fiyatlari" class="usj80bodyitem" data-search="lüksemburg'a ev eşyası taşımacılığı fiyatları">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/luksemburg-ev-esyasi-tasimaciligi-fiyatlari" class="j7t3hbodyitem" data-search="lüksemburg'a ev eşyası taşımacılığı fiyatları">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Lüksemburg'a Ev Eşyası Taşımacılığı Fiyatları
                     </div>
   </div>
-</a> <a href="/tr/ev-esyasi-tasimaciliginda-sigorta-kapsami" class="usj80bodyitem" data-search="ev eşyası taşımacılığında sigorta kapsamı">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ev-esyasi-tasimaciliginda-sigorta-kapsami" class="j7t3hbodyitem" data-search="ev eşyası taşımacılığında sigorta kapsamı">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Ev Eşyası Taşımacılığında Sigorta Kapsamı
                     </div>
   </div>
-</a> <a href="/tr/mobilya-tasimaciliginda-sigorta-kapsami" class="usj80bodyitem" data-search="mobilya taşımacılığında sigorta kapsamı">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/mobilya-tasimaciliginda-sigorta-kapsami" class="j7t3hbodyitem" data-search="mobilya taşımacılığında sigorta kapsamı">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Mobilya Taşımacılığında Sigorta Kapsamı
                     </div>
   </div>
-</a> <a href="/tr/arac-tasimaciliginda-sigorta-kapsami" class="usj80bodyitem" data-search="araç taşımacılığında sigorta kapsamı">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/arac-tasimaciliginda-sigorta-kapsami" class="j7t3hbodyitem" data-search="araç taşımacılığında sigorta kapsamı">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Araç Taşımacılığında Sigorta Kapsamı
                     </div>
   </div>
-</a> <a href="/tr/ticari-esya-tasimaciliginda-sigorta-kapsami" class="usj80bodyitem" data-search="ticari eşya taşımacılığında sigorta kapsamı">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ticari-esya-tasimaciliginda-sigorta-kapsami" class="j7t3hbodyitem" data-search="ticari eşya taşımacılığında sigorta kapsamı">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Ticari Eşya Taşımacılığında Sigorta Kapsamı
                     </div>
   </div>
-</a> <a href="/tr/kargo-tasimaciliginda-sigorta-kapsami" class="usj80bodyitem" data-search="kargo taşımacılığında sigorta kapsamı">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/kargo-tasimaciliginda-sigorta-kapsami" class="j7t3hbodyitem" data-search="kargo taşımacılığında sigorta kapsamı">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Kargo Taşımacılığında Sigorta Kapsamı
                     </div>
   </div>
-</a> <a href="/tr/ev-esyasi-tasimaciliginda-paketleme-hizmeti" class="usj80bodyitem" data-search="ev eşyası taşımacılığında paketleme hizmeti">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ev-esyasi-tasimaciliginda-paketleme-hizmeti" class="j7t3hbodyitem" data-search="ev eşyası taşımacılığında paketleme hizmeti">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Ev Eşyası Taşımacılığında Paketleme Hizmeti
                     </div>
   </div>
-</a> <a href="/tr/mobilya-paketleme-hizmeti" class="usj80bodyitem" data-search="mobilya paketleme hizmeti">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/mobilya-paketleme-hizmeti" class="j7t3hbodyitem" data-search="mobilya paketleme hizmeti">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Mobilya Paketleme Hizmeti
                     </div>
   </div>
-</a> <a href="/tr/arac-paketleme-hizmeti" class="usj80bodyitem" data-search="araç paketleme hizmeti">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/arac-paketleme-hizmeti" class="j7t3hbodyitem" data-search="araç paketleme hizmeti">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Araç Paketleme Hizmeti
                     </div>
   </div>
-</a> <a href="/tr/ticari-esya-paketleme-hizmeti" class="usj80bodyitem" data-search="ticari eşya paketleme hizmeti">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ticari-esya-paketleme-hizmeti" class="j7t3hbodyitem" data-search="ticari eşya paketleme hizmeti">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Ticari Eşya Paketleme Hizmeti
                     </div>
   </div>
-</a> <a href="/tr/kargo-paketleme-hizmeti" class="usj80bodyitem" data-search="kargo paketleme hizmeti">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/kargo-paketleme-hizmeti" class="j7t3hbodyitem" data-search="kargo paketleme hizmeti">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Kargo Paketleme Hizmeti
                     </div>
   </div>
-</a> <a href="/tr/almanyaya-ev-esyasi-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="almanya'ya ev eşyası taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/almanyaya-ev-esyasi-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="almanya'ya ev eşyası taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Almanya'ya Ev Eşyası Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/hollandaya-ev-esyasi-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="hollanda'ya ev eşyası taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/hollandaya-ev-esyasi-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="hollanda'ya ev eşyası taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Hollanda'ya Ev Eşyası Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/ingiltereye-ev-esyasi-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="i̇ngiltere'ye ev eşyası taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ingiltereye-ev-esyasi-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="i̇ngiltere'ye ev eşyası taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     İngiltere'ye Ev Eşyası Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/fransaya-ev-esyasi-tasimaciligi-rehberi" class="usj80bodyitem" data-search="fransa'ya ev eşyası taşımacılığı rehberi">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/fransaya-ev-esyasi-tasimaciligi-rehberi" class="j7t3hbodyitem" data-search="fransa'ya ev eşyası taşımacılığı rehberi">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Fransa'ya Ev Eşyası Taşımacılığı Rehberi
                     </div>
   </div>
-</a> <a href="/tr/belcikaya-ev-esyasi-tasimaciligi-rehberi" class="usj80bodyitem" data-search="belçika'ya ev eşyası taşımacılığı rehberi">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/belcikaya-ev-esyasi-tasimaciligi-rehberi" class="j7t3hbodyitem" data-search="belçika'ya ev eşyası taşımacılığı rehberi">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Belçika'ya Ev Eşyası Taşımacılığı Rehberi
                     </div>
   </div>
-</a> <a href="/tr/avusturyaya-ev-esyasi-tasimaciligi-rehberi" class="usj80bodyitem" data-search="avusturya'ya ev eşyası taşımacılığı rehberi">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/avusturyaya-ev-esyasi-tasimaciligi-rehberi" class="j7t3hbodyitem" data-search="avusturya'ya ev eşyası taşımacılığı rehberi">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Avusturya'ya Ev Eşyası Taşımacılığı Rehberi
                     </div>
   </div>
-</a> <a href="/tr/luksemburg-ev-esyasi-tasimaciligi-rehberi" class="usj80bodyitem" data-search="lüksemburg'a ev eşyası taşımacılığı rehberi">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/luksemburg-ev-esyasi-tasimaciligi-rehberi" class="j7t3hbodyitem" data-search="lüksemburg'a ev eşyası taşımacılığı rehberi">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Lüksemburg'a Ev Eşyası Taşımacılığı Rehberi
                     </div>
   </div>
-</a> <a href="/tr/almanyaya-mobilya-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="almanya'ya mobilya taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/almanyaya-mobilya-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="almanya'ya mobilya taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Almanya'ya Mobilya Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/hollandaya-mobilya-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="hollanda'ya mobilya taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/hollandaya-mobilya-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="hollanda'ya mobilya taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Hollanda'ya Mobilya Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/ingiltereye-mobilya-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="i̇ngiltere'ye mobilya taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ingiltereye-mobilya-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="i̇ngiltere'ye mobilya taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     İngiltere'ye Mobilya Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/fransaya-mobilya-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="fransa'ya mobilya taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/fransaya-mobilya-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="fransa'ya mobilya taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Fransa'ya Mobilya Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/belcikaya-mobilya-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="belçika'ya mobilya taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/belcikaya-mobilya-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="belçika'ya mobilya taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Belçika'ya Mobilya Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/avusturyaya-mobilya-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="avusturya'ya mobilya taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/avusturyaya-mobilya-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="avusturya'ya mobilya taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Avusturya'ya Mobilya Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/luksemburg-mobilya-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="lüksemburg'a mobilya taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/luksemburg-mobilya-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="lüksemburg'a mobilya taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Lüksemburg'a Mobilya Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/almanyaya-arac-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="almanya'ya araç taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/almanyaya-arac-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="almanya'ya araç taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Almanya'ya Araç Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/hollandaya-arac-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="hollanda'ya araç taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/hollandaya-arac-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="hollanda'ya araç taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Hollanda'ya Araç Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/ingiltereye-arac-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="i̇ngiltere'ye araç taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/ingiltereye-arac-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="i̇ngiltere'ye araç taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     İngiltere'ye Araç Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/fransaya-arac-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="fransa'ya araç taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/fransaya-arac-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="fransa'ya araç taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Fransa'ya Araç Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/belcikaya-arac-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="belçika'ya araç taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/belcikaya-arac-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="belçika'ya araç taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Belçika'ya Araç Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/avusturyaya-arac-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="avusturya'ya araç taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/avusturyaya-arac-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="avusturya'ya araç taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Avusturya'ya Araç Taşımacılığı Hakkında Her Şey
                     </div>
   </div>
-</a> <a href="/tr/luksemburg-arac-tasimaciligi-hakkinda-her-sey" class="usj80bodyitem" data-search="lüksemburg'a araç taşımacılığı hakkında her şey">
-                      <div class="usj80bodyitemtitle">
+</a> <a href="/tr/luksemburg-arac-tasimaciligi-hakkinda-her-sey" class="j7t3hbodyitem" data-search="lüksemburg'a araç taşımacılığı hakkında her şey">
+                      <div class="j7t3hbodyitemtitle">
                       <div class="f20">
                     Lüksemburg'a Araç Taşımacılığı Hakkında Her Şey
                     </div>
@@ -636,13 +717,13 @@
 
 <script>
 const searchInput = document.getElementById('searchInput');
-const usj80body = document.getElementById('usj80body');
+const j7t3hbody = document.getElementById('j7t3hbody');
 const searchCounter = document.getElementById('searchCounter');
 
-if (searchInput && usj80body && searchCounter) {
+if (searchInput && j7t3hbody && searchCounter) {
   function updateCounter() {
-    const visibleItems = usj80body.querySelectorAll('.usj80bodyitem[style*="flex"], .usj80bodyitem:not([style*="none"])');
-    const totalItems = usj80body.querySelectorAll('.usj80bodyitem').length;
+    const visibleItems = j7t3hbody.querySelectorAll('.j7t3hbodyitem[style*="flex"], .j7t3hbodyitem:not([style*="none"])');
+    const totalItems = j7t3hbody.querySelectorAll('.j7t3hbodyitem').length;
     const visibleCount = Array.from(visibleItems).filter(item => 
       item.style.display !== 'none'
     ).length;
@@ -656,7 +737,7 @@ if (searchInput && usj80body && searchCounter) {
 
   searchInput.addEventListener('input', function() {
     const searchTerm = this.value.toLowerCase();
-    const items = usj80body.querySelectorAll('.usj80bodyitem');
+    const items = j7t3hbody.querySelectorAll('.j7t3hbodyitem');
     
     items.forEach(item => {
       const searchData = item.getAttribute('data-search');
@@ -675,9 +756,9 @@ if (searchInput && usj80body && searchCounter) {
 }
 </script>
 </div>
-  <div id="footer"><div class="ezpvm-wa-advanced" id="ezpvmWaAdvanced">
-  <div class="ezpvm-wa-advanced-button" onclick="toggleModulexAdvanced()">
-    <div class="ezpvm-wa-advanced-icon">
+  <div id="footer"><div class="wa-advanced" id="mza8cWaAdvanced">
+  <div class="mza8c-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="mza8c-wa-advanced-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
@@ -685,39 +766,39 @@ if (searchInput && usj80body && searchCounter) {
         ></path>
       </svg>
     </div>
-    <div class="ezpvm-wa-advanced-pulse"></div>
+    <div class="mza8c-wa-advanced-pulse"></div>
   </div>
 
-  <div class="ezpvm-wa-advanced-panel" id="ezpvmWaPanel">
-    <div class="ezpvm-wa-advanced-header">
-      <div class="ezpvm-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=scvju" alt="Support Agent" />
-        <div class="ezpvm-wa-advanced-status online"></div>
+  <div class="mza8c-wa-advanced-panel" id="mza8cWaPanel">
+    <div class="mza8c-wa-advanced-header">
+      <div class="mza8c-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=xsbqd" alt="Support Agent" />
+        <div class="mza8c-wa-advanced-status online"></div>
       </div>
-      <div class="ezpvm-wa-advanced-info">
+      <div class="mza8c-wa-advanced-info">
         <h4>Bize Ulaşın</h4>
         <p>Şu anda çevrimiçi</p>
       </div>
       <button
-        class="ezpvm-wa-advanced-close"
+        class="mza8c-wa-advanced-close"
         onclick="closeModulexAdvanced()"
       >
         ×
       </button>
     </div>
 
-    <div class="ezpvm-wa-advanced-body">
-      <div class="ezpvm-wa-advanced-message">
+    <div class="mza8c-wa-advanced-body">
+      <div class="mza8c-wa-advanced-message">
         <p>Merhaba! Size nasıl yardımcı olabilirim?</p>
-        <span class="ezpvm-wa-advanced-time">Şimdi</span>
+        <span class="mza8c-wa-advanced-time">Şimdi</span>
       </div>
     </div>
 
-    <div class="ezpvm-wa-advanced-footer">
+    <div class="mza8c-wa-advanced-footer">
       <a
         href="https://wa.me/905418504646"
         target="_blank"
-        class="ezpvm-wa-advanced-chat-btn"
+        class="mza8c-wa-advanced-chat-btn"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -741,12 +822,12 @@ if (searchInput && usj80body && searchCounter) {
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("ezpvmWaPanel");
+    const panel = document.getElementById("mza8cWaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
   function closeModulexAdvanced() {
-    document.getElementById("ezpvmWaPanel").style.display = "none";
+    document.getElementById("mza8cWaPanel").style.display = "none";
   }
 </script>
 <footer class="footer">
@@ -810,7 +891,7 @@ if (searchInput && usj80body && searchCounter) {
 </script>
 
 
-<script type="text/javascript" src="/src/js.js?v=scvju"></script>
-<script src="/src/cookie.js?v=scvju"></script>
+<script type="text/javascript" src="/src/js.js?v=xsbqd"></script>
+<script src="/src/cookie.js?v=xsbqd"></script>
 
 </html>

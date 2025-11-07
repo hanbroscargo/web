@@ -21,25 +21,25 @@
 
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=cmjdo" />
-  <link rel="shortcut icon" href="/img/icon.png?v=cmjdo" type="image/png" />
+  <link rel="stylesheet" href="/src/css.css?v=h2ut9" />
+  <link rel="shortcut icon" href="/img/icon.png?v=h2ut9" type="image/png" />
 
   <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   <script src="/src/swiper-bundle.min.js"></script>
   
 
-  <script type="text/javascript" src="/src/firebase.js?v=cmjdo"></script>
-<link rel="stylesheet" href="style.css?v=cmjdo">
+  <script type="text/javascript" src="/src/firebase.js?v=h2ut9"></script>
+<link rel="stylesheet" href="style.css?v=h2ut9">
 </head>
 
 <body>
-  <div id="header"><div class="cy3ow">
-  <div class="cy3owtitle">
-    <div class="cy3owtitlebody">
-      <div class="cy3owtitlebodytitle">
+  <div id="header"><div class="nahzr">
+  <div class="nahzrtitle">
+    <div class="nahzrtitlebody">
+      <div class="nahzrtitlebodytitle">
         Han Bros Cargo
       </div>
-      <div class="cy3owtitlebodylang">
+      <div class="nahzrtitlebodylang">
         <ul>
           <a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></a><a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></a>
         </ul>
@@ -51,10 +51,10 @@
 
 
 
-  <div class="cy3owbody">
+  <div class="nahzrbody">
     <a href="/en/"
       ><img
-        src="/img/logo.png?v=cmjdo"
+        src="/img/logo.png?v=h2ut9"
         class="module-logo"
         alt="Han Bros Cargo Logo"
     /></a> 
@@ -72,38 +72,45 @@
         </div>
       </div>
   </div>
-  <div class="cy3owmenubody">
-    <div class="cy3owmenu">
-      <div class="cy3owmenulistbody">
-        <div class="cy3owmenulist"><a class="cy3owmenulist-menu" href="/en/">Home </a><div class="cy3owmenulist-menu " >
+  <div class="nahzrmenubody">
+    <div class="nahzrmenu">
+      <div class="mobile-menu-toggle" aria-expanded="false">
+        <span class="mobile-menu-toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div class="nahzrmenulistbody">
+        <div class="nahzrmenulist"><a class="nahzrmenulist-menu" href="/en/">Home </a><div class="nahzrmenulist-menu " >
 
       <a href="/en/hakkimizda/">
        Corporate
       </a>
      
                     </div>
-    <div class="cy3owmenulist-menu " >
+    <div class="nahzrmenulist-menu " >
 
       <a href="/en/ulkeler/">
        Countries
       </a>
      
                     </div>
-    <div class="cy3owmenulist-menu " >
+    <div class="nahzrmenulist-menu " >
 
       <a href="/en/hizmetlerimiz/">
        Our Services
       </a>
      
                     </div>
-    <div class="cy3owmenulist-menu " >
+    <div class="nahzrmenulist-menu " >
 
       <a href="/en/bilgi-bankasi/">
        Knowledge Base
       </a>
      
                     </div>
-    <div class="cy3owmenulist-menu " >
+    <div class="nahzrmenulist-menu " >
 
       <a href="/en/iletisim/">
        Contact
@@ -116,30 +123,105 @@
   </div>
 </div>
 
+<script>
+(function () {
+  try {
+    var scriptEl = document.currentScript;
+    if (!scriptEl) {
+      return;
+    }
+    var moduleRoot = null;
+    var sibling = scriptEl.previousElementSibling;
+    while (sibling) {
+      if (sibling.classList && sibling.classList.contains("nahzr")) {
+        moduleRoot = sibling;
+        break;
+      }
+      sibling = sibling.previousElementSibling;
+    }
+    if (!moduleRoot) {
+      return;
+    }
+    var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
+    var menuBody = moduleRoot.querySelector(".nahzrmenulistbody");
+    if (!toggle || !menuBody) {
+      return;
+    }
+    var mql = window.matchMedia("(max-width: 768px)");
+    function closeMenu() {
+      menuBody.classList.remove("is-visible");
+      toggle.classList.remove("is-active");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function openMenu() {
+      menuBody.classList.add("is-visible");
+      toggle.classList.add("is-active");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    toggle.addEventListener("click", function () {
+      if (!mql.matches) {
+        return;
+      }
+      if (menuBody.classList.contains("is-visible")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    menuBody.addEventListener("click", function (event) {
+      if (!mql.matches) {
+        return;
+      }
+      var link = event.target.closest("a");
+      if (!link) {
+        return;
+      }
+      closeMenu();
+    });
+    function handleBreakpoint() {
+      if (mql.matches) {
+        closeMenu();
+      } else {
+        menuBody.classList.remove("is-visible");
+        toggle.classList.remove("is-active");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    }
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", handleBreakpoint);
+    } else if (typeof mql.addListener === "function") {
+      mql.addListener(handleBreakpoint);
+    }
+    handleBreakpoint();
+  } catch (error) {
+    console.error("cmkhy5 mobil menü hatası:", error);
+  }
+})();
+</script>
 </div>
-  <div id="content"><div class="hna0r-title f36">
+  <div id="content"><div class="h7cy6-title f36">
   <span>İngiltere</span>
 </div>
-<div class="hna0r">
-  <div class="hna0r-menu-btn">
+<div class="h7cy6">
+  <div class="h7cy6-menu-btn">
     <span>Menu</span>
     <i class="fas fa-bars"></i>
   </div>
-  <div class="hna0r-menu"><a class="active"  href="/en/ingiltere" >England</a><a   href="/en/avusturya" >Austria</a><a   href="/en/almanya" >Germany</a><a   href="/en/hollanda" >Netherlands</a><a   href="/en/fransa" >France</a><a   href="/en/belcika" >Belgium</a><a   href="/en/luksemburg" >Luxembourg</a></div>
-  <div class="hna0r-desc">
+  <div class="h7cy6-menu"><a class="active"  href="/en/ingiltere" >England</a><a   href="/en/avusturya" >Austria</a><a   href="/en/almanya" >Germany</a><a   href="/en/hollanda" >Netherlands</a><a   href="/en/fransa" >France</a><a   href="/en/belcika" >Belgium</a><a   href="/en/luksemburg" >Luxembourg</a></div>
+  <div class="h7cy6-desc">
     
-    <div class="hna0r-desc-body">
-            <img src="/page/f7xqkhoaxi/me7nz.webp?v=cmjdo" width="100%" alt="{{title}}" />
+    <div class="h7cy6-desc-body">
+            <img src="/page/f7xqkhoaxi/me7nz.webp?v=h2ut9" width="100%" alt="{{title}}" />
     </div>
-    <div class="hna0r-body"><p><h2>İngiltere'ye Evden Eve transportation</h2><p>Han Bros Cargo olarak İngiltere'ye yönelik evden eve transportation servicelerimizde expertız. Londra'daki officeimizle birlikte, Türkiye'den İngiltere'ye secure ve professional logistics çözümleri sunuyoruz.</p><h3>İngiltere transportation servicelerimiz</h3><ul><li><strong>Evden Eve transportation:</strong> Eşyalarınızı evinizden alıp İngiltere'deki yeni addressinize teslim ediyoruz</li><li><strong>customs clearance serviceleri:</strong> Tüm customs proceduresnizi professional ekibimizle hallediyoruz</li><li><strong>Sigortalı shipping:</strong> Eşyalarınız tam fully insured güvence altında</li><li><strong>storage:</strong> Gerekli durumlarda secure storage servicei</li><li><strong>packaging:</strong> professional packaging ve ambalajlama servicei</li></ul><h3>Londra officeimiz</h3><p>İngiltere operasyonlarımızı Londra'daki officeimizden yönetiyoruz. Bu sayede customerlerimize daha fast ve etkili service sunabiliyoruz.</p><h3>Neden Han Bros Cargo?</h3><ul><li>İngiltere'ye özel transportation deneyimi</li><li>Gümrük mevzuatına hakim expert ekibimiz</li><li>7/24 customer support servicei</li><li>competitive prices ve transparent maliyet yapısı</li><li>Zamanında delivery guaranteesi</li></ul><p>İngiltere'ye taşınmak için hemen bizimle contact us ve free price quote alın.</p></p></div>
+    <div class="h7cy6-body"><p><h2>İngiltere'ye Evden Eve transportation</h2><p>Han Bros Cargo olarak İngiltere'ye yönelik evden eve transportation servicelerimizde expertız. Londra'daki officeimizle birlikte, Türkiye'den İngiltere'ye secure ve professional logistics çözümleri sunuyoruz.</p><h3>İngiltere transportation servicelerimiz</h3><ul><li><strong>Evden Eve transportation:</strong> Eşyalarınızı evinizden alıp İngiltere'deki yeni addressinize teslim ediyoruz</li><li><strong>customs clearance serviceleri:</strong> Tüm customs proceduresnizi professional ekibimizle hallediyoruz</li><li><strong>Sigortalı shipping:</strong> Eşyalarınız tam fully insured güvence altında</li><li><strong>storage:</strong> Gerekli durumlarda secure storage servicei</li><li><strong>packaging:</strong> professional packaging ve ambalajlama servicei</li></ul><h3>Londra officeimiz</h3><p>İngiltere operasyonlarımızı Londra'daki officeimizden yönetiyoruz. Bu sayede customerlerimize daha fast ve etkili service sunabiliyoruz.</p><h3>Neden Han Bros Cargo?</h3><ul><li>İngiltere'ye özel transportation deneyimi</li><li>Gümrük mevzuatına hakim expert ekibimiz</li><li>7/24 customer support servicei</li><li>competitive prices ve transparent maliyet yapısı</li><li>Zamanında delivery guaranteesi</li></ul><p>İngiltere'ye taşınmak için hemen bizimle contact us ve free price quote alın.</p></p></div>
   </div>
 </div>
 
 <script>
   document
-    .querySelector(".hna0r-menu-btn")
+    .querySelector(".h7cy6-menu-btn")
     .addEventListener("click", function () {
-      document.querySelector(".hna0r-menu").classList.toggle("active");
+      document.querySelector(".h7cy6-menu").classList.toggle("active");
       const icon = this.querySelector("i");
       icon.classList.toggle("fa-bars");
       icon.classList.toggle("fa-times");
@@ -153,9 +235,9 @@
   />
 </head>
 </div>
-  <div id="footer"><div class="gxrt8-wa-advanced" id="gxrt8WaAdvanced">
-  <div class="gxrt8-wa-advanced-button" onclick="toggleModulexAdvanced()">
-    <div class="gxrt8-wa-advanced-icon">
+  <div id="footer"><div class="wa-advanced" id="gwpihWaAdvanced">
+  <div class="gwpih-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="gwpih-wa-advanced-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
@@ -163,39 +245,39 @@
         ></path>
       </svg>
     </div>
-    <div class="gxrt8-wa-advanced-pulse"></div>
+    <div class="gwpih-wa-advanced-pulse"></div>
   </div>
 
-  <div class="gxrt8-wa-advanced-panel" id="gxrt8WaPanel">
-    <div class="gxrt8-wa-advanced-header">
-      <div class="gxrt8-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=cmjdo" alt="Support Agent" />
-        <div class="gxrt8-wa-advanced-status online"></div>
+  <div class="gwpih-wa-advanced-panel" id="gwpihWaPanel">
+    <div class="gwpih-wa-advanced-header">
+      <div class="gwpih-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=h2ut9" alt="Support Agent" />
+        <div class="gwpih-wa-advanced-status online"></div>
       </div>
-      <div class="gxrt8-wa-advanced-info">
+      <div class="gwpih-wa-advanced-info">
         <h4>Contact Us</h4>
         <p>Currently online</p>
       </div>
       <button
-        class="gxrt8-wa-advanced-close"
+        class="gwpih-wa-advanced-close"
         onclick="closeModulexAdvanced()"
       >
         ×
       </button>
     </div>
 
-    <div class="gxrt8-wa-advanced-body">
-      <div class="gxrt8-wa-advanced-message">
+    <div class="gwpih-wa-advanced-body">
+      <div class="gwpih-wa-advanced-message">
         <p>Hello! How can I help you?</p>
-        <span class="gxrt8-wa-advanced-time">Now</span>
+        <span class="gwpih-wa-advanced-time">Now</span>
       </div>
     </div>
 
-    <div class="gxrt8-wa-advanced-footer">
+    <div class="gwpih-wa-advanced-footer">
       <a
         href="https://wa.me/905418504646"
         target="_blank"
-        class="gxrt8-wa-advanced-chat-btn"
+        class="gwpih-wa-advanced-chat-btn"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -219,12 +301,12 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("gxrt8WaPanel");
+    const panel = document.getElementById("gwpihWaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
   function closeModulexAdvanced() {
-    document.getElementById("gxrt8WaPanel").style.display = "none";
+    document.getElementById("gwpihWaPanel").style.display = "none";
   }
 </script>
 <footer class="footer">
@@ -288,7 +370,7 @@
 </script>
 
 
-<script type="text/javascript" src="/src/js.js?v=cmjdo"></script>
-<script src="/src/cookie.js?v=cmjdo"></script>
+<script type="text/javascript" src="/src/js.js?v=h2ut9"></script>
+<script src="/src/cookie.js?v=h2ut9"></script>
 
 </html>

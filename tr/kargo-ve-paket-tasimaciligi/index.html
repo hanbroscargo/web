@@ -12,34 +12,34 @@
   <meta http-equiv="Pragma" content="cache" />
   <meta http-equiv="Expires" content="3600" />
   <title>Kargo ve Paket Taşımacılığı</title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="Han Bros Cargo, paket ve parsiyel gönderileriniz için ekspres, ekonomik ve özel teslimat modellerini karşılaştırır. Çıkış ve varış adreslerinize göre en uygun rota ve hizmet kombinasyonunu önerir." />
+  <meta name="keywords" content="kargo ve paket taşımacılığı, parsiyel gönderi çözümleri, ekspres kargo teklifi, Han Bros Cargo" />
   <meta property="og:title" content="Kargo ve Paket Taşımacılığı" />
-  <meta property="og:description" content="" />
+  <meta property="og:description" content="Han Bros Cargo, paket ve parsiyel gönderileriniz için ekspres, ekonomik ve özel teslimat modellerini karşılaştırır. Çıkış ve varış adreslerinize göre en uygun rota ve hizmet kombinasyonunu önerir." />
   <meta property="og:image" content="https://hanbroscargo.com/page/yw6p6vlbay/go0iq.webp" />
   <meta name="robots" content="index, follow" />
 
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=lnad9" />
-  <link rel="shortcut icon" href="/img/icon.png?v=lnad9" type="image/png" />
+  <link rel="stylesheet" href="/src/css.css?v=azt6l" />
+  <link rel="shortcut icon" href="/img/icon.png?v=azt6l" type="image/png" />
 
   <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   <script src="/src/swiper-bundle.min.js"></script>
   
 
-  <script type="text/javascript" src="/src/firebase.js?v=lnad9"></script>
-<link rel="stylesheet" href="style.css?v=lnad9">
+  <script type="text/javascript" src="/src/firebase.js?v=azt6l"></script>
+<link rel="stylesheet" href="style.css?v=azt6l">
 </head>
 
 <body>
-  <div id="header"><div class="ch6d1">
-  <div class="ch6d1title">
-    <div class="ch6d1titlebody">
-      <div class="ch6d1titlebodytitle">
+  <div id="header"><div class="amy35">
+  <div class="amy35title">
+    <div class="amy35titlebody">
+      <div class="amy35titlebodytitle">
         Han Bros Cargo
       </div>
-      <div class="ch6d1titlebodylang">
+      <div class="amy35titlebodylang">
         <ul>
           <a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></a><a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></a>
         </ul>
@@ -51,10 +51,10 @@
 
 
 
-  <div class="ch6d1body">
+  <div class="amy35body">
     <a href="/tr/"
       ><img
-        src="/img/logo.png?v=lnad9"
+        src="/img/logo.png?v=azt6l"
         class="module-logo"
         alt="Han Bros Cargo Logo"
     /></a> 
@@ -72,38 +72,45 @@
         </div>
       </div>
   </div>
-  <div class="ch6d1menubody">
-    <div class="ch6d1menu">
-      <div class="ch6d1menulistbody">
-        <div class="ch6d1menulist"><a class="ch6d1menulist-menu" href="/tr/">Anasayfa </a><div class="ch6d1menulist-menu " >
+  <div class="amy35menubody">
+    <div class="amy35menu">
+      <div class="mobile-menu-toggle" aria-expanded="false">
+        <span class="mobile-menu-toggle-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div class="amy35menulistbody">
+        <div class="amy35menulist"><a class="amy35menulist-menu" href="/tr/">Anasayfa </a><div class="amy35menulist-menu " >
 
       <a href="/tr/hakkimizda/">
        Kurumsal
       </a>
      
                     </div>
-    <div class="ch6d1menulist-menu " >
+    <div class="amy35menulist-menu " >
 
       <a href="/tr/ulkeler/">
        Ülkeler
       </a>
      
                     </div>
-    <div class="ch6d1menulist-menu " >
+    <div class="amy35menulist-menu " >
 
       <a href="/tr/hizmetlerimiz/">
        Hizmetlerimiz
       </a>
      
                     </div>
-    <div class="ch6d1menulist-menu " >
+    <div class="amy35menulist-menu " >
 
       <a href="/tr/bilgi-bankasi/">
        Bilgi Bankası
       </a>
      
                     </div>
-    <div class="ch6d1menulist-menu " >
+    <div class="amy35menulist-menu " >
 
       <a href="/tr/iletisim/">
        İletişim
@@ -116,11 +123,86 @@
   </div>
 </div>
 
+<script>
+(function () {
+  try {
+    var scriptEl = document.currentScript;
+    if (!scriptEl) {
+      return;
+    }
+    var moduleRoot = null;
+    var sibling = scriptEl.previousElementSibling;
+    while (sibling) {
+      if (sibling.classList && sibling.classList.contains("amy35")) {
+        moduleRoot = sibling;
+        break;
+      }
+      sibling = sibling.previousElementSibling;
+    }
+    if (!moduleRoot) {
+      return;
+    }
+    var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
+    var menuBody = moduleRoot.querySelector(".amy35menulistbody");
+    if (!toggle || !menuBody) {
+      return;
+    }
+    var mql = window.matchMedia("(max-width: 768px)");
+    function closeMenu() {
+      menuBody.classList.remove("is-visible");
+      toggle.classList.remove("is-active");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function openMenu() {
+      menuBody.classList.add("is-visible");
+      toggle.classList.add("is-active");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    toggle.addEventListener("click", function () {
+      if (!mql.matches) {
+        return;
+      }
+      if (menuBody.classList.contains("is-visible")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    menuBody.addEventListener("click", function (event) {
+      if (!mql.matches) {
+        return;
+      }
+      var link = event.target.closest("a");
+      if (!link) {
+        return;
+      }
+      closeMenu();
+    });
+    function handleBreakpoint() {
+      if (mql.matches) {
+        closeMenu();
+      } else {
+        menuBody.classList.remove("is-visible");
+        toggle.classList.remove("is-active");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    }
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", handleBreakpoint);
+    } else if (typeof mql.addListener === "function") {
+      mql.addListener(handleBreakpoint);
+    }
+    handleBreakpoint();
+  } catch (error) {
+    console.error("cmkhy5 mobil menü hatası:", error);
+  }
+})();
+</script>
 </div>
   <div id="content"></div>
-  <div id="footer"><div class="qz0ty-wa-advanced" id="qz0tyWaAdvanced">
-  <div class="qz0ty-wa-advanced-button" onclick="toggleModulexAdvanced()">
-    <div class="qz0ty-wa-advanced-icon">
+  <div id="footer"><div class="wa-advanced" id="yhd5xWaAdvanced">
+  <div class="yhd5x-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="yhd5x-wa-advanced-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
@@ -128,39 +210,39 @@
         ></path>
       </svg>
     </div>
-    <div class="qz0ty-wa-advanced-pulse"></div>
+    <div class="yhd5x-wa-advanced-pulse"></div>
   </div>
 
-  <div class="qz0ty-wa-advanced-panel" id="qz0tyWaPanel">
-    <div class="qz0ty-wa-advanced-header">
-      <div class="qz0ty-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=lnad9" alt="Support Agent" />
-        <div class="qz0ty-wa-advanced-status online"></div>
+  <div class="yhd5x-wa-advanced-panel" id="yhd5xWaPanel">
+    <div class="yhd5x-wa-advanced-header">
+      <div class="yhd5x-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=azt6l" alt="Support Agent" />
+        <div class="yhd5x-wa-advanced-status online"></div>
       </div>
-      <div class="qz0ty-wa-advanced-info">
+      <div class="yhd5x-wa-advanced-info">
         <h4>Bize Ulaşın</h4>
         <p>Şu anda çevrimiçi</p>
       </div>
       <button
-        class="qz0ty-wa-advanced-close"
+        class="yhd5x-wa-advanced-close"
         onclick="closeModulexAdvanced()"
       >
         ×
       </button>
     </div>
 
-    <div class="qz0ty-wa-advanced-body">
-      <div class="qz0ty-wa-advanced-message">
+    <div class="yhd5x-wa-advanced-body">
+      <div class="yhd5x-wa-advanced-message">
         <p>Merhaba! Size nasıl yardımcı olabilirim?</p>
-        <span class="qz0ty-wa-advanced-time">Şimdi</span>
+        <span class="yhd5x-wa-advanced-time">Şimdi</span>
       </div>
     </div>
 
-    <div class="qz0ty-wa-advanced-footer">
+    <div class="yhd5x-wa-advanced-footer">
       <a
         href="https://wa.me/905418504646"
         target="_blank"
-        class="qz0ty-wa-advanced-chat-btn"
+        class="yhd5x-wa-advanced-chat-btn"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -184,12 +266,12 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("qz0tyWaPanel");
+    const panel = document.getElementById("yhd5xWaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
   function closeModulexAdvanced() {
-    document.getElementById("qz0tyWaPanel").style.display = "none";
+    document.getElementById("yhd5xWaPanel").style.display = "none";
   }
 </script>
 <footer class="footer">
@@ -253,7 +335,7 @@
 </script>
 
 
-<script type="text/javascript" src="/src/js.js?v=lnad9"></script>
-<script src="/src/cookie.js?v=lnad9"></script>
+<script type="text/javascript" src="/src/js.js?v=azt6l"></script>
+<script src="/src/cookie.js?v=azt6l"></script>
 
 </html>
