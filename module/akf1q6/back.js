@@ -1,11 +1,11 @@
 
 
-let data = "";
+var data = "";
 
 if (json.desing && json.desing.data) {
-    for (const key in json.desing.data) {
-        const item = json.desing.data[key];
-        const title = item.title && item.title[json.lang] ? item.title[json.lang] : item[json.lang] || 'Başlık';
+    for (var key in json.desing.data) {
+        var item = json.desing.data[key];
+        var title = item.title && item.title[json.lang] ? item.title[json.lang] : item[json.lang] || 'Başlık';
         
         data += `
         <div class="modulex-item" onclick="pageteklif('modulex-${json.desing.data[key].id}')">
