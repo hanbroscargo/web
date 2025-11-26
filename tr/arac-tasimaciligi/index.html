@@ -19,27 +19,39 @@
   <meta property="og:image" content="https://hanbroscargo.com/page/wco1sqi58n/qdg37.webp" />
   <meta name="robots" content="index, follow" />
 
-  <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=mr9er" />
-  <link rel="shortcut icon" href="/img/icon.png?v=mr9er" type="image/png" />
-
-  <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
-  <script src="/src/swiper-bundle.min.js"></script>
+  <!-- Font Preload - Kritik fontlar -->
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  
+  <!-- CSS Preload - Render-blocking'i önlemek için -->
+  <link rel="preload" href="/src/rubik.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/css.css?v=dw797" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=dw797" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="/src/rubik.css" />
+    <link rel="stylesheet" href="/src/css.css?v=dw797" />
+    <link rel="stylesheet" href="/src/cookie.css?v=dw797" />
+    <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
+  </noscript>
+  
+  <link rel="shortcut icon" href="/img/icon.png?v=dw797" type="image/png" />
   
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
   
   
-<link rel="stylesheet" href="style.css?v=mr9er">
+<link rel="stylesheet" href="style.css?v=dw797">
 </head>
 
 <body>
-  <div id="header"><div class="icy1l">
-  <div class="icy1ltitle">
-    <div class="icy1ltitlebody">
-      <div class="icy1ltitlebodytitle">
+  <div id="header"><div class="fjjlr">
+  <div class="fjjlrtitle">
+    <div class="fjjlrtitlebody">
+      <div class="fjjlrtitlebodytitle">
         Han Bros Cargo
       </div>
-      <div class="icy1ltitlebodylang">
+      <div class="fjjlrtitlebodylang">
         <ul>
           <a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></a><a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></a>
         </ul>
@@ -51,10 +63,10 @@
 
 
 
-  <div class="icy1lbody">
+  <div class="fjjlrbody">
     <a href="/tr/"
       ><img
-        src="/img/logo.png?v=mr9er"
+        src="/img/logo.png?v=dw797"
         class="module-logo"
         alt="Han Bros Cargo Logo"
     /></a> 
@@ -72,8 +84,8 @@
         </div>
       </div>
   </div>
-  <div class="icy1lmenubody">
-    <div class="icy1lmenu">
+  <div class="fjjlrmenubody">
+    <div class="fjjlrmenu">
       <div class="mobile-menu-toggle" aria-expanded="false">
         <span class="mobile-menu-toggle-icon">
           <span></span>
@@ -81,36 +93,36 @@
           <span></span>
         </span>
       </div>
-      <div class="icy1lmenulistbody">
-        <div class="icy1lmenulist"><a class="icy1lmenulist-menu" href="/tr/">Anasayfa </a><div class="icy1lmenulist-menu " >
+      <div class="fjjlrmenulistbody">
+        <div class="fjjlrmenulist"><a class="fjjlrmenulist-menu" href="/tr/">Anasayfa </a><div class="fjjlrmenulist-menu " >
 
       <a href="/tr/hakkimizda/">
        Kurumsal
       </a>
      
                     </div>
-    <div class="icy1lmenulist-menu " >
+    <div class="fjjlrmenulist-menu " >
 
       <a href="/tr/ulkeler/">
        Ülkeler
       </a>
      
                     </div>
-    <div class="icy1lmenulist-menu " >
+    <div class="fjjlrmenulist-menu " >
 
       <a href="/tr/hizmetlerimiz/">
        Hizmetlerimiz
       </a>
      
                     </div>
-    <div class="icy1lmenulist-menu " >
+    <div class="fjjlrmenulist-menu " >
 
       <a href="/tr/bilgi-bankasi/">
        Bilgi Bankası
       </a>
      
                     </div>
-    <div class="icy1lmenulist-menu " >
+    <div class="fjjlrmenulist-menu " >
 
       <a href="/tr/iletisim/">
        İletişim
@@ -133,7 +145,7 @@
     var moduleRoot = null;
     var sibling = scriptEl.previousElementSibling;
     while (sibling) {
-      if (sibling.classList && sibling.classList.contains("icy1l")) {
+      if (sibling.classList && sibling.classList.contains("fjjlr")) {
         moduleRoot = sibling;
         break;
       }
@@ -143,7 +155,7 @@
       return;
     }
     var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
-    var menuBody = moduleRoot.querySelector(".icy1lmenulistbody");
+    var menuBody = moduleRoot.querySelector(".fjjlrmenulistbody");
     if (!toggle || !menuBody) {
       return;
     }
@@ -199,46 +211,46 @@
 })();
 </script>
 </div>
-  <div id="content"><div class="p3nqq-title f36">
+  <div id="content"><div class="nkq7a-title f36">
   <span>Araç Taşımacılığı</span>
 </div>
-<div class="p3nqq">
-  <div class="p3nqq-menu-btn">
+<div class="nkq7a">
+  <div class="nkq7a-menu-btn">
     <span>Menü</span>
-    <span class="material-symbols-outlined p3nqq-icon">menu</span>
+    <span class="material-symbols-outlined nkq7a-icon">menu</span>
   </div>
-  <div class="p3nqq-menu"><a class="p3nqq-menu-link" href="/tr/evden-eve-tasimacilik">Evden Eve Taşımacılık</a><a class="p3nqq-menu-link active" href="/tr/arac-tasimaciligi">Araç Taşımacılığı</a><a class="p3nqq-menu-link" href="/tr/yeni-mobilya-tasimaciligi">Yeni Mobilya Taşımacılığı</a><a class="p3nqq-menu-link" href="/tr/taicari-esya-tasimaciligi">Ticari Eşya Taşımacılığı</a><a class="p3nqq-menu-link" href="/tr/kargo-tasimaciligi">Kargo Taşımacılığı</a></div>
-  <div class="p3nqq-desc">
+  <div class="nkq7a-menu"><a class="nkq7a-menu-link" href="/tr/evden-eve-tasimacilik">Evden Eve Taşımacılık</a><a class="nkq7a-menu-link active" href="/tr/arac-tasimaciligi">Araç Taşımacılığı</a><a class="nkq7a-menu-link" href="/tr/yeni-mobilya-tasimaciligi">Yeni Mobilya Taşımacılığı</a><a class="nkq7a-menu-link" href="/tr/taicari-esya-tasimaciligi">Ticari Eşya Taşımacılığı</a><a class="nkq7a-menu-link" href="/tr/kargo-tasimaciligi">Kargo Taşımacılığı</a></div>
+  <div class="nkq7a-desc">
     
-    <div class="p3nqq-desc-body">
-            <img src="/page/wco1sqi58n/qdg37.webp?v=mr9er" width="100%" alt="{{title}}" />
+    <div class="nkq7a-desc-body">
+            <img src="/page/wco1sqi58n/qdg37.webp?v=dw797" width="100%" alt="{{title}}" />
     </div>
-    <div class="p3nqq-body"><p><h2>Araç Taşımacılığı Hizmeti</h2><p>Han Bros Cargo olarak araç taşımacılığı hizmetlerimizde uzmanız. Otomobil, motosiklet ve diğer araçlarınızı güvenle taşıyoruz.</p><h3>Araç Taşımacılığı Hizmetlerimiz</h3><ul><li><strong>Otomobil Taşımacılığı:</strong> Binek araçlarınızı güvenle taşıyoruz</li><li><strong>Motosiklet Taşımacılığı:</strong> Motosiklet ve scooter taşıma hizmeti</li><li><strong>Kamyon ve Ticari Araç:</strong> Ticari araçlarınızı taşıyoruz</li><li><strong>Özel Araçlar:</strong> Klasik ve özel araçlar için özel hizmet</li><li><strong>Gümrükleme:</strong> Araç gümrük işlemlerinizi hallediyoruz</li><li><strong>Sigortalı Taşıma:</strong> Araçlarınız tam sigorta kapsamında</li></ul><h3>Taşıma Yöntemleri</h3><ul><li><strong>Kapalı Taşıma:</strong> Araçlarınız kapalı araçlarla korunmalı taşınır</li><li><strong>Açık Taşıma:</strong> Ekonomik açık araç taşıma seçeneği</li><li><strong>Özel Taşıma:</strong> Değerli araçlar için özel taşıma</li></ul><h3>Hizmet Süreci</h3><ol><li><strong>Araç Teslimi:</strong> Aracınızı belirlenen noktadan teslim alıyoruz</li><li><strong>Muayene:</strong> Detaylı araç muayenesi yapıyoruz</li><li><strong>Taşıma:</strong> Güvenli taşıma süreci</li><li><strong>Gümrük:</strong> Gerekli gümrük işlemleri</li><li><strong>Teslimat:</strong> Aracınızı belirlenen adrese teslim ediyoruz</li></ol><h3>Neden Han Bros Cargo?</h3><ul><li>Araç taşımacılığında uzman ekibimiz</li><li>Güvenli ve sigortalı taşıma</li><li>Gümrük işlemlerinde deneyim</li><li>7/24 takip ve destek</li><li>Rekabetçi fiyatlar</li><li>Zamanında teslimat garantisi</li></ul><p>Araç taşımacılığı için hemen bizimle iletişime geçin ve ücretsiz fiyat teklifi alın.</p></p></div>
+    <div class="nkq7a-body"><p><h2>Araç Taşımacılığı Hizmeti</h2><p>Han Bros Cargo olarak araç taşımacılığı hizmetlerimizde uzmanız. Otomobil, motosiklet ve diğer araçlarınızı güvenle taşıyoruz.</p><h3>Araç Taşımacılığı Hizmetlerimiz</h3><ul><li><strong>Otomobil Taşımacılığı:</strong> Binek araçlarınızı güvenle taşıyoruz</li><li><strong>Motosiklet Taşımacılığı:</strong> Motosiklet ve scooter taşıma hizmeti</li><li><strong>Kamyon ve Ticari Araç:</strong> Ticari araçlarınızı taşıyoruz</li><li><strong>Özel Araçlar:</strong> Klasik ve özel araçlar için özel hizmet</li><li><strong>Gümrükleme:</strong> Araç gümrük işlemlerinizi hallediyoruz</li><li><strong>Sigortalı Taşıma:</strong> Araçlarınız tam sigorta kapsamında</li></ul><h3>Taşıma Yöntemleri</h3><ul><li><strong>Kapalı Taşıma:</strong> Araçlarınız kapalı araçlarla korunmalı taşınır</li><li><strong>Açık Taşıma:</strong> Ekonomik açık araç taşıma seçeneği</li><li><strong>Özel Taşıma:</strong> Değerli araçlar için özel taşıma</li></ul><h3>Hizmet Süreci</h3><ol><li><strong>Araç Teslimi:</strong> Aracınızı belirlenen noktadan teslim alıyoruz</li><li><strong>Muayene:</strong> Detaylı araç muayenesi yapıyoruz</li><li><strong>Taşıma:</strong> Güvenli taşıma süreci</li><li><strong>Gümrük:</strong> Gerekli gümrük işlemleri</li><li><strong>Teslimat:</strong> Aracınızı belirlenen adrese teslim ediyoruz</li></ol><h3>Neden Han Bros Cargo?</h3><ul><li>Araç taşımacılığında uzman ekibimiz</li><li>Güvenli ve sigortalı taşıma</li><li>Gümrük işlemlerinde deneyim</li><li>7/24 takip ve destek</li><li>Rekabetçi fiyatlar</li><li>Zamanında teslimat garantisi</li></ul><p>Araç taşımacılığı için hemen bizimle iletişime geçin ve ücretsiz fiyat teklifi alın.</p></p></div>
   </div>
 </div>
 
 <script>
-  const menuToggleBtn = document.querySelector(".p3nqq-menu-btn");
+  const menuToggleBtn = document.querySelector(".nkq7a-menu-btn");
   if (menuToggleBtn) {
     menuToggleBtn.addEventListener("click", function () {
-      const menu = document.querySelector(".p3nqq-menu");
+      const menu = document.querySelector(".nkq7a-menu");
       if (!menu) return;
       const isOpen = menu.classList.toggle("active");
-      const icon = this.querySelector(".p3nqq-icon");
+      const icon = this.querySelector(".nkq7a-icon");
       if (icon) {
         icon.textContent = isOpen ? "close" : "menu";
       }
     });
   }
 
-  document.querySelectorAll(".p3nqq-top").forEach(function (button) {
+  document.querySelectorAll(".nkq7a-top").forEach(function (button) {
     button.addEventListener("click", function () {
-      const group = this.closest(".p3nqq-menu-group");
+      const group = this.closest(".nkq7a-menu-group");
       if (!group) return;
-      const sub = group.querySelector(".p3nqq-sub");
+      const sub = group.querySelector(".nkq7a-sub");
       const isOpen = group.classList.toggle("open");
       this.classList.toggle("active", isOpen);
-      const icon = this.querySelector(".p3nqq-icon");
+      const icon = this.querySelector(".nkq7a-icon");
       if (icon) {
         icon.textContent = isOpen ? "expand_less" : "expand_more";
       }
@@ -249,73 +261,73 @@
   });
 </script>
 
-<div class="sliderxmtd4p">
-  <div class="slider-mtd4pt-itle">Hizmetlerimiz</div>
-  <div class="mtd4p swiper-container">
+<div class="sliderxphkjz">
+  <div class="slider-phkjzt-itle">Hizmetlerimiz</div>
+  <div class="phkjz swiper-container">
     <div class="swiper-wrapper">
     <a href="/tr/evden-eve-tasimacilik" class="swiper-slide">
-      <div class="swiper-mtd4p">
-        <img class="img-mtd4p" src="/page/ic2xbd0uch/j7uyj.webp" alt="Evden Eve Taşımacılık" />
-        <div class="title-spot-mtd4p">
-          <div class="title-mtd4p">Evden Eve Taşımacılık</div>
-          <div class="spot-mtd4p">Han Bros Cargo, uluslararası evden eve taşımada keşif, paketleme, gümrük ve teslimatı tek merkezden yöneten premium çözümler sunar.</div>
+      <div class="swiper-phkjz">
+        <img class="img-phkjz" src="/page/ic2xbd0uch/j7uyj.webp" alt="Evden Eve Taşımacılık" />
+        <div class="title-spot-phkjz">
+          <div class="title-phkjz">Evden Eve Taşımacılık</div>
+          <div class="spot-phkjz">Han Bros Cargo, uluslararası evden eve taşımada keşif, paketleme, gümrük ve teslimatı tek merkezden yöneten premium çözümler sunar.</div>
         </div>
-        <div class="button-mtd4p">Devamı...</div>
+        <div class="button-phkjz">Devamı...</div>
       </div>
     </a>
   
     <a href="/tr/arac-tasimaciligi" class="swiper-slide">
-      <div class="swiper-mtd4p">
-        <img class="img-mtd4p" src="/page/wco1sqi58n/qdg37.webp" alt="Araç Taşımacılığı" />
-        <div class="title-spot-mtd4p">
-          <div class="title-mtd4p">Araç Taşımacılığı</div>
-          <div class="spot-mtd4p">Han Bros Cargo ile araç taşımacılığı hizmeti. Otomobil, motosiklet ve diğer araçlarınızı güvenle taşıyoruz. Uluslararası araç nakliyatı.</div>
+      <div class="swiper-phkjz">
+        <img class="img-phkjz" src="/page/wco1sqi58n/qdg37.webp" alt="Araç Taşımacılığı" />
+        <div class="title-spot-phkjz">
+          <div class="title-phkjz">Araç Taşımacılığı</div>
+          <div class="spot-phkjz">Han Bros Cargo ile araç taşımacılığı hizmeti. Otomobil, motosiklet ve diğer araçlarınızı güvenle taşıyoruz. Uluslararası araç nakliyatı.</div>
         </div>
-        <div class="button-mtd4p">Devamı...</div>
+        <div class="button-phkjz">Devamı...</div>
       </div>
     </a>
   
     <a href="/tr/yeni-mobilya-tasimaciligi" class="swiper-slide">
-      <div class="swiper-mtd4p">
-        <img class="img-mtd4p" src="/page/k8k36eulrc/swxi9.webp" alt="Yeni Mobilya Taşımacılığı" />
-        <div class="title-spot-mtd4p">
-          <div class="title-mtd4p">Yeni Mobilya Taşımacılığı</div>
-          <div class="spot-mtd4p">Han Bros Cargo ile yeni mobilya taşımacılığı hizmeti. Türkiye'den yurt dışına mobilya gönderimi. Profesyonel paketleme ve güvenli taşıma.</div>
+      <div class="swiper-phkjz">
+        <img class="img-phkjz" src="/page/k8k36eulrc/swxi9.webp" alt="Yeni Mobilya Taşımacılığı" />
+        <div class="title-spot-phkjz">
+          <div class="title-phkjz">Yeni Mobilya Taşımacılığı</div>
+          <div class="spot-phkjz">Han Bros Cargo ile yeni mobilya taşımacılığı hizmeti. Türkiye'den yurt dışına mobilya gönderimi. Profesyonel paketleme ve güvenli taşıma.</div>
         </div>
-        <div class="button-mtd4p">Devamı...</div>
+        <div class="button-phkjz">Devamı...</div>
       </div>
     </a>
   
     <a href="/tr/taicari-esya-tasimaciligi" class="swiper-slide">
-      <div class="swiper-mtd4p">
-        <img class="img-mtd4p" src="/page/jg1oria5p8/kpxm0.webp" alt="Ticari Eşya Taşımacılığı" />
-        <div class="title-spot-mtd4p">
-          <div class="title-mtd4p">Ticari Eşya Taşımacılığı</div>
-          <div class="spot-mtd4p">Han Bros Cargo ile ticari eşya taşımacılığı hizmeti. Ticari yük ve eşya taşımacılığı. Uluslararası ticari nakliyat çözümleri.</div>
+      <div class="swiper-phkjz">
+        <img class="img-phkjz" src="/page/jg1oria5p8/kpxm0.webp" alt="Ticari Eşya Taşımacılığı" />
+        <div class="title-spot-phkjz">
+          <div class="title-phkjz">Ticari Eşya Taşımacılığı</div>
+          <div class="spot-phkjz">Han Bros Cargo ile ticari eşya taşımacılığı hizmeti. Ticari yük ve eşya taşımacılığı. Uluslararası ticari nakliyat çözümleri.</div>
         </div>
-        <div class="button-mtd4p">Devamı...</div>
+        <div class="button-phkjz">Devamı...</div>
       </div>
     </a>
   
     <a href="/tr/kargo-tasimaciligi" class="swiper-slide">
-      <div class="swiper-mtd4p">
-        <img class="img-mtd4p" src="/page/ddiaiud1q3/b572p.webp" alt="Kargo Taşımacılığı" />
-        <div class="title-spot-mtd4p">
-          <div class="title-mtd4p">Kargo Taşımacılığı</div>
-          <div class="spot-mtd4p">Han Bros Cargo, parsiyel ve tam yük kargo gönderilerinde gümrük, sigorta ve 7/24 takip desteğiyle paketlerinizi uluslararası ağında güvenle teslim eder.</div>
+      <div class="swiper-phkjz">
+        <img class="img-phkjz" src="/page/ddiaiud1q3/b572p.webp" alt="Kargo Taşımacılığı" />
+        <div class="title-spot-phkjz">
+          <div class="title-phkjz">Kargo Taşımacılığı</div>
+          <div class="spot-phkjz">Han Bros Cargo, parsiyel ve tam yük kargo gönderilerinde gümrük, sigorta ve 7/24 takip desteğiyle paketlerinizi uluslararası ağında güvenle teslim eder.</div>
         </div>
-        <div class="button-mtd4p">Devamı...</div>
+        <div class="button-phkjz">Devamı...</div>
       </div>
     </a>
   </div>
-    <div class="swiper-pagination-mtd4p"></div>
+    <div class="swiper-pagination-phkjz"></div>
   </div>
-  <div class="swiper-button-next swiper-button-next-mtd4p"></div>
-  <div class="swiper-button-prev swiper-button-prev-mtd4p"></div>
+  <div class="swiper-button-next swiper-button-next-phkjz"></div>
+  <div class="swiper-button-prev swiper-button-prev-phkjz"></div>
 </div>
 
 <script> setTimeout(() => {
-  new Swiper(".mtd4p", {
+  new Swiper(".phkjz", {
     slidesPerView: 2,
     simulateTouch: true,
     loop: true,
@@ -329,19 +341,19 @@
       disableOnInteraction: true,
     },
     pagination: {
-      el: ".swiper-pagination-mtd4p",
+      el: ".swiper-pagination-phkjz",
       clickable: true,
     },
     navigation: {
-      nextEl: ".swiper-button-next-mtd4p",
-      prevEl: ".swiper-button-prev-mtd4p",
+      nextEl: ".swiper-button-next-phkjz",
+      prevEl: ".swiper-button-prev-phkjz",
     },
   });}, 500);
 </script>
 </div>
-  <div id="footer"><div class="wa-advanced" id="pace0WaAdvanced">
-  <div class="pace0-wa-advanced-button" onclick="toggleModulexAdvanced()">
-    <div class="pace0-wa-advanced-icon">
+  <div id="footer"><div class="wa-advanced" id="msmfoWaAdvanced">
+  <div class="msmfo-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="msmfo-wa-advanced-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
@@ -349,39 +361,39 @@
         ></path>
       </svg>
     </div>
-    <div class="pace0-wa-advanced-pulse"></div>
+    <div class="msmfo-wa-advanced-pulse"></div>
   </div>
 
-  <div class="pace0-wa-advanced-panel" id="pace0WaPanel">
-    <div class="pace0-wa-advanced-header">
-      <div class="pace0-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=mr9er" alt="Support Agent" />
-        <div class="pace0-wa-advanced-status online"></div>
+  <div class="msmfo-wa-advanced-panel" id="msmfoWaPanel">
+    <div class="msmfo-wa-advanced-header">
+      <div class="msmfo-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=dw797" alt="Support Agent" />
+        <div class="msmfo-wa-advanced-status online"></div>
       </div>
-      <div class="pace0-wa-advanced-info">
+      <div class="msmfo-wa-advanced-info">
         <h4>Bize Ulaşın</h4>
         <p>Şu anda çevrimiçi</p>
       </div>
       <button
-        class="pace0-wa-advanced-close"
+        class="msmfo-wa-advanced-close"
         onclick="closeModulexAdvanced()"
       >
         ×
       </button>
     </div>
 
-    <div class="pace0-wa-advanced-body">
-      <div class="pace0-wa-advanced-message">
+    <div class="msmfo-wa-advanced-body">
+      <div class="msmfo-wa-advanced-message">
         <p>Merhaba! Size nasıl yardımcı olabilirim?</p>
-        <span class="pace0-wa-advanced-time">Şimdi</span>
+        <span class="msmfo-wa-advanced-time">Şimdi</span>
       </div>
     </div>
 
-    <div class="pace0-wa-advanced-footer">
+    <div class="msmfo-wa-advanced-footer">
       <a
         href="https://wa.me/905418504646"
         target="_blank"
-        class="pace0-wa-advanced-chat-btn"
+        class="msmfo-wa-advanced-chat-btn"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -405,12 +417,12 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("pace0WaPanel");
+    const panel = document.getElementById("msmfoWaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
   function closeModulexAdvanced() {
-    document.getElementById("pace0WaPanel").style.display = "none";
+    document.getElementById("msmfoWaPanel").style.display = "none";
   }
 </script>
 <footer class="footer">
@@ -462,8 +474,17 @@
 </div>
 </body>
 
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<!-- Font Preload - Render-blocking'i önlemek için -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" 
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" 
+  as="style" 
+  onload="this.onload=null;this.rel='stylesheet'" />
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBVTN13ZPZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -473,8 +494,9 @@
   gtag('config', 'G-ZBVTN13ZPZ');
 </script>
 
-
-<script type="text/javascript" src="/src/js.js?v=mr9er"></script>
-<script src="/src/cookie.js?v=mr9er"></script>
+<!-- JavaScript Defer - Render-blocking'i önlemek için -->
+<script defer src="/src/swiper-bundle.min.js"></script>
+<script defer type="text/javascript" src="/src/js.js?v=dw797"></script>
+<script defer src="/src/cookie.js?v=dw797"></script>
 
 </html>

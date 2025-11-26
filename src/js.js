@@ -1,5 +1,3 @@
-
-
 function imgfull(img) {
     const popout = document.getElementById('poputfull');
     if (popout) {
@@ -43,7 +41,5 @@ function checkAndCreateToken() {
     }
     return token;
 }
-
-
 // Token oluşturma işlemini başlat
 checkAndCreateToken();

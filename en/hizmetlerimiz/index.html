@@ -19,27 +19,39 @@
   <meta property="og:image" content="https://hanbroscargo.com/page/hizmetler/services.png" />
   <meta name="robots" content="index, follow" />
 
-  <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=wrdpi" />
-  <link rel="shortcut icon" href="/img/icon.png?v=wrdpi" type="image/png" />
-
-  <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
-  <script src="/src/swiper-bundle.min.js"></script>
+  <!-- Font Preload - Kritik fontlar -->
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  
+  <!-- CSS Preload - Render-blocking'i önlemek için -->
+  <link rel="preload" href="/src/rubik.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/css.css?v=lne9z" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=lne9z" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="/src/rubik.css" />
+    <link rel="stylesheet" href="/src/css.css?v=lne9z" />
+    <link rel="stylesheet" href="/src/cookie.css?v=lne9z" />
+    <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
+  </noscript>
+  
+  <link rel="shortcut icon" href="/img/icon.png?v=lne9z" type="image/png" />
   
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
   
   
-<link rel="stylesheet" href="style.css?v=wrdpi">
+<link rel="stylesheet" href="style.css?v=lne9z">
 </head>
 
 <body>
-  <div id="header"><div class="n62sl">
-  <div class="n62sltitle">
-    <div class="n62sltitlebody">
-      <div class="n62sltitlebodytitle">
+  <div id="header"><div class="oz9qy">
+  <div class="oz9qytitle">
+    <div class="oz9qytitlebody">
+      <div class="oz9qytitlebodytitle">
         Han Bros Cargo
       </div>
-      <div class="n62sltitlebodylang">
+      <div class="oz9qytitlebodylang">
         <ul>
           <a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></a><a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></a>
         </ul>
@@ -51,10 +63,10 @@
 
 
 
-  <div class="n62slbody">
+  <div class="oz9qybody">
     <a href="/en/"
       ><img
-        src="/img/logo.png?v=wrdpi"
+        src="/img/logo.png?v=lne9z"
         class="module-logo"
         alt="Han Bros Cargo Logo"
     /></a> 
@@ -72,8 +84,8 @@
         </div>
       </div>
   </div>
-  <div class="n62slmenubody">
-    <div class="n62slmenu">
+  <div class="oz9qymenubody">
+    <div class="oz9qymenu">
       <div class="mobile-menu-toggle" aria-expanded="false">
         <span class="mobile-menu-toggle-icon">
           <span></span>
@@ -81,36 +93,36 @@
           <span></span>
         </span>
       </div>
-      <div class="n62slmenulistbody">
-        <div class="n62slmenulist"><a class="n62slmenulist-menu" href="/en/">Home </a><div class="n62slmenulist-menu " >
+      <div class="oz9qymenulistbody">
+        <div class="oz9qymenulist"><a class="oz9qymenulist-menu" href="/en/">Home </a><div class="oz9qymenulist-menu " >
 
       <a href="/en/hakkimizda/">
        Kurumsal
       </a>
      
                     </div>
-    <div class="n62slmenulist-menu " >
+    <div class="oz9qymenulist-menu " >
 
       <a href="/en/ulkeler/">
        Ülkeler
       </a>
      
                     </div>
-    <div class="n62slmenulist-menu dropdown-content-active-n62sl" >
+    <div class="oz9qymenulist-menu dropdown-content-active-oz9qy" >
 
       <a href="/en/hizmetlerimiz/">
        servicelerimiz
       </a>
      
                     </div>
-    <div class="n62slmenulist-menu " >
+    <div class="oz9qymenulist-menu " >
 
       <a href="/en/bilgi-bankasi/">
        Bilgi Bankası
       </a>
      
                     </div>
-    <div class="n62slmenulist-menu " >
+    <div class="oz9qymenulist-menu " >
 
       <a href="/en/iletisim/">
        İletişim
@@ -133,7 +145,7 @@
     var moduleRoot = null;
     var sibling = scriptEl.previousElementSibling;
     while (sibling) {
-      if (sibling.classList && sibling.classList.contains("n62sl")) {
+      if (sibling.classList && sibling.classList.contains("oz9qy")) {
         moduleRoot = sibling;
         break;
       }
@@ -143,7 +155,7 @@
       return;
     }
     var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
-    var menuBody = moduleRoot.querySelector(".n62slmenulistbody");
+    var menuBody = moduleRoot.querySelector(".oz9qymenulistbody");
     if (!toggle || !menuBody) {
       return;
     }
@@ -199,99 +211,99 @@
 })();
 </script>
 </div>
-  <div id="content"><div class="y1585">
-  <div class="y1585body">
-      <div style="animation-delay: 0.3s;" class="y1585bodyitems left" >
-        <div class="y1585bodyitem lefts">
-          <a href="/en/evden-eve-tasimacilik" class="y1585bodyitemlink">
-            <div class="y1585bodyitemimg">
+  <div id="content"><div class="dnzx3">
+  <div class="dnzx3body">
+      <div style="animation-delay: 0.3s;" class="dnzx3bodyitems left" >
+        <div class="dnzx3bodyitem lefts">
+          <a href="/en/evden-eve-tasimacilik" class="dnzx3bodyitemlink">
+            <div class="dnzx3bodyitemimg">
               <img src="/page/ic2xbd0uch/j7uyj.webp" alt="Door-to-door moving">
             </div>
-            <div class="y1585bodyitemtitle">
+            <div class="dnzx3bodyitemtitle">
               Door-to-door moving
             </div>
           </a>
 
           
         </div>
-        <div class="y1585bodybg" style="background-image: url('/page/ic2xbd0uch/bg/undefined'); background-size: cover;
+        <div class="dnzx3bodybg" style="background-image: url('/page/ic2xbd0uch/bg/undefined'); background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;"></div>
       </div>
-      <div style="animation-delay: 0.6s;" class="y1585bodyitems right" >
-        <div class="y1585bodyitem rights">
-          <a href="/en/arac-tasimaciligi" class="y1585bodyitemlink">
-            <div class="y1585bodyitemimg">
+      <div style="animation-delay: 0.6s;" class="dnzx3bodyitems right" >
+        <div class="dnzx3bodyitem rights">
+          <a href="/en/arac-tasimaciligi" class="dnzx3bodyitemlink">
+            <div class="dnzx3bodyitemimg">
               <img src="/page/wco1sqi58n/qdg37.webp" alt="Araç shippingcılığı">
             </div>
-            <div class="y1585bodyitemtitle">
+            <div class="dnzx3bodyitemtitle">
               Araç shippingcılığı
             </div>
           </a>
 
           
         </div>
-        <div class="y1585bodybg" style="background-image: url('/page/wco1sqi58n/bg/undefined'); background-size: cover;
+        <div class="dnzx3bodybg" style="background-image: url('/page/wco1sqi58n/bg/undefined'); background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;"></div>
       </div>
-      <div style="animation-delay: 0.8999999999999999s;" class="y1585bodyitems left" >
-        <div class="y1585bodyitem lefts">
-          <a href="/en/yeni-mobilya-tasimaciligi" class="y1585bodyitemlink">
-            <div class="y1585bodyitemimg">
+      <div style="animation-delay: 0.8999999999999999s;" class="dnzx3bodyitems left" >
+        <div class="dnzx3bodyitem lefts">
+          <a href="/en/yeni-mobilya-tasimaciligi" class="dnzx3bodyitemlink">
+            <div class="dnzx3bodyitemimg">
               <img src="/page/k8k36eulrc/swxi9.webp" alt="Yeni furniture shippingcılığı">
             </div>
-            <div class="y1585bodyitemtitle">
+            <div class="dnzx3bodyitemtitle">
               Yeni furniture shippingcılığı
             </div>
           </a>
 
           
         </div>
-        <div class="y1585bodybg" style="background-image: url('/page/k8k36eulrc/bg/undefined'); background-size: cover;
+        <div class="dnzx3bodybg" style="background-image: url('/page/k8k36eulrc/bg/undefined'); background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;"></div>
       </div>
-      <div style="animation-delay: 1.2s;" class="y1585bodyitems right" >
-        <div class="y1585bodyitem rights">
-          <a href="/en/taicari-esya-tasimaciligi" class="y1585bodyitemlink">
-            <div class="y1585bodyitemimg">
+      <div style="animation-delay: 1.2s;" class="dnzx3bodyitems right" >
+        <div class="dnzx3bodyitem rights">
+          <a href="/en/taicari-esya-tasimaciligi" class="dnzx3bodyitemlink">
+            <div class="dnzx3bodyitemimg">
               <img src="/page/jg1oria5p8/kpxm0.webp" alt="Ticari Eşya shippingcılığı">
             </div>
-            <div class="y1585bodyitemtitle">
+            <div class="dnzx3bodyitemtitle">
               Ticari Eşya shippingcılığı
             </div>
           </a>
 
           
         </div>
-        <div class="y1585bodybg" style="background-image: url('/page/jg1oria5p8/bg/undefined'); background-size: cover;
+        <div class="dnzx3bodybg" style="background-image: url('/page/jg1oria5p8/bg/undefined'); background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;"></div>
       </div>
-      <div style="animation-delay: 1.5s;" class="y1585bodyitems left" >
-        <div class="y1585bodyitem lefts">
-          <a href="/en/kargo-tasimaciligi" class="y1585bodyitemlink">
-            <div class="y1585bodyitemimg">
+      <div style="animation-delay: 1.5s;" class="dnzx3bodyitems left" >
+        <div class="dnzx3bodyitem lefts">
+          <a href="/en/kargo-tasimaciligi" class="dnzx3bodyitemlink">
+            <div class="dnzx3bodyitemimg">
               <img src="/page/ddiaiud1q3/b572p.webp" alt="cargo transportation">
             </div>
-            <div class="y1585bodyitemtitle">
+            <div class="dnzx3bodyitemtitle">
               cargo transportation
             </div>
           </a>
 
           
         </div>
-        <div class="y1585bodybg" style="background-image: url('/page/ddiaiud1q3/bg/undefined'); background-size: cover;
+        <div class="dnzx3bodybg" style="background-image: url('/page/ddiaiud1q3/bg/undefined'); background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;"></div>
       </div></div>
 </div>
 
 </div>
-  <div id="footer"><div class="wa-advanced" id="f235lWaAdvanced">
-  <div class="f235l-wa-advanced-button" onclick="toggleModulexAdvanced()">
-    <div class="f235l-wa-advanced-icon">
+  <div id="footer"><div class="wa-advanced" id="w0ahsWaAdvanced">
+  <div class="w0ahs-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="w0ahs-wa-advanced-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
@@ -299,39 +311,39 @@
         ></path>
       </svg>
     </div>
-    <div class="f235l-wa-advanced-pulse"></div>
+    <div class="w0ahs-wa-advanced-pulse"></div>
   </div>
 
-  <div class="f235l-wa-advanced-panel" id="f235lWaPanel">
-    <div class="f235l-wa-advanced-header">
-      <div class="f235l-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=wrdpi" alt="Support Agent" />
-        <div class="f235l-wa-advanced-status online"></div>
+  <div class="w0ahs-wa-advanced-panel" id="w0ahsWaPanel">
+    <div class="w0ahs-wa-advanced-header">
+      <div class="w0ahs-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=lne9z" alt="Support Agent" />
+        <div class="w0ahs-wa-advanced-status online"></div>
       </div>
-      <div class="f235l-wa-advanced-info">
+      <div class="w0ahs-wa-advanced-info">
         <h4>Contact Us</h4>
         <p>Currently online</p>
       </div>
       <button
-        class="f235l-wa-advanced-close"
+        class="w0ahs-wa-advanced-close"
         onclick="closeModulexAdvanced()"
       >
         ×
       </button>
     </div>
 
-    <div class="f235l-wa-advanced-body">
-      <div class="f235l-wa-advanced-message">
+    <div class="w0ahs-wa-advanced-body">
+      <div class="w0ahs-wa-advanced-message">
         <p>Hello! How can I help you?</p>
-        <span class="f235l-wa-advanced-time">Now</span>
+        <span class="w0ahs-wa-advanced-time">Now</span>
       </div>
     </div>
 
-    <div class="f235l-wa-advanced-footer">
+    <div class="w0ahs-wa-advanced-footer">
       <a
         href="https://wa.me/905418504646"
         target="_blank"
-        class="f235l-wa-advanced-chat-btn"
+        class="w0ahs-wa-advanced-chat-btn"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -355,12 +367,12 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("f235lWaPanel");
+    const panel = document.getElementById("w0ahsWaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
   function closeModulexAdvanced() {
-    document.getElementById("f235lWaPanel").style.display = "none";
+    document.getElementById("w0ahsWaPanel").style.display = "none";
   }
 </script>
 <footer class="footer">
@@ -412,8 +424,17 @@
 </div>
 </body>
 
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<!-- Font Preload - Render-blocking'i önlemek için -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" 
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" 
+  as="style" 
+  onload="this.onload=null;this.rel='stylesheet'" />
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBVTN13ZPZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -423,8 +444,9 @@
   gtag('config', 'G-ZBVTN13ZPZ');
 </script>
 
-
-<script type="text/javascript" src="/src/js.js?v=wrdpi"></script>
-<script src="/src/cookie.js?v=wrdpi"></script>
+<!-- JavaScript Defer - Render-blocking'i önlemek için -->
+<script defer src="/src/swiper-bundle.min.js"></script>
+<script defer type="text/javascript" src="/src/js.js?v=lne9z"></script>
+<script defer src="/src/cookie.js?v=lne9z"></script>
 
 </html>

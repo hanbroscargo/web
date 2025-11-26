@@ -19,27 +19,39 @@
   <meta property="og:image" content="https://hanbroscargo.com/page/axypal6s4f/kj7k5.webp" />
   <meta name="robots" content="index, follow" />
 
-  <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=oz4z2" />
-  <link rel="shortcut icon" href="/img/icon.png?v=oz4z2" type="image/png" />
-
-  <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
-  <script src="/src/swiper-bundle.min.js"></script>
+  <!-- Font Preload - Kritik fontlar -->
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  
+  <!-- CSS Preload - Render-blocking'i önlemek için -->
+  <link rel="preload" href="/src/rubik.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/css.css?v=yubmv" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=yubmv" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="/src/rubik.css" />
+    <link rel="stylesheet" href="/src/css.css?v=yubmv" />
+    <link rel="stylesheet" href="/src/cookie.css?v=yubmv" />
+    <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
+  </noscript>
+  
+  <link rel="shortcut icon" href="/img/icon.png?v=yubmv" type="image/png" />
   
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
   
   
-<link rel="stylesheet" href="style.css?v=oz4z2">
+<link rel="stylesheet" href="style.css?v=yubmv">
 </head>
 
 <body>
-  <div id="header"><div class="swlyf">
-  <div class="swlyftitle">
-    <div class="swlyftitlebody">
-      <div class="swlyftitlebodytitle">
+  <div id="header"><div class="r0lh0">
+  <div class="r0lh0title">
+    <div class="r0lh0titlebody">
+      <div class="r0lh0titlebodytitle">
         Han Bros Cargo
       </div>
-      <div class="swlyftitlebodylang">
+      <div class="r0lh0titlebodylang">
         <ul>
           <a href="/tr/"><img height="25" src="/src/lang/tr.png"  alt="tr"></a><a href="/en/"><img height="25" src="/src/lang/en.png"  alt="en"></a>
         </ul>
@@ -51,10 +63,10 @@
 
 
 
-  <div class="swlyfbody">
+  <div class="r0lh0body">
     <a href="/en/"
       ><img
-        src="/img/logo.png?v=oz4z2"
+        src="/img/logo.png?v=yubmv"
         class="module-logo"
         alt="Han Bros Cargo Logo"
     /></a> 
@@ -72,8 +84,8 @@
         </div>
       </div>
   </div>
-  <div class="swlyfmenubody">
-    <div class="swlyfmenu">
+  <div class="r0lh0menubody">
+    <div class="r0lh0menu">
       <div class="mobile-menu-toggle" aria-expanded="false">
         <span class="mobile-menu-toggle-icon">
           <span></span>
@@ -81,36 +93,36 @@
           <span></span>
         </span>
       </div>
-      <div class="swlyfmenulistbody">
-        <div class="swlyfmenulist"><a class="swlyfmenulist-menu" href="/en/">Home </a><div class="swlyfmenulist-menu " >
+      <div class="r0lh0menulistbody">
+        <div class="r0lh0menulist"><a class="r0lh0menulist-menu" href="/en/">Home </a><div class="r0lh0menulist-menu " >
 
       <a href="/en/hakkimizda/">
        Kurumsal
       </a>
      
                     </div>
-    <div class="swlyfmenulist-menu " >
+    <div class="r0lh0menulist-menu " >
 
       <a href="/en/ulkeler/">
        Ülkeler
       </a>
      
                     </div>
-    <div class="swlyfmenulist-menu " >
+    <div class="r0lh0menulist-menu " >
 
       <a href="/en/hizmetlerimiz/">
        servicelerimiz
       </a>
      
                     </div>
-    <div class="swlyfmenulist-menu " >
+    <div class="r0lh0menulist-menu " >
 
       <a href="/en/bilgi-bankasi/">
        Bilgi Bankası
       </a>
      
                     </div>
-    <div class="swlyfmenulist-menu " >
+    <div class="r0lh0menulist-menu " >
 
       <a href="/en/iletisim/">
        İletişim
@@ -133,7 +145,7 @@
     var moduleRoot = null;
     var sibling = scriptEl.previousElementSibling;
     while (sibling) {
-      if (sibling.classList && sibling.classList.contains("swlyf")) {
+      if (sibling.classList && sibling.classList.contains("r0lh0")) {
         moduleRoot = sibling;
         break;
       }
@@ -143,7 +155,7 @@
       return;
     }
     var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
-    var menuBody = moduleRoot.querySelector(".swlyfmenulistbody");
+    var menuBody = moduleRoot.querySelector(".r0lh0menulistbody");
     if (!toggle || !menuBody) {
       return;
     }
@@ -200,9 +212,9 @@
 </script>
 </div>
   <div id="content"></div>
-  <div id="footer"><div class="wa-advanced" id="lpr6qWaAdvanced">
-  <div class="lpr6q-wa-advanced-button" onclick="toggleModulexAdvanced()">
-    <div class="lpr6q-wa-advanced-icon">
+  <div id="footer"><div class="wa-advanced" id="ewvrqWaAdvanced">
+  <div class="ewvrq-wa-advanced-button" onclick="toggleModulexAdvanced()">
+    <div class="ewvrq-wa-advanced-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"
@@ -210,39 +222,39 @@
         ></path>
       </svg>
     </div>
-    <div class="lpr6q-wa-advanced-pulse"></div>
+    <div class="ewvrq-wa-advanced-pulse"></div>
   </div>
 
-  <div class="lpr6q-wa-advanced-panel" id="lpr6qWaPanel">
-    <div class="lpr6q-wa-advanced-header">
-      <div class="lpr6q-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=oz4z2" alt="Support Agent" />
-        <div class="lpr6q-wa-advanced-status online"></div>
+  <div class="ewvrq-wa-advanced-panel" id="ewvrqWaPanel">
+    <div class="ewvrq-wa-advanced-header">
+      <div class="ewvrq-wa-advanced-avatar">
+        <img src="/img/sy0l2u/logo.jpg?v=yubmv" alt="Support Agent" />
+        <div class="ewvrq-wa-advanced-status online"></div>
       </div>
-      <div class="lpr6q-wa-advanced-info">
+      <div class="ewvrq-wa-advanced-info">
         <h4>Contact Us</h4>
         <p>Currently online</p>
       </div>
       <button
-        class="lpr6q-wa-advanced-close"
+        class="ewvrq-wa-advanced-close"
         onclick="closeModulexAdvanced()"
       >
         ×
       </button>
     </div>
 
-    <div class="lpr6q-wa-advanced-body">
-      <div class="lpr6q-wa-advanced-message">
+    <div class="ewvrq-wa-advanced-body">
+      <div class="ewvrq-wa-advanced-message">
         <p>Hello! How can I help you?</p>
-        <span class="lpr6q-wa-advanced-time">Now</span>
+        <span class="ewvrq-wa-advanced-time">Now</span>
       </div>
     </div>
 
-    <div class="lpr6q-wa-advanced-footer">
+    <div class="ewvrq-wa-advanced-footer">
       <a
         href="https://wa.me/905418504646"
         target="_blank"
-        class="lpr6q-wa-advanced-chat-btn"
+        class="ewvrq-wa-advanced-chat-btn"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -266,12 +278,12 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("lpr6qWaPanel");
+    const panel = document.getElementById("ewvrqWaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
   function closeModulexAdvanced() {
-    document.getElementById("lpr6qWaPanel").style.display = "none";
+    document.getElementById("ewvrqWaPanel").style.display = "none";
   }
 </script>
 <footer class="footer">
@@ -323,8 +335,17 @@
 </div>
 </body>
 
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<!-- Font Preload - Render-blocking'i önlemek için -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" 
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" 
+  as="style" 
+  onload="this.onload=null;this.rel='stylesheet'" />
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBVTN13ZPZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -334,8 +355,9 @@
   gtag('config', 'G-ZBVTN13ZPZ');
 </script>
 
-
-<script type="text/javascript" src="/src/js.js?v=oz4z2"></script>
-<script src="/src/cookie.js?v=oz4z2"></script>
+<!-- JavaScript Defer - Render-blocking'i önlemek için -->
+<script defer src="/src/swiper-bundle.min.js"></script>
+<script defer type="text/javascript" src="/src/js.js?v=yubmv"></script>
+<script defer src="/src/cookie.js?v=yubmv"></script>
 
 </html>
