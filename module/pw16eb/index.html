@@ -10,12 +10,12 @@
             <div class="metrekup-list-header">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <h3 class="metrekup-list-title">📦 Metreküp Hesaplama</h3>
-                        <p class="metrekup-list-subtitle">Eşyalarınızın boyutlarını girin</p>
+                        <h3 class="metrekup-list-title">{{mainTitle}}</h3>
+                        <p class="metrekup-list-subtitle">{{mainSubtitle}}</p>
                     </div>
                     <div class="metrekup-buttons">
-                        <button onclick="addItem()" class="metrekup-btn-add">➕ Yeni Eşya</button>
-                        <button onclick="clearAll()" class="metrekup-btn-clear">🗑️ Temizle</button>
+                        <button onclick="addItem()" class="metrekup-btn-add">{{btnAddItem}}</button>
+                        <button onclick="clearAll()" class="metrekup-btn-clear">{{btnClear}}</button>
                     </div>
                 </div>
             </div>
@@ -27,44 +27,44 @@
             <div class="metrekup-bottom-section">
                 <div class="metrekup-transport-section">
                     <div style="text-align: center; margin-bottom: 25px;">
-                        <h4 class="metrekup-transport-title">🚚 Taşıma Türü Seçiniz</h4>
-                        <p class="metrekup-transport-subtitle">En uygun taşıma yöntemini belirleyin</p>
+                        <h4 class="metrekup-transport-title">{{transportTitle}}</h4>
+                        <p class="metrekup-transport-subtitle">{{transportSubtitle}}</p>
                     </div>
                     <div class="metrekup-transport-grid">
                         <label class="metrekup-transport-option">
                             <input type="radio" name="transport" value="karayolu" checked onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
                             <div class="metrekup-transport-icon">🚛</div>
-                            <span class="metrekup-transport-label">Karayolu</span>
+                            <span class="metrekup-transport-label">{{transportRoad}}</span>
                         </label>
                         <label class="metrekup-transport-option">
                             <input type="radio" name="transport" value="havayolu" onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
                             <div class="metrekup-transport-icon">✈️</div>
-                            <span class="metrekup-transport-label">Havayolu</span>
+                            <span class="metrekup-transport-label">{{transportAir}}</span>
                         </label>
                         <label class="metrekup-transport-option">
                             <input type="radio" name="transport" value="denizyolu" onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
                             <div class="metrekup-transport-icon">🚢</div>
-                            <span class="metrekup-transport-label">Denizyolu</span>
+                            <span class="metrekup-transport-label">{{transportSea}}</span>
                         </label>
                     </div>
                 </div>
                 
                 <div class="metrekup-results-section">
                     <div style="text-align: center; margin-bottom: 25px;">
-                        <h4 class="metrekup-results-title">📊 Hesaplama Sonuçları</h4> 
-                        <p class="metrekup-results-subtitle">Toplam hacim ve ağırlık bilgileri</p>
+                        <h4 class="metrekup-results-title">{{resultsTitle}}</h4> 
+                        <p class="metrekup-results-subtitle">{{resultsSubtitle}}</p>
                     </div>
                     <div class="metrekup-results-grid">
                         <div class="metrekup-result-card">
                             <div class="metrekup-result-icon">📦</div>
-                            <div class="metrekup-result-label">TOPLAM HACİM</div>
+                            <div class="metrekup-result-label">{{labelTotalVolume}}</div>
                             <div class="metrekup-result-value">
                                 <span id="total-volume">0</span> <span class="metrekup-result-unit">m³</span>
                             </div>
                         </div>
                         <div class="metrekup-result-card">
                             <div class="metrekup-result-icon">⚖️</div>
-                            <div class="metrekup-result-label">TOPLAM AĞIRLIK</div>
+                            <div class="metrekup-result-label">{{labelTotalWeight}}</div>
                             <div class="metrekup-result-value">
                                 <span id="total-weight">0</span> <span class="metrekup-result-unit">kg</span>
                             </div>
@@ -109,7 +109,7 @@ function addItem() {
             <div class="metrekup-item-header">
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <div class="metrekup-item-number">${itemId}</div>
-                    <h4 class="metrekup-item-title">Eşya ${itemId}</h4>
+                    <h4 class="metrekup-item-title">{{itemTitle}} ${itemId}</h4>
                 </div>
                 ${itemId > 3 ? `<button onclick="removeItem(${itemId})" class="metrekup-btn-remove">×</button>` : ''}
             </div>
@@ -117,24 +117,24 @@ function addItem() {
             <div class="metrekup-inputs-grid">
                
                 <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">📏 Uzunluk (cm)</label>
+                    <label class="metrekup-input-label">{{labelLength}}</label>
                     <input type="number" id="length-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
                 </div>
                 <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">📐 Genişlik (cm)</label>
+                    <label class="metrekup-input-label">{{labelWidth}}</label>
                     <input type="number" id="width-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
                 </div>
                 <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">📏 Yükseklik (cm)</label>
+                    <label class="metrekup-input-label">{{labelHeight}}</label>
                     <input type="number" id="height-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
                 </div>
 
                  <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">📦 Adet</label>
+                    <label class="metrekup-input-label">{{labelQuantity}}</label>
                     <input type="number" id="quantity-${itemId}" placeholder="1" step="1" min="1" value="1" oninput="calculateItem(${itemId})" class="metrekup-input">
                 </div>
                 <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">⚖️ Ağırlık (kg)</label>
+                    <label class="metrekup-input-label">{{labelWeight}}</label>
                     <input type="number" id="weight-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
                 </div>
             </div>
@@ -290,9 +290,9 @@ console.log('Metreküp hesaplama modülü yüklendi');
         padding: 10px 0px 10px 0px;
     }
 .metrekup-container {
-    background: linear-gradient(135deg, --bgcolor-- 0%, #ffffff 100%);
-    border-radius: --border_radius--;
-    box-shadow: --card_shadow--;
+    background: linear-gradient(135deg, var(--bgcolor--) 0%, #ffffff 100%);
+    border-radius: var(--border_radius--);
+    box-shadow: var(--card_shadow--);
     padding: 0;
     max-width: var(--max);
     overflow: hidden;
@@ -300,7 +300,7 @@ console.log('Metreküp hesaplama modülü yüklendi');
 
 
 .metrekup-body {
-    color: --color--;
+    color: var(--color--);
 }
 
 .metrekup-main-container {
