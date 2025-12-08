@@ -1007,7 +1007,7 @@ function renderSearchResults(products) {
 }
 
 // Ürün verilerini yükle
-fetch('/module/go1ilz/grop.json')
+fetch('https://api.hanbroscargo.workers.dev/groups')
     .then(response => response.json())
     .then(products => {
         // Tüm ürünleri sakla
