@@ -6,7 +6,8 @@
                 <div class="search-container" id="search-container">
                     <span class="material-symbols-outlined search-icon-inner">search</span>
                     <input type="text" id="search-input" class="search-input" placeholder="Ürün ara..." />
-                    <span class="material-symbols-outlined search-clear" id="search-clear" style="display: none;" onclick="clearSearch()">close</span>
+                    <span class="material-symbols-outlined search-clear" id="search-clear" style="display: none;"
+                        onclick="clearSearch()">close</span>
                 </div>
                 <div class="search-suggestions" id="search-suggestions" style="display: none;"></div>
             </div>
@@ -38,279 +39,477 @@
                     <div class="total-value" id="total-hacim">0 m³</div>
                 </div>
             </div>
+            <div class="total-item">
+                <div class="total-item-icon">
+                    <span class="material-symbols-outlined">scale</span>
+                </div>
+                <div class="total-item-content">
+                    <div class="total-label">Toplam Ağırlık</div>
+                    <div class="total-value" id="total-agirlik">0 kg</div>
+                </div>
+            </div>
         </div>
         <div class="total-footer">
+            <button class="pdf-download-btn" onclick="downloadPDF()" id="pdf-download-btn" disabled>
+                <span class="material-symbols-outlined">picture_as_pdf</span>
+                <span>PDF İndir</span>
+            </button>
             <div class="total-summary">
                 <span class="material-symbols-outlined">check_circle</span>
                 <span>Hazır</span>
+            </div>
+            <div class="total-warning">
+                Hacimler tahminidir ± %10 farklılık gösterebilir
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hacim Düzenleme Popup -->
+<div class="volume-edit-popup" id="volume-edit-popup" style="display: none;">
+    <div class="popup-overlay" onclick="closeVolumeEditPopup()"></div>
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3>Boyut ve Ağırlık Düzenle</h3>
+            <button class="popup-close" onclick="closeVolumeEditPopup()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="popup-body">
+            <div class="popup-product-info">
+                <div class="popup-product-name" id="popup-product-name"></div>
+                <div class="popup-product-code" id="popup-product-code"></div>
+            </div>
+
+            <div class="popup-section">
+                <h4 class="popup-section-title">Tahmini Boyutlar</h4>
+                <div class="popup-dimensions-grid">
+                    <div class="popup-form-group">
+                        <label for="popup-width-input">En (cm):</label>
+                        <input type="number" id="popup-width-input" step="0.1" min="0" class="popup-input"
+                            placeholder="00" />
+                    </div>
+                    <div class="popup-form-group">
+                        <label for="popup-depth-input">Boy (cm):</label>
+                        <input type="number" id="popup-depth-input" step="0.1" min="0" class="popup-input"
+                            placeholder="00" />
+                    </div>
+                    <div class="popup-form-group">
+                        <label for="popup-height-input">Yükseklik (cm):</label>
+                        <input type="number" id="popup-height-input" step="0.1" min="0" class="popup-input"
+                            placeholder="00" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-section">
+                <h4 class="popup-section-title">Tahmini Ağırlık</h4>
+                <div class="popup-form-group">
+                    <label for="popup-weight-input">Ağırlık (kg):</label>
+                    <input type="number" id="popup-weight-input" step="0.1" min="0" class="popup-input"
+                        placeholder="00" />
+                    <div class="popup-hint">Emin değilseniz, kendi ağırlığınızı referans alarak tahmin edebilirsiniz!
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-calculated-info">
+                <div class="popup-calculated-item">
+                    <span class="popup-calculated-label">Hesaplanan Hacim:</span>
+                    <span class="popup-calculated-value" id="popup-calculated-volume">0.00 m³</span>
+                </div>
+                <div class="popup-calculated-item">
+                    <span class="popup-calculated-label">Orijinal Hacim:</span>
+                    <span class="popup-calculated-value" id="popup-original-volume">0.00 m³</span>
+                </div>
+            </div>
+
+            <div class="popup-actions">
+                <button class="popup-btn popup-btn-cancel" onclick="closeVolumeEditPopup()">
+                    <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 4px;">close</span>
+                    Kapat
+                </button>
+                <button class="popup-btn popup-btn-save" onclick="saveVolumeEdit()">Kaydet</button>
             </div>
         </div>
     </div>
 </div>
 
 <style>
-.modulex-wrapper {
-    display: flex;
-    gap: 20px;
-    width: calc(var(--max) - 40px);
-    margin: 20px auto;
-    position: relative;
-}
+    .modulex-wrapper {
+        display: flex;
+        gap: 20px;
+        width: calc(var(--max) - 40px);
+        margin: 20px auto;
+        position: relative;
+    }
 
-.modulex-container {
-    flex: 1;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    min-width: 0;
-}
+    .modulex-container {
+        flex: 1;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        min-width: 0;
+    }
 
-.modulex-categories-list {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #ddd;
-}
+    .modulex-categories-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #ddd;
+    }
 
-.search-section {
-    margin-bottom: 30px;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-}
+    .search-section {
+        margin-bottom: 30px;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+    }
 
-.search-wrapper {
-    position: relative;
-    width: 100%;
-    box-sizing: border-box;
-}
+    .search-wrapper {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-.search-icon-inner {
-    font-size: 20px;
-    color: #999;
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 1;
-}
+    .search-icon-inner {
+        font-size: 20px;
+        color: #999;
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        z-index: 1;
+    }
 
-.search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: white;
-    padding: 12px 14px 12px 44px;
-    border-radius: 10px;
-    border: 2px solid #ddd;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-}
+    .search-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: white;
+        padding: 12px 14px 12px 44px;
+        border-radius: 10px;
+        border: 2px solid #ddd;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
 
-.search-container:focus-within {
-    border-color: #009a96;
-    box-shadow: 0 0 0 3px rgba(0, 154, 150, 0.1);
-}
+    .search-container:focus-within {
+        border-color: #009a96;
+        box-shadow: 0 0 0 3px rgba(0, 154, 150, 0.1);
+    }
 
-.search-clear {
-    font-size: 18px;
-    color: #666;
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 4px;
-    transition: all 0.2s;
-    flex-shrink: 0;
-}
+    .search-clear {
+        font-size: 18px;
+        color: #666;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        transition: all 0.2s;
+        flex-shrink: 0;
+    }
 
-.search-clear:hover {
-    background-color: #f0f0f0;
-    color: #009a96;
-}
+    .search-clear:hover {
+        background-color: #f0f0f0;
+        color: #009a96;
+    }
 
-.search-suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    background-color: white;
-    border: 2px solid #009a96;
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-    max-height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-top: -2px;
-}
+    .search-suggestions {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        background-color: white;
+        border: 2px solid #009a96;
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-top: -2px;
+    }
 
-.suggestion-item {
-    padding: 12px 16px;
-    cursor: pointer;
-    border-bottom: 1px solid #f0f0f0;
-    transition: all 0.2s;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
+    .suggestion-item {
+        padding: 12px 16px;
+        cursor: pointer;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
 
-.suggestion-item:last-child {
-    border-bottom: none;
-}
+    .suggestion-item:last-child {
+        border-bottom: none;
+    }
 
-.suggestion-item:hover {
-    background-color: #f8f9fa;
-    border-left: 3px solid #009a96;
-}
+    .suggestion-item:hover {
+        background-color: #f8f9fa;
+        border-left: 3px solid #009a96;
+    }
 
-.suggestion-code {
-    font-size: 12px;
-    color: #009a96;
-    font-weight: bold;
-}
+    .suggestion-code {
+        font-size: 12px;
+        color: #009a96;
+        font-weight: bold;
+    }
 
-.suggestion-name {
-    font-size: 14px;
-    color: #333;
-}
+    .suggestion-name {
+        font-size: 14px;
+        color: #333;
+    }
 
-.suggestion-category {
-    font-size: 11px;
-    color: #009a96;
-    font-weight: 500;
-    margin-top: 2px;
-}
+    .suggestion-category {
+        font-size: 11px;
+        color: #009a96;
+        font-weight: 500;
+        margin-top: 2px;
+    }
 
-.suggestion-empty {
-    padding: 20px;
-    text-align: center;
-    color: #999;
-    font-size: 14px;
-}
+    .suggestion-empty {
+        padding: 20px;
+        text-align: center;
+        color: #999;
+        font-size: 14px;
+    }
 
-.search-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    color: #333;
-    background: transparent;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    min-width: 0;
-}
+    .search-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        color: #333;
+        background: transparent;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+    }
 
-.search-input::placeholder {
-    color: #999;
-}
+    .search-input::placeholder {
+        color: #999;
+    }
 
-.search-close {
-    font-size: 20px;
-    color: #666;
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
+    .search-close {
+        font-size: 20px;
+        color: #666;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
 
-.search-close:hover {
-    background-color: #f0f0f0;
-    color: #009a96;
-}
+    .search-close:hover {
+        background-color: #f0f0f0;
+        color: #009a96;
+    }
 
-.category-tab {
-    padding: 12px 24px;
-    background-color: white;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
-}
+    .category-tab {
+        padding: 12px 24px;
+        background-color: white;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 500;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        position: relative;
+    }
 
-.category-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #cedc00 0%, #b8c800 100%);
-    color: #333;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 12px;
-    min-width: 20px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(206, 220, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-}
+    .category-tab-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+    }
 
-.category-tab:hover {
-    background-color: #f0f0f0;
-    border-color: #009a96;
-}
+    .category-tab-bottom {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: #666;
+        font-weight: 500;
+        width: 100%;
+    }
 
-.category-tab.active {
-    background-color: #009a96;
-    color: white;
-    border-color: #009a96;
-}
+    .category-volume {
+        font-size: 11px;
+        color: #666;
+        font-weight: 500;
+        white-space: nowrap;
+    }
 
-.category-tab.active .category-badge {
-    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-    color: #009a96;
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
-}
+    .category-count {
+        font-size: 11px;
+        color: #666;
+        font-weight: 500;
+        white-space: nowrap;
+    }
 
-.modulex-categories-content {
-    min-height: 300px;
-}
+    .category-tab.active .category-count {
+        color: rgba(255, 255, 255, 0.9);
+    }
 
-.products-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    animation: fadeIn 0.3s;
-}
+    .category-tab.has-products:not(.active) .category-count {
+        color: #009a96;
+        font-weight: 600;
+    }
 
-.product-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
+    .category-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #cedc00 0%, #b8c800 100%);
+        color: #333;
+        font-size: 10px;
+        font-weight: bold;
+        padding: 4px 10px;
+        border-radius: 12px;
+        min-width: auto;
+        white-space: nowrap;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(206, 220, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        line-height: 1.3;
+    }
+
+    .category-tab:hover {
+        background-color: #f0f0f0;
+        border-color: #009a96;
+    }
+
+    .category-tab.active {
+        background-color: #009a96;
+        color: white;
+        border-color: #009a96;
+    }
+
+    .category-tab.has-products {
+        background-color: #f0f9f9;
+        border-color: #009a96;
+        border-width: 2px;
+    }
+
+    .category-tab.active.has-products {
+        background-color: #009a96;
+    }
+
+    .category-tab.active .category-badge {
+        background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+        color: #009a96;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+    }
+
+    .category-tab.has-products .category-badge {
+        background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
+        color: white;
+        box-shadow: 0 2px 4px rgba(0, 154, 150, 0.3);
+    }
+
+    .category-tab.active .category-volume {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .category-tab.has-products:not(.active) .category-volume {
+        color: #009a96;
+        font-weight: 600;
+    }
+
+    .modulex-categories-content {
+        min-height: 300px;
+    }
+
+    .products-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        animation: fadeIn 0.3s;
+    }
+
+    .product-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
 
 .product-card:hover {
-    box-shadow: 0 3px 10px rgba(0,154,150,0.2);
+    box-shadow: 0 3px 10px rgba(0, 154, 150, 0.2);
     background-color: #f8f9fa;
     border-left: 3px solid #009a96;
 }
 
-.product-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: #333;
+.product-card.active {
+    background: linear-gradient(135deg, #f0f9f9 0%, #ffffff 100%);
+    border: 2px solid #009a96;
+    box-shadow: 0 2px 8px rgba(0, 154, 150, 0.15);
+}
+
+    .product-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        line-height: 1.4;
+        margin-bottom: 4px;
+    }
+
+    .product-category {
+        font-size: 12px;
+        color: #009a96;
+        font-weight: 500;
+    }
+
+    .product-volume-inline {
+        color: #666;
+        font-weight: 400;
+        margin-left: 6px;
+    }
+
+.product-info-wrapper {
     flex: 1;
-    line-height: 1.4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.product-info-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-info-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .product-details {
@@ -319,59 +518,60 @@
     font-size: 13px;
     color: #666;
     flex-shrink: 0;
-}
-
-.product-detail-item {
-    display: flex;
-    gap: 5px;
     align-items: center;
 }
 
-.product-detail-label {
-    font-weight: 500;
-    color: #777;
-}
+    .product-detail-item {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
 
-.product-detail-value {
-    color: #333;
-    font-weight: 600;
-}
+    .product-detail-label {
+        font-weight: 500;
+        color: #777;
+    }
 
-.product-counter {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    background-color: #f8f9fa;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
+    .product-detail-value {
+        color: #333;
+        font-weight: 600;
+    }
 
-.counter-btn {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background-color: #009a96;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: bold;
-    transition: all 0.2s;
-}
+    .product-counter {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        background-color: #f8f9fa;
+        padding: 5px 10px;
+        border-radius: 8px;
+    }
 
-.counter-btn:hover {
-    background-color: #cedc00;
-    color: #333;
-    transform: scale(1.05);
-}
+    .counter-btn {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: #009a96;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        transition: all 0.2s;
+    }
 
-.counter-btn:active {
-    transform: scale(0.95);
-}
+    .counter-btn:hover {
+        background-color: #cedc00;
+        color: #333;
+        transform: scale(1.05);
+    }
+
+    .counter-btn:active {
+        transform: scale(0.95);
+    }
 
 .counter-btn:disabled {
     background-color: #ccc;
@@ -379,859 +579,1885 @@
     opacity: 0.5;
 }
 
-.counter-value {
-    min-width: 40px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-}
-
-.no-products {
-    text-align: center;
-    padding: 60px 20px;
-    color: #999;
-    font-size: 16px;
-}
-
-.modulex-total {
-    width: 300px;
-    min-width: 300px;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 154, 150, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    top: 20px;
-    height: fit-content;
-    max-height: calc(100vh - 40px);
-    overflow: hidden;
-    border: 1px solid rgba(0, 154, 150, 0.1);
-    transition: all 0.3s ease;
-}
-
-.modulex-total:hover {
-    box-shadow: 0 12px 40px rgba(0, 154, 150, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-}
-
-.total-header {
-    background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.counter-btn.delete-btn {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
     color: white;
-    position: relative;
-    overflow: hidden;
 }
 
-.total-header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    animation: pulse 3s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 0.6;
-    }
-}
-
-.total-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
-.total-icon {
-    font-size: 32px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-
-.total-body {
-    padding: 24px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    background: white;
-}
-
-.total-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border-radius: 12px;
-    border: 1px solid rgba(0, 154, 150, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.total-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: linear-gradient(180deg, #009a96 0%, #cedc00 100%);
-    transform: scaleY(0);
-    transition: transform 0.3s ease;
-}
-
-.total-item:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(0, 154, 150, 0.15);
-    border-color: rgba(0, 154, 150, 0.3);
-}
-
-.total-item:hover::before {
-    transform: scaleY(1);
-}
-
-.total-item-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.counter-btn.delete-btn:hover {
+    background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
     color: white;
-    flex-shrink: 0;
-    box-shadow: 0 4px 8px rgba(0, 154, 150, 0.2);
-}
-
-.total-item-icon .material-symbols-outlined {
-    font-size: 24px;
-}
-
-.total-item-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.total-label {
-    color: #666;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.total-value {
-    color: #009a96;
-    font-size: 24px;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-.total-item:hover .total-value {
-    color: #007a76;
     transform: scale(1.05);
 }
 
-.total-footer {
-    padding: 16px 20px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border-top: 1px solid rgba(0, 154, 150, 0.1);
-}
-
-.total-summary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px;
-    background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
-    border-radius: 10px;
-    color: white;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 4px 12px rgba(0, 154, 150, 0.3);
-    transition: all 0.3s ease;
-}
-
-.total-summary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 154, 150, 0.4);
-}
-
-.total-summary .material-symbols-outlined {
-    font-size: 20px;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+    .counter-value {
+        min-width: 40px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
     }
-    to {
-        opacity: 1;
+
+    .no-products {
+        text-align: center;
+        padding: 60px 20px;
+        color: #999;
+        font-size: 16px;
+    }
+
+    .modulex-total {
+        width: 300px;
+        min-width: 300px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 154, 150, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+        max-height: calc(100vh - 40px);
+        overflow: hidden;
+        border: 1px solid rgba(0, 154, 150, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .modulex-total:hover {
+        box-shadow: 0 12px 40px rgba(0, 154, 150, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .total-header {
+        background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .total-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 0.3;
+        }
+
+        50% {
+            opacity: 0.6;
+        }
+    }
+
+    .total-icon-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    .total-icon {
+        font-size: 32px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+    }
+
+
+    .total-body {
+        padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        background: white;
+    }
+
+    .total-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-radius: 12px;
+        border: 1px solid rgba(0, 154, 150, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .total-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #009a96 0%, #cedc00 100%);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .total-item:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0, 154, 150, 0.15);
+        border-color: rgba(0, 154, 150, 0.3);
+    }
+
+    .total-item:hover::before {
+        transform: scaleY(1);
+    }
+
+    .total-item-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        flex-shrink: 0;
+        box-shadow: 0 4px 8px rgba(0, 154, 150, 0.2);
+    }
+
+    .total-item-icon .material-symbols-outlined {
+        font-size: 24px;
+    }
+
+    .total-item-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .total-label {
+        color: #666;
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .total-value {
+        color: #009a96;
+        font-size: 24px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+
+    .total-item:hover .total-value {
+        color: #007a76;
+        transform: scale(1.05);
+    }
+
+    .total-footer {
+        padding: 16px 20px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-top: 1px solid rgba(0, 154, 150, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .total-summary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px;
+        background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
+        border-radius: 10px;
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0, 154, 150, 0.3);
+        transition: all 0.3s ease;
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+
+    .total-summary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 154, 150, 0.4);
+    }
+
+    .total-summary .material-symbols-outlined {
+        font-size: 20px;
+    }
+
+    .total-warning {
+        text-align: center;
+        font-size: 11px;
+        color: #666;
+        line-height: 1.4;
+        padding: 8px 12px;
+        margin-top: 4px;
+        font-style: italic;
+    }
+
+    .pdf-download-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #cedc00 0%, #b8c800 100%);
+        border: none;
+        border-radius: 10px;
+        color: #333;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(206, 220, 0, 0.3);
+        transition: all 0.3s ease;
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+
+    .pdf-download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(206, 220, 0, 0.4);
+        background: linear-gradient(135deg, #d9e800 0%, #c8d800 100%);
+    }
+
+    .pdf-download-btn:active {
         transform: translateY(0);
     }
-}
 
-@media (max-width: 768px) {
-    .modulex-wrapper {
-        flex-direction: column;
+    .pdf-download-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
     }
-    
-    .modulex-total {
-        width: 100%;
-        min-width: 100%;
-        position: relative;
+
+    .pdf-download-btn .material-symbols-outlined {
+        font-size: 20px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .edit-btn {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: #cedc00;
+        color: #333;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: all 0.2s;
+        flex-shrink: 0;
+    }
+
+    .edit-btn:hover {
+        background-color: #009a96;
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .edit-btn:active {
+        transform: scale(0.95);
+    }
+
+    .volume-edit-popup {
+        position: fixed;
         top: 0;
-        max-height: none;
-    }
-    
-    .modulex-categories-list {
-        gap: 8px;
-    }
-    
-    .category-tab {
-        padding: 10px 16px;
-        font-size: 13px;
-    }
-    
-    .search-section {
-        margin-bottom: 20px;
-    }
-    
-    .search-container {
-        padding: 10px 12px 10px 40px;
-    }
-    
-    .search-icon-inner {
-        font-size: 18px;
-        left: 12px;
-    }
-    
-    .product-card {
-        gap: 10px;
-    }
-    
-    .product-details {
-        gap: 8px;
-    }
-    
-    .product-counter {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
         justify-content: center;
     }
-    
-    .total-body {
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 16px;
-        gap: 10px;
+
+    .popup-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
     }
-    
-    .total-item {
-        flex: 1;
+
+    .popup-content {
+        position: relative;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow: hidden;
+        z-index: 1;
+        animation: popupSlideIn 0.3s ease-out;
+    }
+
+    @keyframes popupSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .popup-header {
+        background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+    }
+
+    .popup-header h3 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .popup-close {
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+    }
+
+    .popup-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+    }
+
+    .popup-body {
+        padding: 24px;
+    }
+
+    .popup-product-info {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .popup-product-name {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+    }
+
+    .popup-product-code {
+        font-size: 14px;
+        color: #009a96;
+        font-weight: 500;
+    }
+
+    .popup-section {
+        margin-bottom: 24px;
+    }
+
+    .popup-section-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .popup-dimensions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .popup-form-group {
+        margin-bottom: 20px;
+    }
+
+    .popup-form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: #666;
+        margin-bottom: 8px;
+    }
+
+    .popup-hint {
+        font-size: 12px;
+        color: #999;
+        margin-top: 6px;
+        font-style: italic;
+    }
+
+    .popup-calculated-info {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(0, 154, 150, 0.1);
+    }
+
+    .popup-calculated-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .popup-calculated-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .popup-calculated-label {
+        font-size: 14px;
+        color: #666;
+        font-weight: 500;
+    }
+
+    .popup-calculated-value {
+        font-size: 16px;
+        color: #009a96;
+        font-weight: 700;
+    }
+
+    .popup-original-value {
+        font-size: 16px;
+        color: #333;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .popup-input {
+        width: 100%;
         padding: 12px;
-        gap: 10px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        box-sizing: border-box;
+        transition: all 0.3s;
     }
-    
-    .total-item-icon {
-        width: 40px;
-        height: 40px;
+
+    .popup-input:focus {
+        outline: none;
+        border-color: #009a96;
+        box-shadow: 0 0 0 3px rgba(0, 154, 150, 0.1);
     }
-    
-    .total-item-icon .material-symbols-outlined {
-        font-size: 20px;
+
+    .popup-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
     }
-    
-    .total-value {
-        font-size: 20px;
+
+    .popup-btn {
+        flex: 1;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
     }
-    
-    .total-header {
-        padding: 16px;
+
+    .popup-btn-cancel {
+        background-color: #f0f0f0;
+        color: #666;
     }
-    
-    .total-icon {
-        font-size: 28px;
+
+    .popup-btn-cancel:hover {
+        background-color: #e0e0e0;
     }
-}
+
+    .popup-btn-save {
+        background: linear-gradient(135deg, #009a96 0%, #007a76 100%);
+        color: white;
+    }
+
+    .popup-btn-save:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 154, 150, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .modulex-wrapper {
+            flex-direction: column;
+        }
+
+        .modulex-total {
+            width: 100%;
+            min-width: 100%;
+            position: relative;
+            top: 0;
+            max-height: none;
+        }
+
+        .modulex-categories-list {
+            gap: 8px;
+        }
+
+        .category-tab {
+            padding: 10px 16px;
+            font-size: 13px;
+        }
+
+        .search-section {
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            padding: 10px 12px 10px 40px;
+        }
+
+        .search-icon-inner {
+            font-size: 18px;
+            left: 12px;
+        }
+
+        .product-card {
+            gap: 10px;
+        }
+
+        .product-details {
+            gap: 8px;
+        }
+
+        .product-counter {
+            justify-content: center;
+        }
+
+        .total-body {
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 16px;
+            gap: 10px;
+        }
+
+        .total-item {
+            flex: 1;
+            padding: 12px;
+            gap: 10px;
+        }
+
+        .total-item-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .total-item-icon .material-symbols-outlined {
+            font-size: 20px;
+        }
+
+        .total-value {
+            font-size: 20px;
+        }
+
+        .total-header {
+            padding: 16px;
+        }
+
+        .total-icon {
+            font-size: 28px;
+        }
+
+        .popup-content {
+            width: 95%;
+            max-height: 85vh;
+        }
+
+        .popup-body {
+            padding: 20px;
+        }
+
+        .popup-dimensions-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .popup-actions {
+            flex-direction: column;
+        }
+
+        .popup-btn {
+            width: 100%;
+        }
+
+        .pdf-download-btn {
+            font-size: 13px;
+            padding: 10px;
+        }
+
+        .pdf-download-btn .material-symbols-outlined {
+            font-size: 18px;
+        }
+
+        .total-warning {
+            font-size: 10px;
+            padding: 6px 8px;
+        }
+    }
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-// Sayaç değerlerini saklamak için global obje (ürün ID'sine göre)
-const productCounters = {};
-// Ürün verilerini saklamak için global obje (hacim hesabı için)
-const productData = {};
-// Tüm ürünleri saklamak için global array (arama için)
-let allProducts = [];
-// Aktif kategoriyi sakla
-let currentCategory = null;
+    // Sayaç değerlerini saklamak için global obje (ürün ID'sine göre)
+    const productCounters = {};
+    // Ürün verilerini saklamak için global obje (hacim hesabı için)
+    const productData = {};
+    // Düzenlenen hacim değerlerini saklamak için global obje (ürün ID'sine göre)
+    const editedVolumes = {};
+    // Düzenlenen boyut ve ağırlık değerlerini saklamak için global obje (ürün ID'sine göre)
+    const editedDimensions = {}; // {productId: {width, depth, height, weight}}
+    // Tüm ürünleri saklamak için global array (arama için)
+    let allProducts = [];
+    // Aktif kategoriyi sakla
+    let currentCategory = null;
+    // Popup'ta düzenlenen ürün ID'si
+    let editingProductId = null;
 
-// Toplam sayacı güncelle
-function updateTotalCounter() {
-    let totalAdet = 0;
-    let totalHacim = 0;
-    
-    // Tüm ürünleri döngüyle kontrol et
-    Object.keys(productCounters).forEach(productId => {
-        const count = productCounters[productId];
-        if (count > 0) {
-            totalAdet += count;
-            const product = productData[productId];
-            if (product && product.Volume) {
-                totalHacim += count * product.Volume;
+    // Toplam sayacı güncelle
+    function updateTotalCounter() {
+        let totalAdet = 0;
+        let totalHacim = 0;
+        let totalAgirlik = 0;
+
+        // Tüm ürünleri döngüyle kontrol et
+        Object.keys(productCounters).forEach(productId => {
+            const count = productCounters[productId];
+            if (count > 0) {
+                totalAdet += count;
+                const product = productData[productId];
+                // Düzenlenen hacim varsa onu kullan, yoksa orijinal hacmi kullan
+                const volume = editedVolumes[productId] !== undefined ? editedVolumes[productId] : (product && product.Volume ? product.Volume : 0);
+                if (volume > 0) {
+                    totalHacim += count * volume;
+                }
+                // Düzenlenen ağırlık varsa onu kullan, yoksa orijinal ağırlığı kullan
+                const edited = editedDimensions[productId];
+                const weight = edited?.weight || (product && product.Weight ? parseFloat(product.Weight) : 0);
+                if (weight > 0) {
+                    totalAgirlik += count * weight;
+                }
             }
+        });
+
+        // Adet göster
+        const totalAdetElement = document.getElementById('total-adet');
+        if (totalAdetElement) {
+            totalAdetElement.textContent = totalAdet;
         }
-    });
-    
-    // Adet göster
-    const totalAdetElement = document.getElementById('total-adet');
-    if (totalAdetElement) {
-        totalAdetElement.textContent = totalAdet;
-    }
-    
+
     // Hacim göster (2 ondalık basamak)
     const totalHacimElement = document.getElementById('total-hacim');
     if (totalHacimElement) {
         totalHacimElement.textContent = totalHacim.toFixed(2) + ' m³';
     }
-    
-    // Kategori badge'lerini güncelle
-    updateCategoryBadges();
-}
 
-// Dil kontrolü (URL'den)
-function getCurrentLang() {
-    const path = window.location.pathname;
-    if (path.includes('/tr/')) return 'tr';
-    if (path.includes('/en/')) return 'en';
-    return 'tr'; // Varsayılan Türkçe
-}
+        // Ağırlık göster (2 ondalık basamak)
+        const totalAgirlikElement = document.getElementById('total-agirlik');
+        if (totalAgirlikElement) {
+            totalAgirlikElement.textContent = totalAgirlik.toFixed(2) + ' kg';
+        }
 
-// Metni dile göre ayır
-function getTextByLang(text) {
-    if (!text || !text.includes('/')) return text;
-    const parts = text.split('/').map(p => p.trim());
-    const lang = getCurrentLang();
-    return lang === 'tr' ? parts[0] : parts[1] || parts[0];
-}
+        // Kategori badge'lerini güncelle
+        updateCategoryBadges();
 
-// Arama kutusunu temizle
-function clearSearch() {
-    const searchInput = document.getElementById('search-input');
-    const searchClear = document.getElementById('search-clear');
-    const suggestionsContainer = document.getElementById('search-suggestions');
-    
-    if (searchInput) {
-        searchInput.value = '';
-        performSearch('');
+        // PDF butonunun durumunu güncelle
+        const pdfBtn = document.getElementById('pdf-download-btn');
+        if (pdfBtn) {
+            pdfBtn.disabled = totalAdet === 0;
+        }
     }
-    
-    if (searchClear) {
-        searchClear.style.display = 'none';
-    }
-    
-    if (suggestionsContainer) {
-        suggestionsContainer.style.display = 'none';
-    }
-    
-    // Normal kategori görünümüne dön
-    if (currentCategory) {
-        renderProducts(currentCategory, null);
-    }
-}
 
-// Kategori badge'lerini güncelle (sepete eklenen ürün sayısı)
-function updateCategoryBadges() {
-    const categoryTabs = document.querySelectorAll('.category-tab');
-    
-    categoryTabs.forEach(tab => {
-        const category = tab.dataset.category;
-        const badge = tab.querySelector('.category-badge');
+    // PDF indirme fonksiyonu
+    async function downloadPDF() {
+        // jsPDF kütüphanesinin yüklü olup olmadığını kontrol et
+        if (typeof window.jspdf === 'undefined') {
+            alert('PDF kütüphanesi yükleniyor, lütfen bekleyin...');
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4'
+        });
         
-        if (!badge) return;
-        
-        // Bu kategoride sepete eklenen toplam ürün sayısını hesapla
-        let categoryAddedCount = 0;
-        
+        // Helvetica fontunu kullan (Arial'e benzer ve Türkçe karakterleri destekler)
+        doc.setFont('helvetica');
+
+        // Logo ekle
+        let logoBase64 = null;
+        let logoHeight = 0; // Logo yüksekliği + boşluk (logo varsa 20mm, yoksa 0)
+        let logoImgHeight = 15; // Logo resminin yüksekliği
+        try {
+            const logoPath = '/data/proje/hanbroscargo/web/img/logo.png';
+            const logoResponse = await fetch(logoPath);
+            if (logoResponse.ok) {
+                const logoBlob = await logoResponse.blob();
+                logoBase64 = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.readAsDataURL(logoBlob);
+                });
+                
+                // Logo boyutlarını hesapla (maksimum genişlik 50mm, yükseklik orantılı)
+                const logoWidth = 50;
+                logoImgHeight = 15; // Logo resminin yüksekliği
+                logoHeight = 20; // Logo + boşluk
+                doc.addImage(logoBase64, 'PNG', 10, 10, logoWidth, logoImgHeight);
+            }
+        } catch (error) {
+            console.warn('Logo yüklenemedi:', error);
+            // Logo yüklenemezse devam et
+        }
+
+        // Sepete eklenen ürünleri topla
+        const addedProducts = [];
         Object.keys(productCounters).forEach(productId => {
             const count = productCounters[productId];
             if (count > 0) {
                 const product = productData[productId];
-                if (product && product.ProductGroup === category) {
-                    categoryAddedCount += count;
+                if (product) {
+                    const edited = editedDimensions[productId];
+                    const volume = editedVolumes[productId] !== undefined ? editedVolumes[productId] : (product.Volume || 0);
+                    const weight = edited?.weight || (product.Weight ? parseFloat(product.Weight) : 0);
+                    
+                    addedProducts.push({
+                        name: getTextByLang(product.Name) || '-',
+                        code: product.Code || '-',
+                        category: getTextByLang(product.ProductGroup) || '-',
+                        count: count,
+                        volume: volume,
+                        weight: weight,
+                        totalVolume: count * volume,
+                        totalWeight: count * weight
+                    });
                 }
             }
         });
+
+        // Eğer sepette ürün yoksa uyarı ver
+        if (addedProducts.length === 0) {
+            alert('Sepetinizde ürün bulunmamaktadır.');
+            return;
+        }
+
+        // Toplam değerleri hesapla
+        let totalAdet = 0;
+        let totalHacim = 0;
+        let totalAgirlik = 0;
+        addedProducts.forEach(p => {
+            totalAdet += p.count;
+            totalHacim += p.totalVolume;
+            totalAgirlik += p.totalWeight;
+        });
         
-        // Badge'i güncelle
-        badge.textContent = categoryAddedCount;
+        // PDF başlığı
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(18);
+        doc.setTextColor(0, 154, 150);
+        doc.text('Ürün Listesi', 105, logoHeight + 10, { align: 'center' });
+
+        // Tarih
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('tr-TR', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        doc.setTextColor(100, 100, 100);
+        doc.text(`Tarih: ${dateStr}`, 105, logoHeight + 18, { align: 'center' });
+
+        // Tablo başlıkları
+        let yPos = logoHeight + 30;
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        doc.setTextColor(0, 0, 0);
         
-        // Eğer sepete eklenen ürün yoksa badge'i gizle
-        if (categoryAddedCount === 0) {
-            badge.style.display = 'none';
-        } else {
-            badge.style.display = 'block';
+        doc.text('#', 12, yPos);
+        // Türkçe karakterleri düzgün göster
+        doc.text('Ürün Adı', 20, yPos);
+        doc.text('Kategori', 85, yPos);
+        doc.text('Adet', 130, yPos);
+        doc.text('Hacim', 150, yPos);
+        doc.text('Ağırlık', 170, yPos);
+
+        // Çizgi
+        yPos += 5;
+        doc.setLineWidth(0.5);
+        doc.setDrawColor(0, 154, 150);
+        doc.line(10, yPos, 200, yPos);
+
+        // Ürün listesi
+        yPos += 8;
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        
+        addedProducts.forEach((product, index) => {
+            // Sayfa sonu kontrolü
+            if (yPos > 270) {
+                doc.addPage();
+                
+                // Yeni sayfada logo ekle
+                if (logoBase64) {
+                    const logoWidth = 50;
+                    doc.addImage(logoBase64, 'PNG', 10, 10, logoWidth, logoImgHeight);
+                }
+                
+                yPos = logoHeight + 30;
+                
+                // Yeni sayfada başlıkları tekrar yaz
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(10);
+                doc.text('#', 12, yPos);
+                // Türkçe karakterleri düzgün göster
+                doc.text('Ürün Adı', 20, yPos);
+                doc.text('Kategori', 85, yPos);
+                doc.text('Adet', 130, yPos);
+                doc.text('Hacim', 150, yPos);
+                doc.text('Ağırlık', 170, yPos);
+                yPos += 5;
+                doc.line(10, yPos, 200, yPos);
+                yPos += 8;
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(8);
+            }
+
+            doc.text((index + 1).toString(), 12, yPos);
+            
+            // Ürün adı (uzunsa kısalt) - Türkçe karakter desteği
+            const name = product.name.length > 40 ? product.name.substring(0, 37) + '...' : product.name;
+            // jsPDF Unicode karakterleri destekler, direkt kullan
+            doc.text(name, 20, yPos, { maxWidth: 60 });
+            
+            // Kategori (uzunsa kısalt) - Türkçe karakter desteği
+            const category = product.category.length > 20 ? product.category.substring(0, 17) + '...' : product.category;
+            doc.text(category, 85, yPos);
+            
+            doc.text(product.count.toString(), 130, yPos);
+            doc.text(product.totalVolume > 0 ? product.totalVolume.toFixed(2) : '-', 150, yPos);
+            
+            // Ağırlık - Türkçe karakter desteği (ağırlık değeri sayı olduğu için sorun olmaz)
+            const weightText = product.totalWeight > 0 ? product.totalWeight.toFixed(2) : '-';
+            doc.text(weightText, 170, yPos);
+            
+            yPos += 7;
+        });
+
+        // Toplam satırı
+        yPos += 5;
+        doc.setLineWidth(0.3);
+        doc.setDrawColor(200, 200, 200);
+        doc.line(10, yPos, 200, yPos);
+        
+        yPos += 8;
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        doc.setTextColor(0, 154, 150);
+        doc.text('TOPLAM', 20, yPos);
+        doc.text(totalAdet.toString(), 130, yPos);
+        doc.text(totalHacim > 0 ? totalHacim.toFixed(2) : '-', 150, yPos);
+        doc.text(totalAgirlik > 0 ? totalAgirlik.toFixed(2) : '-', 170, yPos);
+
+        // Dosya adı oluştur
+        const fileName = `urun-listesi-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}.pdf`;
+
+        // PDF'i indir
+        doc.save(fileName);
+    }
+
+    // Dil kontrolü (URL'den)
+    function getCurrentLang() {
+        const path = window.location.pathname;
+        if (path.includes('/tr/')) return 'tr';
+        if (path.includes('/en/')) return 'en';
+        return 'tr'; // Varsayılan Türkçe
+    }
+
+    // Metni dile göre ayır
+    function getTextByLang(text) {
+        if (!text || !text.includes('/')) return text;
+        const parts = text.split('/').map(p => p.trim());
+        const lang = getCurrentLang();
+        return lang === 'tr' ? parts[0] : parts[1] || parts[0];
+    }
+
+    // Hacim hesapla (cm'den m³'e çevir)
+    function calculateVolume(width, depth, height) {
+        if (!width || !depth || !height) return 0;
+        // cm'den m³'e çevir: (cm × cm × cm) / 1,000,000 = m³
+        return (parseFloat(width) * parseFloat(depth) * parseFloat(height)) / 1000000;
+    }
+
+    // Hacim hesaplamasını güncelle
+    function updateCalculatedVolume() {
+        const widthInput = document.getElementById('popup-width-input');
+        const depthInput = document.getElementById('popup-depth-input');
+        const heightInput = document.getElementById('popup-height-input');
+        const calculatedVolume = document.getElementById('popup-calculated-volume');
+
+        if (!widthInput || !depthInput || !heightInput || !calculatedVolume) return;
+
+        const width = widthInput.value;
+        const depth = depthInput.value;
+        const height = heightInput.value;
+
+    const volume = calculateVolume(width, depth, height);
+    calculatedVolume.textContent = volume > 0 ? `${volume.toFixed(2)} m³` : '0.00 m³';
+    }
+
+    // Popup aç
+    function openVolumeEditPopup(productId) {
+        const product = productData[productId];
+        if (!product) return;
+
+        editingProductId = productId;
+        const popup = document.getElementById('volume-edit-popup');
+        const productName = document.getElementById('popup-product-name');
+        const productCode = document.getElementById('popup-product-code');
+        const originalVolume = document.getElementById('popup-original-volume');
+        const widthInput = document.getElementById('popup-width-input');
+        const depthInput = document.getElementById('popup-depth-input');
+        const heightInput = document.getElementById('popup-height-input');
+        const weightInput = document.getElementById('popup-weight-input');
+
+        if (popup && productName && productCode && originalVolume) {
+            productName.textContent = getTextByLang(product.Name) || '-';
+            productCode.textContent = `Kod: ${product.Code || '-'}`;
+
+        // Orijinal hacmi göster
+        const originalVol = product.Volume || 0;
+        originalVolume.textContent = `${parseFloat(originalVol).toFixed(2)} m³`;
+
+            // Düzenlenen değerleri kontrol et
+            const edited = editedDimensions[productId];
+
+            if (widthInput) {
+                widthInput.value = edited?.width || '';
+            }
+            if (depthInput) {
+                depthInput.value = edited?.depth || '';
+            }
+            if (heightInput) {
+                heightInput.value = edited?.height || '';
+            }
+            if (weightInput) {
+                weightInput.value = edited?.weight || (product.Weight || '');
+            }
+
+            // Event listener'ları ekle (bir kez)
+            if (widthInput && !widthInput.dataset.listenerAdded) {
+                widthInput.addEventListener('input', updateCalculatedVolume);
+                widthInput.dataset.listenerAdded = 'true';
+            }
+            if (depthInput && !depthInput.dataset.listenerAdded) {
+                depthInput.addEventListener('input', updateCalculatedVolume);
+                depthInput.dataset.listenerAdded = 'true';
+            }
+            if (heightInput && !heightInput.dataset.listenerAdded) {
+                heightInput.addEventListener('input', updateCalculatedVolume);
+                heightInput.dataset.listenerAdded = 'true';
+            }
+
+            // İlk hacim hesaplamasını yap
+            updateCalculatedVolume();
+
+            popup.style.display = 'flex';
+            // İlk input'a odaklan
+            setTimeout(() => {
+                if (widthInput) widthInput.focus();
+            }, 100);
+        }
+    }
+
+    // Popup kapat
+    function closeVolumeEditPopup() {
+        const popup = document.getElementById('volume-edit-popup');
+        if (popup) {
+            popup.style.display = 'none';
+            editingProductId = null;
+        }
+    }
+
+    // ESC tuşu ile popup kapat
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeVolumeEditPopup();
         }
     });
-}
 
-// Öneri listesini göster (tüm ürünlerde)
-function showSuggestions(searchTerm) {
-    const suggestionsContainer = document.getElementById('search-suggestions');
-    if (!suggestionsContainer) return;
-    
-    const searchLower = searchTerm.toLowerCase().trim();
-    
-    if (searchLower === '') {
-        suggestionsContainer.style.display = 'none';
-        return;
-    }
-    
-    // Tüm aktif ürünlerde arama yap
-    let filteredProducts = allProducts.filter(product => {
-        if (!product.IsActive) return false;
-        const name = getTextByLang(product.Name || '').toLowerCase();
-        const code = (product.Code || '').toLowerCase();
-        return name.includes(searchLower) || code.includes(searchLower);
-    });
-    
-    // Maksimum 10 öneri göster
-    filteredProducts = filteredProducts.slice(0, 10);
-    
-    if (filteredProducts.length === 0) {
-        suggestionsContainer.innerHTML = '<div class="suggestion-empty">Sonuç bulunamadı</div>';
-        suggestionsContainer.style.display = 'block';
-        return;
-    }
-    
-    // Öneri listesini oluştur
-    suggestionsContainer.innerHTML = '';
-    filteredProducts.forEach(product => {
-        const item = document.createElement('div');
-        item.className = 'suggestion-item';
-        item.innerHTML = `
-            <div class="suggestion-code">${product.Code || '-'}</div>
-            <div class="suggestion-name">${getTextByLang(product.Name) || '-'}</div>
-            <div class="suggestion-category">${getTextByLang(product.ProductGroup) || '-'}</div>
-        `;
-        item.onclick = () => {
-            // Öneriye tıklandığında arama kutusunu doldur ve arama yap
-            const searchInput = document.getElementById('search-input');
-            if (searchInput) {
-                searchInput.value = getTextByLang(product.Name) || product.Code || '';
-                performSearch(searchInput.value);
-                suggestionsContainer.style.display = 'none';
+    // Hacim düzenlemesini kaydet
+    function saveVolumeEdit() {
+        if (!editingProductId) return;
+
+        const widthInput = document.getElementById('popup-width-input');
+        const depthInput = document.getElementById('popup-depth-input');
+        const heightInput = document.getElementById('popup-height-input');
+        const weightInput = document.getElementById('popup-weight-input');
+
+        if (!widthInput || !depthInput || !heightInput || !weightInput) return;
+
+        const width = parseFloat(widthInput.value);
+        const depth = parseFloat(depthInput.value);
+        const height = parseFloat(heightInput.value);
+        const weight = parseFloat(weightInput.value);
+
+        const product = productData[editingProductId];
+        if (!product) return;
+
+        // Boyutların hepsi dolu mu kontrol et
+        const hasDimensions = width > 0 && depth > 0 && height > 0;
+
+        if (hasDimensions) {
+            // Hacmi hesapla
+            const calculatedVolume = calculateVolume(width, depth, height);
+
+            // Boyut ve ağırlık bilgilerini kaydet
+            editedDimensions[editingProductId] = {
+                width: width,
+                depth: depth,
+                height: height,
+                weight: weight > 0 ? weight : null
+            };
+
+            // Hacmi kaydet
+            editedVolumes[editingProductId] = calculatedVolume;
+        } else {
+            // Eğer boyutlar eksikse, sadece ağırlık kaydedilebilir
+            if (weight > 0) {
+                if (!editedDimensions[editingProductId]) {
+                    editedDimensions[editingProductId] = {};
+                }
+                editedDimensions[editingProductId].weight = weight;
             }
-        };
-        suggestionsContainer.appendChild(item);
-    });
-    
-    suggestionsContainer.style.display = 'block';
+
+            // Eğer hiçbir değer yoksa, düzenlenen değerleri temizle
+            if (!hasDimensions && (!weight || weight <= 0)) {
+                delete editedDimensions[editingProductId];
+                delete editedVolumes[editingProductId];
+            }
+        }
+
+        // Eğer ürün sayacı 0 ise otomatik olarak 1 tane ekle
+        const currentCount = productCounters[editingProductId] || 0;
+        if (currentCount === 0) {
+            productCounters[editingProductId] = 1;
+            // Ürün kartlarındaki sayacı güncelle
+            updateProductCounterDisplay(editingProductId, 1);
+            // Card'a aktif durumu ekle
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const cardProductId = card.dataset.productId;
+                if (cardProductId && (cardProductId === editingProductId.toString() || parseInt(cardProductId) === editingProductId)) {
+                    card.classList.add('active');
+                }
+            });
+        }
+
+        // Toplamları güncelle
+        updateTotalCounter();
+
+        // Ürün kartlarındaki hacim gösterimini güncelle
+        updateProductVolumeDisplay(editingProductId);
+
+        // Popup'ı kapat
+        closeVolumeEditPopup();
+    }
+
+// Decrease butonunun içeriğini güncelle (1 ise çöp kutusu, 1'den fazla ise -)
+function updateDecreaseButton(button, count) {
+    if (!button) return;
+    if (count === 1) {
+        button.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">delete</span>';
+        button.classList.add('delete-btn');
+    } else if (count > 1) {
+        button.innerHTML = '−';
+        button.classList.remove('delete-btn');
+    }
 }
 
-// Arama yap (tüm ürünlerde)
-function performSearch(searchTerm) {
-    const searchLower = searchTerm.toLowerCase().trim();
-    const searchClear = document.getElementById('search-clear');
-    const categoriesContent = document.getElementById('categories-content');
-    
-    // Clear butonunu göster/gizle
-    if (searchClear) {
-        searchClear.style.display = searchLower ? 'block' : 'none';
+// Ürün kartındaki sayaç gösterimini güncelle
+function updateProductCounterDisplay(productId, count) {
+        // Tüm ürün kartlarını bul
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            const cardProductId = card.dataset.productId;
+            // String karşılaştırması yap
+            if (cardProductId && (cardProductId === productId.toString() || parseInt(cardProductId) === productId)) {
+                // Sayaç gösterimini bul ve güncelle
+                const countValue = card.querySelector('.counter-value');
+                const counter = card.querySelector('.product-counter');
+
+                if (counter) {
+                    // Tüm butonları bul
+                    const decreaseBtn = counter.querySelector('.counter-btn:first-of-type');
+                    const editBtn = counter.querySelector('.edit-btn');
+
+                    if (countValue) {
+                        countValue.textContent = count;
+                        countValue.style.display = count > 0 ? 'block' : 'none';
+                    }
+
+                    if (decreaseBtn) {
+                        decreaseBtn.style.display = count > 0 ? 'flex' : 'none';
+                        // Buton içeriğini güncelle (1 ise çöp kutusu, 1'den fazla ise -)
+                        updateDecreaseButton(decreaseBtn, count);
+                    }
+
+                    if (editBtn) {
+                        editBtn.style.display = count > 0 ? 'flex' : 'none';
+                    }
+                }
+                
+                // Card'a aktif durumu ekle/kaldır
+                if (count > 0) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            }
+        });
     }
-    
-    // Öneri listesini gizle
-    const suggestionsContainer = document.getElementById('search-suggestions');
-    if (suggestionsContainer) {
-        suggestionsContainer.style.display = 'none';
+
+    // Ürün kartındaki hacim gösterimini güncelle
+    function updateProductVolumeDisplay(productId) {
+        const product = productData[productId];
+        if (!product) return;
+
+        // Tüm ürün kartlarını bul
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            const cardProductId = card.dataset.productId;
+            // String karşılaştırması yap
+            if (cardProductId && (cardProductId === productId.toString() || parseInt(cardProductId) === productId)) {
+                // Kategori bilgisini bul ve hacim bilgisini güncelle
+                const categoryInfo = card.querySelector('.product-category');
+                if (categoryInfo) {
+                    const volume = editedVolumes[productId] !== undefined ? editedVolumes[productId] : (product.Volume || 0);
+                    const categoryText = getTextByLang(product.ProductGroup) || '-';
+                    
+                    if (volume > 0 || product.Volume) {
+                        categoryInfo.innerHTML = `${categoryText} <span class="product-volume-inline">• ${parseFloat(volume).toFixed(2)} m³</span>`;
+                    } else {
+                        categoryInfo.textContent = categoryText;
+                    }
+                }
+            }
+        });
     }
-    
-    if (searchLower === '') {
-        // Arama boşsa normal kategori gösterimi
+
+    // Arama kutusunu temizle
+    function clearSearch() {
+        const searchInput = document.getElementById('search-input');
+        const searchClear = document.getElementById('search-clear');
+        const suggestionsContainer = document.getElementById('search-suggestions');
+
+        if (searchInput) {
+            searchInput.value = '';
+            performSearch('');
+        }
+
+        if (searchClear) {
+            searchClear.style.display = 'none';
+        }
+
+        if (suggestionsContainer) {
+            suggestionsContainer.style.display = 'none';
+        }
+
+        // Normal kategori görünümüne dön
         if (currentCategory) {
             renderProducts(currentCategory, null);
+        } else {
+            // Eğer kategori seçilmemişse, ilk kategoriyi göster
+            const firstTab = document.querySelector('.category-tab');
+            if (firstTab) {
+                const firstCategory = firstTab.dataset.category;
+                if (firstCategory) {
+                    // İlk tabı aktif yap
+                    document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                    firstTab.classList.add('active');
+                    renderProducts(firstCategory, null);
+                }
+            }
         }
-    } else {
-        // Tüm ürünlerde arama yap
+    }
+
+    // Kategori badge'lerini güncelle (sepete eklenen ürün sayısı ve metreküp)
+    function updateCategoryBadges() {
+        const categoryTabs = document.querySelectorAll('.category-tab');
+
+        categoryTabs.forEach(tab => {
+            const category = tab.dataset.category;
+            const categoryVolume = tab.querySelector('.category-volume');
+            const categoryCount = tab.querySelector('.category-count');
+
+            if (!categoryVolume || !categoryCount) return;
+
+            // Bu kategoride sepete eklenen toplam ürün sayısını ve metreküp hesapla
+            let categoryAddedCount = 0;
+            let categoryTotalVolume = 0;
+
+            Object.keys(productCounters).forEach(productId => {
+                const count = productCounters[productId];
+                if (count > 0) {
+                    const product = productData[productId];
+                    if (product && product.ProductGroup === category) {
+                        categoryAddedCount += count;
+                        // Düzenlenen hacim varsa onu kullan, yoksa orijinal hacmi kullan
+                        const volume = editedVolumes[productId] !== undefined ? editedVolumes[productId] : (product.Volume || 0);
+                        if (volume > 0) {
+                            categoryTotalVolume += count * volume;
+                        }
+                    }
+                }
+            });
+
+            // Ürün eklenen kategorilere aktif tasarımı ekle
+            if (categoryAddedCount > 0) {
+                tab.classList.add('has-products');
+                
+                // Alt satırda metre küp ve toplam sayı
+                categoryVolume.textContent = `${categoryTotalVolume.toFixed(2)} m³`;
+                categoryVolume.style.display = 'inline';
+                
+                categoryCount.textContent = `${categoryAddedCount} adet`;
+                categoryCount.style.display = 'inline';
+            } else {
+                tab.classList.remove('has-products');
+                
+                // Alt satırı gizle
+                categoryVolume.style.display = 'none';
+                categoryCount.style.display = 'none';
+            }
+        });
+    }
+
+    // Öneri listesini göster (tüm ürünlerde)
+    function showSuggestions(searchTerm) {
+        const suggestionsContainer = document.getElementById('search-suggestions');
+        if (!suggestionsContainer) return;
+
+        const searchLower = searchTerm.toLowerCase().trim();
+
+        if (searchLower === '') {
+            suggestionsContainer.style.display = 'none';
+            return;
+        }
+
+        // Tüm aktif ürünlerde arama yap
         let filteredProducts = allProducts.filter(product => {
             if (!product.IsActive) return false;
             const name = getTextByLang(product.Name || '').toLowerCase();
             const code = (product.Code || '').toLowerCase();
             return name.includes(searchLower) || code.includes(searchLower);
         });
-        
-        // Arama sonuçlarını göster
-        renderSearchResults(filteredProducts);
-    }
-}
 
-// Arama sonuçlarını render et
-function renderSearchResults(products) {
-    const categoriesContent = document.getElementById('categories-content');
-    if (!categoriesContent) return;
-    
-    if (products.length === 0) {
-        categoriesContent.innerHTML = '<div class="no-products">Arama sonucu bulunamadı</div>';
-        return;
-    }
-    
-    const grid = document.createElement('div');
-    grid.className = 'products-grid';
-    
-    products.forEach(product => {
-        const productId = product.ID;
-        
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        
-        // İsim (dile göre)
-        const name = document.createElement('div');
-        name.className = 'product-name';
-        name.textContent = getTextByLang(product.Name) || '-';
-        
-        // Kategori bilgisi
-        const categoryInfo = document.createElement('div');
-        categoryInfo.className = 'product-category';
-        categoryInfo.textContent = getTextByLang(product.ProductGroup) || '-';
-        categoryInfo.style.fontSize = '12px';
-        categoryInfo.style.color = '#009a96';
-        categoryInfo.style.marginTop = '4px';
-        
-        // Detaylar
-        const details = document.createElement('div');
-        details.className = 'product-details';
-        
-        // Hacim bilgisi
-        if (product.Volume) {
-            const volumeItem = document.createElement('div');
-            volumeItem.className = 'product-detail-item';
-            volumeItem.innerHTML = `
-                <span class="product-detail-label">Hacim:</span>
-                <span class="product-detail-value">${product.Volume} m³</span>
-            `;
-            details.appendChild(volumeItem);
-        }
-        
-        // Ağırlık bilgisi
-        if (product.Weight) {
-            const weightItem = document.createElement('div');
-            weightItem.className = 'product-detail-item';
-            weightItem.innerHTML = `
-                <span class="product-detail-label">Ağırlık:</span>
-                <span class="product-detail-value">${product.Weight} kg</span>
-            `;
-            details.appendChild(weightItem);
-        }
-        
-        // Sayaç (Counter)
-        const counter = document.createElement('div');
-        counter.className = 'product-counter';
-        
-        // Kaydedilmiş değeri kontrol et
-        let count = productCounters[productId] || 0;
-        
-        const decreaseBtn = document.createElement('button');
-        decreaseBtn.className = 'counter-btn';
-        decreaseBtn.innerHTML = '−';
-        decreaseBtn.disabled = count === 0;
-        
-        const countValue = document.createElement('span');
-        countValue.className = 'counter-value';
-        countValue.textContent = count;
-        
-        const increaseBtn = document.createElement('button');
-        increaseBtn.className = 'counter-btn';
-        increaseBtn.innerHTML = '+';
-        
-        // Artır butonu
-        increaseBtn.onclick = () => {
-            count++;
-            productCounters[productId] = count;
-            countValue.textContent = count;
-            decreaseBtn.disabled = false;
-            updateTotalCounter();
-        };
-        
-        // Azalt butonu
-        decreaseBtn.onclick = () => {
-            if (count > 0) {
-                count--;
-                productCounters[productId] = count;
-                countValue.textContent = count;
-                if (count === 0) {
-                    decreaseBtn.disabled = true;
-                }
-                updateTotalCounter();
-            }
-        };
-        
-        counter.appendChild(decreaseBtn);
-        counter.appendChild(countValue);
-        counter.appendChild(increaseBtn);
-        
-        card.appendChild(name);
-        card.appendChild(categoryInfo);
-        card.appendChild(details);
-        card.appendChild(counter);
-        grid.appendChild(card);
-    });
-    
-    categoriesContent.innerHTML = '';
-    categoriesContent.appendChild(grid);
-}
+        // Maksimum 10 öneri göster
+        filteredProducts = filteredProducts.slice(0, 10);
 
-// Ürün verilerini yükle
-fetch('https://api.hanbroscargo.workers.dev/groups')
-    .then(response => response.json())
-    .then(products => {
-        // Tüm ürünleri sakla
-        allProducts = products;
-        
-        // Tüm ürünleri productData'ya kaydet (hacim hesabı için)
-        products.forEach(product => {
-            productData[product.ID] = product;
-        });
-        
-        // Benzersiz kategorileri çıkar
-        const categories = [...new Set(products.map(p => p.ProductGroup))].filter(c => c);
-        
-        // Kategori tablarını oluştur
-        const categoriesList = document.getElementById('categories-list');
-        const categoriesContent = document.getElementById('categories-content');
-        
-        if (!categoriesList || !categoriesContent) return;
-        
-        // İlk kategoriyi aktif yap
-        let activeCategory = categories[0];
-        
-        // Kategori tablarını render et
-        categories.forEach((category, index) => {
-            const tab = document.createElement('div');
-            tab.className = 'category-tab' + (index === 0 ? ' active' : '');
-            tab.dataset.category = category; // Orijinal kategoriyi sakla
-            
-            // Kategori adı
-            const categoryName = document.createElement('span');
-            categoryName.textContent = getTextByLang(category);
-            
-            // Badge (sepete eklenen ürün sayısı - başlangıçta 0, gizli)
-            const badge = document.createElement('span');
-            badge.className = 'category-badge';
-            badge.textContent = '0';
-            badge.style.display = 'none';
-            
-            tab.appendChild(categoryName);
-            tab.appendChild(badge);
-            
-            tab.onclick = () => {
-                // Tüm tabları pasif yap
-                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
-                // Bu tabı aktif yap
-                tab.classList.add('active');
-                // Arama input'unu temizle
+        if (filteredProducts.length === 0) {
+            suggestionsContainer.innerHTML = '<div class="suggestion-empty">Sonuç bulunamadı</div>';
+            suggestionsContainer.style.display = 'block';
+            return;
+        }
+
+        // Öneri listesini oluştur
+        suggestionsContainer.innerHTML = '';
+        filteredProducts.forEach(product => {
+            const item = document.createElement('div');
+            item.className = 'suggestion-item';
+            item.innerHTML = `
+            <div class="suggestion-code">${product.Code || '-'}</div>
+            <div class="suggestion-name">${getTextByLang(product.Name) || '-'}</div>
+            <div class="suggestion-category">${getTextByLang(product.ProductGroup) || '-'}</div>
+        `;
+            item.onclick = () => {
+                // Öneriye tıklandığında arama kutusunu doldur ve arama yap
                 const searchInput = document.getElementById('search-input');
                 if (searchInput) {
-                    searchInput.value = '';
-                }
-                // İçeriği güncelle (orijinal kategoriyi kullan)
-                renderProducts(tab.dataset.category);
-            };
-            categoriesList.appendChild(tab);
-        });
-        
-        // Arama input'una event listener ekle
-        const searchInput = document.getElementById('search-input');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                const value = e.target.value;
-                showSuggestions(value);
-                performSearch(value);
-            });
-            
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    const suggestionsContainer = document.getElementById('search-suggestions');
-                    if (suggestionsContainer) {
-                        suggestionsContainer.style.display = 'none';
-                    }
-                }
-            });
-            
-            // Dışarı tıklandığında öneri listesini gizle
-            document.addEventListener('click', (e) => {
-                const searchWrapper = document.querySelector('.search-wrapper');
-                const suggestionsContainer = document.getElementById('search-suggestions');
-                if (searchWrapper && suggestionsContainer && !searchWrapper.contains(e.target)) {
+                    searchInput.value = getTextByLang(product.Name) || product.Code || '';
+                    performSearch(searchInput.value);
                     suggestionsContainer.style.display = 'none';
                 }
-            });
+            };
+            suggestionsContainer.appendChild(item);
+        });
+
+        suggestionsContainer.style.display = 'block';
+    }
+
+    // Arama yap (tüm ürünlerde)
+    function performSearch(searchTerm) {
+        const searchLower = searchTerm.toLowerCase().trim();
+        const searchClear = document.getElementById('search-clear');
+        const categoriesContent = document.getElementById('categories-content');
+
+        // Clear butonunu göster/gizle
+        if (searchClear) {
+            searchClear.style.display = searchLower ? 'block' : 'none';
         }
-        
-        // Ürünleri render et
-        function renderProducts(category, searchTerm = null) {
-            // Aktif kategoriyi güncelle
-            currentCategory = category;
+
+        // Öneri listesini gizle
+        const suggestionsContainer = document.getElementById('search-suggestions');
+        if (suggestionsContainer) {
+            suggestionsContainer.style.display = 'none';
+        }
+
+        if (searchLower === '') {
+            // Arama boşsa normal kategori gösterimi
+            if (currentCategory) {
+                renderProducts(currentCategory, null);
+            } else {
+                // Eğer kategori seçilmemişse, ilk kategoriyi göster
+                const firstTab = document.querySelector('.category-tab');
+                if (firstTab) {
+                    const firstCategory = firstTab.dataset.category;
+                    if (firstCategory) {
+                        // İlk tabı aktif yap
+                        document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                        firstTab.classList.add('active');
+                        renderProducts(firstCategory, null);
+                    }
+                }
+            }
+        } else {
+            // Tüm ürünlerde arama yap
+            let filteredProducts = allProducts.filter(product => {
+                if (!product.IsActive) return false;
+                const name = getTextByLang(product.Name || '').toLowerCase();
+                const code = (product.Code || '').toLowerCase();
+                return name.includes(searchLower) || code.includes(searchLower);
+            });
+
+            // Arama sonuçlarını göster
+            renderSearchResults(filteredProducts);
+        }
+    }
+
+    // Arama sonuçlarını render et
+    function renderSearchResults(products) {
+        const categoriesContent = document.getElementById('categories-content');
+        if (!categoriesContent) return;
+
+        if (products.length === 0) {
+            categoriesContent.innerHTML = '<div class="no-products">Arama sonucu bulunamadı</div>';
+            return;
+        }
+
+        const grid = document.createElement('div');
+        grid.className = 'products-grid';
+
+        products.forEach(product => {
+            const productId = product.ID;
+
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.dataset.productId = productId; // Ürün ID'sini sakla
+
+            // Bilgi wrapper'ı (isim, kategori ve detaylar)
+            const infoWrapper = document.createElement('div');
+            infoWrapper.className = 'product-info-wrapper';
+
+            // İçerik wrapper'ı (isim ve kategori)
+            const infoContent = document.createElement('div');
+            infoContent.className = 'product-info-content';
+
+            // İsim (dile göre)
+            const name = document.createElement('div');
+            name.className = 'product-name';
+            name.textContent = getTextByLang(product.Name) || '-';
+
+            // Kategori bilgisi
+            const categoryInfo = document.createElement('div');
+            categoryInfo.className = 'product-category';
+            const categoryText = getTextByLang(product.ProductGroup) || '-';
             
-            let filteredProducts = allProducts.filter(p => p.ProductGroup === category && p.IsActive === true);
-            
-            // Arama terimi varsa filtrele
-            if (searchTerm) {
-                filteredProducts = filteredProducts.filter(product => {
-                    const name = getTextByLang(product.Name || '').toLowerCase();
-                    const code = (product.Code || '').toLowerCase();
-                    return name.includes(searchTerm) || code.includes(searchTerm);
+            // Hacim bilgisi (düzenlenen değeri kullan)
+            const volume = editedVolumes[productId] !== undefined ? editedVolumes[productId] : (product.Volume || 0);
+            if (volume > 0 || product.Volume) {
+                categoryInfo.innerHTML = `${categoryText} <span class="product-volume-inline">• ${parseFloat(volume).toFixed(2)} m³</span>`;
+            } else {
+                categoryInfo.textContent = categoryText;
+            }
+
+            infoContent.appendChild(name);
+            infoContent.appendChild(categoryInfo);
+
+            // Detaylar
+            const details = document.createElement('div');
+            details.className = 'product-details';
+            // Kategori ve detayları bir arada tutan row wrapper
+            const infoRow = document.createElement('div');
+            infoRow.className = 'product-info-row';
+            infoRow.appendChild(infoContent);
+            infoRow.appendChild(details);
+
+            // Ağırlık bilgisi (düzenlenen değeri kullan)
+            const edited = editedDimensions[productId];
+            const weight = edited?.weight || product.Weight;
+            if (weight) {
+                const weightItem = document.createElement('div');
+                weightItem.className = 'product-detail-item';
+                weightItem.innerHTML = `
+                <span class="product-detail-label">Ağırlık:</span>
+                <span class="product-detail-value">${weight} kg</span>
+            `;
+                details.appendChild(weightItem);
+            }
+
+            // Sayaç (Counter)
+            const counter = document.createElement('div');
+            counter.className = 'product-counter';
+
+            // Kaydedilmiş değeri kontrol et
+            let count = productCounters[productId] || 0;
+
+            // Card'a aktif durumu ekle (count > 0 ise)
+            if (count > 0) {
+                card.classList.add('active');
+            }
+
+            const decreaseBtn = document.createElement('button');
+            decreaseBtn.className = 'counter-btn';
+            // Count değerine göre buton içeriğini ayarla
+            if (count === 1) {
+                decreaseBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">delete</span>';
+                decreaseBtn.classList.add('delete-btn');
+            } else if (count > 1) {
+                decreaseBtn.innerHTML = '−';
+                decreaseBtn.classList.remove('delete-btn');
+            }
+            decreaseBtn.style.display = count > 0 ? 'flex' : 'none';
+
+            const countValue = document.createElement('span');
+            countValue.className = 'counter-value';
+            countValue.textContent = count;
+            countValue.style.display = count > 0 ? 'block' : 'none';
+
+            const increaseBtn = document.createElement('button');
+            increaseBtn.className = 'counter-btn';
+            increaseBtn.innerHTML = '+';
+
+            // Edit butonu
+            const editBtn = document.createElement('button');
+            editBtn.className = 'edit-btn';
+            editBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">edit</span>';
+            editBtn.title = 'Hacim düzenle';
+            editBtn.style.display = count > 0 ? 'flex' : 'none';
+            editBtn.onclick = () => openVolumeEditPopup(productId);
+
+            // Artır butonu
+            increaseBtn.onclick = () => {
+                count++;
+                productCounters[productId] = count;
+                countValue.textContent = count;
+                // Butonları göster
+                decreaseBtn.style.display = 'flex';
+                countValue.style.display = 'block';
+                editBtn.style.display = 'flex';
+                // Buton içeriğini güncelle (1 ise çöp kutusu, 1'den fazla ise -)
+                updateDecreaseButton(decreaseBtn, count);
+                // Card'a aktif durumu ekle
+                card.classList.add('active');
+                updateTotalCounter();
+            };
+
+            // Azalt butonu
+            decreaseBtn.onclick = () => {
+                if (count > 0) {
+                    count--;
+                    productCounters[productId] = count;
+                    countValue.textContent = count;
+                    if (count === 0) {
+                        // Butonları gizle
+                        decreaseBtn.style.display = 'none';
+                        countValue.style.display = 'none';
+                        editBtn.style.display = 'none';
+                        // Card'dan aktif durumu kaldır
+                        card.classList.remove('active');
+                    } else {
+                        // Buton içeriğini güncelle (1 ise çöp kutusu, 1'den fazla ise -)
+                        updateDecreaseButton(decreaseBtn, count);
+                    }
+                    updateTotalCounter();
+                }
+            };
+
+            counter.appendChild(decreaseBtn);
+            counter.appendChild(countValue);
+            counter.appendChild(increaseBtn);
+            counter.appendChild(editBtn);
+
+            // infoWrapper içine infoRow ekle (infoContent ve details zaten içinde)
+            infoWrapper.appendChild(infoRow);
+
+            card.appendChild(infoWrapper);
+            card.appendChild(counter);
+            grid.appendChild(card);
+        });
+
+        categoriesContent.innerHTML = '';
+        categoriesContent.appendChild(grid);
+    }
+
+    // Ürün verilerini yükle
+    fetch('https://api.hanbroscargo.workers.dev/groups')
+        .then(response => response.json())
+        .then(products => {
+            // Tüm ürünleri sakla
+            allProducts = products;
+
+            // Tüm ürünleri productData'ya kaydet (hacim hesabı için)
+            products.forEach(product => {
+                productData[product.ID] = product;
+            });
+
+            // Benzersiz kategorileri çıkar
+            const categories = [...new Set(products.map(p => p.ProductGroup))].filter(c => c);
+
+            // Kategori tablarını oluştur
+            const categoriesList = document.getElementById('categories-list');
+            const categoriesContent = document.getElementById('categories-content');
+
+            if (!categoriesList || !categoriesContent) return;
+
+            // İlk kategoriyi aktif yap
+            let activeCategory = categories[0];
+
+            // Kategori tablarını render et
+            categories.forEach((category, index) => {
+                const tab = document.createElement('div');
+                tab.className = 'category-tab' + (index === 0 ? ' active' : '');
+                tab.dataset.category = category; // Orijinal kategoriyi sakla
+
+                // Üst satır (sadece kategori adı)
+                const topRow = document.createElement('div');
+                topRow.className = 'category-tab-row';
+
+                // Kategori adı
+                const categoryName = document.createElement('span');
+                categoryName.textContent = getTextByLang(category);
+
+                topRow.appendChild(categoryName);
+
+                // Alt satır (metre küp + toplam sayı)
+                const bottomRow = document.createElement('div');
+                bottomRow.className = 'category-tab-bottom';
+
+                // Hacim toplamı (başlangıçta gizli)
+                const categoryVolume = document.createElement('span');
+                categoryVolume.className = 'category-volume';
+                categoryVolume.textContent = '';
+                categoryVolume.style.display = 'none';
+                categoryVolume.dataset.category = category;
+
+                // Toplam sayı (alt satırda gösterilecek)
+                const categoryCount = document.createElement('span');
+                categoryCount.className = 'category-count';
+                categoryCount.textContent = '';
+                categoryCount.style.display = 'none';
+
+                bottomRow.appendChild(categoryVolume);
+                bottomRow.appendChild(categoryCount);
+
+                tab.appendChild(topRow);
+                tab.appendChild(bottomRow);
+
+                tab.onclick = () => {
+                    // Tüm tabları pasif yap
+                    document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                    // Bu tabı aktif yap
+                    tab.classList.add('active');
+                    // Arama input'unu temizle
+                    const searchInput = document.getElementById('search-input');
+                    if (searchInput) {
+                        searchInput.value = '';
+                    }
+                    // İçeriği güncelle (orijinal kategoriyi kullan)
+                    renderProducts(tab.dataset.category);
+                };
+                categoriesList.appendChild(tab);
+            });
+
+            // Arama input'una event listener ekle
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const value = e.target.value;
+                    showSuggestions(value);
+                    performSearch(value);
+                });
+
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const suggestionsContainer = document.getElementById('search-suggestions');
+                        if (suggestionsContainer) {
+                            suggestionsContainer.style.display = 'none';
+                        }
+                    }
+                });
+
+                // Dışarı tıklandığında öneri listesini gizle
+                document.addEventListener('click', (e) => {
+                    const searchWrapper = document.querySelector('.search-wrapper');
+                    const suggestionsContainer = document.getElementById('search-suggestions');
+                    if (searchWrapper && suggestionsContainer && !searchWrapper.contains(e.target)) {
+                        suggestionsContainer.style.display = 'none';
+                    }
                 });
             }
-            
-            if (filteredProducts.length === 0) {
-                categoriesContent.innerHTML = '<div class="no-products">Bu kategoride aktif ürün bulunmuyor</div>';
-                return;
-            }
-            
-            const grid = document.createElement('div');
-            grid.className = 'products-grid';
-            
-            filteredProducts.forEach(product => {
-                const productId = product.ID;
-                
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                
-                // İsim (dile göre)
-                const name = document.createElement('div');
-                name.className = 'product-name';
-                name.textContent = getTextByLang(product.Name) || '-';
-                
-                // Kategori bilgisi
-                const categoryInfo = document.createElement('div');
-                categoryInfo.className = 'product-category';
-                categoryInfo.textContent = getTextByLang(product.ProductGroup) || '-';
-                categoryInfo.style.fontSize = '12px';
-                categoryInfo.style.color = '#009a96';
-                categoryInfo.style.marginTop = '4px';
-                
-                // Detaylar
-                const details = document.createElement('div');
-                details.className = 'product-details';
-                
-                // Hacim bilgisi
-                if (product.Volume) {
-                    const volumeItem = document.createElement('div');
-                    volumeItem.className = 'product-detail-item';
-                    volumeItem.innerHTML = `
-                        <span class="product-detail-label">Hacim:</span>
-                        <span class="product-detail-value">${product.Volume} m³</span>
-                    `;
-                    details.appendChild(volumeItem);
+
+            // Ürünleri render et
+            function renderProducts(category, searchTerm = null) {
+                // Aktif kategoriyi güncelle
+                currentCategory = category;
+
+                let filteredProducts = allProducts.filter(p => p.ProductGroup === category && p.IsActive === true);
+
+                // Arama terimi varsa filtrele
+                if (searchTerm) {
+                    filteredProducts = filteredProducts.filter(product => {
+                        const name = getTextByLang(product.Name || '').toLowerCase();
+                        const code = (product.Code || '').toLowerCase();
+                        return name.includes(searchTerm) || code.includes(searchTerm);
+                    });
                 }
-                
-                // Ağırlık bilgisi
-                if (product.Weight) {
-                    const weightItem = document.createElement('div');
-                    weightItem.className = 'product-detail-item';
-                    weightItem.innerHTML = `
+
+                if (filteredProducts.length === 0) {
+                    categoriesContent.innerHTML = '<div class="no-products">Bu kategoride aktif ürün bulunmuyor</div>';
+                    return;
+                }
+
+                const grid = document.createElement('div');
+                grid.className = 'products-grid';
+
+                filteredProducts.forEach(product => {
+                    const productId = product.ID;
+
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.dataset.productId = productId; // Ürün ID'sini sakla
+
+                    // Bilgi wrapper'ı (isim, kategori ve detaylar)
+                    const infoWrapper = document.createElement('div');
+                    infoWrapper.className = 'product-info-wrapper';
+
+                    // İçerik wrapper'ı (isim ve kategori)
+                    const infoContent = document.createElement('div');
+                    infoContent.className = 'product-info-content';
+
+                    // İsim (dile göre)
+                    const name = document.createElement('div');
+                    name.className = 'product-name';
+                    name.textContent = getTextByLang(product.Name) || '-';
+
+                    // Kategori bilgisi
+                    const categoryInfo = document.createElement('div');
+                    categoryInfo.className = 'product-category';
+                    const categoryText = getTextByLang(product.ProductGroup) || '-';
+                    
+                    // Hacim bilgisi (düzenlenen değeri kullan)
+                    const volume = editedVolumes[productId] !== undefined ? editedVolumes[productId] : (product.Volume || 0);
+                    if (volume > 0 || product.Volume) {
+                        categoryInfo.innerHTML = `${categoryText} <span class="product-volume-inline">• ${parseFloat(volume).toFixed(2)} m³</span>`;
+                    } else {
+                        categoryInfo.textContent = categoryText;
+                    }
+
+                    infoContent.appendChild(name);
+                    infoContent.appendChild(categoryInfo);
+
+                    // Detaylar
+                    const details = document.createElement('div');
+                    details.className = 'product-details';
+
+                    // Kategori ve detayları bir arada tutan row wrapper
+                    const infoRow = document.createElement('div');
+                    infoRow.className = 'product-info-row';
+                    infoRow.appendChild(infoContent);
+                    infoRow.appendChild(details);
+
+                    // Ağırlık bilgisi (düzenlenen değeri kullan)
+                    const edited = editedDimensions[productId];
+                    const weight = edited?.weight || product.Weight;
+                    if (weight) {
+                        const weightItem = document.createElement('div');
+                        weightItem.className = 'product-detail-item';
+                        weightItem.innerHTML = `
                         <span class="product-detail-label">Ağırlık:</span>
-                        <span class="product-detail-value">${product.Weight} kg</span>
+                        <span class="product-detail-value">${weight} kg</span>
                     `;
-                    details.appendChild(weightItem);
-                }
-                
-                // Sayaç (Counter)
-                const counter = document.createElement('div');
-                counter.className = 'product-counter';
-                
-                // Kaydedilmiş değeri kontrol et
-                let count = productCounters[productId] || 0;
-                
-                const decreaseBtn = document.createElement('button');
-                decreaseBtn.className = 'counter-btn';
-                decreaseBtn.innerHTML = '−';
-                decreaseBtn.disabled = count === 0;
-                
-                const countValue = document.createElement('span');
-                countValue.className = 'counter-value';
-                countValue.textContent = count;
-                
-                const increaseBtn = document.createElement('button');
-                increaseBtn.className = 'counter-btn';
-                increaseBtn.innerHTML = '+';
-                
-                // Artır butonu
-                increaseBtn.onclick = () => {
-                    count++;
-                    productCounters[productId] = count; // Değeri sakla
-                    countValue.textContent = count;
-                    decreaseBtn.disabled = false;
-                    updateTotalCounter(); // Toplamı güncelle
-                };
-                
-                // Azalt butonu
-                decreaseBtn.onclick = () => {
+                        details.appendChild(weightItem);
+                    }
+
+                    // Sayaç (Counter)
+                    const counter = document.createElement('div');
+                    counter.className = 'product-counter';
+
+                    // Kaydedilmiş değeri kontrol et
+                    let count = productCounters[productId] || 0;
+
+                    // Card'a aktif durumu ekle (count > 0 ise)
                     if (count > 0) {
-                        count--;
+                        card.classList.add('active');
+                    }
+
+                    const decreaseBtn = document.createElement('button');
+                    decreaseBtn.className = 'counter-btn';
+                    // Count değerine göre buton içeriğini ayarla
+                    if (count === 1) {
+                        decreaseBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">delete</span>';
+                        decreaseBtn.classList.add('delete-btn');
+                    } else if (count > 1) {
+                        decreaseBtn.innerHTML = '−';
+                        decreaseBtn.classList.remove('delete-btn');
+                    }
+                    decreaseBtn.style.display = count > 0 ? 'flex' : 'none';
+
+                    const countValue = document.createElement('span');
+                    countValue.className = 'counter-value';
+                    countValue.textContent = count;
+                    countValue.style.display = count > 0 ? 'block' : 'none';
+
+                    const increaseBtn = document.createElement('button');
+                    increaseBtn.className = 'counter-btn';
+                    increaseBtn.innerHTML = '+';
+
+                    // Edit butonu
+                    const editBtn = document.createElement('button');
+                    editBtn.className = 'edit-btn';
+                    editBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">edit</span>';
+                    editBtn.title = 'Hacim düzenle';
+                    editBtn.style.display = count > 0 ? 'flex' : 'none';
+                    editBtn.onclick = () => openVolumeEditPopup(productId);
+
+                    // Artır butonu
+                    increaseBtn.onclick = () => {
+                        count++;
                         productCounters[productId] = count; // Değeri sakla
                         countValue.textContent = count;
-                        if (count === 0) {
-                            decreaseBtn.disabled = true;
-                        }
+                        // Butonları göster
+                        decreaseBtn.style.display = 'flex';
+                        countValue.style.display = 'block';
+                        editBtn.style.display = 'flex';
+                        // Buton içeriğini güncelle (1 ise çöp kutusu, 1'den fazla ise -)
+                        updateDecreaseButton(decreaseBtn, count);
+                        // Card'a aktif durumu ekle
+                        card.classList.add('active');
                         updateTotalCounter(); // Toplamı güncelle
-                    }
-                };
-                
-                counter.appendChild(decreaseBtn);
-                counter.appendChild(countValue);
-                counter.appendChild(increaseBtn);
-                
-                card.appendChild(name);
-                card.appendChild(categoryInfo);
-                card.appendChild(details);
-                card.appendChild(counter);
-                grid.appendChild(card);
-            });
-            
-            categoriesContent.innerHTML = '';
-            categoriesContent.appendChild(grid);
-        }
-        
-        // İlk kategoriyi göster
-        renderProducts(activeCategory);
-        
-        // İlk yüklemede badge'leri güncelle
-        updateCategoryBadges();
-        
-        // İlk yüklemede toplamı güncelle
-        updateTotalCounter();
-    })
-    .catch(error => {
-        console.error('Ürünler yüklenemedi:', error);
-        document.getElementById('categories-content').innerHTML = 
-            '<div class="no-products">Veriler yüklenirken bir hata oluştu</div>';
-    });
+                    };
+
+                    // Azalt butonu
+                    decreaseBtn.onclick = () => {
+                        if (count > 0) {
+                            count--;
+                            productCounters[productId] = count; // Değeri sakla
+                            countValue.textContent = count;
+                            if (count === 0) {
+                                // Butonları gizle
+                                decreaseBtn.style.display = 'none';
+                                countValue.style.display = 'none';
+                                editBtn.style.display = 'none';
+                                // Card'dan aktif durumu kaldır
+                                card.classList.remove('active');
+                            } else {
+                                // Buton içeriğini güncelle (1 ise çöp kutusu, 1'den fazla ise -)
+                                updateDecreaseButton(decreaseBtn, count);
+                            }
+                            updateTotalCounter(); // Toplamı güncelle
+                        }
+                    };
+
+                    counter.appendChild(decreaseBtn);
+                    counter.appendChild(countValue);
+                    counter.appendChild(increaseBtn);
+                    counter.appendChild(editBtn);
+
+                    // infoWrapper içine infoRow ekle (infoContent ve details zaten içinde)
+                    infoWrapper.appendChild(infoRow);
+
+                    card.appendChild(infoWrapper);
+                    card.appendChild(counter);
+                    grid.appendChild(card);
+                });
+
+                categoriesContent.innerHTML = '';
+                categoriesContent.appendChild(grid);
+            }
+
+            // İlk kategoriyi göster
+            renderProducts(activeCategory);
+
+            // İlk yüklemede badge'leri güncelle
+            updateCategoryBadges();
+
+            // İlk yüklemede toplamı güncelle
+            updateTotalCounter();
+        })
+        .catch(error => {
+            console.error('Ürünler yüklenemedi:', error);
+            document.getElementById('categories-content').innerHTML =
+                '<div class="no-products">Veriler yüklenirken bir hata oluştu</div>';
+        });
 </script>
