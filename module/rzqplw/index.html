@@ -1,0 +1,221 @@
+<div class="indirim-ceki-form">
+  <div class="form-container">
+    <div class="form-header">
+      <h2>{{title}}</h2>
+      <p>{{subtitle}}</p>
+    </div>
+    <form id="indirimForm" class="indirim-form">
+      <div class="form-group">
+        <label for="kod">İndirim Kodu</label>
+        <input type="text" id="kod" name="kod" readonly value="">
+      </div>
+      <div class="form-group">
+        <label for="adsoyad">Ad Soyad <span class="required">*</span></label>
+        <input type="text" id="adsoyad" name="adsoyad" required placeholder="Adınız ve soyadınız">
+      </div>
+      <div class="form-group">
+        <label for="telefon">Telefon <span class="required">*</span></label>
+        <input type="tel" id="telefon" name="telefon" required placeholder="05XX XXX XX XX">
+      </div>
+      <div class="form-group">
+        <label for="email">E-posta <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required placeholder="ornek@email.com">
+      </div>
+      <div class="form-group">
+        <label for="mesaj">Mesaj (Opsiyonel)</label>
+        <textarea id="mesaj" name="mesaj" rows="4" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="submit-btn">
+          <span>WhatsApp ile Gönder</span>
+          <img src="/src/icon/whatsapp.png" alt="WhatsApp" height="24">
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .indirim-ceki-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .form-container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .form-header h2 {
+    color: #006B65;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .form-header p {
+    color: #666;
+    font-size: 16px;
+  }
+
+  .indirim-form {
+    width: 100%;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .required {
+    color: #e74c3c;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #006B65;
+  }
+
+  .form-group input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    font-weight: 600;
+    color: #006B65;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #25D366;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+  }
+
+  .submit-btn:hover {
+    background-color: #20ba5a;
+  }
+
+  .submit-btn:active {
+    transform: scale(0.98);
+  }
+
+  .submit-btn img {
+    vertical-align: middle;
+  }
+
+  @media (max-width: 768px) {
+    .indirim-ceki-form {
+      padding: 15px;
+      margin: 20px auto;
+    }
+
+    .form-container {
+      padding: 25px 20px;
+    }
+
+    .form-header h2 {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<script>
+(function() {
+  // URL'den id parametresini al
+  var urlParams = new URLSearchParams(window.location.search);
+  var kodParam = urlParams.get('id');
+  
+  if (!kodParam) {
+    document.querySelector('.indirim-ceki-form').innerHTML = '<div style="text-align:center; padding:40px; color:#e74c3c;"><h3>Geçersiz Link</h3><p>İndirim çeki kodu bulunamadı. Lütfen doğru linki kullanın.</p></div>';
+    return;
+  }
+
+  // Kod değerini input'a yerleştir
+  var kodInput = document.getElementById('kod');
+  if (kodInput) {
+    kodInput.value = kodParam;
+  }
+
+  // Form gönderim işlemi
+  var form = document.getElementById('indirimForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      var adsoyad = document.getElementById('adsoyad').value.trim();
+      var telefon = document.getElementById('telefon').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var mesaj = document.getElementById('mesaj').value.trim();
+      var kod = kodParam;
+
+      // Validasyon
+      if (!adsoyad || !telefon || !email) {
+        alert('Lütfen zorunlu alanları doldurunuz.');
+        return;
+      }
+
+      // WhatsApp mesajı oluştur
+      var whatsappMessage = '🎟️ *İndirim Çeki Formu*\n\n';
+      whatsappMessage += '📋 *Kod:* ' + kod + '\n';
+      whatsappMessage += '👤 *Ad Soyad:* ' + adsoyad + '\n';
+      whatsappMessage += '📱 *Telefon:* ' + telefon + '\n';
+      whatsappMessage += '📧 *E-posta:* ' + email + '\n';
+      
+      if (mesaj) {
+        whatsappMessage += '💬 *Mesaj:* ' + mesaj + '\n';
+      }
+
+      // WhatsApp URL'i oluştur
+      var whatsappNumber = '905418504646';
+      var encodedMessage = encodeURIComponent(whatsappMessage);
+      var whatsappUrl = 'https://api.whatsapp.com/send/?phone=' + whatsappNumber + '&text=' + encodedMessage + '&app_absent=0';
+
+      // WhatsApp'ı aç
+      window.open(whatsappUrl, '_blank');
+    });
+  }
+})();
+</script>
