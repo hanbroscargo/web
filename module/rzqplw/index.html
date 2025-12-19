@@ -160,6 +160,98 @@
       font-size: 24px;
     }
   }
+
+  /* Hata mesajı tasarımı */
+  .error-container {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+    border: 2px solid #feb2b2;
+    border-radius: 15px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(254, 178, 178, 0.3);
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .error-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    animation: shake 0.5s ease-in-out;
+  }
+
+  .error-container h3 {
+    color: #c53030;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+  }
+
+  .error-container p {
+    color: #742a2a;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .error-details {
+    background: rgba(255, 255, 255, 0.7);
+    border-left: 4px solid #f56565;
+    padding: 15px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    color: #742a2a;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  /* Yükleniyor mesajı tasarımı */
+  .loading-container {
+    background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+    border: 2px solid #9ae6b4;
+    border-radius: 15px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(154, 230, 180, 0.3);
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #9ae6b4;
+    border-top-color: #006B65;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+  }
+
+  .loading-container h3 {
+    color: #006B65;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
 </style>
 
 <script>
@@ -168,54 +260,92 @@
   var urlParams = new URLSearchParams(window.location.search);
   var kodParam = urlParams.get('id');
   
+  var formContainer = document.querySelector('.indirim-ceki-form');
+  var originalFormHTML = formContainer.innerHTML;
+  
   if (!kodParam) {
-    document.querySelector('.indirim-ceki-form').innerHTML = '<div style="text-align:center; padding:40px; color:#e74c3c;"><h3>Geçersiz Link</h3><p>İndirim çeki kodu bulunamadı. Lütfen doğru linki kullanın.</p></div>';
+    formContainer.innerHTML = '<div class="error-container"><div class="error-icon">⚠️</div><h3>Geçersiz Link</h3><p>İndirim çeki kodu bulunamadı. Lütfen doğru linki kullanın.</p></div>';
     return;
   }
 
-  // Kod değerini input'a yerleştir
-  var kodInput = document.getElementById('kod');
-  if (kodInput) {
-    kodInput.value = kodParam;
-  }
+  // Yükleniyor mesajı göster
+  formContainer.innerHTML = '<div class="loading-container"><div class="loading-spinner"></div><h3>Kod kontrol ediliyor...</h3></div>';
+  
+  // codelist.json dosyasını yükle ve kontrol et
+  fetch('/module/rzqplw/codelist.json')
+    .then(function(response) {
+      if (!response.ok) {
+        throw new Error('Kod listesi yüklenemedi');
+      }
+      return response.json();
+    })
+    .then(function(kodListesi) {
+      // Kodun listede olup olmadığını kontrol et
+      var kodGecerli = false;
+      for (var i = 0; i < kodListesi.length; i++) {
+        if (kodListesi[i].url === kodParam) {
+          kodGecerli = true;
+          break;
+        }
+      }
 
-  // Form gönderim işlemi
-  var form = document.getElementById('indirimForm');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      var adsoyad = document.getElementById('adsoyad').value.trim();
-      var telefon = document.getElementById('telefon').value.trim();
-      var email = document.getElementById('email').value.trim();
-      var mesaj = document.getElementById('mesaj').value.trim();
-      var kod = kodParam;
-
-      // Validasyon
-      if (!adsoyad || !telefon || !email) {
-        alert('Lütfen zorunlu alanları doldurunuz.');
+      // Kod geçersizse hata göster
+      if (!kodGecerli) {
+        formContainer.innerHTML = '<div class="error-container"><div class="error-icon">❌</div><h3>Geçersiz Kod</h3><p>Girdiğiniz indirim çeki kodu geçersizdir. Lütfen doğru kodu kontrol ediniz.</p><div class="error-details">İndirim çeki kodunuzu fuardan aldığınız kart veya belgeden kontrol edebilirsiniz.</div></div>';
         return;
       }
 
-      // WhatsApp mesajı oluştur
-      var whatsappMessage = '🎟️ *İndirim Çeki Formu*\n\n';
-      whatsappMessage += '📋 *Kod:* ' + kod + '\n';
-      whatsappMessage += '👤 *Ad Soyad:* ' + adsoyad + '\n';
-      whatsappMessage += '📱 *Telefon:* ' + telefon + '\n';
-      whatsappMessage += '📧 *E-posta:* ' + email + '\n';
+      // Kod geçerliyse formu geri yükle
+      formContainer.innerHTML = originalFormHTML;
       
-      if (mesaj) {
-        whatsappMessage += '💬 *Mesaj:* ' + mesaj + '\n';
+      // Kod değerini input'a yerleştir
+      var kodInput = document.getElementById('kod');
+      if (kodInput) {
+        kodInput.value = kodParam;
       }
 
-      // WhatsApp URL'i oluştur
-      var whatsappNumber = '905418504646';
-      var encodedMessage = encodeURIComponent(whatsappMessage);
-      var whatsappUrl = 'https://api.whatsapp.com/send/?phone=' + whatsappNumber + '&text=' + encodedMessage + '&app_absent=0';
+      // Form gönderim işlemi
+      var form = document.getElementById('indirimForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          var adsoyad = document.getElementById('adsoyad').value.trim();
+          var telefon = document.getElementById('telefon').value.trim();
+          var email = document.getElementById('email').value.trim();
+          var mesaj = document.getElementById('mesaj').value.trim();
+          var kod = kodParam;
 
-      // WhatsApp'ı aç
-      window.open(whatsappUrl, '_blank');
+          // Validasyon
+          if (!adsoyad || !telefon || !email) {
+            alert('Lütfen zorunlu alanları doldurunuz.');
+            return;
+          }
+
+          // WhatsApp mesajı oluştur
+          var whatsappMessage = '🎟️ *İndirim Çeki Formu*\n\n';
+          whatsappMessage += '📋 *Kod:* ' + kod + '\n';
+          whatsappMessage += '👤 *Ad Soyad:* ' + adsoyad + '\n';
+          whatsappMessage += '📱 *Telefon:* ' + telefon + '\n';
+          whatsappMessage += '📧 *E-posta:* ' + email + '\n';
+          
+          if (mesaj) {
+            whatsappMessage += '💬 *Mesaj:* ' + mesaj + '\n';
+          }
+
+          // WhatsApp URL'i oluştur
+          var whatsappNumber = '905418504646';
+          var encodedMessage = encodeURIComponent(whatsappMessage);
+          var whatsappUrl = 'https://api.whatsapp.com/send/?phone=' + whatsappNumber + '&text=' + encodedMessage + '&app_absent=0';
+
+          // WhatsApp'ı aç
+          window.open(whatsappUrl, '_blank');
+        });
+      }
+    })
+    .catch(function(error) {
+      console.error('Kod listesi yüklenemedi:', error);
+      formContainer.innerHTML = '<div class="error-container"><div class="error-icon">⚠️</div><h3>Hata</h3><p>Kod listesi yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.</p></div>';
     });
-  }
 })();
 </script>
