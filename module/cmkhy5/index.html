@@ -1,9 +1,7 @@
 <div class="modulex">
   <div class="modulextitle">
     <div class="modulextitlebody">
-      <div class="modulextitlebodytitle">
-        {{web-name}}
-      </div>
+      <div class="modulextitlebodytitle">{{web-name}}</div>
       <div class="modulextitlebodylang">
         <ul>
           {{langhtml}}
@@ -12,30 +10,26 @@
     </div>
   </div>
 
-  
-
-
-
   <div class="modulexbody">
     <a href="/{{lang}}/"
       ><img
         src="/img/{{logo}}?v={{random}}"
         class="module-logo"
         alt="{{web-name}} Logo"
-    /></a> 
-    
-      <div class="header-actions">
-        <div class="contact-buttons">
-          <a href="/{{lang}}/gonderi-takip/" class="btn-track">
-            <i class="icon">🚛</i>
-            <span>{{gonder}}</span>
-          </a>
-          <a href="/{{lang}}/teklif-al/" class="btn-quote">
-            <i class="icon">✏️</i>
-            <span>{{teklifal}}</span>
-          </a>
-        </div>
+    /></a>
+
+    <div class="header-actions">
+      <div class="contact-buttons">
+        <a href="/{{lang}}/gonderi-takip/" class="btn-track">
+          <i class="icon">🚛</i>
+          <span>{{gonder}}</span>
+        </a>
+        <a href="/{{lang}}/teklif-al/" class="btn-quote">
+          <i class="icon">✏️</i>
+          <span>{{teklifal}}</span>
+        </a>
       </div>
+    </div>
   </div>
   <div class="modulexmenubody">
     <div class="modulexmenu">
@@ -53,20 +47,11 @@
   </div>
 </div>
 <style>
-
-.wa-advanced {
-  position: fixed;
-  bottom: 70px !important;
-  right: 0px !important;
-}
-
-
-
-
-
-
-
-
+  .wa-advanced {
+    position: fixed;
+    bottom: 70px !important;
+    right: 0px !important;
+  }
 
   .modulexmenulist-menu:hover .dropdown-content-modulex {
     display: flex;
@@ -153,15 +138,15 @@
   .modulex-title {
     font-size: 16px;
     font-weight: 500;
-    color: #006B65;
+    color: #006b65;
   }
   .modulex-spot {
     font-size: 16px;
-    color: #006B65;
+    color: #006b65;
   }
   .modulex-icon {
     font-size: 36px !important;
-    color: #006B65;
+    color: #006b65;
   }
   .modulex {
     width: 100%;
@@ -212,14 +197,14 @@
   }
   .modulexmenulist {
     width: calc(100% - 20px);
-    background-color: #006B65;
+    background-color: #006b65;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   .modulexmenubody {
     width: 100%;
-    background-color:#006B65;
+    background-color: #006b65;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,13 +226,13 @@
     align-items: center;
     gap: 20px;
   }
-  
+
   .contact-buttons {
     display: flex;
     gap: 16px;
     align-items: center;
   }
-  
+
   .contact-buttons a {
     display: flex;
     align-items: center;
@@ -264,49 +249,54 @@
     min-width: 140px;
     justify-content: center;
   }
-  
+
   .contact-buttons a::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: left 0.5s;
   }
-  
+
   .contact-buttons a:hover::before {
     left: 100%;
   }
-  
+
   .btn-track {
     background: white;
-    color: #006B65;
-    border: 2px solid #006B65;
+    color: #006b65;
+    border: 2px solid #006b65;
   }
-  
+
   .btn-track:hover {
-    background: #006B65;
+    background: #006b65;
     color: white;
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 8px 25px rgba(0, 107, 100, 0.25);
     border-color: #004d47;
   }
-  
+
   .btn-quote {
-    background: linear-gradient(135deg, #006B65, #008a7d);
+    background: linear-gradient(135deg, #006b65, #008a7d);
     color: white !important;
-    border: 2px solid #006B65;
+    border: 2px solid #006b65;
   }
-  
+
   .btn-quote:hover {
-    background: linear-gradient(135deg, #004d47, #006B65);
+    background: linear-gradient(135deg, #004d47, #006b65);
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 8px 25px rgba(0, 107, 100, 0.25);
     border-color: #004d47;
   }
-  
+
   .contact-buttons .icon {
     font-size: 18px;
     display: flex;
@@ -314,11 +304,11 @@
     justify-content: center;
     transition: transform 0.3s ease;
   }
-  
+
   .contact-buttons a:hover .icon {
     transform: scale(1.1);
   }
-  
+
   .contact-buttons span {
     white-space: nowrap;
     letter-spacing: 0.5px;
@@ -370,6 +360,9 @@
     transform: translateY(-6px) rotate(-45deg);
   }
   @media screen and (max-width: 1024px) {
+    .modulextitlebodytitle {
+      padding: 0px 15px 0px 15px;
+    }
     .modulexmenu {
       overflow-x: auto;
     }
@@ -394,7 +387,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: #006B65;
+      background-color: #006b65;
       padding: 10px;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -406,7 +399,6 @@
       flex-direction: row;
       gap: 12px;
       justify-content: center;
-
     }
     .contact-buttons a {
       font-size: 14px;
@@ -474,77 +466,77 @@
   }
 </style>
 <script>
-(function () {
-  try {
-    var scriptEl = document.currentScript;
-    if (!scriptEl) {
-      return;
-    }
-    var moduleRoot = null;
-    var sibling = scriptEl.previousElementSibling;
-    while (sibling) {
-      if (sibling.classList && sibling.classList.contains("modulex")) {
-        moduleRoot = sibling;
-        break;
-      }
-      sibling = sibling.previousElementSibling;
-    }
-    if (!moduleRoot) {
-      return;
-    }
-    var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
-    var menuBody = moduleRoot.querySelector(".modulexmenulistbody");
-    if (!toggle || !menuBody) {
-      return;
-    }
-    var mql = window.matchMedia("(max-width: 768px)");
-    function closeMenu() {
-      menuBody.classList.remove("is-visible");
-      toggle.classList.remove("is-active");
-      toggle.setAttribute("aria-expanded", "false");
-    }
-    function openMenu() {
-      menuBody.classList.add("is-visible");
-      toggle.classList.add("is-active");
-      toggle.setAttribute("aria-expanded", "true");
-    }
-    toggle.addEventListener("click", function () {
-      if (!mql.matches) {
+  (function () {
+    try {
+      var scriptEl = document.currentScript;
+      if (!scriptEl) {
         return;
       }
-      if (menuBody.classList.contains("is-visible")) {
-        closeMenu();
-      } else {
-        openMenu();
+      var moduleRoot = null;
+      var sibling = scriptEl.previousElementSibling;
+      while (sibling) {
+        if (sibling.classList && sibling.classList.contains("modulex")) {
+          moduleRoot = sibling;
+          break;
+        }
+        sibling = sibling.previousElementSibling;
       }
-    });
-    menuBody.addEventListener("click", function (event) {
-      if (!mql.matches) {
+      if (!moduleRoot) {
         return;
       }
-      var link = event.target.closest("a");
-      if (!link) {
+      var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
+      var menuBody = moduleRoot.querySelector(".modulexmenulistbody");
+      if (!toggle || !menuBody) {
         return;
       }
-      closeMenu();
-    });
-    function handleBreakpoint() {
-      if (mql.matches) {
-        closeMenu();
-      } else {
+      var mql = window.matchMedia("(max-width: 768px)");
+      function closeMenu() {
         menuBody.classList.remove("is-visible");
         toggle.classList.remove("is-active");
         toggle.setAttribute("aria-expanded", "false");
       }
+      function openMenu() {
+        menuBody.classList.add("is-visible");
+        toggle.classList.add("is-active");
+        toggle.setAttribute("aria-expanded", "true");
+      }
+      toggle.addEventListener("click", function () {
+        if (!mql.matches) {
+          return;
+        }
+        if (menuBody.classList.contains("is-visible")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+      menuBody.addEventListener("click", function (event) {
+        if (!mql.matches) {
+          return;
+        }
+        var link = event.target.closest("a");
+        if (!link) {
+          return;
+        }
+        closeMenu();
+      });
+      function handleBreakpoint() {
+        if (mql.matches) {
+          closeMenu();
+        } else {
+          menuBody.classList.remove("is-visible");
+          toggle.classList.remove("is-active");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      }
+      if (typeof mql.addEventListener === "function") {
+        mql.addEventListener("change", handleBreakpoint);
+      } else if (typeof mql.addListener === "function") {
+        mql.addListener(handleBreakpoint);
+      }
+      handleBreakpoint();
+    } catch (error) {
+      console.error("cmkhy5 mobil menü hatası:", error);
     }
-    if (typeof mql.addEventListener === "function") {
-      mql.addEventListener("change", handleBreakpoint);
-    } else if (typeof mql.addListener === "function") {
-      mql.addListener(handleBreakpoint);
-    }
-    handleBreakpoint();
-  } catch (error) {
-    console.error("cmkhy5 mobil menü hatası:", error);
-  }
-})();
+  })();
 </script>
