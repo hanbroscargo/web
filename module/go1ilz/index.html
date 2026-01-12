@@ -1,21 +1,21 @@
-<main class="modulex-wrapper" role="main" aria-label="Ürün kategorileri ve listesi">
+<main class="modulex-wrapper" role="main" aria-label="@product-categories@">
     <div class="modulex-container">
-        <nav class="modulex-categories-list" id="categories-list" role="tablist" aria-label="Ürün kategorileri"></nav>
-        <section class="search-section" aria-label="Ürün arama">
+        <nav class="modulex-categories-list" id="categories-list" role="tablist" aria-label="@product-categories-label@"></nav>
+        <section class="search-section" aria-label="@product-search-label@">
             <div class="search-wrapper">
                 <div class="search-container" id="search-container">
-                    <label for="search-input" class="sr-only">Ürün ara</label>
+                    <label for="search-input" class="sr-only">@product-search-label@</label>
                     <span class="material-symbols-outlined search-icon-inner" aria-hidden="true">search</span>
-                    <input type="text" id="search-input" name="search" class="search-input" placeholder="Ürün ara..." aria-label="Ürün arama kutusu" autocomplete="off" />
+                    <input type="text" id="search-input" name="search" class="search-input" placeholder="@product-search@" aria-label="@product-search-label@" autocomplete="off" />
                     <button type="button" class="material-symbols-outlined search-clear" id="search-clear" style="display: none;"
-                        onclick="clearSearch()" aria-label="Aramayı temizle">close</button>
+                        onclick="clearSearch()" aria-label="@clear-search@">close</button>
                 </div>
-                <div class="search-suggestions" id="search-suggestions" style="display: none;" role="listbox" aria-label="Arama önerileri"></div>
+                <div class="search-suggestions" id="search-suggestions" style="display: none;" role="listbox" aria-label="@search-suggestions@"></div>
             </div>
         </section>
-        <section class="modulex-categories-content" id="categories-content" aria-label="Ürün listesi"></section>
+        <section class="modulex-categories-content" id="categories-content" aria-label="@product-list-label@"></section>
     </div>
-    <aside class="modulex-total" id="total-counter" role="complementary" aria-label="Sepet özeti">
+    <aside class="modulex-total" id="total-counter" role="complementary" aria-label="@cart-summary@">
         <div class="total-header">
             <div class="total-icon-wrapper">
                 <span class="material-symbols-outlined total-icon">shopping_cart</span>
@@ -27,7 +27,7 @@
                     <span class="material-symbols-outlined">inventory_2</span>
                 </div>
                 <div class="total-item-content">
-                    <div class="total-label">Toplam Adet</div>
+                    <div class="total-label">@total-quantity@</div>
                     <div class="total-value" id="total-adet">0</div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     <span class="material-symbols-outlined">straighten</span>
                 </div>
                 <div class="total-item-content">
-                    <div class="total-label">Toplam Hacim</div>
+                    <div class="total-label">@total-volume@</div>
                     <div class="total-value" id="total-hacim">0 m³</div>
                 </div>
             </div>
@@ -45,22 +45,22 @@
                     <span class="material-symbols-outlined">scale</span>
                 </div>
                 <div class="total-item-content">
-                    <div class="total-label">Toplam Ağırlık</div>
+                    <div class="total-label">@total-weight@</div>
                     <div class="total-value" id="total-agirlik">0 kg</div>
                 </div>
             </div>
         </div>
         <footer class="total-footer">
-            <button type="button" class="pdf-download-btn" onclick="downloadPDF()" id="pdf-download-btn" disabled aria-label="PDF olarak indir">
+            <button type="button" class="pdf-download-btn" onclick="downloadPDF()" id="pdf-download-btn" disabled aria-label="@download-pdf-label@">
                 <span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span>
-                <span>PDF İndir</span>
+                <span>@pdf-download@</span>
             </button>
             <div class="total-summary">
                 <span class="material-symbols-outlined">check_circle</span>
-                <span>Hazır</span>
+                <span>@ready@</span>
             </div>
             <div class="total-warning">
-                Hacimler tahminidir ± %10 farklılık gösterebilir
+                @volume-warning@
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
     <div class="popup-overlay" onclick="closeVolumeEditPopup()"></div>
     <div class="popup-content">
         <div class="popup-header">
-            <h3>Boyut ve Ağırlık Düzenle</h3>
+            <h3>@edit-dimensions-weight@</h3>
             <button class="popup-close" onclick="closeVolumeEditPopup()">
                 <span class="material-symbols-outlined">close</span>
             </button>
@@ -83,54 +83,53 @@
             </div>
 
             <div class="popup-section">
-                <h4 class="popup-section-title">Tahmini Boyutlar</h4>
+                <h4 class="popup-section-title">@estimated-dimensions@</h4>
                 <div class="popup-dimensions-grid">
                     <div class="popup-form-group">
-                        <label for="popup-width-input">En (cm):</label>
+                        <label for="popup-width-input">@width-cm@</label>
                         <input type="number" id="popup-width-input" step="0.1" min="0" class="popup-input"
-                            placeholder="00" />
+                            placeholder="00" inputmode="decimal" />
                     </div>
                     <div class="popup-form-group">
-                        <label for="popup-depth-input">Boy (cm):</label>
+                        <label for="popup-depth-input">@depth-cm@</label>
                         <input type="number" id="popup-depth-input" step="0.1" min="0" class="popup-input"
-                            placeholder="00" />
+                            placeholder="00" inputmode="decimal" />
                     </div>
                     <div class="popup-form-group">
-                        <label for="popup-height-input">Yükseklik (cm):</label>
+                        <label for="popup-height-input">@height-cm@</label>
                         <input type="number" id="popup-height-input" step="0.1" min="0" class="popup-input"
-                            placeholder="00" />
+                            placeholder="00" inputmode="decimal" />
                     </div>
                 </div>
             </div>
 
             <div class="popup-section">
-                <h4 class="popup-section-title">Tahmini Ağırlık</h4>
+                <h4 class="popup-section-title">@estimated-weight@</h4>
                 <div class="popup-form-group">
-                    <label for="popup-weight-input">Ağırlık (kg):</label>
+                    <label for="popup-weight-input">@weight-kg@</label>
                     <input type="number" id="popup-weight-input" step="0.1" min="0" class="popup-input"
-                        placeholder="00" />
-                    <div class="popup-hint">Emin değilseniz, kendi ağırlığınızı referans alarak tahmin edebilirsiniz!
+                        placeholder="00" inputmode="decimal" />
+                    <div class="popup-hint">@weight-hint@
                     </div>
                 </div>
             </div>
 
             <div class="popup-calculated-info">
                 <div class="popup-calculated-item">
-                    <span class="popup-calculated-label">Hesaplanan Hacim:</span>
+                    <span class="popup-calculated-label">@calculated-volume@</span>
                     <span class="popup-calculated-value" id="popup-calculated-volume">0.00 m³</span>
                 </div>
                 <div class="popup-calculated-item">
-                    <span class="popup-calculated-label">Orijinal Hacim:</span>
+                    <span class="popup-calculated-label">@original-volume@</span>
                     <span class="popup-calculated-value" id="popup-original-volume">0.00 m³</span>
                 </div>
             </div>
 
             <div class="popup-actions">
                 <button class="popup-btn popup-btn-cancel" onclick="closeVolumeEditPopup()">
-                    <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 4px;">close</span>
-                    Kapat
+                    @menu-close@
                 </button>
-                <button class="popup-btn popup-btn-save" onclick="saveVolumeEdit()">Kaydet</button>
+                <button class="popup-btn popup-btn-save" onclick="saveVolumeEdit()">@save@</button>
             </div>
         </div>
     </div>
@@ -239,7 +238,7 @@
         max-height: 300px;
         overflow-y: auto;
         overflow-x: hidden;
-        z-index: 1000;
+        z-index: 100000;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         margin-top: -2px;
     }
@@ -944,6 +943,8 @@
         overflow: hidden;
         z-index: 1;
         animation: popupSlideIn 0.3s ease-out;
+        display: flex;
+        flex-direction: column;
     }
 
     @keyframes popupSlideIn {
@@ -994,6 +995,9 @@
 
     .popup-body {
         padding: 24px;
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
     }
 
     .popup-product-info {
@@ -1226,26 +1230,146 @@
             font-size: 28px;
         }
 
+        .volume-edit-popup {
+            padding: 0;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .popup-overlay {
+            position: fixed;
+        }
+
         .popup-content {
-            width: 95%;
-            max-height: 85vh;
+            width: 100%;
+            max-width: 100%;
+            max-height: 95vh;
+            height: auto;
+            border-radius: 16px 16px 0 0;
+            margin-top: auto;
+            animation: popupSlideUp 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes popupSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .popup-header {
+            padding: 16px;
+            flex-shrink: 0;
+        }
+
+        .popup-header h3 {
+            font-size: 18px;
         }
 
         .popup-body {
-            padding: 20px;
+            padding: 16px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .popup-product-info {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+        }
+
+        .popup-product-name {
+            font-size: 16px;
+        }
+
+        .popup-product-code {
+            font-size: 13px;
+        }
+
+        .popup-section {
+            margin-bottom: 20px;
+        }
+
+        .popup-section-title {
+            font-size: 15px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
         }
 
         .popup-dimensions-grid {
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 12px;
+        }
+
+        .popup-form-group {
+            margin-bottom: 16px;
+        }
+
+        .popup-form-group label {
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .popup-input {
+            padding: 14px;
+            font-size: 16px;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .popup-input:focus {
+            outline: none;
+            border-color: #009a96;
+            box-shadow: 0 0 0 3px rgba(0, 154, 150, 0.1);
+        }
+
+        .popup-calculated-info {
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+
+        .popup-calculated-item {
+            margin-bottom: 6px;
+        }
+
+        .popup-calculated-label {
+            font-size: 13px;
+        }
+
+        .popup-calculated-value {
+            font-size: 15px;
         }
 
         .popup-actions {
             flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            border-top: 1px solid #e0e0e0;
+            background: white;
+            flex-shrink: 0;
         }
 
         .popup-btn {
-            width: 100%;
+            width: calc(100% - 30px);
+            padding: 15px;
+            font-size: 15px;
+        }
+
+        .popup-hint {
+            font-size: 11px;
+            margin-top: 4px;
         }
 
         .pdf-download-btn {
@@ -1339,7 +1463,7 @@
     async function downloadPDF() {
         // jsPDF kütüphanesinin yüklü olup olmadığını kontrol et
         if (typeof window.jspdf === 'undefined') {
-            alert('PDF kütüphanesi yükleniyor, lütfen bekleyin...');
+            alert(getTranslation('pdf-loading'));
             return;
         }
 
@@ -1406,7 +1530,7 @@
 
         // Eğer sepette ürün yoksa uyarı ver
         if (addedProducts.length === 0) {
-            alert('Sepetinizde ürün bulunmamaktadır.');
+            alert(getTranslation('empty-cart'));
             return;
         }
 
@@ -1421,14 +1545,16 @@
         });
         
         // PDF başlığı
+        var lang = getCurrentLang();
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(18);
         doc.setTextColor(0, 154, 150);
-        doc.text('Ürün Listesi', 105, logoHeight + 10, { align: 'center' });
+        doc.text(getTranslation('product-list'), 105, logoHeight + 10, { align: 'center' });
 
         // Tarih
         const now = new Date();
-        const dateStr = now.toLocaleDateString('tr-TR', { 
+        const locale = lang === 'en' ? 'en-US' : 'tr-TR';
+        const dateStr = now.toLocaleDateString(locale, { 
             year: 'numeric', 
             month: 'long', 
             day: 'numeric',
@@ -1438,7 +1564,7 @@
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(10);
         doc.setTextColor(100, 100, 100);
-        doc.text(`Tarih: ${dateStr}`, 105, logoHeight + 18, { align: 'center' });
+        doc.text(`${getTranslation('date')} ${dateStr}`, 105, logoHeight + 18, { align: 'center' });
 
         // Tablo başlıkları
         let yPos = logoHeight + 30;
@@ -1447,12 +1573,12 @@
         doc.setTextColor(0, 0, 0);
         
         doc.text('#', 12, yPos);
-        // Türkçe karakterleri düzgün göster
-        doc.text('Ürün Adı', 20, yPos);
-        doc.text('Kategori', 85, yPos);
-        doc.text('Adet', 130, yPos);
-        doc.text('Hacim', 150, yPos);
-        doc.text('Ağırlık', 170, yPos);
+        // Çevirileri kullan
+        doc.text(getTranslation('product-name'), 20, yPos);
+        doc.text(getTranslation('category'), 85, yPos);
+        doc.text(getTranslation('quantity'), 130, yPos);
+        doc.text(getTranslation('volume'), 150, yPos);
+        doc.text(getTranslation('weight'), 170, yPos);
 
         // Çizgi
         yPos += 5;
@@ -1482,12 +1608,12 @@
                 doc.setFont('helvetica', 'bold');
                 doc.setFontSize(10);
                 doc.text('#', 12, yPos);
-                // Türkçe karakterleri düzgün göster
-                doc.text('Ürün Adı', 20, yPos);
-                doc.text('Kategori', 85, yPos);
-                doc.text('Adet', 130, yPos);
-                doc.text('Hacim', 150, yPos);
-                doc.text('Ağırlık', 170, yPos);
+                // Çevirileri kullan
+                doc.text(getTranslation('product-name'), 20, yPos);
+                doc.text(getTranslation('category'), 85, yPos);
+                doc.text(getTranslation('quantity'), 130, yPos);
+                doc.text(getTranslation('volume'), 150, yPos);
+                doc.text(getTranslation('weight'), 170, yPos);
                 yPos += 5;
                 doc.line(10, yPos, 200, yPos);
                 yPos += 8;
@@ -1526,7 +1652,7 @@
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(10);
         doc.setTextColor(0, 154, 150);
-        doc.text('TOPLAM', 20, yPos);
+        doc.text(getTranslation('total'), 20, yPos);
         doc.text(totalAdet.toString(), 130, yPos);
         doc.text(totalHacim > 0 ? totalHacim.toFixed(2) : '-', 150, yPos);
         doc.text(totalAgirlik > 0 ? totalAgirlik.toFixed(2) : '-', 170, yPos);
@@ -1552,6 +1678,17 @@
         const parts = text.split('/').map(p => p.trim());
         const lang = getCurrentLang();
         return lang === 'tr' ? parts[0] : parts[1] || parts[0];
+    }
+
+    // Çeviri fonksiyonu (lang.json'dan)
+    function getTranslation(key) {
+        var lang = getCurrentLang();
+        // translate objesi webmakerrender.js tarafından sağlanır
+        if (typeof translate !== 'undefined' && translate[key] && translate[key][lang]) {
+            return translate[key][lang];
+        }
+        // Fallback: key'i döndür
+        return key;
     }
 
     // Hacim hesapla (cm'den m³'e çevir)
@@ -1595,7 +1732,7 @@
 
         if (popup && productName && productCode && originalVolume) {
             productName.textContent = getTextByLang(product.Name) || '-';
-            productCode.textContent = `Kod: ${product.Code || '-'}`;
+            productCode.textContent = `${getTranslation('code')} ${product.Code || '-'}`;
 
         // Orijinal hacmi göster
         const originalVol = product.Volume || 0;
@@ -1634,10 +1771,23 @@
             // İlk hacim hesaplamasını yap
             updateCalculatedVolume();
 
+            // Body scroll'unu engelle
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+
             popup.style.display = 'flex';
-            // İlk input'a odaklan
+            // İlk input'a odaklan (mobilde klavye açılması için)
             setTimeout(() => {
-                if (widthInput) widthInput.focus();
+                if (widthInput) {
+                    // Mobilde input'a odaklan ve scroll et
+                    widthInput.focus();
+                    // Popup body'sini scroll et
+                    const popupBody = document.querySelector('.popup-body');
+                    if (popupBody) {
+                        popupBody.scrollTop = 0;
+                    }
+                }
             }, 100);
         }
     }
@@ -1648,6 +1798,11 @@
         if (popup) {
             popup.style.display = 'none';
             editingProductId = null;
+            
+            // Body scroll'unu geri getir
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
         }
     }
 
@@ -1893,7 +2048,7 @@ function updateProductCounterDisplay(productId, count) {
                 categoryVolume.textContent = `${categoryTotalVolume.toFixed(2)} m³`;
                 categoryVolume.style.display = 'inline';
                 
-                categoryCount.textContent = `${categoryAddedCount} adet`;
+                categoryCount.textContent = `${categoryAddedCount} ${getTranslation('piece')}`;
                 categoryCount.style.display = 'inline';
             } else {
                 tab.classList.remove('has-products');
@@ -1929,7 +2084,7 @@ function updateProductCounterDisplay(productId, count) {
         filteredProducts = filteredProducts.slice(0, 10);
 
         if (filteredProducts.length === 0) {
-            suggestionsContainer.innerHTML = '<div class="suggestion-empty">Sonuç bulunamadı</div>';
+            suggestionsContainer.innerHTML = '<div class="suggestion-empty">' + getTranslation('no-results') + '</div>';
             suggestionsContainer.style.display = 'block';
             return;
         }
@@ -2013,7 +2168,7 @@ function updateProductCounterDisplay(productId, count) {
         if (!categoriesContent) return;
 
         if (products.length === 0) {
-            categoriesContent.innerHTML = '<div class="no-products">Arama sonucu bulunamadı</div>';
+            categoriesContent.innerHTML = '<div class="no-products">' + getTranslation('no-results') + '</div>';
             return;
         }
 
@@ -2298,7 +2453,7 @@ function updateProductCounterDisplay(productId, count) {
                 }
 
                 if (filteredProducts.length === 0) {
-                    categoriesContent.innerHTML = '<div class="no-products">Bu kategoride aktif ürün bulunmuyor</div>';
+                    categoriesContent.innerHTML = '<div class="no-products">' + getTranslation('no-products') + '</div>';
                     return;
                 }
 
@@ -2470,7 +2625,9 @@ function updateProductCounterDisplay(productId, count) {
         })
         .catch(error => {
             console.error('Ürünler yüklenemedi:', error);
-            document.getElementById('categories-content').innerHTML =
-                '<div class="no-products">Veriler yüklenirken bir hata oluştu</div>';
+            var categoriesContent = document.getElementById('categories-content');
+            if (categoriesContent) {
+                categoriesContent.innerHTML = '<div class="no-products">' + getTranslation('loading-error') + '</div>';
+            }
         });
 </script>
