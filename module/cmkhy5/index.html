@@ -37,10 +37,14 @@
           <span></span>
         </span>
       </button>
+      <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
       <div class="modulexmenulistbody" id="modulexmenulistbody">
+        <button class="mobile-menu-close" type="button" aria-label="Menüyü kapat" aria-controls="modulexmenulistbody">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
         <div class="modulexmenulist">
-          <div class="mobile-lang-wrapper" role="navigation" aria-label="Mobil dil seçimi">{{langhtml}}</div>
           {{html}}
+          <div class="mobile-lang-wrapper" role="navigation" aria-label="Mobil dil seçimi">{{langhtml}}</div>
         </div>
       </div>
     </div>
@@ -213,6 +217,14 @@
     display: none;
   }
 
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+
+  .mobile-menu-close {
+    display: none !important;
+  }
+
   .modulexmenu {
     display: flex;
     flex-direction: row;
@@ -352,6 +364,9 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
+    border: none;
+    position: relative;
+    z-index: 1;
   }
 
   .mobile-menu-toggle:hover {
@@ -394,6 +409,23 @@
 
   .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
+  }
+
+  @media screen and (min-width: 769px) {
+    .modulexmenulistbody {
+      position: static !important;
+      right: auto !important;
+      width: 100% !important;
+      max-width: none !important;
+      height: auto !important;
+      display: block !important;
+      overflow: visible !important;
+      box-shadow: none !important;
+    }
+
+    .modulexmenulist {
+      flex-direction: row !important;
+    }
   }
 
   @media screen and (max-width: 1024px) {
@@ -461,24 +493,25 @@
       display: none;
     }
 
-    .mobile-lang-wrapper {
-      display: flex;
-      justify-content: center;
-      padding: 15px 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      margin-bottom: 10px;
+    /* Overlay/Backdrop */
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9998;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
     }
 
-    .mobile-lang-wrapper ul {
-      display: flex;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .mobile-lang-wrapper li {
-      list-style: none;
+    .mobile-menu-overlay.active {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .modulexmenu {
@@ -492,25 +525,106 @@
       width: 100%;
     }
 
+    /* Slide-in Menü */
     .modulexmenulistbody {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      pointer-events: none;
-      transition: max-height 0.3s ease, opacity 0.3s ease;
-      width: 100%;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100%;
+      background-color: #006b65;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+      visibility: hidden;
     }
 
     .modulexmenulistbody.is-visible {
-      max-height: 1000px;
-      opacity: 1;
-      pointer-events: auto;
+      right: 0;
+      visibility: visible;
+    }
+
+    /* Kapatma Butonu */
+    .mobile-menu-close {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 15px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 28px;
+      width: 100%;
+    }
+
+    .mobile-menu-close span {
+      font-size: 28px;
+      color: #fff;
+    }
+
+    .mobile-menu-close:focus {
+      outline: 2px solid #fff;
+      outline-offset: -2px;
     }
 
     .modulexmenulist {
       flex-direction: column;
       gap: 4px;
       padding: 10px 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Dil seçici - en alta */
+    .mobile-lang-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 20px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin-top: auto;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-lang-wrapper ul {
+      display: flex;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .mobile-lang-wrapper li {
+      list-style: none;
+    }
+
+    .mobile-lang-wrapper a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-lang-wrapper a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .mobile-lang-wrapper a:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
     }
 
     .modulexmenulist-menu {
@@ -544,69 +658,134 @@
   }
 </style>
 <script>
-  (function () {
+  setTimeout(function() {
     try {
-      var scriptEl = document.currentScript;
-      if (!scriptEl) {
-        return;
-      }
-      var moduleRoot = null;
-      var sibling = scriptEl.previousElementSibling;
-      while (sibling) {
-        if (sibling.classList && sibling.classList.contains("modulex")) {
-          moduleRoot = sibling;
-          break;
-        }
-        sibling = sibling.previousElementSibling;
-      }
-      if (!moduleRoot) {
-        return;
-      }
-      var toggle = moduleRoot.querySelector(".mobile-menu-toggle");
-      var menuBody = moduleRoot.querySelector(".modulexmenulistbody");
+      // Direkt selector kullan - daha güvenilir
+      var toggle = document.querySelector(".mobile-menu-toggle");
+      var menuBody = document.querySelector(".modulexmenulistbody");
+      var overlay = document.querySelector(".mobile-menu-overlay");
+      var closeButton = document.querySelector(".mobile-menu-close");
+      
       if (!toggle || !menuBody) {
         return;
       }
+      
       var mql = window.matchMedia("(max-width: 768px)");
-      function closeMenu() {
-        menuBody.classList.remove("is-visible");
-        toggle.classList.remove("is-active");
-        toggle.setAttribute("aria-expanded", "false");
-      }
+      
+      // Menüyü aç fonksiyonu
       function openMenu() {
-        menuBody.classList.add("is-visible");
-        toggle.classList.add("is-active");
-        toggle.setAttribute("aria-expanded", "true");
-      }
-      toggle.addEventListener("click", function () {
-        if (!mql.matches) {
-          return;
+        if (menuBody) {
+          menuBody.classList.add("is-visible");
         }
+        if (overlay) {
+          overlay.classList.add("active");
+          overlay.setAttribute("aria-hidden", "false");
+        }
+        if (toggle) {
+          toggle.classList.add("is-active");
+          toggle.setAttribute("aria-expanded", "true");
+        }
+        // Body scroll'u engelle
+        document.body.style.overflow = "hidden";
+      }
+      
+      // Menüyü kapat fonksiyonu
+      function closeMenu() {
+        if (menuBody) {
+          menuBody.classList.remove("is-visible");
+        }
+        if (overlay) {
+          overlay.classList.remove("active");
+          overlay.setAttribute("aria-hidden", "true");
+        }
+        if (toggle) {
+          toggle.classList.remove("is-active");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+        // Body scroll'u geri getir
+        document.body.style.overflow = "";
+        // Focus'u menü butonuna geri ver
+        if (toggle) {
+          toggle.focus();
+        }
+      }
+      
+      // Toggle butonu
+      toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         if (menuBody.classList.contains("is-visible")) {
           closeMenu();
         } else {
           openMenu();
         }
       });
-      menuBody.addEventListener("click", function (event) {
-        if (!mql.matches) {
-          return;
-        }
-        var link = event.target.closest("a");
-        if (!link) {
-          return;
-        }
-        closeMenu();
-      });
-      function handleBreakpoint() {
-        if (mql.matches) {
+      
+      // Kapatma butonu
+      if (closeButton) {
+        closeButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
           closeMenu();
-        } else {
-          menuBody.classList.remove("is-visible");
-          toggle.classList.remove("is-active");
-          toggle.setAttribute("aria-expanded", "false");
+        });
+      }
+      
+      // Overlay'e tıklanınca kapat
+      if (overlay) {
+        overlay.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          closeMenu();
+        });
+      }
+      
+      // Menü içindeki linklere tıklanınca kapat
+      menuBody.addEventListener("click", function (event) {
+        var link = event.target.closest("a");
+        var closeBtn = event.target.closest(".mobile-menu-close");
+        if (link && !closeBtn) {
+          closeMenu();
+        }
+      });
+      
+      // ESC tuşu ile kapat
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
+          closeMenu();
+        }
+      });
+      
+      // Klavye navigasyonu (Enter ve Space)
+      toggle.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          if (menuBody.classList.contains("is-visible")) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        }
+      });
+      
+      // Breakpoint değişikliği
+      function handleBreakpoint() {
+        if (!mql.matches) {
+          // Desktop'ta menüyü kapat
+          if (menuBody) {
+            menuBody.classList.remove("is-visible");
+          }
+          if (overlay) {
+            overlay.classList.remove("active");
+            overlay.setAttribute("aria-hidden", "true");
+          }
+          if (toggle) {
+            toggle.classList.remove("is-active");
+            toggle.setAttribute("aria-expanded", "false");
+          }
+          document.body.style.overflow = "";
         }
       }
+      
       if (typeof mql.addEventListener === "function") {
         mql.addEventListener("change", handleBreakpoint);
       } else if (typeof mql.addListener === "function") {
@@ -616,5 +795,5 @@
     } catch (error) {
       console.error("cmkhy5 mobil menü hatası:", error);
     }
-  })();
+  }, 100);
 </script>
