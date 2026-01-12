@@ -1,39 +1,39 @@
-<div class="indirim-ceki-form">
+<main class="indirim-ceki-form" role="main" aria-labelledby="form-title">
   <div class="form-container">
-    <div class="form-header">
-      <h2>{{title}}</h2>
+    <header class="form-header">
+      <h1 id="form-title">{{title}}</h1>
       <p>{{subtitle}}</p>
-    </div>
-    <form id="indirimForm" class="indirim-form">
+    </header>
+    <form id="indirimForm" class="indirim-form" aria-label="İndirim çeki formu" novalidate>
       <div class="form-group">
         <label for="kod">İndirim Kodu</label>
-        <input type="text" id="kod" name="kod" readonly value="">
+        <input type="text" id="kod" name="kod" readonly value="" aria-label="İndirim kodu" aria-readonly="true">
       </div>
       <div class="form-group">
-        <label for="adsoyad">Ad Soyad <span class="required">*</span></label>
-        <input type="text" id="adsoyad" name="adsoyad" required placeholder="Adınız ve soyadınız">
+        <label for="adsoyad">Ad Soyad <span class="required" aria-label="Zorunlu alan">*</span></label>
+        <input type="text" id="adsoyad" name="adsoyad" required placeholder="Adınız ve soyadınız" aria-required="true" autocomplete="name">
       </div>
       <div class="form-group">
-        <label for="telefon">Telefon <span class="required">*</span></label>
-        <input type="tel" id="telefon" name="telefon" required placeholder="+44 XX XXX XX XX">
+        <label for="telefon">Telefon <span class="required" aria-label="Zorunlu alan">*</span></label>
+        <input type="tel" id="telefon" name="telefon" required placeholder="+44 XX XXX XX XX" aria-required="true" autocomplete="tel">
       </div>
       <div class="form-group">
-        <label for="email">E-posta <span class="required">*</span></label>
-        <input type="email" id="email" name="email" required placeholder="ornek@email.com">
+        <label for="email">E-posta <span class="required" aria-label="Zorunlu alan">*</span></label>
+        <input type="email" id="email" name="email" required placeholder="ornek@email.com" aria-required="true" autocomplete="email">
       </div>
       <div class="form-group">
         <label for="mesaj">Mesaj (Opsiyonel)</label>
-        <textarea id="mesaj" name="mesaj" rows="4" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
+        <textarea id="mesaj" name="mesaj" rows="4" placeholder="Mesajınızı buraya yazabilirsiniz..." aria-label="Mesaj alanı"></textarea>
       </div>
       <div class="form-group">
-        <button type="submit" class="submit-btn">
+        <button type="submit" class="submit-btn" aria-label="WhatsApp ile gönder">
           <span>WhatsApp ile Gönder</span>
-          <img src="/src/icon/whatsapp.png" alt="WhatsApp" height="24">
+          <img src="/src/icon/whatsapp.png" alt="WhatsApp" height="24" width="24" loading="lazy">
         </button>
       </div>
     </form>
   </div>
-</div>
+</main>
 
 <style>
   .indirim-ceki-form {

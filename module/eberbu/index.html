@@ -458,6 +458,18 @@
             font-weight: 500;
             margin: 0;
         }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
         
         .eberbu-error {
             text-align: center;
@@ -594,70 +606,71 @@
     </style>
 
 
-    <div class="eberbu-container">
+    <main class="eberbu-container" role="main">
         <!-- Hero Section -->
-        <div class="eberbu-hero">
+        <header class="eberbu-hero" role="banner">
             <div class="eberbu-hero-content">
-                <div class="eberbu-hero-icon">
+                <div class="eberbu-hero-icon" aria-hidden="true">
                     <div class="eberbu-hero-icon-inner">🚛</div>
                 </div>
                 <h1 class="eberbu-hero-title">Kargo Takip Sistemi</h1>
                 <p class="eberbu-hero-subtitle">Gönderinizin durumunu anlık olarak takip edin</p>
             </div>
-            <div class="eberbu-hero-particles"></div>
-        </div>
+            <div class="eberbu-hero-particles" aria-hidden="true"></div>
+        </header>
 
         <!-- Search Section -->
-        <div class="eberbu-search-section">
-            <div class="eberbu-search-header">
-                <div class="eberbu-search-icon">
-                    <span class="material-symbols-outlined">search</span>
+        <section class="eberbu-search-section" aria-labelledby="search-title">
+            <header class="eberbu-search-header">
+                <div class="eberbu-search-icon" aria-hidden="true">
+                    <span class="material-symbols-outlined" aria-hidden="true">search</span>
                 </div>
-                <h2 class="eberbu-search-title">Gönderi Sorgula</h2>
+                <h2 id="search-title" class="eberbu-search-title">Gönderi Sorgula</h2>
                 <p class="eberbu-search-subtitle">Takip numaranızı girerek gönderinizin güncel durumunu öğrenin</p>
-            </div>
+            </header>
             
-            <form class="eberbu-search-form" id="searchForm">
+            <form class="eberbu-search-form" id="searchForm" aria-label="Gönderi takip formu">
                 <div class="eberbu-input-group">
-                    <div class="eberbu-input-icon">
-                        <span class="material-symbols-outlined">local_shipping</span>
+                    <div class="eberbu-input-icon" aria-hidden="true">
+                        <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
                     </div>
-                    <input type="text" class="eberbu-search-input" id="trackingInput" placeholder="Takip numarası giriniz (örn: CA-250000-0000)" required>
-                    <div class="eberbu-input-underline"></div>
+                    <label for="trackingInput" class="sr-only">Takip numarası</label>
+                    <input type="text" class="eberbu-search-input" id="trackingInput" name="trackingNumber" placeholder="Takip numarası giriniz (örn: CA-250000-0000)" required aria-label="Takip numarası giriniz">
+                    <div class="eberbu-input-underline" aria-hidden="true"></div>
                 </div>
-                <button type="submit" class="eberbu-search-btn">
+                <button type="submit" class="eberbu-search-btn" aria-label="Gönderi sorgula">
                     <span class="eberbu-btn-text">Sorgula</span>
-                    <div class="eberbu-btn-icon">
-                        <span class="material-symbols-outlined">arrow_forward</span>
+                    <div class="eberbu-btn-icon" aria-hidden="true">
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                     </div>
-                    <div class="eberbu-btn-ripple"></div>
+                    <div class="eberbu-btn-ripple" aria-hidden="true"></div>
                 </button>
             </form>
-        </div>
+        </section>
 
         <!-- Status Section -->
-        <div class="eberbu-status-section" id="statusSection" style="display: none;">
-            <div class="eberbu-status-header">
-                <div class="eberbu-status-icon">
-                    <span class="material-symbols-outlined">info</span>
+        <section class="eberbu-status-section" id="statusSection" style="display: none;" aria-live="polite" aria-atomic="true">
+            <header class="eberbu-status-header">
+                <div class="eberbu-status-icon" aria-hidden="true">
+                    <span class="material-symbols-outlined" aria-hidden="true">info</span>
                 </div>
                 <div class="eberbu-status-info">
-                    <h3 id="tracking-info">Takip numarası giriniz</h3>
+                    <h2 id="tracking-info">Takip numarası giriniz</h2>
                     <p class="eberbu-status-desc">Gönderinizin güncel durumu aşağıda listelenmektedir</p>
                 </div>
-            </div>
-        </div>
+            </header>
+        </section>
         
         <!-- Timeline Section -->
-        <div class="eberbu-timeline-section" id="timeline">
+        <section class="eberbu-timeline-section" id="timeline" aria-label="Gönderi takip geçmişi" role="region">
             
-        </div>
+        </section>
 
         <!-- Floating Action Button -->
-        <div class="eberbu-fab" id="fabButton" style="display: none;">
-            <span class="material-symbols-outlined">refresh</span>
-        </div>
-    </div>
+        <button class="eberbu-fab" id="fabButton" style="display: none;" aria-label="Yenile" title="Yenile">
+            <span class="material-symbols-outlined" aria-hidden="true">refresh</span>
+        </button>
+    </main>
 
 <script>
         document.addEventListener('DOMContentLoaded', function() {

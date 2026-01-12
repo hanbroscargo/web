@@ -5,11 +5,12 @@
     right: 0px !important;
   }
 
-  .tatjpmenulist-menu:hover .dropdown-content-tatjp {
+  .ud2s1menulist-menu:hover .dropdown-content-ud2s1 {
     display: flex;
     flex-direction: column;
   }
-  .tatjpmenulist-menu {
+
+  .ud2s1menulist-menu {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,35 +23,37 @@
     display: inline-block;
     white-space: nowrap;
   }
-  .tatjpmenulist-menu:hover {
+
+  .ud2s1menulist-menu:hover {
     background-color: #cedc00;
     border-radius: 5px;
     color: #000 !important;
     cursor: pointer;
   }
-  .tatjpmenulist-menu:hover > a {
+
+  .ud2s1menulist-menu:hover>a {
     color: #000 !important;
   }
 
-  .tatjpmenulist-menu > a {
+  .ud2s1menulist-menu>a {
     display: block;
     width: 100%;
     height: 100%;
     color: #fff !important;
   }
 
-  .dropdown-content-active-tatjp {
+  .dropdown-content-active-ud2s1 {
     background-color: #cedc00;
     border-radius: 5px;
     color: #000 !important;
     cursor: pointer;
   }
 
-  .dropdown-content-active-tatjp > a {
+  .dropdown-content-active-ud2s1>a {
     color: #000 !important;
   }
 
-  .dropdown-content-tatjp {
+  .dropdown-content-ud2s1 {
     display: none;
     position: absolute;
     background-color: #333;
@@ -59,7 +62,8 @@
     margin-top: 10px;
     padding: 5px;
   }
-  .dropdown-content-tatjp > a {
+
+  .dropdown-content-ud2s1>a {
     width: inherit;
     padding: 10px;
     border: solid;
@@ -67,101 +71,125 @@
     text-align: left;
     color: #fff;
   }
-  .dropdown-content-tatjp > a:hover {
+
+  .dropdown-content-ud2s1>a:hover {
     background-color: #000;
   }
+
   .module-logo {
     width: 300px;
   }
-  .tatjpbody {
+
+  .ud2s1body {
     width: var(--max);
     display: flex;
     align-items: center;
     gap: 30px;
     justify-content: space-between;
   }
-  .tatjpbody > a {
+
+  .ud2s1body>a {
     display: flex;
     align-items: center;
     justify-content: left;
     position: relative;
     gap: 10px;
   }
-  .tatjp-title {
+
+  .ud2s1-title {
     font-size: 16px;
     font-weight: 500;
     color: #006b65;
   }
-  .tatjp-spot {
+
+  .ud2s1-spot {
     font-size: 16px;
     color: #006b65;
   }
-  .tatjp-icon {
+
+  .ud2s1-icon {
     font-size: 36px !important;
     color: #006b65;
   }
-  .tatjp {
+
+  .ud2s1 {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .tatjptitle {
+
+  .ud2s1title {
     width: 100%;
     background-color: #cedc00;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .tatjptitlebody {
+
+  .ud2s1titlebody {
     color: #fff;
     width: var(--max);
     display: flex;
     justify-content: space-between;
     padding: 10px 0px 10px 0px;
   }
-  .tatjptitlebodytitle {
+
+  .ud2s1titlebodytitle {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: left;
     color: #000;
+    font-size: 16px;
+    font-weight: 600;
   }
-  .tatjptitlebodylang {
+
+  .ud2s1titlebodylang {
     width: auto;
     margin: -5px 0px -5px 0px;
   }
-  .tatjptitlebodylang ul {
+
+  .ud2s1titlebodylang ul {
     display: flex;
     gap: 5px;
     position: relative;
   }
-  .tatjptitlebodylang li {
+
+  .ud2s1titlebodylang li {
     position: relative;
     list-style: none;
   }
-  .tatjpmenu {
+
+  .mobile-lang-wrapper {
+    display: none;
+  }
+
+  .ud2s1menu {
     display: flex;
     flex-direction: row;
     gap: 10px;
     width: var(--max);
   }
-  .tatjpmenulist {
+
+  .ud2s1menulist {
     width: calc(100% - 20px);
     background-color: #006b65;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  .tatjpmenubody {
+
+  .ud2s1menubody {
     width: 100%;
     background-color: #006b65;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .tatjpmenulist {
+
+  .ud2s1menulist {
     width: 100%;
     display: flex;
     gap: 10px;
@@ -170,9 +198,11 @@
     padding: 10px;
     /* overflow-x: auto; */
   }
-  .tatjpmenulistbody {
+
+  .ud2s1menulistbody {
     width: 100%;
   }
+
   .header-actions {
     display: flex;
     align-items: center;
@@ -209,12 +239,10 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
     transition: left 0.5s;
   }
 
@@ -265,6 +293,7 @@
     white-space: nowrap;
     letter-spacing: 0.5px;
   }
+
   .mobile-menu-toggle {
     display: none;
     align-items: center;
@@ -277,12 +306,15 @@
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
   }
+
   .mobile-menu-toggle:hover {
     background: rgba(255, 255, 255, 0.08);
   }
+
   .mobile-menu-toggle:focus-visible {
     outline: none;
   }
+
   .mobile-menu-toggle-icon {
     position: relative;
     width: 20px;
@@ -292,45 +324,56 @@
     justify-content: space-between;
     margin-right: 10px;
   }
+
   .mobile-menu-toggle-icon span {
     width: 100%;
     height: 2px;
     background-color: currentColor;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
+
   .mobile-menu-toggle.is-active {
     background: #cedc00;
     color: #000;
   }
+
   .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
   }
+
   .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(2) {
     opacity: 0;
   }
+
   .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
   }
+
   @media screen and (max-width: 1024px) {
-    .tatjptitlebodytitle {
+    .ud2s1titlebodytitle {
       padding: 0px 15px 0px 15px;
     }
-    .tatjpmenu {
+
+    .ud2s1menu {
       overflow-x: auto;
     }
-    .tatjpmenulist {
+
+    .ud2s1menulist {
       flex-direction: row;
     }
+
     .module-logo {
       width: 200px;
     }
-    .tatjpbody {
+
+    .ud2s1body {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
       gap: 15px;
     }
+
     .header-actions {
       width: 100%;
       justify-content: center;
@@ -345,6 +388,7 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1000;
     }
+
     .contact-buttons {
       display: flex !important;
       width: 100% !important;
@@ -352,27 +396,56 @@
       gap: 12px;
       justify-content: center;
     }
+
     .contact-buttons a {
       font-size: 14px;
       padding: 12px 20px;
       border-radius: 25px;
       min-width: 120px;
     }
+
     .contact-buttons .icon {
       font-size: 16px;
     }
   }
+
   @media screen and (max-width: 768px) {
-    .tatjpmenu {
+    .ud2s1titlebodylang {
+      display: none;
+    }
+
+    .mobile-lang-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 15px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .mobile-lang-wrapper ul {
+      display: flex;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mobile-lang-wrapper li {
+      list-style: none;
+    }
+
+    .ud2s1menu {
       flex-direction: column;
       gap: 0;
       width: 100%;
     }
+
     .mobile-menu-toggle {
       display: flex;
       width: 100%;
     }
-    .tatjpmenulistbody {
+
+    .ud2s1menulistbody {
       max-height: 0;
       opacity: 0;
       overflow: hidden;
@@ -380,27 +453,32 @@
       transition: max-height 0.3s ease, opacity 0.3s ease;
       width: 100%;
     }
-    .tatjpmenulistbody.is-visible {
+
+    .ud2s1menulistbody.is-visible {
       max-height: 1000px;
       opacity: 1;
       pointer-events: auto;
     }
-    .tatjpmenulist {
+
+    .ud2s1menulist {
       flex-direction: column;
       gap: 4px;
       padding: 10px 0;
     }
-    .tatjpmenulist-menu {
+
+    .ud2s1menulist-menu {
       justify-content: flex-start;
       text-align: left;
       width: 100%;
       padding: 12px 16px;
       border-radius: 6px;
     }
-    .tatjpmenulist-menu > a {
+
+    .ud2s1menulist-menu>a {
       text-align: left;
     }
-    .dropdown-content-tatjp {
+
+    .dropdown-content-ud2s1 {
       display: flex;
       position: static;
       background-color: rgba(0, 0, 0, 0.12);
@@ -410,7 +488,8 @@
       border-radius: 6px;
       gap: 4px;
     }
-    .dropdown-content-tatjp > a {
+
+    .dropdown-content-ud2s1>a {
       border: 0;
       padding: 8px 0;
       color: #fff;
@@ -418,7 +497,44 @@
   }
 
 
-  .ke62o {
+
+#content {
+    justify-content: start;
+  }
+.bgb85-title {
+    width: 100%;
+    height: 200px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .bgb85-title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/page/ingiltere-ici-koltuk-beyaz-esya-tasima/bg/{{bgimg}}");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .bgb85-title h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 32px;
+  }
+  .bgb85 {
     width: var(--max);
     display: flex;
     flex-direction: column;
@@ -426,7 +542,7 @@
     margin-top: 20px;
   }
   @media screen and (max-width: 1024px) {
-    .ke62o {
+    .bgb85 {
       width: calc(100% - 20px);
       padding: 10px;
       margin-top: 10px;
@@ -442,7 +558,7 @@
     font-family: "Poppins", sans-serif;
   }
 
-  .lh7ua-wa-advanced-button {
+  .caz4o-wa-advanced-button {
     position: relative;
     width: 64px;
     height: 64px;
@@ -456,18 +572,18 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .lh7ua-wa-advanced-button:hover {
+  .caz4o-wa-advanced-button:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
   }
 
-  .lh7ua-wa-advanced-icon svg {
+  .caz4o-wa-advanced-icon svg {
     width: 32px;
     height: 32px;
     fill: #fff;
   }
 
-  .lh7ua-wa-advanced-pulse {
+  .caz4o-wa-advanced-pulse {
     position: absolute;
     top: -2px;
     left: -2px;
@@ -490,7 +606,7 @@
     }
   }
 
-  .lh7ua-wa-advanced-panel {
+  .caz4o-wa-advanced-panel {
     position: absolute;
     bottom: 80px;
     right: 0;
@@ -502,7 +618,7 @@
     overflow: hidden;
   }
 
-  .lh7ua-wa-advanced-header {
+  .caz4o-wa-advanced-header {
     background: #25D366;
     color: #fff;
     padding: 16px;
@@ -512,20 +628,20 @@
     position: relative;
   }
 
-  .lh7ua-wa-advanced-avatar {
+  .caz4o-wa-advanced-avatar {
     position: relative;
     width: 48px;
     height: 48px;
   }
 
-  .lh7ua-wa-advanced-avatar img {
+  .caz4o-wa-advanced-avatar img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
   }
 
-  .lh7ua-wa-advanced-status {
+  .caz4o-wa-advanced-status {
     position: absolute;
     bottom: 2px;
     right: 2px;
@@ -535,23 +651,23 @@
     border: 2px solid #fff;
   }
 
-  .lh7ua-wa-advanced-status.online {
+  .caz4o-wa-advanced-status.online {
     background: #4caf50;
   }
 
-  .lh7ua-wa-advanced-info h4 {
+  .caz4o-wa-advanced-info h4 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
   }
 
-  .lh7ua-wa-advanced-info p {
+  .caz4o-wa-advanced-info p {
     margin: 4px 0 0 0;
     font-size: 12px;
     opacity: 0.9;
   }
 
-  .lh7ua-wa-advanced-close {
+  .caz4o-wa-advanced-close {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -563,16 +679,16 @@
     opacity: 0.8;
   }
 
-  .lh7ua-wa-advanced-close:hover {
+  .caz4o-wa-advanced-close:hover {
     opacity: 1;
   }
 
-  .lh7ua-wa-advanced-body {
+  .caz4o-wa-advanced-body {
     padding: 16px;
     background: #f8f9fa;
   }
 
-  .lh7ua-wa-advanced-message {
+  .caz4o-wa-advanced-message {
     background: #fff;
     padding: 12px 16px;
     border-radius: 8px;
@@ -583,29 +699,29 @@
     justify-content: flex-end;
   }
 
-  .lh7ua-wa-advanced-message p {
+  .caz4o-wa-advanced-message p {
     font-size: 14px;
     color: #333;
     text-align: right;
     margin: 0;
   }
 
-  .lh7ua-wa-advanced-time {
+  .caz4o-wa-advanced-time {
     font-size: 10px;
     color: #999;
     margin: 4px 0 0 0;
   }
 
-  .lh7ua-wa-advanced-footer {
+  .caz4o-wa-advanced-footer {
     padding: 16px;
   }
 
-  .lh7ua-wa-advanced-footer a {
+  .caz4o-wa-advanced-footer a {
     text-decoration: none;
     color: #fff !important;
   }
 
-  .lh7ua-wa-advanced-chat-btn {
+  .caz4o-wa-advanced-chat-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -621,7 +737,7 @@
     transition: transform 0.3s ease;
   }
 
-  .lh7ua-wa-advanced-chat-btn:hover {
+  .caz4o-wa-advanced-chat-btn:hover {
     transform: translateY(-2px);
   }
 
@@ -632,7 +748,7 @@
     
       right: none !important;
     }
-    .lh7ua-wa-advanced-panel {
+    .caz4o-wa-advanced-panel {
       width: 280px;
       right: -10px;
     }

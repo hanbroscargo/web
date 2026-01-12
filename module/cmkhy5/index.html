@@ -1,51 +1,51 @@
-<div class="modulex">
-  <div class="modulextitle">
+<header class="modulex" role="banner">
+  <div class="modulextitle" role="complementary" aria-label="Site başlığı ve dil seçimi">
     <div class="modulextitlebody">
-      <div class="modulextitlebodytitle">{{web-name}}</div>
-      <div class="modulextitlebodylang">
-        <ul>
+      <h2 class="modulextitlebodytitle">{{web-name}}</h1>
+      <nav class="modulextitlebodylang" aria-label="Dil seçimi">
+        <ul role="list">
           {{langhtml}}
         </ul>
-      </div>
+      </nav>
     </div>
   </div>
 
   <div class="modulexbody">
-    <a href="/{{lang}}/"
-      ><img
-        src="/img/{{logo}}?v={{random}}"
-        class="module-logo"
-        alt="{{web-name}} Logo"
-    /></a>
+    <a href="/{{lang}}/" aria-label="{{web-name}} Ana Sayfa">
+      <img src="/img/{{logo}}?v={{random}}" class="module-logo" alt="{{web-name}} Logo" width="300" height="auto" />
+    </a>
 
     <div class="header-actions">
-      <div class="contact-buttons">
-        <a href="/{{lang}}/gonderi-takip/" class="btn-track">
-          <i class="icon">🚛</i>
+      <nav class="contact-buttons" aria-label="Hızlı erişim butonları">
+        <a href="/{{lang}}/gonderi-takip/" class="btn-track" title="{{gonder}} - Gönderi takip sayfasına git">
+          <i class="icon" aria-hidden="true">🚛</i>
           <span>{{gonder}}</span>
         </a>
-        <a href="/{{lang}}/teklif-al/" class="btn-quote">
-          <i class="icon">✏️</i>
+        <a href="/{{lang}}/teklif-al/" class="btn-quote" title="{{teklifal}} - Teklif al sayfasına git">
+          <i class="icon" aria-hidden="true">✏️</i>
           <span>{{teklifal}}</span>
         </a>
-      </div>
+      </nav>
     </div>
   </div>
-  <div class="modulexmenubody">
+  <nav class="modulexmenubody" role="navigation" aria-label="Ana menü">
     <div class="modulexmenu">
-      <div class="mobile-menu-toggle" aria-expanded="false">
-        <span class="mobile-menu-toggle-icon">
+      <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Menüyü aç/kapat" aria-controls="modulexmenulistbody">
+        <span class="mobile-menu-toggle-icon" aria-hidden="true">
           <span></span>
           <span></span>
           <span></span>
         </span>
-      </div>
-      <div class="modulexmenulistbody">
-        <div class="modulexmenulist">{{html}}</div>
+      </button>
+      <div class="modulexmenulistbody" id="modulexmenulistbody">
+        <div class="modulexmenulist">
+          <div class="mobile-lang-wrapper" role="navigation" aria-label="Mobil dil seçimi">{{langhtml}}</div>
+          {{html}}
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </nav>
+</header>
 <style>
   .wa-advanced {
     position: fixed;
@@ -57,6 +57,7 @@
     display: flex;
     flex-direction: column;
   }
+
   .modulexmenulist-menu {
     display: flex;
     align-items: center;
@@ -70,17 +71,19 @@
     display: inline-block;
     white-space: nowrap;
   }
+
   .modulexmenulist-menu:hover {
     background-color: #cedc00;
     border-radius: 5px;
     color: #000 !important;
     cursor: pointer;
   }
-  .modulexmenulist-menu:hover > a {
+
+  .modulexmenulist-menu:hover>a {
     color: #000 !important;
   }
 
-  .modulexmenulist-menu > a {
+  .modulexmenulist-menu>a {
     display: block;
     width: 100%;
     height: 100%;
@@ -94,7 +97,7 @@
     cursor: pointer;
   }
 
-  .dropdown-content-active-modulex > a {
+  .dropdown-content-active-modulex>a {
     color: #000 !important;
   }
 
@@ -107,7 +110,8 @@
     margin-top: 10px;
     padding: 5px;
   }
-  .dropdown-content-modulex > a {
+
+  .dropdown-content-modulex>a {
     width: inherit;
     padding: 10px;
     border: solid;
@@ -115,12 +119,15 @@
     text-align: left;
     color: #fff;
   }
-  .dropdown-content-modulex > a:hover {
+
+  .dropdown-content-modulex>a:hover {
     background-color: #000;
   }
+
   .module-logo {
     width: 300px;
   }
+
   .modulexbody {
     width: var(--max);
     display: flex;
@@ -128,26 +135,31 @@
     gap: 30px;
     justify-content: space-between;
   }
-  .modulexbody > a {
+
+  .modulexbody>a {
     display: flex;
     align-items: center;
     justify-content: left;
     position: relative;
     gap: 10px;
   }
+
   .modulex-title {
     font-size: 16px;
     font-weight: 500;
     color: #006b65;
   }
+
   .modulex-spot {
     font-size: 16px;
     color: #006b65;
   }
+
   .modulex-icon {
     font-size: 36px !important;
     color: #006b65;
   }
+
   .modulex {
     width: 100%;
     display: flex;
@@ -155,6 +167,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .modulextitle {
     width: 100%;
     background-color: #cedc00;
@@ -162,6 +175,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .modulextitlebody {
     color: #fff;
     width: var(--max);
@@ -169,32 +183,44 @@
     justify-content: space-between;
     padding: 10px 0px 10px 0px;
   }
+
   .modulextitlebodytitle {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: left;
     color: #000;
+    font-size: 16px;
+    font-weight: 600;
   }
+
   .modulextitlebodylang {
     width: auto;
     margin: -5px 0px -5px 0px;
   }
+
   .modulextitlebodylang ul {
     display: flex;
     gap: 5px;
     position: relative;
   }
+
   .modulextitlebodylang li {
     position: relative;
     list-style: none;
   }
+
+  .mobile-lang-wrapper {
+    display: none;
+  }
+
   .modulexmenu {
     display: flex;
     flex-direction: row;
     gap: 10px;
     width: var(--max);
   }
+
   .modulexmenulist {
     width: calc(100% - 20px);
     background-color: #006b65;
@@ -202,6 +228,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+
   .modulexmenubody {
     width: 100%;
     background-color: #006b65;
@@ -209,6 +236,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .modulexmenulist {
     width: 100%;
     display: flex;
@@ -218,9 +246,11 @@
     padding: 10px;
     /* overflow-x: auto; */
   }
+
   .modulexmenulistbody {
     width: 100%;
   }
+
   .header-actions {
     display: flex;
     align-items: center;
@@ -257,12 +287,10 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
     transition: left 0.5s;
   }
 
@@ -313,6 +341,7 @@
     white-space: nowrap;
     letter-spacing: 0.5px;
   }
+
   .mobile-menu-toggle {
     display: none;
     align-items: center;
@@ -325,12 +354,15 @@
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
   }
+
   .mobile-menu-toggle:hover {
     background: rgba(255, 255, 255, 0.08);
   }
+
   .mobile-menu-toggle:focus-visible {
     outline: none;
   }
+
   .mobile-menu-toggle-icon {
     position: relative;
     width: 20px;
@@ -340,38 +372,48 @@
     justify-content: space-between;
     margin-right: 10px;
   }
+
   .mobile-menu-toggle-icon span {
     width: 100%;
     height: 2px;
     background-color: currentColor;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
+
   .mobile-menu-toggle.is-active {
     background: #cedc00;
     color: #000;
   }
+
   .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
   }
+
   .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(2) {
     opacity: 0;
   }
+
   .mobile-menu-toggle.is-active .mobile-menu-toggle-icon span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
   }
+
   @media screen and (max-width: 1024px) {
     .modulextitlebodytitle {
       padding: 0px 15px 0px 15px;
     }
+
     .modulexmenu {
       overflow-x: auto;
     }
+
     .modulexmenulist {
       flex-direction: row;
     }
+
     .module-logo {
       width: 200px;
     }
+
     .modulexbody {
       display: flex;
       align-items: center;
@@ -379,6 +421,7 @@
       flex-wrap: wrap;
       gap: 15px;
     }
+
     .header-actions {
       width: 100%;
       justify-content: center;
@@ -393,6 +436,7 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1000;
     }
+
     .contact-buttons {
       display: flex !important;
       width: 100% !important;
@@ -400,26 +444,55 @@
       gap: 12px;
       justify-content: center;
     }
+
     .contact-buttons a {
       font-size: 14px;
       padding: 12px 20px;
       border-radius: 25px;
       min-width: 120px;
     }
+
     .contact-buttons .icon {
       font-size: 16px;
     }
   }
+
   @media screen and (max-width: 768px) {
+    .modulextitlebodylang {
+      display: none;
+    }
+
+    .mobile-lang-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 15px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .mobile-lang-wrapper ul {
+      display: flex;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mobile-lang-wrapper li {
+      list-style: none;
+    }
+
     .modulexmenu {
       flex-direction: column;
       gap: 0;
       width: 100%;
     }
+
     .mobile-menu-toggle {
       display: flex;
       width: 100%;
     }
+
     .modulexmenulistbody {
       max-height: 0;
       opacity: 0;
@@ -428,16 +501,19 @@
       transition: max-height 0.3s ease, opacity 0.3s ease;
       width: 100%;
     }
+
     .modulexmenulistbody.is-visible {
       max-height: 1000px;
       opacity: 1;
       pointer-events: auto;
     }
+
     .modulexmenulist {
       flex-direction: column;
       gap: 4px;
       padding: 10px 0;
     }
+
     .modulexmenulist-menu {
       justify-content: flex-start;
       text-align: left;
@@ -445,9 +521,11 @@
       padding: 12px 16px;
       border-radius: 6px;
     }
-    .modulexmenulist-menu > a {
+
+    .modulexmenulist-menu>a {
       text-align: left;
     }
+
     .dropdown-content-modulex {
       display: flex;
       position: static;
@@ -458,7 +536,8 @@
       border-radius: 6px;
       gap: 4px;
     }
-    .dropdown-content-modulex > a {
+
+    .dropdown-content-modulex>a {
       border: 0;
       padding: 8px 0;
       color: #fff;

@@ -1,20 +1,21 @@
-<div class="modulex-wrapper">
+<main class="modulex-wrapper" role="main" aria-label="Ürün kategorileri ve listesi">
     <div class="modulex-container">
-        <div class="modulex-categories-list" id="categories-list"></div>
-        <div class="search-section">
+        <nav class="modulex-categories-list" id="categories-list" role="tablist" aria-label="Ürün kategorileri"></nav>
+        <section class="search-section" aria-label="Ürün arama">
             <div class="search-wrapper">
                 <div class="search-container" id="search-container">
-                    <span class="material-symbols-outlined search-icon-inner">search</span>
-                    <input type="text" id="search-input" class="search-input" placeholder="Ürün ara..." />
-                    <span class="material-symbols-outlined search-clear" id="search-clear" style="display: none;"
-                        onclick="clearSearch()">close</span>
+                    <label for="search-input" class="sr-only">Ürün ara</label>
+                    <span class="material-symbols-outlined search-icon-inner" aria-hidden="true">search</span>
+                    <input type="text" id="search-input" name="search" class="search-input" placeholder="Ürün ara..." aria-label="Ürün arama kutusu" autocomplete="off" />
+                    <button type="button" class="material-symbols-outlined search-clear" id="search-clear" style="display: none;"
+                        onclick="clearSearch()" aria-label="Aramayı temizle">close</button>
                 </div>
-                <div class="search-suggestions" id="search-suggestions" style="display: none;"></div>
+                <div class="search-suggestions" id="search-suggestions" style="display: none;" role="listbox" aria-label="Arama önerileri"></div>
             </div>
-        </div>
-        <div class="modulex-categories-content" id="categories-content"></div>
+        </section>
+        <section class="modulex-categories-content" id="categories-content" aria-label="Ürün listesi"></section>
     </div>
-    <div class="modulex-total" id="total-counter">
+    <aside class="modulex-total" id="total-counter" role="complementary" aria-label="Sepet özeti">
         <div class="total-header">
             <div class="total-icon-wrapper">
                 <span class="material-symbols-outlined total-icon">shopping_cart</span>
@@ -49,9 +50,9 @@
                 </div>
             </div>
         </div>
-        <div class="total-footer">
-            <button class="pdf-download-btn" onclick="downloadPDF()" id="pdf-download-btn" disabled>
-                <span class="material-symbols-outlined">picture_as_pdf</span>
+        <footer class="total-footer">
+            <button type="button" class="pdf-download-btn" onclick="downloadPDF()" id="pdf-download-btn" disabled aria-label="PDF olarak indir">
+                <span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span>
                 <span>PDF İndir</span>
             </button>
             <div class="total-summary">
@@ -620,6 +621,18 @@
         overflow: hidden;
         border: 1px solid rgba(0, 154, 150, 0.1);
         transition: all 0.3s ease;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
     }
 
     .modulex-total:hover {

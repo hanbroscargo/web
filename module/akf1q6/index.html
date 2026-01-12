@@ -6,110 +6,112 @@
 <div class="modulex" id="modulex-1" style="display: none;">
   <div class="t1">
     <div class="container">
-            <section class="form-section">
+            <section class="form-section" aria-labelledby="teklif-title">
                 <div class="form-container">
-                    <h3>Teklif Al</h3>
-                    <div class="step active" id="step1">
-                        <div class="step-header">
-                            <span class="step-number">1</span>
-                            <h4>Eşya Türünü Seçin</h4>
-                        </div>
-                        <div class="items-grid">
-                            <div class="item-card" data-item="paket">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Paket">
-                                <h5>Paket</h5>
+                    <h1 id="teklif-title">Teklif Al</h1>
+                    <div class="step active" id="step1" role="tabpanel" aria-labelledby="step1-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">1</span>
+                            <h2 id="step1-title">Eşya Türünü Seçin</h2>
+                        </header>
+                        <div class="items-grid" role="group" aria-label="Eşya türü seçimi">
+                            <div class="item-card" data-item="paket" role="button" tabindex="0" aria-label="Paket - Küçük ve orta boy paketler">
+                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Paket taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Paket</h3>
                                 <p>Küçük ve orta boy paketler</p>
                             </div>
-                            <div class="item-card" data-item="kutu">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Kutu">
-                                <h5>Kutu</h5>
+                            <div class="item-card" data-item="kutu" role="button" tabindex="0" aria-label="Kutu - Standart kutu gönderileri">
+                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Kutu taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Kutu</h3>
                                 <p>Standart kutu gönderileri</p>
                             </div>
-                            <div class="item-card" data-item="dokuman">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Döküman">
-                                <h5>Döküman</h5>
+                            <div class="item-card" data-item="dokuman" role="button" tabindex="0" aria-label="Döküman - Önemli evraklar">
+                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Döküman taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Döküman</h3>
                                 <p>Önemli evraklar</p>
                             </div>
                         </div>
-                        <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                        <button type="button" class="btn-next" onclick="nextStep()" aria-label="Sonraki adıma geç">Devam Et</button>
                     </div>
-                    <div class="step" id="step2">
-                        <div class="step-header">
-                            <span class="step-number">2</span>
-                            <h4>Adres Bilgileri</h4>
-                        </div>
-                        <div class="address-form">
+                    <div class="step" id="step2" role="tabpanel" aria-labelledby="step2-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">2</span>
+                            <h2 id="step2-title">Adres Bilgileri</h2>
+                        </header>
+                        <form class="address-form" aria-label="Adres bilgileri formu">
                             <div class="form-group">
-                                <label>Nereden:</label>
-                                <input type="text" id="fromAddress" placeholder="Gönderi adresini girin">
+                                <label for="fromAddress">Nereden:</label>
+                                <input type="text" id="fromAddress" name="fromAddress" placeholder="Gönderi adresini girin" aria-required="true">
                             </div>
                             <div class="form-group">
-                                <label>Nereye:</label>
-                                <input type="text" id="toAddress" placeholder="Teslimat adresini girin">
+                                <label for="toAddress">Nereye:</label>
+                                <input type="text" id="toAddress" name="toAddress" placeholder="Teslimat adresini girin" aria-required="true">
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Boyut (cm):</label>
-                                    <input type="number" id="length" placeholder="Uzunluk">
+                                    <label for="length">Boyut - Uzunluk (cm):</label>
+                                    <input type="number" id="length" name="length" placeholder="Uzunluk" aria-label="Uzunluk (cm)">
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" id="width" placeholder="Genişlik">
+                                    <label for="width">Genişlik (cm):</label>
+                                    <input type="number" id="width" name="width" placeholder="Genişlik" aria-label="Genişlik (cm)">
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" id="height" placeholder="Yükseklik">
+                                    <label for="height">Yükseklik (cm):</label>
+                                    <input type="number" id="height" name="height" placeholder="Yükseklik" aria-label="Yükseklik (cm)">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Ağırlık (kg):</label>
-                                <input type="number" id="weight" placeholder="Ağırlık">
+                                <label for="weight">Ağırlık (kg):</label>
+                                <input type="number" id="weight" name="weight" placeholder="Ağırlık" aria-label="Ağırlık (kg)">
                             </div>
-                        </div>
+                        </form>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="prevStep()">Geri</button>
-                            <button class="btn-next" onclick="nextStep()">Devam Et</button>
+                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="Önceki adıma dön">Geri</button>
+                            <button type="button" class="btn-next" onclick="nextStep()" aria-label="Sonraki adıma geç">Devam Et</button>
                         </div>
                     </div>
-                    <div class="step" id="step3">
-                        <div class="step-header">
-                            <span class="step-number">3</span>
-                            <h4>İletişim Bilgileri</h4>
-                        </div>
-                        <div class="contact-form">
+                    <div class="step" id="step3" role="tabpanel" aria-labelledby="step3-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">3</span>
+                            <h2 id="step3-title">İletişim Bilgileri</h2>
+                        </header>
+                        <form class="contact-form" aria-label="İletişim bilgileri formu">
                             <div class="form-group">
-                                <label>Ad Soyad:</label>
-                                <input type="text" id="fullName" placeholder="Adınızı ve soyadınızı girin">
+                                <label for="fullName">Ad Soyad:</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Adınızı ve soyadınızı girin" aria-required="true">
                             </div>
                             <div class="form-group">
-                                <label>Telefon:</label>
-                                <input type="tel" id="phone" placeholder="Telefon numaranız">
+                                <label for="phone">Telefon:</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Telefon numaranız" aria-required="true">
                             </div>
                             <div class="form-group">
-                                <label>E-posta:</label>
-                                <input type="email" id="email" placeholder="E-posta adresiniz">
+                                <label for="email">E-posta:</label>
+                                <input type="email" id="email" name="email" placeholder="E-posta adresiniz" aria-required="true">
                             </div>
                             <div class="form-group">
-                                <label>Notlar:</label>
-                                <textarea id="notes" placeholder="Ek notlarınız (opsiyonel)"></textarea>
+                                <label for="notes">Notlar:</label>
+                                <textarea id="notes" name="notes" placeholder="Ek notlarınız (opsiyonel)" aria-label="Ek notlar"></textarea>
                             </div>
-                        </div>
+                        </form>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="prevStep()">Geri</button>
-                            <button class="btn-next" onclick="calculatePrice()">Fiyat Hesapla</button>
+                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="Önceki adıma dön">Geri</button>
+                            <button type="button" class="btn-next" onclick="calculatePrice()" aria-label="Fiyat hesapla">Fiyat Hesapla</button>
                         </div>
                     </div>
-                    <div class="step" id="step4">
-                        <div class="step-header">
-                            <span class="step-number">4</span>
-                            <h4>Teklif Sonucu</h4>
-                        </div>
-                        <div class="price-result">
+                    <div class="step" id="step4" role="tabpanel" aria-labelledby="step4-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">4</span>
+                            <h2 id="step4-title">Teklif Sonucu</h2>
+                        </header>
+                        <div class="price-result" aria-live="polite">
                             <div class="tracking-info">
-                                <h6>Takip Numarası: <span id="trackingNumber">TEST123456</span></h6>
+                                <h3>Takip Numarası: <span id="trackingNumber">TEST123456</span></h3>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="prevStep()">Geri</button>
-                            <button class="btn-primary" onclick="submitRequest()">Teklifi Onayla</button>
+                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="Önceki adıma dön">Geri</button>
+                            <button type="button" class="btn-primary" onclick="submitRequest()" aria-label="Teklifi onayla ve gönder">Teklifi Onayla</button>
                         </div>
                     </div>
                 </div>
@@ -124,11 +126,11 @@
             <section class="form-section">
                 <div class="form-container">
                     <h3>Teklif Al</h3>
-                    <div class="step active" id="t2-step1">
-                        <div class="step-header">
-                            <span class="step-number">1</span>
-                            <h4>Adres Bilgileri</h4>
-                        </div>
+                    <div class="step active" id="t2-step1" role="tabpanel" aria-labelledby="t2-step1-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">1</span>
+                            <h2 id="t2-step1-title">Adres Bilgileri</h2>
+                        </header>
                         <div class="address-form">
                             <div class="form-group">
                                 <label>Yükleme Adresi:</label>
@@ -177,11 +179,11 @@
                         </div>
                         <button class="btn-next" onclick="t2_nextStep()">Devam Et</button>
                     </div>
-                    <div class="step" id="t2-step2">
-                        <div class="step-header">
-                            <span class="step-number">2</span>
-                            <h4>İletişim Bilgileri</h4>
-                        </div>
+                    <div class="step" id="t2-step2" role="tabpanel" aria-labelledby="t2-step2-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">2</span>
+                            <h2 id="t2-step2-title">İletişim Bilgileri</h2>
+                        </header>
                         <div class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
@@ -223,23 +225,23 @@
                             <button class="btn-next" onclick="t2_calculatePrice()">Fiyat Hesapla</button>
                         </div>
                     </div>
-                    <div class="step" id="t2-step3">
-                        <div class="step-header">
-                            <span class="step-number">3</span>
-                            <h4>Teklif Sonucu</h4>
-                        </div>
+                    <div class="step" id="t2-step3" role="tabpanel" aria-labelledby="t2-step3-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">3</span>
+                            <h2 id="t2-step3-title">Teklif Sonucu</h2>
+                        </header>
                         <div class="price-result">
                             <div class="additional-info">
                                 <div class="info-card">
-                                    <h6>Teslimat Süresi</h6>
+                                    <h3>Teslimat Süresi</h3>
                                     <p>2-5 iş günü</p>
                                 </div>
                                 <div class="info-card">
-                                    <h6>Sigorta Kapsamı</h6>
+                                    <h3>Sigorta Kapsamı</h3>
                                     <p>Tam sigorta dahil</p>
                                 </div>
                                 <div class="info-card">
-                                    <h6>Takip Numarası</h6>
+                                    <h3>Takip Numarası</h3>
                                     <p id="t2-trackingNumber">TEST789012</p>
                                 </div>
                             </div>
@@ -262,44 +264,44 @@
                 <div class="form-container">
                     <h3>Teklif Al</h3>
                     <div class="step active" id="t3-step1">
-                        <div class="step-header">
-                            <span class="step-number">1</span>
-                            <h4>Mobilya Türünü Seçin</h4>
-                        </div>
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">1</span>
+                            <h2>Mobilya Türünü Seçin</h2>
+                        </header>
                         <div class="furniture-grid">
-                            <div class="furniture-card" data-item="koltuk">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Koltuk">
-                                <h5>Koltuk Takımı</h5>
+                            <div class="furniture-card" data-item="koltuk" role="button" tabindex="0" aria-label="Koltuk Takımı - 2+1, 3+2 koltuk takımları">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Koltuk takımı taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Koltuk Takımı</h3>
                                 <p>2+1, 3+2 koltuk takımları</p>
                             </div>
-                            <div class="furniture-card" data-item="yatak">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Yatak">
-                                <h5>Yatak Odası</h5>
+                            <div class="furniture-card" data-item="yatak" role="button" tabindex="0" aria-label="Yatak Odası - Yatak, gardırop, komodin">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Yatak odası mobilyası taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Yatak Odası</h3>
                                 <p>Yatak, gardırop, komodin</p>
                             </div>
-                            <div class="furniture-card" data-item="mutfak">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Mutfak">
-                                <h5>Mutfak Takımı</h5>
+                            <div class="furniture-card" data-item="mutfak" role="button" tabindex="0" aria-label="Mutfak Takımı - Mutfak dolapları ve tezgahlar">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Mutfak takımı taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Mutfak Takımı</h3>
                                 <p>Mutfak dolapları ve tezgahlar</p>
                             </div>
-                            <div class="furniture-card" data-item="masa">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Masa">
-                                <h5>Yemek Masası</h5>
+                            <div class="furniture-card" data-item="masa" role="button" tabindex="0" aria-label="Yemek Masası - Yemek masası ve sandalyeler">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Yemek masası taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Yemek Masası</h3>
                                 <p>Yemek masası ve sandalyeler</p>
                             </div>
-                            <div class="furniture-card" data-item="diger">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Diğer">
-                                <h5>Diğer Mobilyalar</h5>
+                            <div class="furniture-card" data-item="diger" role="button" tabindex="0" aria-label="Diğer Mobilyalar - Kitaplık, vitrin, sehpa vb.">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Diğer mobilya taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Diğer Mobilyalar</h3>
                                 <p>Kitaplık, vitrin, sehpa vb.</p>
                             </div>
                         </div>
                         <button class="btn-next" onclick="t3_nextStep()">Devam Et</button>
                     </div>
                     <div class="step" id="t3-step2">
-                        <div class="step-header">
-                            <span class="step-number">2</span>
-                            <h4>Detay Bilgileri</h4>
-                        </div>
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">2</span>
+                            <h2>Detay Bilgileri</h2>
+                        </header>
                         <div class="details-form">
                             <div class="form-row">
                                 <div class="form-group">
@@ -349,11 +351,11 @@
                             <button class="btn-next" onclick="t3_nextStep()">Devam Et</button>
                         </div>
                     </div>
-                    <div class="step" id="t3-step3">
-                        <div class="step-header">
-                            <span class="step-number">3</span>
-                            <h4>Adres Bilgileri</h4>
-                        </div>
+                    <div class="step" id="t3-step3" role="tabpanel" aria-labelledby="t3-step3-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">3</span>
+                            <h2 id="t3-step3-title">Adres Bilgileri</h2>
+                        </header>
                         <div class="address-form">
                             <div class="form-group">
                                 <label>Yükleme Adresi:</label>
@@ -391,11 +393,11 @@
                             <button class="btn-next" onclick="t3_nextStep()">Devam Et</button>
                         </div>
                     </div>
-                    <div class="step" id="t3-step4">
-                        <div class="step-header">
-                            <span class="step-number">4</span>
-                            <h4>İletişim Bilgileri</h4>
-                        </div>
+                    <div class="step" id="t3-step4" role="tabpanel" aria-labelledby="t3-step4-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">4</span>
+                            <h2 id="t3-step4-title">İletişim Bilgileri</h2>
+                        </header>
                         <div class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
@@ -421,14 +423,14 @@
                             <button class="btn-next" onclick="t3_calculatePrice()">Fiyat Hesapla</button>
                         </div>
                     </div>
-                    <div class="step" id="t3-step5">
-                        <div class="step-header">
-                            <span class="step-number">5</span>
-                            <h4>Teklif Sonucu</h4>
-                        </div>
+                    <div class="step" id="t3-step5" role="tabpanel" aria-labelledby="t3-step5-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">5</span>
+                            <h2 id="t3-step5-title">Teklif Sonucu</h2>
+                        </header>
                         <div class="price-result">
                             <div class="service-details">
-                                <h6>Dahil Olan Hizmetler</h6>
+                                <h3>Dahil Olan Hizmetler</h3>
                                 <div class="services-list">
                                     <div class="service-item"><i class="fas fa-shield-alt"></i><span>Özel koruma paketleme</span></div>
                                     <div class="service-item"><i class="fas fa-truck"></i><span>Özel mobilya aracı</span></div>
@@ -437,7 +439,7 @@
                                 </div>
                             </div>
                             <div class="tracking-info">
-                                <h6>Takip Numarası: <span id="t3-trackingNumber">TEST345678</span></h6>
+                                <h3>Takip Numarası: <span id="t3-trackingNumber">TEST345678</span></h3>
                             </div>
                         </div>
                         <div class="step-buttons">
@@ -457,11 +459,11 @@
             <section class="form-section">
                 <div class="form-container">
                     <h3>Teklif Al</h3>
-                    <div class="step active" id="t4-step1">
-                        <div class="step-header">
-                            <span class="step-number">1</span>
-                            <h4>Adres Bilgileri</h4>
-                        </div>
+                    <div class="step active" id="t4-step1" role="tabpanel" aria-labelledby="t4-step1-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">1</span>
+                            <h2 id="t4-step1-title">Adres Bilgileri</h2>
+                        </header>
                         <div class="address-form">
                             <div class="country-selector">
                                 <div class="form-group">
@@ -524,11 +526,11 @@
                         </div>
                         <button class="btn-next" onclick="t4_nextStep()">Devam Et</button>
                     </div>
-                    <div class="step" id="t4-step2">
-                        <div class="step-header">
-                            <span class="step-number">2</span>
-                            <h4>İletişim Bilgileri</h4>
-                        </div>
+                    <div class="step" id="t4-step2" role="tabpanel" aria-labelledby="t4-step2-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">2</span>
+                            <h2 id="t4-step2-title">İletişim Bilgileri</h2>
+                        </header>
                         <div class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
@@ -554,23 +556,23 @@
                             <button class="btn-next" onclick="t4_calculatePrice()">Fiyat Hesapla</button>
                         </div>
                     </div>
-                    <div class="step" id="t4-step3">
-                        <div class="step-header">
-                            <span class="step-number">3</span>
-                            <h4>Teklif Sonucu</h4>
-                        </div>
+                    <div class="step" id="t4-step3" role="tabpanel" aria-labelledby="t4-step3-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">3</span>
+                            <h2 id="t4-step3-title">Teklif Sonucu</h2>
+                        </header>
                         <div class="price-result">
                             <div class="international-info">
-                                <h6>Uluslararası Hizmet Detayları</h6>
+                                <h3>Uluslararası Hizmet Detayları</h3>
                                 <div class="info-grid">
-                                    <div class="info-card"><i class="fas fa-ship"></i><h6>Deniz Yolu</h6><p>Konteyner taşımacılığı</p></div>
-                                    <div class="info-card"><i class="fas fa-plane"></i><h6>Hava Yolu</h6><p>Hızlı teslimat seçeneği</p></div>
-                                    <div class="info-card"><i class="fas fa-file-alt"></i><h6>Gümrük İşlemleri</h6><p>Tam gümrük hizmeti</p></div>
-                                    <div class="info-card"><i class="fas fa-shield-alt"></i><h6>Uluslararası Sigorta</h6><p>Tam kapsamlı sigorta</p></div>
+                                    <div class="info-card"><i class="fas fa-ship" aria-hidden="true"></i><h4>Deniz Yolu</h4><p>Konteyner taşımacılığı</p></div>
+                                    <div class="info-card"><i class="fas fa-plane" aria-hidden="true"></i><h4>Hava Yolu</h4><p>Hızlı teslimat seçeneği</p></div>
+                                    <div class="info-card"><i class="fas fa-file-alt" aria-hidden="true"></i><h4>Gümrük İşlemleri</h4><p>Tam gümrük hizmeti</p></div>
+                                    <div class="info-card"><i class="fas fa-shield-alt" aria-hidden="true"></i><h4>Uluslararası Sigorta</h4><p>Tam kapsamlı sigorta</p></div>
                                 </div>
                             </div>
                             <div class="tracking-info">
-                                <h6>Takip Numarası: <span id="t4-trackingNumber">INT456789</span></h6>
+                                <h3>Takip Numarası: <span id="t4-trackingNumber">INT456789</span></h3>
                                 <p>Uluslararası takip sistemi ile takip edebilirsiniz</p>
                             </div>
                         </div>
@@ -593,39 +595,39 @@
                 <div class="form-container">
                     <h3>Teklif Al</h3>
                     <div class="step active" id="t5-step1">
-                        <div class="step-header">
-                            <span class="step-number">1</span>
-                            <h4>Araç Türünü Seçin</h4>
-                        </div>
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">1</span>
+                            <h2>Araç Türünü Seçin</h2>
+                        </header>
                         <div class="vehicle-grid">
-                            <div class="vehicle-card" data-vehicle="otomobil">
-                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="Otomobil">
-                                <h5>Otomobil</h5>
+                            <div class="vehicle-card" data-vehicle="otomobil" role="button" tabindex="0" aria-label="Otomobil - Binek araçlar">
+                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="Otomobil taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Otomobil</h3>
                                 <p>Binek araçlar</p>
                             </div>
-                            <div class="vehicle-card" data-vehicle="motosiklet">
-                                <img src="/module/akf1q6/images/motor-bike.jpg" alt="Motosiklet">
-                                <h5>Motosiklet</h5>
+                            <div class="vehicle-card" data-vehicle="motosiklet" role="button" tabindex="0" aria-label="Motosiklet - Motorlu iki tekerlekli araçlar">
+                                <img src="/module/akf1q6/images/motor-bike.jpg" alt="Motosiklet taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Motosiklet</h3>
                                 <p>Motorlu iki tekerlekli araçlar</p>
                             </div>
-                            <div class="vehicle-card" data-vehicle="ticari">
-                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="Ticari Araç">
-                                <h5>Ticari Araç</h5>
+                            <div class="vehicle-card" data-vehicle="ticari" role="button" tabindex="0" aria-label="Ticari Araç - Minibüs, kamyonet, panelvan">
+                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="Ticari araç taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>Ticari Araç</h3>
                                 <p>Minibüs, kamyonet, panelvan</p>
                             </div>
-                            <div class="vehicle-card" data-vehicle="suv">
-                                <img src="/module/akf1q6/images/4-4-car.jpg" alt="SUV">
-                                <h5>SUV</h5>
+                            <div class="vehicle-card" data-vehicle="suv" role="button" tabindex="0" aria-label="SUV - Spor araçlar ve jeep">
+                                <img src="/module/akf1q6/images/4-4-car.jpg" alt="SUV taşımacılığı" width="80" height="80" loading="lazy">
+                                <h3>SUV</h3>
                                 <p>Spor araçlar ve jeep</p>
                             </div>
                         </div>
                         <button class="btn-next" onclick="t5_nextStep()">Devam Et</button>
                     </div>
                     <div class="step" id="t5-step2">
-                        <div class="step-header">
-                            <span class="step-number">2</span>
-                            <h4>Araç Detayları</h4>
-                        </div>
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">2</span>
+                            <h2>Araç Detayları</h2>
+                        </header>
                         <div class="vehicle-details-form">
                             <div class="form-row">
                                 <div class="form-group">
@@ -687,11 +689,11 @@
                             <button class="btn-next" onclick="t5_nextStep()">Devam Et</button>
                         </div>
                     </div>
-                    <div class="step" id="t5-step3">
-                        <div class="step-header">
-                            <span class="step-number">3</span>
-                            <h4>Adres Bilgileri</h4>
-                        </div>
+                    <div class="step" id="t5-step3" role="tabpanel" aria-labelledby="t5-step3-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">3</span>
+                            <h2 id="t5-step3-title">Adres Bilgileri</h2>
+                        </header>
                         <div class="address-form">
                             <div class="form-group">
                                 <label>Yükleme Adresi:</label>
@@ -722,11 +724,11 @@
                             <button class="btn-next" onclick="t5_nextStep()">Devam Et</button>
                         </div>
                     </div>
-                    <div class="step" id="t5-step4">
-                        <div class="step-header">
-                            <span class="step-number">4</span>
-                            <h4>İletişim Bilgileri</h4>
-                        </div>
+                    <div class="step" id="t5-step4" role="tabpanel" aria-labelledby="t5-step4-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">4</span>
+                            <h2 id="t5-step4-title">İletişim Bilgileri</h2>
+                        </header>
                         <div class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
@@ -752,14 +754,14 @@
                             <button class="btn-next" onclick="t5_calculatePrice()">Fiyat Hesapla</button>
                         </div>
                     </div>
-                    <div class="step" id="t5-step5">
-                        <div class="step-header">
-                            <span class="step-number">5</span>
-                            <h4>Teklif Sonucu</h4>
-                        </div>
+                    <div class="step" id="t5-step5" role="tabpanel" aria-labelledby="t5-step5-title">
+                        <header class="step-header">
+                            <span class="step-number" aria-hidden="true">5</span>
+                            <h2 id="t5-step5-title">Teklif Sonucu</h2>
+                        </header>
                         <div class="price-result">
                             <div class="service-details">
-                                <h6>Dahil Olan Hizmetler</h6>
+                                <h3>Dahil Olan Hizmetler</h3>
                                 <div class="services-list">
                                     <div class="service-item"><i class="fas fa-truck"></i><span>Özel araç taşıma aracı</span></div>
                                     <div class="service-item"><i class="fas fa-shield-alt"></i><span>Tam sigorta kapsamı</span></div>
@@ -770,7 +772,7 @@
                                 </div>
                             </div>
                             <div class="tracking-info">
-                                <h6>Takip Numarası: <span id="t5-trackingNumber">VEH567890</span></h6>
+                                <h3>Takip Numarası: <span id="t5-trackingNumber">VEH567890</span></h3>
                                 <p>Araç taşıma takip sistemi ile takip edebilirsiniz</p>
                             </div>
                         </div>
@@ -1159,7 +1161,7 @@
                     return `
                             <div class="furniture-card" data-item="${String(dataKey)}">
                                 <img src="${img}" alt="${title}">
-                                <h5>${title}</h5>
+                                <h3>${title}</h3>
                                 <p>${desc}</p>
                             </div>`;
                 }).join('');
@@ -1197,5 +1199,7 @@
     function t5_calculatePrice(){ t5_nextStep(); }
     function t5_submitRequest(){ alert('Araç taşıma talebiniz başarıyla gönderildi!'); }
     function t5_setDefaultValues(vehicleType){ const defaults={ 'otomobil':{length:450,width:180,height:150,weight:1500}, 'motosiklet':{length:200,width:80,height:120,weight:200}, 'ticari':{length:550,width:200,height:220,weight:2500}, 'suv':{length:480,width:190,height:180,weight:2000} }; const v=defaults[vehicleType]; if(!v) return; const ids=['length','width','height','weight']; ids.forEach(k=>{ const el=document.getElementById(`t5-${k}`); if(el) el.value=v[k]; }); }
+    setTimeout(()=>{ document.querySelectorAll('#modulex-5 .vehicle-card').forEach(card=>{ card.addEventListener('click', function(){ document.querySelectorAll('#modulex-5 .vehicle-card').forEach(c=>c.classList.remove('selected')); this.classList.add('selected'); const vehicleType=this.dataset.vehicle; t5_setDefaultValues(vehicleType); }); }); },100);
+</script>
     setTimeout(()=>{ document.querySelectorAll('#modulex-5 .vehicle-card').forEach(card=>{ card.addEventListener('click', function(){ document.querySelectorAll('#modulex-5 .vehicle-card').forEach(c=>c.classList.remove('selected')); this.classList.add('selected'); const vehicleType=this.dataset.vehicle; t5_setDefaultValues(vehicleType); }); }); },100);
 </script>

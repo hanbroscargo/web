@@ -1,59 +1,33 @@
-<div class="module-container">
+<main class="module-container" role="main" aria-label="Metreküp hesaplama aracı">
 
-
-
-<div class="metrekup-container">
+<section class="metrekup-container" aria-labelledby="metrekup-title">
     <div class="metrekup-body">
 
         <div id="hesaplama-container" class="metrekup-main-container">
             
-            <div class="metrekup-list-header">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+            <header class="metrekup-list-header">
+                <div class="metrekup-header-wrapper">
                     <div>
-                        <h3 class="metrekup-list-title">{{mainTitle}}</h3>
+                        <h1 id="metrekup-title" class="metrekup-list-title">{{mainTitle}}</h1>
                         <p class="metrekup-list-subtitle">{{mainSubtitle}}</p>
                     </div>
                     <div class="metrekup-buttons">
-                        <button onclick="addItem()" class="metrekup-btn-add">{{btnAddItem}}</button>
-                        <button onclick="clearAll()" class="metrekup-btn-clear">{{btnClear}}</button>
+                        <button type="button" onclick="addItem()" class="metrekup-btn-add" aria-label="Yeni eşya ekle">{{btnAddItem}}</button>
+                        <button type="button" onclick="clearAll()" class="metrekup-btn-clear" aria-label="Tüm verileri temizle">{{btnClear}}</button>
                     </div>
                 </div>
-            </div>
+            </header>
             
-            <div id="esya-listesi" class="metrekup-items-grid">
+            <section id="esya-listesi" class="metrekup-items-grid" aria-label="Eşya listesi">
                 <!-- Eşya girişleri dinamik olarak eklenecek -->
-            </div>
+            </section>
             
-            <div class="metrekup-bottom-section">
-                <div class="metrekup-transport-section">
-                    <div style="text-align: center; margin-bottom: 25px;">
-                        <h4 class="metrekup-transport-title">{{transportTitle}}</h4>
-                        <p class="metrekup-transport-subtitle">{{transportSubtitle}}</p>
-                    </div>
-                    <div class="metrekup-transport-grid">
-                        <label class="metrekup-transport-option">
-                            <input type="radio" name="transport" value="karayolu" checked onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
-                            <div class="metrekup-transport-icon">🚛</div>
-                            <span class="metrekup-transport-label">{{transportRoad}}</span>
-                        </label>
-                        <label class="metrekup-transport-option">
-                            <input type="radio" name="transport" value="havayolu" onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
-                            <div class="metrekup-transport-icon">✈️</div>
-                            <span class="metrekup-transport-label">{{transportAir}}</span>
-                        </label>
-                        <label class="metrekup-transport-option">
-                            <input type="radio" name="transport" value="denizyolu" onchange="updateTransportType(this)" style="transform: scale(1.3); margin-bottom: 10px;">
-                            <div class="metrekup-transport-icon">🚢</div>
-                            <span class="metrekup-transport-label">{{transportSea}}</span>
-                        </label>
-                    </div>
-                </div>
-                
+            <section class="metrekup-bottom-section" aria-labelledby="results-title">
                 <div class="metrekup-results-section">
-                    <div style="text-align: center; margin-bottom: 25px;">
-                        <h4 class="metrekup-results-title">{{resultsTitle}}</h4> 
+                    <header class="metrekup-results-header">
+                        <h2 id="results-title" class="metrekup-results-title">{{resultsTitle}}</h2> 
                         <p class="metrekup-results-subtitle">{{resultsSubtitle}}</p>
-                    </div>
+                    </header>
                     <div class="metrekup-results-grid">
                         <div class="metrekup-result-card">
                             <div class="metrekup-result-icon">📦</div>
@@ -71,29 +45,28 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
-</div>
-</div>
+</section>
+</main>
 
 
 
 
 <script>
 // Eşya listesi ve hesaplama değişkenleri
-let items = [];
-let currentTransportType = 'karayolu';
-let itemCounter = 0;
+var items = [];
+var itemCounter = 0;
 
 // Sayfa yüklendiğinde
-setTimeout(() => {
+setTimeout(function() {
     initializeCalculator();
 }, 100);
 
 function initializeCalculator() {
     // İlk 3 eşya alanını oluştur
-    for (let i = 1; i <= 3; i++) {
+    for (var i = 1; i <= 3; i++) {
         addItem();
     }
     updateTotals();
@@ -101,45 +74,52 @@ function initializeCalculator() {
 
 function addItem() {
     itemCounter++;
-    const container = document.getElementById('esya-listesi');
-    const itemId = itemCounter;
+    var container = document.getElementById('esya-listesi');
+    var itemId = itemCounter;
     
-    const itemHtml = `
-        <div class="metrekup-item-card" id="item-${itemId}">
-            <div class="metrekup-item-header">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <div class="metrekup-item-number">${itemId}</div>
-                    <h4 class="metrekup-item-title">{{itemTitle}} ${itemId}</h4>
-                </div>
-                ${itemId > 3 ? `<button onclick="removeItem(${itemId})" class="metrekup-btn-remove">×</button>` : ''}
-            </div>
-            
-            <div class="metrekup-inputs-grid">
-               
-                <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">{{labelLength}}</label>
-                    <input type="number" id="length-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
-                </div>
-                <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">{{labelWidth}}</label>
-                    <input type="number" id="width-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
-                </div>
-                <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">{{labelHeight}}</label>
-                    <input type="number" id="height-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
-                </div>
-
-                 <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">{{labelQuantity}}</label>
-                    <input type="number" id="quantity-${itemId}" placeholder="1" step="1" min="1" value="1" oninput="calculateItem(${itemId})" class="metrekup-input">
-                </div>
-                <div class="metrekup-input-group">
-                    <label class="metrekup-input-label">{{labelWeight}}</label>
-                    <input type="number" id="weight-${itemId}" placeholder="0" step="0.1" oninput="calculateItem(${itemId})" class="metrekup-input">
-                </div>
-            </div>
-        </div>
-    `;
+    var removeButton = '';
+    if (itemId > 3) {
+        removeButton = '<button type="button" onclick="removeItem(' + itemId + ')" class="metrekup-btn-remove" aria-label="Eşyayı kaldır">×</button>';
+    }
+    
+    var itemHtml = '<div class="metrekup-item-card" id="item-' + itemId + '">' +
+        '<div class="metrekup-item-header">' +
+            '<div class="metrekup-item-title-wrapper">' +
+                '<div class="metrekup-item-number">' + itemId + '</div>' +
+                '<h3 class="metrekup-item-title">{{itemTitle}} ' + itemId + '</h3>' +
+            '</div>' +
+            removeButton +
+        '</div>' +
+        '<div class="metrekup-inputs-grid">' +
+            '<div class="metrekup-input-group">' +
+                '<label class="metrekup-input-label" for="length-' + itemId + '">{{labelLength}}</label>' +
+                '<input type="number" id="length-' + itemId + '" name="length-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelLength}}">' +
+            '</div>' +
+            '<div class="metrekup-input-group">' +
+                '<label class="metrekup-input-label" for="width-' + itemId + '">{{labelWidth}}</label>' +
+                '<input type="number" id="width-' + itemId + '" name="width-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelWidth}}">' +
+            '</div>' +
+            '<div class="metrekup-input-group">' +
+                '<label class="metrekup-input-label" for="height-' + itemId + '">{{labelHeight}}</label>' +
+                '<input type="number" id="height-' + itemId + '" name="height-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelHeight}}">' +
+            '</div>' +
+            '<div class="metrekup-input-group">' +
+                '<label class="metrekup-input-label" for="quantity-' + itemId + '">{{labelQuantity}}</label>' +
+                '<input type="number" id="quantity-' + itemId + '" name="quantity-' + itemId + '" placeholder="1" step="1" min="1" value="1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelQuantity}}">' +
+            '</div>' +
+            '<div class="metrekup-input-group metrekup-weight-group">' +
+                '<label class="metrekup-input-label" for="weight-' + itemId + '">{{labelWeight}}</label>' +
+                '<input type="number" id="weight-' + itemId + '" name="weight-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelWeight}}">' +
+            '</div>' +
+            '<div class="metrekup-input-group metrekup-volume-group">' +
+                '<label class="metrekup-input-label" for="item-volume-' + itemId + '">{{labelItemVolume}}</label>' +
+                '<div class="metrekup-volume-display">' +
+                    '<span id="item-volume-' + itemId + '">0.00</span>' +
+                    '<span class="metrekup-volume-unit">m³</span>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
     
     container.insertAdjacentHTML('beforeend', itemHtml);
     
@@ -156,40 +136,182 @@ function addItem() {
 }
 
 function removeItem(itemId) {
-    const itemElement = document.getElementById(`item-${itemId}`);
+    var itemElement = document.getElementById('item-' + itemId);
     if (itemElement) {
         itemElement.remove();
     }
     
     // Array'den kaldır
-    items = items.filter(item => item.id !== itemId);
+    items = items.filter(function(item) {
+        return item.id !== itemId;
+    });
+    
+    // Tüm eşyaları yeniden numaralandır
+    renumberItems();
+    
     updateTotals();
 }
 
+function renumberItems() {
+    var container = document.getElementById('esya-listesi');
+    var allItems = container.querySelectorAll('.metrekup-item-card');
+    
+    // Her eşyayı sırayla yeniden numaralandır
+    for (var i = 0; i < allItems.length; i++) {
+        var itemElement = allItems[i];
+        var newNumber = i + 1;
+        var oldId = itemElement.id.replace('item-', '');
+        var newId = newNumber;
+        
+        // Eğer ID değiştiyse, tüm ID'leri güncelle
+        if (parseInt(oldId) !== newId) {
+            // Yeni ID ile element ID'sini güncelle
+            itemElement.id = 'item-' + newId;
+            
+            // Numarayı güncelle
+            var numberElement = itemElement.querySelector('.metrekup-item-number');
+            if (numberElement) {
+                numberElement.textContent = newId;
+            }
+            
+            // Başlığı güncelle
+            var titleElement = itemElement.querySelector('.metrekup-item-title');
+            if (titleElement) {
+                titleElement.textContent = '{{itemTitle}} ' + newId;
+            }
+            
+            // Input ID'lerini güncelle
+            var lengthInput = itemElement.querySelector('#length-' + oldId);
+            if (lengthInput) {
+                lengthInput.id = 'length-' + newId;
+                lengthInput.setAttribute('oninput', 'calculateItem(' + newId + ')');
+            }
+            
+            var widthInput = itemElement.querySelector('#width-' + oldId);
+            if (widthInput) {
+                widthInput.id = 'width-' + newId;
+                widthInput.setAttribute('oninput', 'calculateItem(' + newId + ')');
+            }
+            
+            var heightInput = itemElement.querySelector('#height-' + oldId);
+            if (heightInput) {
+                heightInput.id = 'height-' + newId;
+                heightInput.setAttribute('oninput', 'calculateItem(' + newId + ')');
+            }
+            
+            var quantityInput = itemElement.querySelector('#quantity-' + oldId);
+            if (quantityInput) {
+                quantityInput.id = 'quantity-' + newId;
+                quantityInput.setAttribute('oninput', 'calculateItem(' + newId + ')');
+            }
+            
+            var weightInput = itemElement.querySelector('#weight-' + oldId);
+            if (weightInput) {
+                weightInput.id = 'weight-' + newId;
+                weightInput.setAttribute('oninput', 'calculateItem(' + newId + ')');
+            }
+            
+            // Hacim gösterimini güncelle
+            var volumeElement = itemElement.querySelector('#item-volume-' + oldId);
+            if (volumeElement) {
+                volumeElement.id = 'item-volume-' + newId;
+            }
+            
+            // Silme butonunu güncelle
+            var removeButton = itemElement.querySelector('.metrekup-btn-remove');
+            if (removeButton) {
+                removeButton.setAttribute('onclick', 'removeItem(' + newId + ')');
+            } else if (newId > 3) {
+                // Eğer 3'ten büyükse ve buton yoksa ekle
+                var headerElement = itemElement.querySelector('.metrekup-item-header');
+                if (headerElement) {
+                    var newRemoveButton = '<button onclick="removeItem(' + newId + ')" class="metrekup-btn-remove">×</button>';
+                    var titleDiv = headerElement.querySelector('div');
+                    if (titleDiv && titleDiv.nextSibling) {
+                        titleDiv.parentNode.insertAdjacentHTML('beforeend', newRemoveButton);
+                    } else {
+                        headerElement.insertAdjacentHTML('beforeend', newRemoveButton);
+                    }
+                }
+            }
+            
+            // Items array'indeki ID'yi ve input değerlerini güncelle
+            var itemIndex = items.findIndex(function(item) {
+                return item.id === parseInt(oldId);
+            });
+            if (itemIndex !== -1) {
+                // Input değerlerini al ve items array'ine kaydet
+                var lengthValue = lengthInput ? parseFloat(lengthInput.value) || 0 : 0;
+                var widthValue = widthInput ? parseFloat(widthInput.value) || 0 : 0;
+                var heightValue = heightInput ? parseFloat(heightInput.value) || 0 : 0;
+                var quantityValue = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+                var weightValue = weightInput ? parseFloat(weightInput.value) || 0 : 0;
+                
+                // Hacim hesapla
+                var singleVolume = (lengthValue * widthValue * heightValue) / 1000000;
+                var totalVolume = singleVolume * quantityValue;
+                var totalWeight = weightValue * quantityValue;
+                
+                // Items array'ini güncelle
+                items[itemIndex] = {
+                    id: newId,
+                    quantity: quantityValue,
+                    length: lengthValue,
+                    width: widthValue,
+                    height: heightValue,
+                    weight: totalWeight,
+                    singleWeight: weightValue,
+                    volume: totalVolume,
+                    singleVolume: singleVolume
+                };
+                
+                // Hacim gösterimini güncelle
+                if (volumeElement) {
+                    volumeElement.textContent = totalVolume.toFixed(2);
+                }
+            }
+        } else {
+            // ID aynıysa sadece silme butonunu kontrol et
+            var removeButton = itemElement.querySelector('.metrekup-btn-remove');
+            if (newId <= 3 && removeButton) {
+                removeButton.remove();
+            } else if (newId > 3 && !removeButton) {
+                var headerElement = itemElement.querySelector('.metrekup-item-header');
+                if (headerElement) {
+                    var newRemoveButton = '<button onclick="removeItem(' + newId + ')" class="metrekup-btn-remove">×</button>';
+                    headerElement.insertAdjacentHTML('beforeend', newRemoveButton);
+                }
+            }
+        }
+    }
+}
+
 function calculateItem(itemId) {
-    const quantityInput = document.getElementById(`quantity-${itemId}`);
-    const lengthInput = document.getElementById(`length-${itemId}`);
-    const widthInput = document.getElementById(`width-${itemId}`);
-    const heightInput = document.getElementById(`height-${itemId}`);
-    const weightInput = document.getElementById(`weight-${itemId}`);
+    var quantityInput = document.getElementById('quantity-' + itemId);
+    var lengthInput = document.getElementById('length-' + itemId);
+    var widthInput = document.getElementById('width-' + itemId);
+    var heightInput = document.getElementById('height-' + itemId);
+    var weightInput = document.getElementById('weight-' + itemId);
     
     if (!quantityInput || !lengthInput || !widthInput || !heightInput || !weightInput) {
         return;
     }
     
-    const quantity = parseInt(quantityInput.value) || 1;
-    const length = parseFloat(lengthInput.value) || 0;
-    const width = parseFloat(widthInput.value) || 0;
-    const height = parseFloat(heightInput.value) || 0;
-    const weight = parseFloat(weightInput.value) || 0;
+    var quantity = parseInt(quantityInput.value) || 1;
+    var length = parseFloat(lengthInput.value) || 0;
+    var width = parseFloat(widthInput.value) || 0;
+    var height = parseFloat(heightInput.value) || 0;
+    var weight = parseFloat(weightInput.value) || 0;
     
     // Metreküp hesapla (cm³'den m³'e çevir) ve adet ile çarp
-    const singleVolume = (length * width * height) / 1000000;
-    const totalVolume = singleVolume * quantity;
-    const totalWeight = weight * quantity;
+    var singleVolume = (length * width * height) / 1000000;
+    var totalVolume = singleVolume * quantity;
+    var totalWeight = weight * quantity;
     
     // Array'i güncelle veya oluştur
-    const itemIndex = items.findIndex(item => item.id === itemId);
+    var itemIndex = items.findIndex(function(item) {
+        return item.id === itemId;
+    });
     if (itemIndex !== -1) {
         items[itemIndex] = {
             id: itemId,
@@ -216,39 +338,46 @@ function calculateItem(itemId) {
         });
     }
     
+    // Eşya hacmini göster
+    updateItemVolume(itemId, totalVolume);
+    
     updateTotals();
 }
 
+function updateItemVolume(itemId, volume) {
+    var volumeElement = document.getElementById('item-volume-' + itemId);
+    if (volumeElement) {
+        volumeElement.textContent = volume.toFixed(2);
+    }
+}
+
 function updateTotals() {
-    const totalVolumeElement = document.getElementById('total-volume');
-    const totalWeightElement = document.getElementById('total-weight');
+    var totalVolumeElement = document.getElementById('total-volume');
+    var totalWeightElement = document.getElementById('total-weight');
     
     if (!totalVolumeElement || !totalWeightElement) {
         return;
     }
     
-    const totalVolume = items.reduce((sum, item) => sum + (item.volume || 0), 0);
-    const totalWeight = items.reduce((sum, item) => sum + (item.weight || 0), 0);
+    var totalVolume = items.reduce(function(sum, item) {
+        return sum + (item.volume || 0);
+    }, 0);
+    var totalWeight = items.reduce(function(sum, item) {
+        return sum + (item.weight || 0);
+    }, 0);
     
     totalVolumeElement.textContent = totalVolume.toFixed(2);
     totalWeightElement.textContent = totalWeight.toFixed(2);
 }
 
-function updateTransportType(radio) {
-    if (radio && radio.value) {
-        currentTransportType = radio.value;
-        console.log('Taşıma türü güncellendi:', currentTransportType);
-    }
-}
-
 function clearAll() {
     // Tüm input alanlarını temizle
-    items.forEach(item => {
-        const quantityInput = document.getElementById(`quantity-${item.id}`);
-        const lengthInput = document.getElementById(`length-${item.id}`);
-        const widthInput = document.getElementById(`width-${item.id}`);
-        const heightInput = document.getElementById(`height-${item.id}`);
-        const weightInput = document.getElementById(`weight-${item.id}`);
+    items.forEach(function(item) {
+        var quantityInput = document.getElementById('quantity-' + item.id);
+        var lengthInput = document.getElementById('length-' + item.id);
+        var widthInput = document.getElementById('width-' + item.id);
+        var heightInput = document.getElementById('height-' + item.id);
+        var weightInput = document.getElementById('weight-' + item.id);
         
         if (quantityInput) quantityInput.value = '1';
         if (lengthInput) lengthInput.value = '';
@@ -258,17 +387,22 @@ function clearAll() {
     });
     
     // Items array'ini sıfırla
-    items = items.map(item => ({
-        id: item.id,
-        quantity: 1,
-        length: 0,
-        width: 0,
-        height: 0,
-        weight: 0,
-        singleWeight: 0,
-        volume: 0,
-        singleVolume: 0
-    }));
+    items = items.map(function(item) {
+        // Hacim gösterimini sıfırla
+        updateItemVolume(item.id, 0);
+        
+        return {
+            id: item.id,
+            quantity: 1,
+            length: 0,
+            width: 0,
+            height: 0,
+            weight: 0,
+            singleWeight: 0,
+            volume: 0,
+            singleVolume: 0
+        };
+    });
     
     updateTotals();
 }
@@ -319,6 +453,12 @@ console.log('Metreküp hesaplama modülü yüklendi');
     border-bottom: 1px solid #dee2e6;
 }
 
+.metrekup-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .metrekup-list-title {
     color: #2c3e50;
     font-size: 20px;
@@ -335,6 +475,43 @@ console.log('Metreküp hesaplama modülü yüklendi');
 .metrekup-buttons {
     display: flex;
     gap: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .metrekup-container {
+       width: 95%;
+       background-color: #006B65 !important;
+    }
+    .metrekup-list-header {
+        padding: 15px 15px;
+    }
+    
+    .metrekup-header-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .metrekup-buttons {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+    }
+    
+    .metrekup-btn-add,
+    .metrekup-btn-clear {
+        flex: 1;
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .metrekup-list-title {
+        font-size: 18px;
+    }
+    
+    .metrekup-list-subtitle {
+        font-size: 13px;
+    }
 }
 
 .metrekup-btn-add {
@@ -424,6 +601,12 @@ console.log('Metreküp hesaplama modülü yüklendi');
     align-items: center;
     margin-bottom: 20px;
     position: relative;
+}
+
+.metrekup-item-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .metrekup-item-number {
@@ -527,89 +710,45 @@ console.log('Metreküp hesaplama modülü yüklendi');
     outline: none;
 }
 
-.metrekup-bottom-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-top: 1px solid #dee2e6;
+.metrekup-weight-group {
+    grid-column: span 1;
 }
 
-.metrekup-transport-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 20px;
-    border-right: 1px solid #dee2e6;
-    position: relative;
-    overflow: hidden;
+.metrekup-volume-group {
+    grid-column: span 1;
 }
 
-@media screen and (max-width: 1000px) {
-    .metrekup-bottom-section {
-        grid-template-columns: 1fr;
-    }
-    
-    .metrekup-transport-section {
-        border-right: none;
-        border-bottom: 1px solid #dee2e6;
-    }
-}
-
-.metrekup-transport-title {
-    color: #2c3e50;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0 0 8px 0;
-}
-
-.metrekup-transport-subtitle {
-    color: #6c757d;
-    font-size: 14px;
-    margin: 0;
-}
-
-.metrekup-transport-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    align-items: center;
-}
-
-.metrekup-transport-option {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
-    padding: 12px 15px;
-    background: white;
-    border-radius: 15px;
-    border: 3px solid #dee2e6;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+.metrekup-volume-display {
     width: 100%;
+    padding: 5px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #f8f9fa;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 8px;
-    min-width: 0;
+    gap: 4px;
+    min-height: 34px;
 }
 
-.metrekup-transport-option:hover {
-    border-color: #006B65;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+.metrekup-volume-display span:first-child {
+    font-size: 16px;
+    font-weight: 700;
+    color: #006B65;
 }
 
-.metrekup-transport-icon {
-    font-size: 24px;
-}
-
-.metrekup-transport-label {
-    font-weight: 600;
-    color: #495057;
+.metrekup-volume-unit {
     font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #6c757d;
+    font-weight: 600;
+}
+
+.metrekup-bottom-section {
+    display: block;
+    border-top: 1px solid #dee2e6;
 }
 
 .metrekup-results-section {
@@ -617,6 +756,9 @@ console.log('Metreküp hesaplama modülü yüklendi');
     padding: 20px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .metrekup-results-section::before {
@@ -648,13 +790,19 @@ console.log('Metreküp hesaplama modülü yüklendi');
     margin: 0;
 }
 
- 
+
+
+.metrekup-results-header {
+    text-align: center;
+    width: 100%;
+}
 
 .metrekup-results-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     align-items: center;
+    
 }
 
 .metrekup-result-card {
@@ -700,6 +848,53 @@ console.log('Metreküp hesaplama modülü yüklendi');
     color: #6c757d;
     font-weight: 600;
     flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .metrekup-results-section {
+        padding: 15px 10px;
+        flex-direction: column;
+    }
+    
+    .metrekup-results-header {
+        margin-bottom: 15px;
+    }
+    
+    .metrekup-results-title {
+        font-size: 18px;
+    }
+    
+    .metrekup-results-subtitle {
+        font-size: 11px;
+    }
+    
+    .metrekup-results-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    .metrekup-result-card {
+        padding: 12px;
+        border-radius: 12px;
+        gap: 10px;
+    }
+    
+    .metrekup-result-icon {
+        font-size: 20px;
+    }
+    
+    .metrekup-result-label {
+        font-size: 11px;
+    }
+    
+    .metrekup-result-value {
+        font-size: 18px;
+    }
+    
+    .metrekup-result-unit {
+        font-size: 12px;
+    }
 }
 </style>
 
