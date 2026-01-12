@@ -1681,14 +1681,34 @@
     }
 
     // Çeviri fonksiyonu (lang.json'dan)
+    var translationsCache = null;
     function getTranslation(key) {
         var lang = getCurrentLang();
-        // translate objesi webmakerrender.js tarafından sağlanır
+        
+        // Önce global translate objesini kontrol et (webmakerrender.js tarafından sağlanır)
         if (typeof translate !== 'undefined' && translate[key] && translate[key][lang]) {
             return translate[key][lang];
         }
+        
+        // Cache'den kontrol et
+        if (translationsCache && translationsCache[key] && translationsCache[key][lang]) {
+            return translationsCache[key][lang];
+        }
+        
         // Fallback: key'i döndür
         return key;
+    }
+    
+    // Lang.json'u yükle (eğer translate objesi yoksa)
+    if (typeof translate === 'undefined' || Object.keys(translate).length === 0) {
+        fetch('/webyapar/modul/lang.json')
+            .then(response => response.json())
+            .then(data => {
+                translationsCache = data;
+            })
+            .catch(error => {
+                console.warn('Lang.json yüklenemedi:', error);
+            });
     }
 
     // Hacim hesapla (cm'den m³'e çevir)
