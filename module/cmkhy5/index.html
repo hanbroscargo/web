@@ -1,36 +1,35 @@
 <header class="modulex" role="banner">
-  <div class="modulextitle" role="complementary" aria-label="Site başlığı ve dil seçimi">
-    <div class="modulextitlebody">
-      <h2 class="modulextitlebodytitle">{{web-name}}</h1>
-      <nav class="modulextitlebodylang" aria-label="Dil seçimi">
-        <ul role="list">
-          {{langhtml}}
-        </ul>
-      </nav>
-    </div>
-  </div>
 
   <div class="modulexbody">
     <a href="/{{lang}}/" aria-label="{{web-name}} Ana Sayfa">
       <img src="/img/{{logo}}?v={{random}}" class="module-logo" alt="{{web-name}} Logo" width="300" height="auto" />
     </a>
 
-    <div class="header-actions">
-      <nav class="contact-buttons" aria-label="Hızlı erişim butonları">
-        <a href="/{{lang}}/gonderi-takip/" class="btn-track" title="{{gonder}} - Gönderi takip sayfasına git">
-          <i class="icon" aria-hidden="true">🚛</i>
-          <span>{{gonder}}</span>
-        </a>
-        <a href="/{{lang}}/teklif-al/" class="btn-quote" title="{{teklifal}} - Teklif al sayfasına git">
-          <i class="icon" aria-hidden="true">✏️</i>
-          <span>{{teklifal}}</span>
-        </a>
+
+    <div class="lang_telif">
+      <nav class="modulextitlebodylang" aria-label="Dil seçimi">
+        {{langhtml}}
       </nav>
+
+      <div class="header-actions">
+        <nav class="contact-buttons" aria-label="Hızlı erişim butonları">
+          <a href="/{{lang}}/gonderi-takip/" class="btn-track" title="{{gonder}} - Gönderi takip sayfasına git">
+            <i class="icon" aria-hidden="true">🚛</i>
+            <span>{{gonder}}</span>
+          </a>
+          <a href="/{{lang}}/teklif-al/" class="btn-quote" title="{{teklifal}} - Teklif al sayfasına git">
+            <i class="icon" aria-hidden="true">✏️</i>
+            <span>{{teklifal}}</span>
+          </a>
+        </nav>
+      </div>
+
     </div>
   </div>
   <nav class="modulexmenubody" role="navigation" aria-label="Ana menü">
     <div class="modulexmenu">
-      <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Menüyü aç/kapat" aria-controls="modulexmenulistbody">
+      <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Menüyü aç/kapat"
+        aria-controls="modulexmenulistbody">
         <span class="mobile-menu-toggle-icon" aria-hidden="true">
           <span></span>
           <span></span>
@@ -51,6 +50,15 @@
   </nav>
 </header>
 <style>
+  .lang_telif {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+
   .wa-advanced {
     position: fixed;
     bottom: 80px !important;
@@ -179,47 +187,18 @@
     justify-content: center;
   }
 
-  .modulextitlebody {
-    color: #fff;
-    width: var(--max);
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0px 10px 0px;
-  }
-
-  .modulextitlebodytitle {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    color: #000;
-    font-size: 16px;
-    font-weight: 600;
-  }
 
   .modulextitlebodylang {
     width: auto;
-    margin: -5px 0px -5px 0px;
-  }
-
-  .modulextitlebodylang ul {
     display: flex;
     gap: 5px;
-    position: relative;
-  }
-
-  .modulextitlebodylang li {
-    position: relative;
-    list-style: none;
+    align-items: center;
   }
 
   .mobile-lang-wrapper {
     display: none;
   }
 
-  .mobile-menu-overlay {
-    display: none !important;
-  }
 
   .mobile-menu-close {
     display: none !important;
@@ -429,8 +408,26 @@
   }
 
   @media screen and (max-width: 1024px) {
-    .modulextitlebodytitle {
-      padding: 0px 15px 0px 15px;
+    .lang_telif { 
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    /* Mobilde dil seçimi gizli */
+    .lang_telif .modulextitlebodylang {
+      display: none;
+    }
+    
+    /* Mobilde header-actions görünür olmalı */
+    .lang_telif .header-actions {
+      display: flex !important;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1000;
     }
 
     .modulexmenu {
@@ -452,65 +449,92 @@
       flex-wrap: wrap;
       gap: 15px;
     }
-
-    .header-actions {
-      width: 100%;
-      justify-content: center;
-      margin-top: 10px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #006b65;
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    .contact-buttons {
-      display: flex !important;
-      width: 100% !important;
-      flex-direction: row;
-      gap: 12px;
-      justify-content: center;
-    }
-
-    .contact-buttons a {
-      font-size: 14px;
-      padding: 12px 20px;
-      border-radius: 25px;
-      min-width: 120px;
-    }
-
-    .contact-buttons .icon {
-      font-size: 16px;
-    }
   }
 
   @media screen and (max-width: 768px) {
+    /* Mobilde lang_telif görünür olmalı (header-actions için) */
+    .lang_telif {
+      display: flex !important;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
     .modulextitlebodylang {
       display: none;
     }
 
+    /* Mobilde alt sabit bar */
+    .lang_telif .header-actions {
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: calc(100% - 20px) !important;
+      background-color: #006b65 !important;
+      padding: 10px !important;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15) !important;
+      z-index: 1000 !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 0 !important;
+    }
+
+    .contact-buttons {
+      display: flex !important;
+      width: 100%;
+      max-width: 600px;
+      flex-direction: row;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-buttons a {
+      flex: 1;
+      font-size: 14px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      min-width: 0;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-buttons .icon {
+      font-size: 18px;
+      margin-right: 6px;
+    }
+
+    .contact-buttons span {
+      font-size: 13px;
+    }
+
+    /* Body'ye alt padding ekle (sabit bar için alan) */
+    body {
+      padding-bottom: 75px !important;
+    }
+
+
     /* Overlay/Backdrop */
     .mobile-menu-overlay {
-      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.6);
       z-index: 9998;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
       pointer-events: none;
+      cursor: pointer;
     }
 
     .mobile-menu-overlay.active {
-      display: block;
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
     }
 
@@ -530,22 +554,26 @@
       position: fixed;
       top: 0;
       right: -100%;
-      width: 80%;
       max-width: 320px;
       height: 100%;
       background-color: #006b65;
       z-index: 9999;
       display: flex;
       flex-direction: column;
-      transition: right 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
       box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
-      visibility: hidden;
+      transform: translateX(100%);
+      touch-action: pan-y;
     }
 
     .modulexmenulistbody.is-visible {
       right: 0;
-      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .modulexmenulistbody.swiping {
+      transition: none;
     }
 
     /* Kapatma Butonu */
@@ -574,8 +602,8 @@
 
     .modulexmenulist {
       flex-direction: column;
-      gap: 4px;
-      padding: 10px 0;
+      gap: 0;
+      padding: 0;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -589,6 +617,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.2);
       margin-top: auto;
       background-color: rgba(0, 0, 0, 0.1);
+      gap: 15px;
     }
 
     .mobile-lang-wrapper ul {
@@ -631,12 +660,26 @@
       justify-content: flex-start;
       text-align: left;
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 6px;
+      padding: 16px 20px;
+      border-radius: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      margin: 0;
+      transition: background-color 0.2s ease;
+    }
+
+    .modulexmenulist-menu:last-child {
+      border-bottom: none;
+    }
+
+    .modulexmenulist-menu:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 0;
     }
 
     .modulexmenulist-menu>a {
       text-align: left;
+      width: 100%;
+      display: block;
     }
 
     .dropdown-content-modulex {
@@ -658,20 +701,20 @@
   }
 </style>
 <script>
-  setTimeout(function() {
+  setTimeout(function () {
     try {
       // Direkt selector kullan - daha güvenilir
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".modulexmenulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
       var closeButton = document.querySelector(".mobile-menu-close");
-      
+
       if (!toggle || !menuBody) {
         return;
       }
-      
+
       var mql = window.matchMedia("(max-width: 768px)");
-      
+
       // Menüyü aç fonksiyonu
       function openMenu() {
         if (menuBody) {
@@ -688,15 +731,18 @@
         // Body scroll'u engelle
         document.body.style.overflow = "hidden";
       }
-      
+
       // Menüyü kapat fonksiyonu
       function closeMenu() {
         if (menuBody) {
           menuBody.classList.remove("is-visible");
+          menuBody.classList.remove("swiping");
+          menuBody.style.transform = "";
         }
         if (overlay) {
           overlay.classList.remove("active");
           overlay.setAttribute("aria-hidden", "true");
+          overlay.style.opacity = "";
         }
         if (toggle) {
           toggle.classList.remove("is-active");
@@ -709,7 +755,7 @@
           toggle.focus();
         }
       }
-      
+
       // Toggle butonu
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
@@ -720,7 +766,7 @@
           openMenu();
         }
       });
-      
+
       // Kapatma butonu
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
@@ -729,7 +775,7 @@
           closeMenu();
         });
       }
-      
+
       // Overlay'e tıklanınca kapat
       if (overlay) {
         overlay.addEventListener("click", function (e) {
@@ -738,7 +784,102 @@
           closeMenu();
         });
       }
-      
+
+      // Swipe-to-close özelliği (mobil uygulamalar gibi)
+      var touchStartX = 0;
+      var touchStartY = 0;
+      var touchCurrentX = 0;
+      var isSwiping = false;
+      var swipeThreshold = 50; // Minimum çekme mesafesi (px)
+      var menuWidth = 0;
+
+      // Menü genişliğini al
+      function getMenuWidth() {
+        if (menuBody) {
+          return menuBody.offsetWidth || window.innerWidth * 0.8;
+        }
+        return 320;
+      }
+
+      // Touch başlangıcı
+      menuBody.addEventListener("touchstart", function (e) {
+        if (!menuBody.classList.contains("is-visible")) {
+          return;
+        }
+        var touch = e.touches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        isSwiping = false;
+        menuWidth = getMenuWidth();
+      }, { passive: true });
+
+      // Touch hareketi
+      menuBody.addEventListener("touchmove", function (e) {
+        if (!menuBody.classList.contains("is-visible")) {
+          return;
+        }
+        var touch = e.touches[0];
+        touchCurrentX = touch.clientX;
+        var deltaX = touchCurrentX - touchStartX;
+        var deltaY = Math.abs(touch.clientY - touchStartY);
+
+        // Yatay hareket dikey hareketten fazlaysa swipe
+        if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
+          isSwiping = true;
+          e.preventDefault();
+
+          // Sadece sağa çekme (pozitif deltaX)
+          if (deltaX > 0) {
+            menuBody.classList.add("swiping");
+            var translateX = Math.min(deltaX, menuWidth);
+            menuBody.style.transform = "translateX(" + translateX + "px)";
+            
+            // Overlay opacity ayarla
+            if (overlay) {
+              var opacity = 0.6 * (1 - deltaX / menuWidth);
+              overlay.style.opacity = opacity;
+            }
+          }
+        }
+      }, { passive: false });
+
+      // Touch bitişi
+      menuBody.addEventListener("touchend", function (e) {
+        if (!menuBody.classList.contains("is-visible")) {
+          return;
+        }
+        
+        if (isSwiping) {
+          menuBody.classList.remove("swiping");
+          var deltaX = touchCurrentX - touchStartX;
+          
+          // Eğer yeterince sağa çekildiyse menüyü kapat
+          if (deltaX > swipeThreshold) {
+            closeMenu();
+          } else {
+            // Geri animasyon
+            menuBody.style.transform = "";
+            if (overlay) {
+              overlay.style.opacity = "";
+            }
+          }
+          
+          isSwiping = false;
+        }
+      }, { passive: true });
+
+      // Touch iptal
+      menuBody.addEventListener("touchcancel", function (e) {
+        if (isSwiping) {
+          menuBody.classList.remove("swiping");
+          menuBody.style.transform = "";
+          if (overlay) {
+            overlay.style.opacity = "";
+          }
+          isSwiping = false;
+        }
+      }, { passive: true });
+
       // Menü içindeki linklere tıklanınca kapat
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
@@ -747,14 +888,14 @@
           closeMenu();
         }
       });
-      
+
       // ESC tuşu ile kapat
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-      
+
       // Klavye navigasyonu (Enter ve Space)
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
@@ -766,7 +907,7 @@
           }
         }
       });
-      
+
       // Breakpoint değişikliği
       function handleBreakpoint() {
         if (!mql.matches) {
@@ -785,7 +926,7 @@
           document.body.style.overflow = "";
         }
       }
-      
+
       if (typeof mql.addEventListener === "function") {
         mql.addEventListener("change", handleBreakpoint);
       } else if (typeof mql.addListener === "function") {
