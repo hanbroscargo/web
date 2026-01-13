@@ -1701,12 +1701,23 @@
     
     // Lang.json'u yükle (eğer translate objesi yoksa)
     if (typeof translate === 'undefined' || Object.keys(translate).length === 0) {
-        fetch('/webyapar/modul/lang.json')
-            .then(response => response.json())
-            .then(data => {
+        fetch('/webyapar/modul/lang.json', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            },
+            cache: 'no-cache'
+        })
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return response.json();
+            })
+            .then(function(data) {
                 translationsCache = data;
             })
-            .catch(error => {
+            .catch(function(error) {
                 console.warn('Lang.json yüklenemedi:', error);
             });
     }
@@ -2349,9 +2360,41 @@ function updateProductCounterDisplay(productId, count) {
     }
 
     // Ürün verilerini yükle
-    fetch('https://api.hanbroscargo.workers.dev/groups')
-        .then(response => response.json())
-        .then(products => {
+    function loadProducts(retryCount) {
+        retryCount = retryCount || 0;
+        var maxRetries = 3;
+        
+        // Loading göster
+        var categoriesContent = document.getElementById('categories-content');
+        if (categoriesContent) {
+            categoriesContent.innerHTML = '<div class="no-products" style="text-align: center; padding: 40px;">' + (getTranslation('loading') || 'Yükleniyor') + '...</div>';
+        }
+        
+        // AbortController ile timeout kontrolü (mobilde network sorunları için)
+        var abortController = new AbortController();
+        var timeoutId = setTimeout(function() {
+            abortController.abort();
+            console.error('API timeout - 20 saniye içinde yanıt alınamadı');
+        }, 20000); // 20 saniye timeout (mobilde daha uzun sürebilir)
+        
+        fetch('https://api.hanbroscargo.workers.dev/groups', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            cache: 'no-cache',
+            signal: abortController.signal
+        })
+        .then(function(response) {
+            clearTimeout(timeoutId);
+            if (!response.ok) {
+                throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(function(products) {
             // Tüm ürünleri sakla
             allProducts = products;
 
@@ -2643,11 +2686,46 @@ function updateProductCounterDisplay(productId, count) {
             // İlk yüklemede toplamı güncelle
             updateTotalCounter();
         })
-        .catch(error => {
+        .catch(function(error) {
+            clearTimeout(timeoutId);
             console.error('Ürünler yüklenemedi:', error);
+            
+            // Retry mekanizması (maksimum 3 deneme)
+            if (retryCount < maxRetries) {
+                console.log('Tekrar deneme: ' + (retryCount + 1) + '/' + maxRetries);
+                setTimeout(function() {
+                    loadProducts(retryCount + 1);
+                }, 2000 * (retryCount + 1)); // Her denemede bekleme süresini artır
+                return;
+            }
+            
             var categoriesContent = document.getElementById('categories-content');
             if (categoriesContent) {
-                categoriesContent.innerHTML = '<div class="no-products">' + getTranslation('loading-error') + '</div>';
+                var errorMsg = getTranslation('loading-error') || 'Veriler yüklenemedi';
+                var errorDetail = '';
+                
+                // Hata tipine göre mesaj
+                if (error.name === 'AbortError' || (error.message && error.message.includes('timeout'))) {
+                    errorDetail = 'Bağlantı zaman aşımına uğradı. Lütfen internet bağlantınızı kontrol edin.';
+                } else if (error.message && error.message.includes('Failed to fetch')) {
+                    errorDetail = 'Sunucuya bağlanılamadı. Lütfen internet bağlantınızı kontrol edin.';
+                } else if (error.message && error.message.includes('CORS')) {
+                    errorDetail = 'CORS hatası. Lütfen daha sonra tekrar deneyin.';
+                } else {
+                    errorDetail = error.message || 'Bilinmeyen bir hata oluştu.';
+                }
+                
+                categoriesContent.innerHTML = '<div class="no-products" style="text-align: center; padding: 40px;">' +
+                    '<div style="color: #dc3545; margin-bottom: 10px; font-weight: 600;">' + errorMsg + '</div>' +
+                    '<div style="font-size: 12px; color: #666; margin-bottom: 15px;">' + errorDetail + '</div>' +
+                    '<button onclick="loadProducts(0)" style="padding: 10px 20px; background: #009a96; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; cursor: pointer;">Tekrar Dene</button>' +
+                    '</div>';
             }
         });
+    }
+    
+    // Sayfa yüklendiğinde ürünleri yükle
+    setTimeout(function() {
+        loadProducts(0);
+    }, 100);
 </script>
