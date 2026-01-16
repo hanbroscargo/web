@@ -765,8 +765,8 @@
                     (transaction.TransactionDetail && transaction.TransactionDetail.includes('Teslim Edildi'))
                 );
                 
-                // Sadece teslim edildiyse "✓", değilse "i"
-                const iconContent = isDelivered ? '✓' : 'i';
+                // Sadece teslim edildiyse "✓", değilse sayı göster (en eski 1'den başlar, en yeni en büyük sayı)
+                const iconContent = isDelivered ? '✓' : (sortedHistory.length - index);
                 const deliveredClass = isDelivered ? ' delivered' : '';
                 
                 timelineHTML += `
