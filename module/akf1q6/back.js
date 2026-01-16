@@ -8,9 +8,9 @@ if (json.desing && json.desing.data) {
         var title = item.title && item.title[json.lang] ? item.title[json.lang] : item[json.lang] || 'Başlık';
         
         data += `
-        <div class="modulex-item" onclick="pageteklif('modulex-${json.desing.data[key].id}')">
+        <div class="modulex-item" onclick="pageteklif('modulex-${item.id}')">
             <img class="modulex-item-img" 
-                 src="/img/akf1q6/${json.desing.data[key].img}" 
+                 src="/img/akf1q6/${item.img}" 
                  alt="${title}"
                  loading="lazy">
             <div class="modulex-item-title">
