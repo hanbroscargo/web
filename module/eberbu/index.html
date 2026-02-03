@@ -613,8 +613,8 @@
                 <div class="eberbu-hero-icon" aria-hidden="true">
                     <div class="eberbu-hero-icon-inner">🚛</div>
                 </div>
-                <h1 class="eberbu-hero-title">Kargo Takip Sistemi</h1>
-                <p class="eberbu-hero-subtitle">Gönderinizin durumunu anlık olarak takip edin</p>
+                <h1 class="eberbu-hero-title">{{heroTitle}}</h1>
+                <p class="eberbu-hero-subtitle">{{heroSubtitle}}</p>
             </div>
             <div class="eberbu-hero-particles" aria-hidden="true"></div>
         </header>
@@ -625,21 +625,21 @@
                 <div class="eberbu-search-icon" aria-hidden="true">
                     <span class="material-symbols-outlined" aria-hidden="true">search</span>
                 </div>
-                <h2 id="search-title" class="eberbu-search-title">Gönderi Sorgula</h2>
-                <p class="eberbu-search-subtitle">Takip numaranızı girerek gönderinizin güncel durumunu öğrenin</p>
+                <h2 id="search-title" class="eberbu-search-title">{{searchTitle}}</h2>
+                <p class="eberbu-search-subtitle">{{searchSubtitle}}</p>
             </header>
             
-            <form class="eberbu-search-form" id="searchForm" aria-label="Gönderi takip formu">
+            <form class="eberbu-search-form" id="searchForm" aria-label="{{formAriaLabel}}">
                 <div class="eberbu-input-group">
                     <div class="eberbu-input-icon" aria-hidden="true">
                         <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
                     </div>
-                    <label for="trackingInput" class="sr-only">Takip numarası</label>
-                    <input type="text" class="eberbu-search-input" id="trackingInput" name="trackingNumber" placeholder="Takip numarası giriniz (örn: CA-250000-0000)" required aria-label="Takip numarası giriniz">
+                    <label for="trackingInput" class="sr-only">{{inputPlaceholder}}</label>
+                    <input type="text" class="eberbu-search-input" id="trackingInput" name="trackingNumber" placeholder="{{inputPlaceholder}}" required aria-label="{{inputAriaLabel}}">
                     <div class="eberbu-input-underline" aria-hidden="true"></div>
                 </div>
-                <button type="submit" class="eberbu-search-btn" aria-label="Gönderi sorgula">
-                    <span class="eberbu-btn-text">Sorgula</span>
+                <button type="submit" class="eberbu-search-btn" aria-label="{{searchBtnAriaLabel}}" style="cursor: pointer;">
+                    <span class="eberbu-btn-text">{{btnSearch}}</span>
                     <div class="eberbu-btn-icon" aria-hidden="true">
                         <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                     </div>
@@ -655,140 +655,131 @@
                     <span class="material-symbols-outlined" aria-hidden="true">info</span>
                 </div>
                 <div class="eberbu-status-info">
-                    <h2 id="tracking-info">Takip numarası giriniz</h2>
-                    <p class="eberbu-status-desc">Gönderinizin güncel durumu aşağıda listelenmektedir</p>
+                    <h2 id="tracking-info">{{statusDefault}}</h2>
+                    <p class="eberbu-status-desc">{{statusDesc}}</p>
                 </div>
             </header>
         </section>
         
         <!-- Timeline Section -->
-        <section class="eberbu-timeline-section" id="timeline" aria-label="Gönderi takip geçmişi" role="region">
+        <section class="eberbu-timeline-section" id="timeline" aria-label="{{timelineAriaLabel}}" role="region">
             
         </section>
 
+        <!-- Dil metinleri - back.js tarafından doldurulur (sadece tr/en) -->
+        <script id="eberbu-i18n">
+        if (typeof eberbuLang === 'undefined') { var eberbuLang = '{{lang}}'; }
+        if (typeof eberbuLoadingText === 'undefined') { var eberbuLoadingText = '{{loadingText}}'; }
+        if (typeof eberbuErrorNotFound === 'undefined') { var eberbuErrorNotFound = '{{errorNotFound}}'; }
+        if (typeof eberbuErrorNoHistory === 'undefined') { var eberbuErrorNoHistory = '{{errorNoHistory}}'; }
+        if (typeof eberbuTrackingStatusFormat === 'undefined') { var eberbuTrackingStatusFormat = '{{trackingStatusFormat}}'; }
+        </script>
+
         <!-- Floating Action Button -->
-        <button class="eberbu-fab" id="fabButton" style="display: none;" aria-label="Yenile" title="Yenile">
+        <button class="eberbu-fab" id="fabButton" style="display: none; cursor: pointer;" aria-label="{{fabRefresh}}" title="{{fabRefresh}}">
             <span class="material-symbols-outlined" aria-hidden="true">refresh</span>
         </button>
     </main>
 
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchForm = document.getElementById('searchForm');
-            const trackingInput = document.getElementById('trackingInput');
-            
-            if (searchForm) {
-                searchForm.addEventListener('submit', function(e) {
+        // Kritik kural: DOMContentLoaded yasak, setTimeout kullan
+        var searchFormEl = document.getElementById('searchForm');
+        var trackingInputEl = document.getElementById('trackingInput');
+        setTimeout(function() {
+            if (searchFormEl) {
+                searchFormEl.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    const trackingNumber = trackingInput.value.trim();
+                    var trackingNumber = trackingInputEl ? trackingInputEl.value.trim() : '';
                     if (trackingNumber) {
                         searchTracking(trackingNumber);
                     }
                 });
             }
-            
-            // Enter tuşu ile arama
-            if (trackingInput) {
-                trackingInput.addEventListener('keypress', function(e) {
+            if (trackingInputEl) {
+                trackingInputEl.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        const trackingNumber = this.value.trim();
+                        var trackingNumber = this.value.trim();
                         if (trackingNumber) {
                             searchTracking(trackingNumber);
                         }
                     }
                 });
             }
-        });
+        }, 100);
 
         function searchTracking(trackingNumber) {
-            const timeline = document.getElementById('timeline');
-            const trackingInfo = document.getElementById('tracking-info');
-            const statusSection = document.getElementById('statusSection');
-            const fabButton = document.getElementById('fabButton');
-            
-            if (timeline) {
-                timeline.innerHTML = `
-                    <div class="eberbu-loading">
-                        <div class="eberbu-loading-spinner"></div>
-                        <p class="eberbu-loading-text">Yükleniyor...</p>
-                    </div>
-                `;
-            }
-            
-            if (trackingInfo) {
-                trackingInfo.textContent = `${trackingNumber} takip numaralı siparişinizin durumu aşağıdaki gibidir.`;
-            }
+            var timeline = document.getElementById('timeline');
+            var trackingInfo = document.getElementById('tracking-info');
+            var statusSection = document.getElementById('statusSection');
+            var fabButton = document.getElementById('fabButton');
+            var loadingText = (typeof eberbuLoadingText !== 'undefined') ? eberbuLoadingText : 'Yükleniyor...';
+            var statusFormat = (typeof eberbuTrackingStatusFormat !== 'undefined') ? eberbuTrackingStatusFormat : '{0} takip numaralı siparişinizin durumu aşağıdaki gibidir.';
+            var errorNotFound = (typeof eberbuErrorNotFound !== 'undefined') ? eberbuErrorNotFound : 'Sipariş bulunamadı veya bir hata oluştu.';
+            var errorNoHistory = (typeof eberbuErrorNoHistory !== 'undefined') ? eberbuErrorNoHistory : 'Bu takip numarası için geçmiş bulunamadı.';
 
+            if (timeline) {
+                timeline.innerHTML = '<div class="eberbu-loading"><div class="eberbu-loading-spinner"></div><p class="eberbu-loading-text">' + loadingText + '</p></div>';
+            }
+            if (trackingInfo) {
+                trackingInfo.textContent = statusFormat.replace('{0}', trackingNumber);
+            }
             if (statusSection) {
                 statusSection.style.display = 'block';
             }
-
             if (fabButton) {
                 fabButton.style.display = 'flex';
-                fabButton.onclick = () => searchTracking(trackingNumber);
+                fabButton.onclick = function() { searchTracking(trackingNumber); };
             }
 
-            fetch(`https://api.hanbroscargo.workers.dev/track?id=${trackingNumber}`)
-                .then(response => response.json())
-                .then(data => {
+            fetch('https://api.hanbroscargo.workers.dev/track?id=' + encodeURIComponent(trackingNumber))
+                .then(function(response) { return response.json(); })
+                .then(function(data) {
                     displayTrackingData(data);
                 })
-                .catch(error => {
+                .catch(function() {
                     if (timeline) {
-                        timeline.innerHTML = '<div class="eberbu-error">Sipariş bulunamadı veya bir hata oluştu.</div>';
+                        timeline.innerHTML = '<div class="eberbu-error">' + errorNotFound + '</div>';
                     }
                 });
         }
 
         function displayTrackingData(data) {
-            const timeline = document.getElementById('timeline');
-            
+            var timeline = document.getElementById('timeline');
+            var errorNoHistory = (typeof eberbuErrorNoHistory !== 'undefined') ? eberbuErrorNoHistory : 'Bu takip numarası için geçmiş bulunamadı.';
             if (!timeline) return;
-            
             if (!data.TransactionHistory || data.TransactionHistory.length === 0) {
-                timeline.innerHTML = '<div class="eberbu-error">Bu takip numarası için geçmiş bulunamadı.</div>';
+                timeline.innerHTML = '<div class="eberbu-error">' + errorNoHistory + '</div>';
                 return;
             }
-
-            // TransactionHistory'yi Date'e göre sırala (en yeni önce)
-            const sortedHistory = data.TransactionHistory.sort((a, b) => {
+            var sortedHistory = data.TransactionHistory.sort(function(a, b) {
                 return new Date(b.Date) - new Date(a.Date);
             });
-            
-            let timelineHTML = '';
-            
-            sortedHistory.forEach((transaction, index) => {
-                // "Teslim Edildi" kontrolü
-                const isDelivered = (
-                    (transaction.TransactionDescription && transaction.TransactionDescription.includes('Teslim Edildi')) ||
-                    (transaction.TransactionDetail && transaction.TransactionDetail.includes('Teslim Edildi'))
-                );
-                
-                // Sadece teslim edildiyse "✓", değilse sayı göster (en eski 1'den başlar, en yeni en büyük sayı)
-                const iconContent = isDelivered ? '✓' : (sortedHistory.length - index);
-                const deliveredClass = isDelivered ? ' delivered' : '';
-                
-                timelineHTML += `
-                    <div class="eberbu-timeline-item${deliveredClass}">
-                        <div class="eberbu-timeline-icon">${iconContent}</div>
-                        <div class="eberbu-timeline-content">
-                            <div class="eberbu-timeline-id">${transaction.TransactionDescription || transaction.TransactionDetail || ''}</div>
-                            ${transaction.TransactionDetail ? `<div class="eberbu-timeline-details" style="margin-bottom: 8px;">${transaction.TransactionDetail}</div>` : ''}
-                            <div class="eberbu-timeline-details">
-                                ${transaction.TransactionDate} | ${transaction.OperationCenter}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            timeline.innerHTML = `<div class="eberbu-timeline-container">${timelineHTML}</div>`;
+            var timelineHTML = '';
+            var deliveredTr = 'Teslim Edildi';
+            var deliveredEn = 'Delivered';
+            var isEn = (typeof eberbuLang !== 'undefined' && eberbuLang === 'en');
+            var deliveredKey = isEn ? deliveredEn : deliveredTr;
+            for (var i = 0; i < sortedHistory.length; i++) {
+                var transaction = sortedHistory[i];
+                var desc = transaction.TransactionDescription || '';
+                var detail = transaction.TransactionDetail || '';
+                var isDelivered = (desc.indexOf(deliveredTr) !== -1 || desc.indexOf(deliveredEn) !== -1 || detail.indexOf(deliveredTr) !== -1 || detail.indexOf(deliveredEn) !== -1);
+                var iconContent = isDelivered ? '✓' : (sortedHistory.length - i);
+                var deliveredClass = isDelivered ? ' delivered' : '';
+                timelineHTML += '<div class="eberbu-timeline-item' + deliveredClass + '">' +
+                    '<div class="eberbu-timeline-icon">' + iconContent + '</div>' +
+                    '<div class="eberbu-timeline-content">' +
+                    '<div class="eberbu-timeline-id">' + (desc || detail) + '</div>' +
+                    (detail ? '<div class="eberbu-timeline-details" style="margin-bottom: 8px;">' + detail + '</div>' : '') +
+                    '<div class="eberbu-timeline-details">' + transaction.TransactionDate + ' | ' + (transaction.OperationCenter || '') + '</div>' +
+                    '</div></div>';
+            }
+            timeline.innerHTML = '<div class="eberbu-timeline-container">' + timelineHTML + '</div>';
         }
 
-        // Sayfa yüklendiğinde örnek takip numarasını yükle
         window.addEventListener('load', function() {
-            const trackingInput = document.getElementById('trackingInput');
+            var trackingInput = document.getElementById('trackingInput');
             if (trackingInput) {
                 trackingInput.value = '';
             }
