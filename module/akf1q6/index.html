@@ -8,110 +8,110 @@
     <div class="container">
             <section class="form-section" aria-labelledby="teklif-title">
                 <div class="form-container">
-                    <h1 id="teklif-title">Teklif Al</h1>
+                    <h1 id="teklif-title">{{pageTitle}}</h1>
                     <div class="step active" id="step1" role="tabpanel" aria-labelledby="step1-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">1</span>
-                            <h2 id="step1-title">Eşya Türünü Seçin</h2>
+                            <h2 id="step1-title">{{step1Title}}</h2>
                         </header>
-                        <div class="items-grid" role="group" aria-label="Eşya türü seçimi">
-                            <div class="item-card" data-item="paket" role="button" tabindex="0" aria-label="Paket - Küçük ve orta boy paketler">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Paket taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Paket</h3>
-                                <p>Küçük ve orta boy paketler</p>
+                        <div class="items-grid" role="group" aria-label="{{step1Title}}">
+                            <div class="item-card" data-item="paket" role="button" tabindex="0" aria-label="{{itemPaket}} - {{itemPaketDesc}}">
+                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="{{itemPaket}}" width="80" height="80" loading="lazy">
+                                <h3>{{itemPaket}}</h3>
+                                <p>{{itemPaketDesc}}</p>
                             </div>
-                            <div class="item-card" data-item="kutu" role="button" tabindex="0" aria-label="Kutu - Standart kutu gönderileri">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Kutu taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Kutu</h3>
-                                <p>Standart kutu gönderileri</p>
+                            <div class="item-card" data-item="kutu" role="button" tabindex="0" aria-label="{{itemKutu}} - {{itemKutuDesc}}">
+                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="{{itemKutu}}" width="80" height="80" loading="lazy">
+                                <h3>{{itemKutu}}</h3>
+                                <p>{{itemKutuDesc}}</p>
                             </div>
-                            <div class="item-card" data-item="dokuman" role="button" tabindex="0" aria-label="Döküman - Önemli evraklar">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="Döküman taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Döküman</h3>
-                                <p>Önemli evraklar</p>
+                            <div class="item-card" data-item="dokuman" role="button" tabindex="0" aria-label="{{itemDokuman}} - {{itemDokumanDesc}}">
+                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="{{itemDokuman}}" width="80" height="80" loading="lazy">
+                                <h3>{{itemDokuman}}</h3>
+                                <p>{{itemDokumanDesc}}</p>
                             </div>
                         </div>
-                        <button type="button" class="btn-next" onclick="nextStep()" aria-label="Sonraki adıma geç">Devam Et</button>
+                        <button type="button" class="btn-next" onclick="nextStep()" aria-label="{{btnNext}}">{{btnNext}}</button>
                     </div>
                     <div class="step" id="step2" role="tabpanel" aria-labelledby="step2-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">2</span>
-                            <h2 id="step2-title">Adres Bilgileri</h2>
+                            <h2 id="step2-title">{{step2Title}}</h2>
                         </header>
-                        <form class="address-form" aria-label="Adres bilgileri formu">
+                        <form class="address-form" aria-label="{{step2Title}}">
                             <div class="form-group">
-                                <label for="fromAddress">Nereden:</label>
-                                <input type="text" id="fromAddress" name="fromAddress" placeholder="Gönderi adresini girin" aria-required="true">
+                                <label for="fromAddress">{{labelFrom}}</label>
+                                <input type="text" id="fromAddress" name="fromAddress" placeholder="{{placeholderFrom}}" aria-required="true">
                             </div>
                             <div class="form-group">
-                                <label for="toAddress">Nereye:</label>
-                                <input type="text" id="toAddress" name="toAddress" placeholder="Teslimat adresini girin" aria-required="true">
+                                <label for="toAddress">{{labelTo}}</label>
+                                <input type="text" id="toAddress" name="toAddress" placeholder="{{placeholderTo}}" aria-required="true">
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="length">Boyut - Uzunluk (cm):</label>
-                                    <input type="number" id="length" name="length" placeholder="Uzunluk" aria-label="Uzunluk (cm)">
+                                    <label for="length">{{labelLength}}</label>
+                                    <input type="number" id="length" name="length" placeholder="{{placeholderLength}}" aria-label="{{labelLength}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="width">Genişlik (cm):</label>
-                                    <input type="number" id="width" name="width" placeholder="Genişlik" aria-label="Genişlik (cm)">
+                                    <label for="width">{{labelWidth}}</label>
+                                    <input type="number" id="width" name="width" placeholder="{{placeholderWidth}}" aria-label="{{labelWidth}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="height">Yükseklik (cm):</label>
-                                    <input type="number" id="height" name="height" placeholder="Yükseklik" aria-label="Yükseklik (cm)">
+                                    <label for="height">{{labelHeight}}</label>
+                                    <input type="number" id="height" name="height" placeholder="{{placeholderHeight}}" aria-label="{{labelHeight}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="weight">Ağırlık (kg):</label>
-                                <input type="number" id="weight" name="weight" placeholder="Ağırlık" aria-label="Ağırlık (kg)">
+                                <label for="weight">{{labelWeight}}</label>
+                                <input type="number" id="weight" name="weight" placeholder="{{placeholderWeight}}" aria-label="{{labelWeight}}">
                             </div>
                         </form>
                         <div class="step-buttons">
-                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="Önceki adıma dön">Geri</button>
-                            <button type="button" class="btn-next" onclick="nextStep()" aria-label="Sonraki adıma geç">Devam Et</button>
+                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="{{btnBack}}">{{btnBack}}</button>
+                            <button type="button" class="btn-next" onclick="nextStep()" aria-label="{{btnNext}}">{{btnNext}}</button>
                         </div>
                     </div>
                     <div class="step" id="step3" role="tabpanel" aria-labelledby="step3-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="step3-title">İletişim Bilgileri</h2>
+                            <h2 id="step3-title">{{step3Title}}</h2>
                         </header>
-                        <form class="contact-form" aria-label="İletişim bilgileri formu">
+                        <form class="contact-form" aria-label="{{step3Title}}">
                             <div class="form-group">
-                                <label for="fullName">Ad Soyad:</label>
-                                <input type="text" id="fullName" name="fullName" placeholder="Adınızı ve soyadınızı girin" aria-required="true">
+                                <label for="fullName">{{labelFullName}}</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="{{placeholderName}}" aria-required="true">
                             </div>
                             <div class="form-group">
-                                <label for="phone">Telefon:</label>
-                                <input type="tel" id="phone" name="phone" placeholder="Telefon numaranız" aria-required="true">
+                                <label for="phone">{{labelPhone}}</label>
+                                <input type="tel" id="phone" name="phone" placeholder="{{placeholderPhone}}" aria-required="true">
                             </div>
                             <div class="form-group">
-                                <label for="email">E-posta:</label>
-                                <input type="email" id="email" name="email" placeholder="E-posta adresiniz" aria-required="true">
+                                <label for="email">{{labelEmail}}</label>
+                                <input type="email" id="email" name="email" placeholder="{{placeholderEmail}}" aria-required="true">
                             </div>
                             <div class="form-group">
-                                <label for="notes">Notlar:</label>
-                                <textarea id="notes" name="notes" placeholder="Ek notlarınız (opsiyonel)" aria-label="Ek notlar"></textarea>
+                                <label for="notes">{{labelNotes}}</label>
+                                <textarea id="notes" name="notes" placeholder="{{placeholderNotes}}" aria-label="{{labelNotes}}"></textarea>
                             </div>
                         </form>
                         <div class="step-buttons">
-                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="Önceki adıma dön">Geri</button>
-                            <button type="button" class="btn-next" onclick="calculatePrice()" aria-label="Fiyat hesapla">Fiyat Hesapla</button>
+                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="{{btnBack}}">{{btnBack}}</button>
+                            <button type="button" class="btn-next" onclick="calculatePrice()" aria-label="{{btnCalculate}}">{{btnCalculate}}</button>
                         </div>
                     </div>
                     <div class="step" id="step4" role="tabpanel" aria-labelledby="step4-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">4</span>
-                            <h2 id="step4-title">Teklif Sonucu</h2>
+                            <h2 id="step4-title">{{step4Title}}</h2>
                         </header>
                         <div class="price-result" aria-live="polite">
                             <div class="tracking-info">
-                                <h3>Takip Numarası: <span id="trackingNumber">TEST123456</span></h3>
+                                <h3>{{trackingLabel}} <span id="trackingNumber">TEST123456</span></h3>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="Önceki adıma dön">Geri</button>
-                            <button type="button" class="btn-primary" onclick="submitRequest()" aria-label="Teklifi onayla ve gönder">Teklifi Onayla</button>
+                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="{{btnBack}}">{{btnBack}}</button>
+                            <button type="button" class="btn-primary" onclick="submitRequest()" aria-label="{{btnSubmit}}">{{btnSubmit}}</button>
                         </div>
                     </div>
                 </div>
@@ -125,130 +125,130 @@
     <div class="container">
             <section class="form-section">
                 <div class="form-container">
-                    <h3>Teklif Al</h3>
+                    <h3>{{pageTitle}}</h3>
                     <div class="step active" id="t2-step1" role="tabpanel" aria-labelledby="t2-step1-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">1</span>
-                            <h2 id="t2-step1-title">Adres Bilgileri</h2>
+                            <h2 id="t2-step1-title">{{step2Title}}</h2>
                         </header>
                         <div class="address-form">
                             <div class="form-group">
-                                <label>Yükleme Adresi:</label>
-                                <input type="text" id="t2-fromAddress" placeholder="Yükleme adresini girin">
+                                <label>{{labelLoadAddress}}</label>
+                                <input type="text" id="t2-fromAddress" placeholder="{{placeholderFrom}}">
                             </div>
                             <div class="form-group">
-                                <label>Teslimat Adresi:</label>
-                                <input type="text" id="t2-toAddress" placeholder="Teslimat adresini girin">
+                                <label>{{labelDeliveryAddress}}</label>
+                                <input type="text" id="t2-toAddress" placeholder="{{placeholderTo}}">
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Eşya Türü:</label>
+                                    <label>{{labelItemType}}</label>
                                     <select id="t2-itemType">
-                                        <option value="">Seçiniz</option>
-                                        <option value="mallar">Ticari Mallar</option>
-                                        <option value="makineler">Makineler</option>
-                                        <option value="donanim">Donanım</option>
-                                        <option value="hammadde">Hammadde</option>
+                                        <option value="">{{selectOption}}</option>
+                                        <option value="mallar">{{t2_optionMallar}}</option>
+                                        <option value="makineler">{{t2_optionMakineler}}</option>
+                                        <option value="donanim">{{t2_optionDonanim}}</option>
+                                        <option value="hammadde">{{t2_optionHammadde}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Boyut (cm):</label>
-                                    <input type="number" id="t2-length" placeholder="Uzunluk">
+                                    <label>{{labelSize}}</label>
+                                    <input type="number" id="t2-length" placeholder="{{placeholderLength}}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" id="t2-width" placeholder="Genişlik">
+                                    <input type="number" id="t2-width" placeholder="{{placeholderWidth}}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" id="t2-height" placeholder="Yükseklik">
+                                    <input type="number" id="t2-height" placeholder="{{placeholderHeight}}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Ağırlık (kg):</label>
-                                    <input type="number" id="t2-weight" placeholder="Ağırlık">
+                                    <label>{{labelWeight}}</label>
+                                    <input type="number" id="t2-weight" placeholder="{{placeholderWeight}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Miktar:</label>
-                                    <input type="number" id="t2-quantity" placeholder="Adet">
+                                    <label>{{labelQty}}</label>
+                                    <input type="number" id="t2-quantity" placeholder="{{placeholderQty}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Değer (₺):</label>
-                                    <input type="number" id="t2-value" placeholder="Eşya değeri">
+                                    <label>{{labelValue}}</label>
+                                    <input type="number" id="t2-value" placeholder="{{placeholderValue}}">
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-next" onclick="t2_nextStep()">Devam Et</button>
+                        <button class="btn-next" onclick="t2_nextStep()">{{btnNext}}</button>
                     </div>
                     <div class="step" id="t2-step2" role="tabpanel" aria-labelledby="t2-step2-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">2</span>
-                            <h2 id="t2-step2-title">İletişim Bilgileri</h2>
+                            <h2 id="t2-step2-title">{{step3Title}}</h2>
                         </header>
                         <div class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Firma Adı:</label>
-                                    <input type="text" id="t2-companyName" placeholder="Firma adınızı girin">
+                                    <label>{{labelCompany}}</label>
+                                    <input type="text" id="t2-companyName" placeholder="{{placeholderCompany}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Vergi No:</label>
-                                    <input type="text" id="t2-taxNumber" placeholder="Vergi numarası">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Yetkili Ad Soyad:</label>
-                                    <input type="text" id="t2-fullName" placeholder="Adınızı ve soyadınızı girin">
-                                </div>
-                                <div class="form-group">
-                                    <label>Pozisyon:</label>
-                                    <input type="text" id="t2-position" placeholder="Pozisyonunuz">
+                                    <label>{{labelTaxNo}}</label>
+                                    <input type="text" id="t2-taxNumber" placeholder="{{placeholderTax}}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Telefon:</label>
-                                    <input type="tel" id="t2-phone" placeholder="Telefon numaranız">
+                                    <label>{{labelFullName}}</label>
+                                    <input type="text" id="t2-fullName" placeholder="{{placeholderName}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>E-posta:</label>
-                                    <input type="email" id="t2-email" placeholder="E-posta adresiniz">
+                                    <label>{{labelPosition}}</label>
+                                    <input type="text" id="t2-position" placeholder="{{placeholderPosition}}">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>{{labelPhone}}</label>
+                                    <input type="tel" id="t2-phone" placeholder="{{placeholderPhone}}">
+                                </div>
+                                <div class="form-group">
+                                    <label>{{labelEmail}}</label>
+                                    <input type="email" id="t2-email" placeholder="{{placeholderEmail}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Özel Talimatlar:</label>
-                                <textarea id="t2-specialInstructions" placeholder="Özel talimatlarınız (kırılabilir, hassas, vs.)"></textarea>
+                                <label>{{labelSpecialInstructions}}</label>
+                                <textarea id="t2-specialInstructions" placeholder="{{placeholderSpecial}}"></textarea>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t2_prevStep()">Geri</button>
-                            <button class="btn-next" onclick="t2_calculatePrice()">Fiyat Hesapla</button>
+                            <button class="btn-back" onclick="t2_prevStep()">{{btnBack}}</button>
+                            <button class="btn-next" onclick="t2_calculatePrice()">{{btnCalculate}}</button>
                         </div>
                     </div>
                     <div class="step" id="t2-step3" role="tabpanel" aria-labelledby="t2-step3-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="t2-step3-title">Teklif Sonucu</h2>
+                            <h2 id="t2-step3-title">{{step4Title}}</h2>
                         </header>
                         <div class="price-result">
                             <div class="additional-info">
                                 <div class="info-card">
-                                    <h3>Teslimat Süresi</h3>
-                                    <p>2-5 iş günü</p>
+                                    <h3>{{infoDeliveryTime}}</h3>
+                                    <p>{{infoDeliveryTimeVal}}</p>
                                 </div>
                                 <div class="info-card">
-                                    <h3>Sigorta Kapsamı</h3>
-                                    <p>Tam sigorta dahil</p>
+                                    <h3>{{infoInsurance}}</h3>
+                                    <p>{{infoInsuranceVal}}</p>
                                 </div>
                                 <div class="info-card">
-                                    <h3>Takip Numarası</h3>
+                                    <h3>{{trackingLabel}}</h3>
                                     <p id="t2-trackingNumber">TEST789012</p>
                                 </div>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t2_prevStep()">Geri</button>
-                            <button class="btn-primary" onclick="t2_submitRequest()">Teklifi Onayla</button>
+                            <button class="btn-back" onclick="t2_prevStep()">{{btnBack}}</button>
+                            <button class="btn-primary" onclick="t2_submitRequest()">{{btnSubmit}}</button>
                         </div>
                     </div>
                 </div>
@@ -262,189 +262,189 @@
     <div class="container">
             <section class="form-section">
                 <div class="form-container">
-                    <h3>Teklif Al</h3>
+                    <h3>{{pageTitle}}</h3>
                     <div class="step active" id="t3-step1">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">1</span>
-                            <h2>Mobilya Türünü Seçin</h2>
+                            <h2>{{t3_step1Title}}</h2>
                         </header>
                         <div class="furniture-grid">
-                            <div class="furniture-card" data-item="koltuk" role="button" tabindex="0" aria-label="Koltuk Takımı - 2+1, 3+2 koltuk takımları">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Koltuk takımı taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Koltuk Takımı</h3>
-                                <p>2+1, 3+2 koltuk takımları</p>
+                            <div class="furniture-card" data-item="koltuk" role="button" tabindex="0" aria-label="{{t3_sofa}} - {{t3_sofaDesc}}">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_sofa}}" width="80" height="80" loading="lazy">
+                                <h3>{{t3_sofa}}</h3>
+                                <p>{{t3_sofaDesc}}</p>
                             </div>
-                            <div class="furniture-card" data-item="yatak" role="button" tabindex="0" aria-label="Yatak Odası - Yatak, gardırop, komodin">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Yatak odası mobilyası taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Yatak Odası</h3>
-                                <p>Yatak, gardırop, komodin</p>
+                            <div class="furniture-card" data-item="yatak" role="button" tabindex="0" aria-label="{{t3_bedroom}} - {{t3_bedroomDesc}}">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_bedroom}}" width="80" height="80" loading="lazy">
+                                <h3>{{t3_bedroom}}</h3>
+                                <p>{{t3_bedroomDesc}}</p>
                             </div>
-                            <div class="furniture-card" data-item="mutfak" role="button" tabindex="0" aria-label="Mutfak Takımı - Mutfak dolapları ve tezgahlar">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Mutfak takımı taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Mutfak Takımı</h3>
-                                <p>Mutfak dolapları ve tezgahlar</p>
+                            <div class="furniture-card" data-item="mutfak" role="button" tabindex="0" aria-label="{{t3_kitchen}} - {{t3_kitchenDesc}}">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_kitchen}}" width="80" height="80" loading="lazy">
+                                <h3>{{t3_kitchen}}</h3>
+                                <p>{{t3_kitchenDesc}}</p>
                             </div>
-                            <div class="furniture-card" data-item="masa" role="button" tabindex="0" aria-label="Yemek Masası - Yemek masası ve sandalyeler">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Yemek masası taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Yemek Masası</h3>
-                                <p>Yemek masası ve sandalyeler</p>
+                            <div class="furniture-card" data-item="masa" role="button" tabindex="0" aria-label="{{t3_dining}} - {{t3_diningDesc}}">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_dining}}" width="80" height="80" loading="lazy">
+                                <h3>{{t3_dining}}</h3>
+                                <p>{{t3_diningDesc}}</p>
                             </div>
-                            <div class="furniture-card" data-item="diger" role="button" tabindex="0" aria-label="Diğer Mobilyalar - Kitaplık, vitrin, sehpa vb.">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="Diğer mobilya taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Diğer Mobilyalar</h3>
-                                <p>Kitaplık, vitrin, sehpa vb.</p>
+                            <div class="furniture-card" data-item="diger" role="button" tabindex="0" aria-label="{{t3_other}} - {{t3_otherDesc}}">
+                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_other}}" width="80" height="80" loading="lazy">
+                                <h3>{{t3_other}}</h3>
+                                <p>{{t3_otherDesc}}</p>
                             </div>
                         </div>
-                        <button class="btn-next" onclick="t3_nextStep()">Devam Et</button>
+                        <button class="btn-next" onclick="t3_nextStep()">{{btnNext}}</button>
                     </div>
                     <div class="step" id="t3-step2">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">2</span>
-                            <h2>Detay Bilgileri</h2>
+                            <h2>{{t3_step2Title}}</h2>
                         </header>
                         <div class="details-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Mobilya Markası:</label>
-                                    <input type="text" id="t3-brand" placeholder="Mobilya markası">
+                                    <label>{{t3_labelBrand}}</label>
+                                    <input type="text" id="t3-brand" placeholder="{{placeholderBrand}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Satın Alma Tarihi:</label>
+                                    <label>{{t3_labelPurchaseDate}}</label>
                                     <input type="date" id="t3-purchaseDate">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Boyutlar (cm):</label>
-                                    <input type="number" id="t3-length" placeholder="Uzunluk">
+                                    <label>{{t3_labelDimensions}}</label>
+                                    <input type="number" id="t3-length" placeholder="{{placeholderLength}}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" id="t3-width" placeholder="Genişlik">
+                                    <input type="number" id="t3-width" placeholder="{{placeholderWidth}}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" id="t3-height" placeholder="Yükseklik">
+                                    <input type="number" id="t3-height" placeholder="{{placeholderHeight}}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Ağırlık (kg):</label>
-                                    <input type="number" id="t3-weight" placeholder="Ağırlık">
+                                    <label>{{labelWeight}}</label>
+                                    <input type="number" id="t3-weight" placeholder="{{placeholderWeight}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Değer (₺):</label>
-                                    <input type="number" id="t3-value" placeholder="Mobilya değeri">
+                                    <label>{{labelValue}}</label>
+                                    <input type="number" id="t3-value" placeholder="{{placeholderFurnitureValue}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Özel Durumlar:</label>
+                                <label>{{t3_labelSpecialCondition}}</label>
                                 <select id="t3-specialCondition">
-                                    <option value="">Seçiniz</option>
-                                    <option value="cam">Cam yüzeyler var</option>
-                                    <option value="ahsap">Ahşap işçiliği hassas</option>
-                                    <option value="dokuma">Dokuma/deri yüzey</option>
-                                    <option value="metal">Metal detaylar</option>
+                                    <option value="">{{selectOption}}</option>
+                                    <option value="cam">{{t3_optionCam}}</option>
+                                    <option value="ahsap">{{t3_optionAhsap}}</option>
+                                    <option value="dokuma">{{t3_optionDokuma}}</option>
+                                    <option value="metal">{{t3_optionMetal}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t3_prevStep()">Geri</button>
-                            <button class="btn-next" onclick="t3_nextStep()">Devam Et</button>
+                            <button class="btn-back" onclick="t3_prevStep()">{{btnBack}}</button>
+                            <button class="btn-next" onclick="t3_nextStep()">{{btnNext}}</button>
                         </div>
                     </div>
                     <div class="step" id="t3-step3" role="tabpanel" aria-labelledby="t3-step3-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="t3-step3-title">Adres Bilgileri</h2>
+                            <h2 id="t3-step3-title">{{step2Title}}</h2>
                         </header>
                         <div class="address-form">
                             <div class="form-group">
-                                <label>Yükleme Adresi:</label>
-                                <input type="text" id="t3-fromAddress" placeholder="Mağaza/Depo adresi">
+                                <label>{{labelLoadAddress}}</label>
+                                <input type="text" id="t3-fromAddress" placeholder="{{placeholderStoreAddress}}">
                             </div>
                             <div class="form-group">
-                                <label>Teslimat Adresi:</label>
-                                <input type="text" id="t3-toAddress" placeholder="Ev/Ofis adresi">
+                                <label>{{labelDeliveryAddress}}</label>
+                                <input type="text" id="t3-toAddress" placeholder="{{placeholderHomeAddress}}">
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Kat Bilgisi:</label>
+                                    <label>{{t3_labelFloor}}</label>
                                     <select id="t3-floor">
-                                        <option value="">Seçiniz</option>
-                                        <option value="zemin">Zemin Kat</option>
-                                        <option value="1">1. Kat</option>
-                                        <option value="2">2. Kat</option>
-                                        <option value="3">3. Kat</option>
-                                        <option value="4">4+ Kat</option>
+                                        <option value="">{{selectOption}}</option>
+                                        <option value="zemin">{{t3_optionZemin}}</option>
+                                        <option value="1">{{t3_option1Kat}}</option>
+                                        <option value="2">{{t3_option2Kat}}</option>
+                                        <option value="3">{{t3_option3Kat}}</option>
+                                        <option value="4">{{t3_option4Kat}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Asansör Durumu:</label>
+                                    <label>{{t3_labelElevator}}</label>
                                     <select id="t3-elevator">
-                                        <option value="">Seçiniz</option>
-                                        <option value="var">Asansör var</option>
-                                        <option value="yok">Asansör yok</option>
-                                        <option value="kucuk">Küçük asansör</option>
+                                        <option value="">{{selectOption}}</option>
+                                        <option value="var">{{t3_optionElevatorYes}}</option>
+                                        <option value="yok">{{t3_optionElevatorNo}}</option>
+                                        <option value="kucuk">{{t3_optionElevatorSmall}}</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t3_prevStep()">Geri</button>
-                            <button class="btn-next" onclick="t3_nextStep()">Devam Et</button>
+                            <button class="btn-back" onclick="t3_prevStep()">{{btnBack}}</button>
+                            <button class="btn-next" onclick="t3_nextStep()">{{btnNext}}</button>
                         </div>
                     </div>
                     <div class="step" id="t3-step4" role="tabpanel" aria-labelledby="t3-step4-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">4</span>
-                            <h2 id="t3-step4-title">İletişim Bilgileri</h2>
+                            <h2 id="t3-step4-title">{{step3Title}}</h2>
                         </header>
                         <div class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Ad Soyad:</label>
-                                    <input type="text" id="t3-fullName" placeholder="Adınızı ve soyadınızı girin">
+                                    <label>{{labelFullName}}</label>
+                                    <input type="text" id="t3-fullName" placeholder="{{placeholderName}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Telefon:</label>
-                                    <input type="tel" id="t3-phone" placeholder="Telefon numaranız">
+                                    <label>{{labelPhone}}</label>
+                                    <input type="tel" id="t3-phone" placeholder="{{placeholderPhone}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>E-posta:</label>
-                                <input type="email" id="t3-email" placeholder="E-posta adresiniz">
+                                <label>{{labelEmail}}</label>
+                                <input type="email" id="t3-email" placeholder="{{placeholderEmail}}">
                             </div>
                             <div class="form-group">
-                                <label>Özel Talimatlar:</label>
-                                <textarea id="t3-specialInstructions" placeholder="Teslimat için özel talimatlarınız (opsiyonel)"></textarea>
+                                <label>{{labelSpecialInstructions}}</label>
+                                <textarea id="t3-specialInstructions" placeholder="{{placeholderDeliveryNotes}}"></textarea>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t3_prevStep()">Geri</button>
-                            <button class="btn-next" onclick="t3_calculatePrice()">Fiyat Hesapla</button>
+                            <button class="btn-back" onclick="t3_prevStep()">{{btnBack}}</button>
+                            <button class="btn-next" onclick="t3_calculatePrice()">{{btnCalculate}}</button>
                         </div>
                     </div>
                     <div class="step" id="t3-step5" role="tabpanel" aria-labelledby="t3-step5-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">5</span>
-                            <h2 id="t3-step5-title">Teklif Sonucu</h2>
+                            <h2 id="t3-step5-title">{{step4Title}}</h2>
                         </header>
                         <div class="price-result">
                             <div class="service-details">
-                                <h3>Dahil Olan Hizmetler</h3>
+                                <h3>{{t3_servicesTitle}}</h3>
                                 <div class="services-list">
-                                    <div class="service-item"><i class="fas fa-shield-alt"></i><span>Özel koruma paketleme</span></div>
-                                    <div class="service-item"><i class="fas fa-truck"></i><span>Özel mobilya aracı</span></div>
-                                    <div class="service-item"><i class="fas fa-user-friends"></i><span>Uzman montaj ekibi</span></div>
-                                    <div class="service-item"><i class="fas fa-clipboard-check"></i><span>Hasarsız teslimat garantisi</span></div>
+                                    <div class="service-item"><i class="fas fa-shield-alt"></i><span>{{t3_service1}}</span></div>
+                                    <div class="service-item"><i class="fas fa-truck"></i><span>{{t3_service2}}</span></div>
+                                    <div class="service-item"><i class="fas fa-user-friends"></i><span>{{t3_service3}}</span></div>
+                                    <div class="service-item"><i class="fas fa-clipboard-check"></i><span>{{t3_service4}}</span></div>
                                 </div>
                             </div>
                             <div class="tracking-info">
-                                <h3>Takip Numarası: <span id="t3-trackingNumber">TEST345678</span></h3>
+                                <h3>{{trackingLabel}} <span id="t3-trackingNumber">TEST345678</span></h3>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t3_prevStep()">Geri</button>
-                            <button class="btn-primary" onclick="t3_submitRequest()">Teklifi Onayla</button>
+                            <button class="btn-back" onclick="t3_prevStep()">{{btnBack}}</button>
+                            <button class="btn-primary" onclick="t3_submitRequest()">{{btnSubmit}}</button>
                         </div>
                     </div>
                 </div>
@@ -458,18 +458,18 @@
     <div class="container">
             <section class="form-section">
                 <div class="form-container">
-                    <h3>Teklif Al</h3>
+                    <h3>{{pageTitle}}</h3>
                     <div class="step active" id="t4-step1" role="tabpanel" aria-labelledby="t4-step1-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">1</span>
-                            <h2 id="t4-step1-title">Adres Bilgileri</h2>
+                            <h2 id="t4-step1-title">{{step2Title}}</h2>
                         </header>
                         <div class="address-form">
                             <div class="country-selector">
                                 <div class="form-group">
-                                    <label>Nereden (Ülke/Şehir):</label>
+                                    <label>{{labelFromCountry}}</label>
                                     <select id="t4-fromCountry">
-                                        <option value="">Ülke Seçin</option>
+                                        <option value="">{{labelCountry}}</option>
                                         <option value="turkiye">Türkiye</option>
                                         <option value="almanya">Almanya</option>
                                         <option value="ingiltere">İngiltere</option>
@@ -480,17 +480,17 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="t4-fromCity" placeholder="Şehir">
+                                    <input type="text" id="t4-fromCity" placeholder="{{placeholderCity}}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="t4-fromAddress" placeholder="Detaylı adres">
+                                    <input type="text" id="t4-fromAddress" placeholder="{{placeholderAddressDetail}}">
                                 </div>
                             </div>
                             <div class="country-selector">
                                 <div class="form-group">
-                                    <label>Nereye (Ülke/Şehir):</label>
+                                    <label>{{labelToCountry}}</label>
                                     <select id="t4-toCountry">
-                                        <option value="">Ülke Seçin</option>
+                                        <option value="">{{labelCountry}}</option>
                                         <option value="turkiye">Türkiye</option>
                                         <option value="almanya">Almanya</option>
                                         <option value="ingiltere">İngiltere</option>
@@ -501,84 +501,84 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="t4-toCity" placeholder="Şehir">
+                                    <input type="text" id="t4-toCity" placeholder="{{placeholderCity}}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="t4-toAddress" placeholder="Detaylı adres">
+                                    <input type="text" id="t4-toAddress" placeholder="{{placeholderAddressDetail}}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Taşınacak Eşya Türü:</label>
+                                    <label>{{t4_labelItemType}}</label>
                                     <select id="t4-itemType">
-                                        <option value="">Seçiniz</option>
-                                        <option value="komple">Komple Ev Eşyası</option>
-                                        <option value="kismi">Kısmi Ev Eşyası</option>
-                                        <option value="mobilya">Sadece Mobilya</option>
-                                        <option value="esya">Kişisel Eşyalar</option>
+                                        <option value="">{{selectOption}}</option>
+                                        <option value="komple">{{t4_optionKomple}}</option>
+                                        <option value="kismi">{{t4_optionKismi}}</option>
+                                        <option value="mobilya">{{t4_optionMobilya}}</option>
+                                        <option value="esya">{{t4_optionEsya}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Tahmini M3:</label>
-                                    <input type="number" id="t4-volume" placeholder="Metreküp">
+                                    <label>{{t4_labelVolume}}</label>
+                                    <input type="number" id="t4-volume" placeholder="{{placeholderVolume}}">
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-next" onclick="t4_nextStep()">Devam Et</button>
+                        <button class="btn-next" onclick="t4_nextStep()">{{btnNext}}</button>
                     </div>
                     <div class="step" id="t4-step2" role="tabpanel" aria-labelledby="t4-step2-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">2</span>
-                            <h2 id="t4-step2-title">İletişim Bilgileri</h2>
+                            <h2 id="t4-step2-title">{{step3Title}}</h2>
                         </header>
                         <div class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Ad Soyad:</label>
-                                    <input type="text" id="t4-fullName" placeholder="Adınızı ve soyadınızı girin">
+                                    <label>{{labelFullName}}</label>
+                                    <input type="text" id="t4-fullName" placeholder="{{placeholderName}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Telefon:</label>
-                                    <input type="tel" id="t4-phone" placeholder="Telefon numaranız">
+                                    <label>{{labelPhone}}</label>
+                                    <input type="tel" id="t4-phone" placeholder="{{placeholderPhone}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>E-posta:</label>
-                                <input type="email" id="t4-email" placeholder="E-posta adresiniz">
+                                <label>{{labelEmail}}</label>
+                                <input type="email" id="t4-email" placeholder="{{placeholderEmail}}">
                             </div>
                             <div class="form-group">
-                                <label>Özel Talimatlar:</label>
-                                <textarea id="t4-specialInstructions" placeholder="Taşıma için özel talimatlarınız (opsiyonel)"></textarea>
+                                <label>{{labelSpecialInstructions}}</label>
+                                <textarea id="t4-specialInstructions" placeholder="{{placeholderMoveNotes}}"></textarea>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t4_prevStep()">Geri</button>
-                            <button class="btn-next" onclick="t4_calculatePrice()">Fiyat Hesapla</button>
+                            <button class="btn-back" onclick="t4_prevStep()">{{btnBack}}</button>
+                            <button class="btn-next" onclick="t4_calculatePrice()">{{btnCalculate}}</button>
                         </div>
                     </div>
                     <div class="step" id="t4-step3" role="tabpanel" aria-labelledby="t4-step3-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="t4-step3-title">Teklif Sonucu</h2>
+                            <h2 id="t4-step3-title">{{step4Title}}</h2>
                         </header>
                         <div class="price-result">
                             <div class="international-info">
-                                <h3>Uluslararası Hizmet Detayları</h3>
+                                <h3>{{t4_intlTitle}}</h3>
                                 <div class="info-grid">
-                                    <div class="info-card"><i class="fas fa-ship" aria-hidden="true"></i><h4>Deniz Yolu</h4><p>Konteyner taşımacılığı</p></div>
-                                    <div class="info-card"><i class="fas fa-plane" aria-hidden="true"></i><h4>Hava Yolu</h4><p>Hızlı teslimat seçeneği</p></div>
-                                    <div class="info-card"><i class="fas fa-file-alt" aria-hidden="true"></i><h4>Gümrük İşlemleri</h4><p>Tam gümrük hizmeti</p></div>
-                                    <div class="info-card"><i class="fas fa-shield-alt" aria-hidden="true"></i><h4>Uluslararası Sigorta</h4><p>Tam kapsamlı sigorta</p></div>
+                                    <div class="info-card"><i class="fas fa-ship" aria-hidden="true"></i><h4>{{t4_sea}}</h4><p>{{t4_seaDesc}}</p></div>
+                                    <div class="info-card"><i class="fas fa-plane" aria-hidden="true"></i><h4>{{t4_air}}</h4><p>{{t4_airDesc}}</p></div>
+                                    <div class="info-card"><i class="fas fa-file-alt" aria-hidden="true"></i><h4>{{t4_customs}}</h4><p>{{t4_customsDesc}}</p></div>
+                                    <div class="info-card"><i class="fas fa-shield-alt" aria-hidden="true"></i><h4>{{t4_insurance}}</h4><p>{{t4_insuranceDesc}}</p></div>
                                 </div>
                             </div>
                             <div class="tracking-info">
-                                <h3>Takip Numarası: <span id="t4-trackingNumber">INT456789</span></h3>
-                                <p>Uluslararası takip sistemi ile takip edebilirsiniz</p>
+                                <h3>{{trackingLabel}} <span id="t4-trackingNumber">INT456789</span></h3>
+                                <p>{{t4_trackingNote}}</p>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t4_prevStep()">Geri</button>
-                            <button class="btn-primary" onclick="t4_submitRequest()">Teklifi Onayla</button>
+                            <button class="btn-back" onclick="t4_prevStep()">{{btnBack}}</button>
+                            <button class="btn-primary" onclick="t4_submitRequest()">{{btnSubmit}}</button>
                         </div>
                     </div>
                 </div>
@@ -593,192 +593,192 @@
     <div class="container">
             <section class="form-section">
                 <div class="form-container">
-                    <h3>Teklif Al</h3>
+                    <h3>{{pageTitle}}</h3>
                     <div class="step active" id="t5-step1">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">1</span>
-                            <h2>Araç Türünü Seçin</h2>
+                            <h2>{{t5_step1Title}}</h2>
                         </header>
                         <div class="vehicle-grid">
-                            <div class="vehicle-card" data-vehicle="otomobil" role="button" tabindex="0" aria-label="Otomobil - Binek araçlar">
-                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="Otomobil taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Otomobil</h3>
-                                <p>Binek araçlar</p>
+                            <div class="vehicle-card" data-vehicle="otomobil" role="button" tabindex="0" aria-label="{{t5_vehicleCar}} - {{t5_vehicleCarDesc}}">
+                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="{{t5_vehicleCar}}" width="80" height="80" loading="lazy">
+                                <h3>{{t5_vehicleCar}}</h3>
+                                <p>{{t5_vehicleCarDesc}}</p>
                             </div>
-                            <div class="vehicle-card" data-vehicle="motosiklet" role="button" tabindex="0" aria-label="Motosiklet - Motorlu iki tekerlekli araçlar">
-                                <img src="/module/akf1q6/images/motor-bike.jpg" alt="Motosiklet taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Motosiklet</h3>
-                                <p>Motorlu iki tekerlekli araçlar</p>
+                            <div class="vehicle-card" data-vehicle="motosiklet" role="button" tabindex="0" aria-label="{{t5_vehicleBike}} - {{t5_vehicleBikeDesc}}">
+                                <img src="/module/akf1q6/images/motor-bike.jpg" alt="{{t5_vehicleBike}}" width="80" height="80" loading="lazy">
+                                <h3>{{t5_vehicleBike}}</h3>
+                                <p>{{t5_vehicleBikeDesc}}</p>
                             </div>
-                            <div class="vehicle-card" data-vehicle="ticari" role="button" tabindex="0" aria-label="Ticari Araç - Minibüs, kamyonet, panelvan">
-                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="Ticari araç taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>Ticari Araç</h3>
-                                <p>Minibüs, kamyonet, panelvan</p>
+                            <div class="vehicle-card" data-vehicle="ticari" role="button" tabindex="0" aria-label="{{t5_vehicleCommercial}} - {{t5_vehicleCommercialDesc}}">
+                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="{{t5_vehicleCommercial}}" width="80" height="80" loading="lazy">
+                                <h3>{{t5_vehicleCommercial}}</h3>
+                                <p>{{t5_vehicleCommercialDesc}}</p>
                             </div>
-                            <div class="vehicle-card" data-vehicle="suv" role="button" tabindex="0" aria-label="SUV - Spor araçlar ve jeep">
-                                <img src="/module/akf1q6/images/4-4-car.jpg" alt="SUV taşımacılığı" width="80" height="80" loading="lazy">
-                                <h3>SUV</h3>
-                                <p>Spor araçlar ve jeep</p>
+                            <div class="vehicle-card" data-vehicle="suv" role="button" tabindex="0" aria-label="{{t5_vehicleSuv}} - {{t5_vehicleSuvDesc}}">
+                                <img src="/module/akf1q6/images/4-4-car.jpg" alt="{{t5_vehicleSuv}}" width="80" height="80" loading="lazy">
+                                <h3>{{t5_vehicleSuv}}</h3>
+                                <p>{{t5_vehicleSuvDesc}}</p>
                             </div>
                         </div>
-                        <button class="btn-next" onclick="t5_nextStep()">Devam Et</button>
+                        <button class="btn-next" onclick="t5_nextStep()">{{btnNext}}</button>
                     </div>
                     <div class="step" id="t5-step2">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">2</span>
-                            <h2>Araç Detayları</h2>
+                            <h2>{{t5_step2Title}}</h2>
                         </header>
                         <div class="vehicle-details-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Marka:</label>
-                                    <input type="text" id="t5-brand" placeholder="Araç markası">
+                                    <label>{{t5_labelBrand}}</label>
+                                    <input type="text" id="t5-brand" placeholder="{{placeholderVehicleBrand}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Model:</label>
-                                    <input type="text" id="t5-model" placeholder="Araç modeli">
+                                    <label>{{t5_labelModel}}</label>
+                                    <input type="text" id="t5-model" placeholder="{{placeholderVehicleModel}}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Model Yılı:</label>
-                                    <input type="number" id="t5-year" placeholder="Model yılı" min="1990" max="2024">
+                                    <label>{{t5_labelYear}}</label>
+                                    <input type="number" id="t5-year" placeholder="{{placeholderYear}}" min="1990" max="2024">
                                 </div>
                                 <div class="form-group">
-                                    <label>Yakıt Türü:</label>
+                                    <label>{{t5_labelFuel}}</label>
                                     <select id="t5-fuelType">
-                                        <option value="">Seçiniz</option>
-                                        <option value="benzin">Benzin</option>
-                                        <option value="dizel">Dizel</option>
-                                        <option value="hibrit">Hibrit</option>
-                                        <option value="elektrik">Elektrik</option>
-                                        <option value="lpg">LPG</option>
+                                        <option value="">{{selectOption}}</option>
+                                        <option value="benzin">{{t5_optionBenzin}}</option>
+                                        <option value="dizel">{{t5_optionDizel}}</option>
+                                        <option value="hibrit">{{t5_optionHibrit}}</option>
+                                        <option value="elektrik">{{t5_optionElektrik}}</option>
+                                        <option value="lpg">{{t5_optionLpg}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Boyutlar (cm):</label>
-                                    <input type="number" id="t5-length" placeholder="Uzunluk">
+                                    <label>{{t3_labelDimensions}}</label>
+                                    <input type="number" id="t5-length" placeholder="{{placeholderLength}}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" id="t5-width" placeholder="Genişlik">
+                                    <input type="number" id="t5-width" placeholder="{{placeholderWidth}}">
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" id="t5-height" placeholder="Yükseklik">
+                                    <input type="number" id="t5-height" placeholder="{{placeholderHeight}}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Ağırlık (kg):</label>
-                                    <input type="number" id="t5-weight" placeholder="Ağırlık">
+                                    <label>{{labelWeight}}</label>
+                                    <input type="number" id="t5-weight" placeholder="{{placeholderWeight}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Araç Durumu:</label>
+                                    <label>{{t5_labelCondition}}</label>
                                     <select id="t5-condition">
-                                        <option value="">Seçiniz</option>
-                                        <option value="calisir">Çalışır durumda</option>
-                                        <option value="calismaz">Çalışmaz durumda</option>
-                                        <option value="hasarli">Hasarlı</option>
+                                        <option value="">{{selectOption}}</option>
+                                        <option value="calisir">{{t5_optionCalisir}}</option>
+                                        <option value="calismaz">{{t5_optionCalismaz}}</option>
+                                        <option value="hasarli">{{t5_optionHasarli}}</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t5_prevStep()">Geri</button>
-                            <button class="btn-next" onclick="t5_nextStep()">Devam Et</button>
+                            <button class="btn-back" onclick="t5_prevStep()">{{btnBack}}</button>
+                            <button class="btn-next" onclick="t5_nextStep()">{{btnNext}}</button>
                         </div>
                     </div>
                     <div class="step" id="t5-step3" role="tabpanel" aria-labelledby="t5-step3-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="t5-step3-title">Adres Bilgileri</h2>
+                            <h2 id="t5-step3-title">{{step2Title}}</h2>
                         </header>
                         <div class="address-form">
                             <div class="form-group">
-                                <label>Yükleme Adresi:</label>
-                                <input type="text" id="t5-fromAddress" placeholder="Aracın bulunduğu adres">
+                                <label>{{labelLoadAddress}}</label>
+                                <input type="text" id="t5-fromAddress" placeholder="{{placeholderVehicleAddress}}">
                             </div>
                             <div class="form-group">
-                                <label>Teslimat Adresi:</label>
-                                <input type="text" id="t5-toAddress" placeholder="Teslimat adresi">
+                                <label>{{labelDeliveryAddress}}</label>
+                                <input type="text" id="t5-toAddress" placeholder="{{placeholderTo}}">
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Yükleme Zorluğu:</label>
+                                    <label>{{t5_labelLoadingDifficulty}}</label>
                                     <select id="t5-loadingDifficulty">
-                                        <option value="">Seçiniz</option>
-                                        <option value="kolay">Kolay (Açık alan)</option>
-                                        <option value="orta">Orta (Dar sokak)</option>
-                                        <option value="zor">Zor (Kapalı garaj)</option>
+                                        <option value="">{{selectOption}}</option>
+                                        <option value="kolay">{{t5_optionKolay}}</option>
+                                        <option value="orta">{{t5_optionOrta}}</option>
+                                        <option value="zor">{{t5_optionZor}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mesafe (km):</label>
-                                    <input type="number" id="t5-distance" placeholder="Tahmini mesafe">
+                                    <label>{{t5_labelDistance}}</label>
+                                    <input type="number" id="t5-distance" placeholder="{{placeholderDistance}}">
                                 </div>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t5_prevStep()">Geri</button>
-                            <button class="btn-next" onclick="t5_nextStep()">Devam Et</button>
+                            <button class="btn-back" onclick="t5_prevStep()">{{btnBack}}</button>
+                            <button class="btn-next" onclick="t5_nextStep()">{{btnNext}}</button>
                         </div>
                     </div>
                     <div class="step" id="t5-step4" role="tabpanel" aria-labelledby="t5-step4-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">4</span>
-                            <h2 id="t5-step4-title">İletişim Bilgileri</h2>
+                            <h2 id="t5-step4-title">{{step3Title}}</h2>
                         </header>
                         <div class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Ad Soyad:</label>
-                                    <input type="text" id="t5-fullName" placeholder="Adınızı ve soyadınızı girin">
+                                    <label>{{labelFullName}}</label>
+                                    <input type="text" id="t5-fullName" placeholder="{{placeholderName}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Telefon:</label>
-                                    <input type="tel" id="t5-phone" placeholder="Telefon numaranız">
+                                    <label>{{labelPhone}}</label>
+                                    <input type="tel" id="t5-phone" placeholder="{{placeholderPhone}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>E-posta:</label>
-                                <input type="email" id="t5-email" placeholder="E-posta adresiniz">
+                                <label>{{labelEmail}}</label>
+                                <input type="email" id="t5-email" placeholder="{{placeholderEmail}}">
                             </div>
                             <div class="form-group">
-                                <label>Özel Talimatlar:</label>
-                                <textarea id="t5-specialInstructions" placeholder="Araç taşıma için özel talimatlarınız (opsiyonel)"></textarea>
+                                <label>{{labelSpecialInstructions}}</label>
+                                <textarea id="t5-specialInstructions" placeholder="{{placeholderVehicleNotes}}"></textarea>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t5_prevStep()">Geri</button>
-                            <button class="btn-next" onclick="t5_calculatePrice()">Fiyat Hesapla</button>
+                            <button class="btn-back" onclick="t5_prevStep()">{{btnBack}}</button>
+                            <button class="btn-next" onclick="t5_calculatePrice()">{{btnCalculate}}</button>
                         </div>
                     </div>
                     <div class="step" id="t5-step5" role="tabpanel" aria-labelledby="t5-step5-title">
                         <header class="step-header">
                             <span class="step-number" aria-hidden="true">5</span>
-                            <h2 id="t5-step5-title">Teklif Sonucu</h2>
+                            <h2 id="t5-step5-title">{{step4Title}}</h2>
                         </header>
                         <div class="price-result">
                             <div class="service-details">
-                                <h3>Dahil Olan Hizmetler</h3>
+                                <h3>{{t5_servicesTitle}}</h3>
                                 <div class="services-list">
-                                    <div class="service-item"><i class="fas fa-truck"></i><span>Özel araç taşıma aracı</span></div>
-                                    <div class="service-item"><i class="fas fa-shield-alt"></i><span>Tam sigorta kapsamı</span></div>
-                                    <div class="service-item"><i class="fas fa-user-friends"></i><span>Uzman şoför ekibi</span></div>
-                                    <div class="service-item"><i class="fas fa-route"></i><span>Kapıdan kapıya teslimat</span></div>
-                                    <div class="service-item"><i class="fas fa-clipboard-check"></i><span>Hasarsız teslimat garantisi</span></div>
-                                    <div class="service-item"><i class="fas fa-clock"></i><span>7/24 takip sistemi</span></div>
+                                    <div class="service-item"><i class="fas fa-truck"></i><span>{{t5_service1}}</span></div>
+                                    <div class="service-item"><i class="fas fa-shield-alt"></i><span>{{t5_service2}}</span></div>
+                                    <div class="service-item"><i class="fas fa-user-friends"></i><span>{{t5_service3}}</span></div>
+                                    <div class="service-item"><i class="fas fa-route"></i><span>{{t5_service4}}</span></div>
+                                    <div class="service-item"><i class="fas fa-clipboard-check"></i><span>{{t5_service5}}</span></div>
+                                    <div class="service-item"><i class="fas fa-clock"></i><span>{{t5_service6}}</span></div>
                                 </div>
                             </div>
                             <div class="tracking-info">
-                                <h3>Takip Numarası: <span id="t5-trackingNumber">VEH567890</span></h3>
-                                <p>Araç taşıma takip sistemi ile takip edebilirsiniz</p>
+                                <h3>{{trackingLabel}} <span id="t5-trackingNumber">VEH567890</span></h3>
+                                <p>{{t5_trackingNote}}</p>
                             </div>
                         </div>
                         <div class="step-buttons">
-                            <button class="btn-back" onclick="t5_prevStep()">Geri</button>
-                            <button class="btn-primary" onclick="t5_submitRequest()">Teklifi Onayla</button>
+                            <button class="btn-back" onclick="t5_prevStep()">{{btnBack}}</button>
+                            <button class="btn-primary" onclick="t5_submitRequest()">{{btnSubmit}}</button>
                         </div>
                     </div>
                 </div>
@@ -786,6 +786,11 @@
     </div>
   </div>
 </div>
+<span id="akf1q6-alertSuccess" style="display:none">{{alertSuccess}}</span>
+<span id="akf1q6-alertT2" style="display:none">{{alertT2Success}}</span>
+<span id="akf1q6-alertT3" style="display:none">{{alertT3Success}}</span>
+<span id="akf1q6-alertT4" style="display:none">{{alertT4Success}}</span>
+<span id="akf1q6-alertT5" style="display:none">{{alertT5Success}}</span>
 
 
 
@@ -1155,7 +1160,8 @@
         nextStep();
     }
     function submitRequest() {
-        alert('Teklif talebiniz başarıyla gönderildi!');
+        var el = document.getElementById('akf1q6-alertSuccess');
+        alert(el ? el.textContent : 'Teklif talebiniz başarıyla gönderildi!');
     }
     // Eşya seçimi
     setTimeout(function() {
@@ -1172,14 +1178,14 @@
     function t2_nextStep(){ if(t2_currentStep < t2_totalSteps){ document.getElementById(`t2-step${t2_currentStep}`).classList.remove('active'); t2_currentStep++; document.getElementById(`t2-step${t2_currentStep}`).classList.add('active'); } }
     function t2_prevStep(){ if(t2_currentStep > 1){ document.getElementById(`t2-step${t2_currentStep}`).classList.remove('active'); t2_currentStep--; document.getElementById(`t2-step${t2_currentStep}`).classList.add('active'); } }
     function t2_calculatePrice(){ t2_nextStep(); }
-    function t2_submitRequest(){ alert('Ticari eşya taşıma talebiniz başarıyla gönderildi!'); }
+    function t2_submitRequest(){ var el = document.getElementById('akf1q6-alertT2'); alert(el ? el.textContent : 'Ticari eşya taşıma talebiniz başarıyla gönderildi!'); }
 
     // t3 akış (mobilya)
     var t3_currentStep = 1; var t3_totalSteps = 5;
     function t3_nextStep(){ if(t3_currentStep < t3_totalSteps){ document.getElementById(`t3-step${t3_currentStep}`).classList.remove('active'); t3_currentStep++; document.getElementById(`t3-step${t3_currentStep}`).classList.add('active'); } }
     function t3_prevStep(){ if(t3_currentStep > 1){ document.getElementById(`t3-step${t3_currentStep}`).classList.remove('active'); t3_currentStep--; document.getElementById(`t3-step${t3_currentStep}`).classList.add('active'); } }
     function t3_calculatePrice(){ t3_nextStep(); }
-    function t3_submitRequest(){ alert('Mobilya taşıma talebiniz başarıyla gönderildi!'); }
+    function t3_submitRequest(){ var el = document.getElementById('akf1q6-alertT3'); alert(el ? el.textContent : 'Mobilya taşıma talebiniz başarıyla gönderildi!'); }
     function t3_bindFurnitureClicks(){
         document.querySelectorAll('#modulex-3 .furniture-card').forEach(function(card){
             card.addEventListener('click', function(){
@@ -1227,7 +1233,7 @@
     function t4_nextStep(){ if(t4_currentStep < t4_totalSteps){ document.getElementById(`t4-step${t4_currentStep}`).classList.remove('active'); t4_currentStep++; document.getElementById(`t4-step${t4_currentStep}`).classList.add('active'); } }
     function t4_prevStep(){ if(t4_currentStep > 1){ document.getElementById(`t4-step${t4_currentStep}`).classList.remove('active'); t4_currentStep--; document.getElementById(`t4-step${t4_currentStep}`).classList.add('active'); } }
     function t4_calculatePrice(){ t4_nextStep(); }
-    function t4_submitRequest(){ alert('Uluslararası taşıma talebiniz başarıyla gönderildi!'); }
+    function t4_submitRequest(){ var el = document.getElementById('akf1q6-alertT4'); alert(el ? el.textContent : 'Uluslararası taşıma talebiniz başarıyla gönderildi!'); }
     function t4_updateCityOptions(citySelectId, country){ var citySelect = document.getElementById(citySelectId); if(!citySelect){return;} citySelect.innerHTML=''; var placeholder=document.createElement('option'); placeholder.value=''; placeholder.textContent='Şehir seçin'; citySelect.appendChild(placeholder); var cities={ 'turkiye':['İstanbul','Ankara','İzmir','Bursa','Antalya'], 'almanya':['Berlin','Hamburg','Münih','Köln','Frankfurt'], 'ingiltere':['Londra','Manchester','Birmingham','Liverpool','Leeds'], 'fransa':['Paris','Lyon','Marsilya','Toulouse','Nice'], 'hollanda':['Amsterdam','Rotterdam','Den Haag','Utrecht','Eindhoven'], 'avusturya':['Viyana','Graz','Linz','Salzburg','Innsbruck'], 'isvicre':['Zürih','Cenevre','Basel','Bern','Lozan'] }; if(cities[country]){ cities[country].forEach(function(city){ var option=document.createElement('option'); option.value=city; option.textContent=city; citySelect.appendChild(option); }); } }
     setTimeout(function(){
         var fromC=document.getElementById('t4-fromCountry'); var toC=document.getElementById('t4-toCountry');
@@ -1240,7 +1246,7 @@
     function t5_nextStep(){ if(t5_currentStep < t5_totalSteps){ document.getElementById(`t5-step${t5_currentStep}`).classList.remove('active'); t5_currentStep++; document.getElementById(`t5-step${t5_currentStep}`).classList.add('active'); } }
     function t5_prevStep(){ if(t5_currentStep > 1){ document.getElementById(`t5-step${t5_currentStep}`).classList.remove('active'); t5_currentStep--; document.getElementById(`t5-step${t5_currentStep}`).classList.add('active'); } }
     function t5_calculatePrice(){ t5_nextStep(); }
-    function t5_submitRequest(){ alert('Araç taşıma talebiniz başarıyla gönderildi!'); }
+    function t5_submitRequest(){ var el = document.getElementById('akf1q6-alertT5'); alert(el ? el.textContent : 'Araç taşıma talebiniz başarıyla gönderildi!'); }
     function t5_setDefaultValues(vehicleType){ var defaults={ 'otomobil':{length:450,width:180,height:150,weight:1500}, 'motosiklet':{length:200,width:80,height:120,weight:200}, 'ticari':{length:550,width:200,height:220,weight:2500}, 'suv':{length:480,width:190,height:180,weight:2000} }; var v=defaults[vehicleType]; if(!v) return; var ids=['length','width','height','weight']; ids.forEach(function(k){ var el=document.getElementById('t5-'+k); if(el) el.value=v[k]; }); }
     setTimeout(function(){ document.querySelectorAll('#modulex-5 .vehicle-card').forEach(function(card){ card.addEventListener('click', function(){ document.querySelectorAll('#modulex-5 .vehicle-card').forEach(function(c){ c.classList.remove('selected'); }); this.classList.add('selected'); var vehicleType=this.dataset.vehicle; t5_setDefaultValues(vehicleType); }); }); },100);
 </script>
