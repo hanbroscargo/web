@@ -1,1252 +1,236 @@
-<div class="modulex" id="modulex">
-    {{menu}}
-</div>
-
-
-<div class="modulex" id="modulex-1" style="display: none;">
-  <div class="t1">
-    <div class="container">
-            <section class="form-section" aria-labelledby="teklif-title">
-                <div class="form-container">
-                    <h1 id="teklif-title">{{pageTitle}}</h1>
-                    <div class="step active" id="step1" role="tabpanel" aria-labelledby="step1-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">1</span>
-                            <h2 id="step1-title">{{step1Title}}</h2>
-                        </header>
-                        <div class="items-grid" role="group" aria-label="{{step1Title}}">
-                            <div class="item-card" data-item="paket" role="button" tabindex="0" aria-label="{{itemPaket}} - {{itemPaketDesc}}">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="{{itemPaket}}" width="80" height="80" loading="lazy">
-                                <h3>{{itemPaket}}</h3>
-                                <p>{{itemPaketDesc}}</p>
-                            </div>
-                            <div class="item-card" data-item="kutu" role="button" tabindex="0" aria-label="{{itemKutu}} - {{itemKutuDesc}}">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="{{itemKutu}}" width="80" height="80" loading="lazy">
-                                <h3>{{itemKutu}}</h3>
-                                <p>{{itemKutuDesc}}</p>
-                            </div>
-                            <div class="item-card" data-item="dokuman" role="button" tabindex="0" aria-label="{{itemDokuman}} - {{itemDokumanDesc}}">
-                                <img src="/module/akf1q6/images/kargo-tasimaciligi.jpg" alt="{{itemDokuman}}" width="80" height="80" loading="lazy">
-                                <h3>{{itemDokuman}}</h3>
-                                <p>{{itemDokumanDesc}}</p>
-                            </div>
-                        </div>
-                        <button type="button" class="btn-next" onclick="nextStep()" aria-label="{{btnNext}}">{{btnNext}}</button>
-                    </div>
-                    <div class="step" id="step2" role="tabpanel" aria-labelledby="step2-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">2</span>
-                            <h2 id="step2-title">{{step2Title}}</h2>
-                        </header>
-                        <form class="address-form" aria-label="{{step2Title}}">
-                            <div class="form-group">
-                                <label for="fromAddress">{{labelFrom}}</label>
-                                <input type="text" id="fromAddress" name="fromAddress" placeholder="{{placeholderFrom}}" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="toAddress">{{labelTo}}</label>
-                                <input type="text" id="toAddress" name="toAddress" placeholder="{{placeholderTo}}" aria-required="true">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="length">{{labelLength}}</label>
-                                    <input type="number" id="length" name="length" placeholder="{{placeholderLength}}" aria-label="{{labelLength}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="width">{{labelWidth}}</label>
-                                    <input type="number" id="width" name="width" placeholder="{{placeholderWidth}}" aria-label="{{labelWidth}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="height">{{labelHeight}}</label>
-                                    <input type="number" id="height" name="height" placeholder="{{placeholderHeight}}" aria-label="{{labelHeight}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="weight">{{labelWeight}}</label>
-                                <input type="number" id="weight" name="weight" placeholder="{{placeholderWeight}}" aria-label="{{labelWeight}}">
-                            </div>
-                        </form>
-                        <div class="step-buttons">
-                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="{{btnBack}}">{{btnBack}}</button>
-                            <button type="button" class="btn-next" onclick="nextStep()" aria-label="{{btnNext}}">{{btnNext}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="step3" role="tabpanel" aria-labelledby="step3-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="step3-title">{{step3Title}}</h2>
-                        </header>
-                        <form class="contact-form" aria-label="{{step3Title}}">
-                            <div class="form-group">
-                                <label for="fullName">{{labelFullName}}</label>
-                                <input type="text" id="fullName" name="fullName" placeholder="{{placeholderName}}" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">{{labelPhone}}</label>
-                                <input type="tel" id="phone" name="phone" placeholder="{{placeholderPhone}}" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">{{labelEmail}}</label>
-                                <input type="email" id="email" name="email" placeholder="{{placeholderEmail}}" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="notes">{{labelNotes}}</label>
-                                <textarea id="notes" name="notes" placeholder="{{placeholderNotes}}" aria-label="{{labelNotes}}"></textarea>
-                            </div>
-                        </form>
-                        <div class="step-buttons">
-                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="{{btnBack}}">{{btnBack}}</button>
-                            <button type="button" class="btn-next" onclick="calculatePrice()" aria-label="{{btnCalculate}}">{{btnCalculate}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="step4" role="tabpanel" aria-labelledby="step4-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">4</span>
-                            <h2 id="step4-title">{{step4Title}}</h2>
-                        </header>
-                        <div class="price-result" aria-live="polite">
-                            <div class="tracking-info">
-                                <h3>{{trackingLabel}} <span id="trackingNumber">TEST123456</span></h3>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button type="button" class="btn-back" onclick="prevStep()" aria-label="{{btnBack}}">{{btnBack}}</button>
-                            <button type="button" class="btn-primary" onclick="submitRequest()" aria-label="{{btnSubmit}}">{{btnSubmit}}</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    </div>
-  </div>
-</div>
-
-<div class="modulex" id="modulex-2" style="display: none;">
-  <div class="t2">
-    <div class="container">
-            <section class="form-section">
-                <div class="form-container">
-                    <h3>{{pageTitle}}</h3>
-                    <div class="step active" id="t2-step1" role="tabpanel" aria-labelledby="t2-step1-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">1</span>
-                            <h2 id="t2-step1-title">{{step2Title}}</h2>
-                        </header>
-                        <div class="address-form">
-                            <div class="form-group">
-                                <label>{{labelLoadAddress}}</label>
-                                <input type="text" id="t2-fromAddress" placeholder="{{placeholderFrom}}">
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelDeliveryAddress}}</label>
-                                <input type="text" id="t2-toAddress" placeholder="{{placeholderTo}}">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelItemType}}</label>
-                                    <select id="t2-itemType">
-                                        <option value="">{{selectOption}}</option>
-                                        <option value="mallar">{{t2_optionMallar}}</option>
-                                        <option value="makineler">{{t2_optionMakineler}}</option>
-                                        <option value="donanim">{{t2_optionDonanim}}</option>
-                                        <option value="hammadde">{{t2_optionHammadde}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelSize}}</label>
-                                    <input type="number" id="t2-length" placeholder="{{placeholderLength}}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" id="t2-width" placeholder="{{placeholderWidth}}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" id="t2-height" placeholder="{{placeholderHeight}}">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelWeight}}</label>
-                                    <input type="number" id="t2-weight" placeholder="{{placeholderWeight}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelQty}}</label>
-                                    <input type="number" id="t2-quantity" placeholder="{{placeholderQty}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelValue}}</label>
-                                    <input type="number" id="t2-value" placeholder="{{placeholderValue}}">
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn-next" onclick="t2_nextStep()">{{btnNext}}</button>
-                    </div>
-                    <div class="step" id="t2-step2" role="tabpanel" aria-labelledby="t2-step2-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">2</span>
-                            <h2 id="t2-step2-title">{{step3Title}}</h2>
-                        </header>
-                        <div class="contact-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelCompany}}</label>
-                                    <input type="text" id="t2-companyName" placeholder="{{placeholderCompany}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelTaxNo}}</label>
-                                    <input type="text" id="t2-taxNumber" placeholder="{{placeholderTax}}">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelFullName}}</label>
-                                    <input type="text" id="t2-fullName" placeholder="{{placeholderName}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelPosition}}</label>
-                                    <input type="text" id="t2-position" placeholder="{{placeholderPosition}}">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelPhone}}</label>
-                                    <input type="tel" id="t2-phone" placeholder="{{placeholderPhone}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelEmail}}</label>
-                                    <input type="email" id="t2-email" placeholder="{{placeholderEmail}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelSpecialInstructions}}</label>
-                                <textarea id="t2-specialInstructions" placeholder="{{placeholderSpecial}}"></textarea>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t2_prevStep()">{{btnBack}}</button>
-                            <button class="btn-next" onclick="t2_calculatePrice()">{{btnCalculate}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="t2-step3" role="tabpanel" aria-labelledby="t2-step3-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="t2-step3-title">{{step4Title}}</h2>
-                        </header>
-                        <div class="price-result">
-                            <div class="additional-info">
-                                <div class="info-card">
-                                    <h3>{{infoDeliveryTime}}</h3>
-                                    <p>{{infoDeliveryTimeVal}}</p>
-                                </div>
-                                <div class="info-card">
-                                    <h3>{{infoInsurance}}</h3>
-                                    <p>{{infoInsuranceVal}}</p>
-                                </div>
-                                <div class="info-card">
-                                    <h3>{{trackingLabel}}</h3>
-                                    <p id="t2-trackingNumber">TEST789012</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t2_prevStep()">{{btnBack}}</button>
-                            <button class="btn-primary" onclick="t2_submitRequest()">{{btnSubmit}}</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    </div>
-  </div>
-</div>
-
-<div class="modulex" id="modulex-3" style="display: none;">
-  <div class="t3">
-    <div class="container">
-            <section class="form-section">
-                <div class="form-container">
-                    <h3>{{pageTitle}}</h3>
-                    <div class="step active" id="t3-step1">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">1</span>
-                            <h2>{{t3_step1Title}}</h2>
-                        </header>
-                        <div class="furniture-grid">
-                            <div class="furniture-card" data-item="koltuk" role="button" tabindex="0" aria-label="{{t3_sofa}} - {{t3_sofaDesc}}">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_sofa}}" width="80" height="80" loading="lazy">
-                                <h3>{{t3_sofa}}</h3>
-                                <p>{{t3_sofaDesc}}</p>
-                            </div>
-                            <div class="furniture-card" data-item="yatak" role="button" tabindex="0" aria-label="{{t3_bedroom}} - {{t3_bedroomDesc}}">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_bedroom}}" width="80" height="80" loading="lazy">
-                                <h3>{{t3_bedroom}}</h3>
-                                <p>{{t3_bedroomDesc}}</p>
-                            </div>
-                            <div class="furniture-card" data-item="mutfak" role="button" tabindex="0" aria-label="{{t3_kitchen}} - {{t3_kitchenDesc}}">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_kitchen}}" width="80" height="80" loading="lazy">
-                                <h3>{{t3_kitchen}}</h3>
-                                <p>{{t3_kitchenDesc}}</p>
-                            </div>
-                            <div class="furniture-card" data-item="masa" role="button" tabindex="0" aria-label="{{t3_dining}} - {{t3_diningDesc}}">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_dining}}" width="80" height="80" loading="lazy">
-                                <h3>{{t3_dining}}</h3>
-                                <p>{{t3_diningDesc}}</p>
-                            </div>
-                            <div class="furniture-card" data-item="diger" role="button" tabindex="0" aria-label="{{t3_other}} - {{t3_otherDesc}}">
-                                <img src="/module/akf1q6/images/mobilya-tasimaciligi.jpg" alt="{{t3_other}}" width="80" height="80" loading="lazy">
-                                <h3>{{t3_other}}</h3>
-                                <p>{{t3_otherDesc}}</p>
-                            </div>
-                        </div>
-                        <button class="btn-next" onclick="t3_nextStep()">{{btnNext}}</button>
-                    </div>
-                    <div class="step" id="t3-step2">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">2</span>
-                            <h2>{{t3_step2Title}}</h2>
-                        </header>
-                        <div class="details-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{t3_labelBrand}}</label>
-                                    <input type="text" id="t3-brand" placeholder="{{placeholderBrand}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{t3_labelPurchaseDate}}</label>
-                                    <input type="date" id="t3-purchaseDate">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{t3_labelDimensions}}</label>
-                                    <input type="number" id="t3-length" placeholder="{{placeholderLength}}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" id="t3-width" placeholder="{{placeholderWidth}}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" id="t3-height" placeholder="{{placeholderHeight}}">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelWeight}}</label>
-                                    <input type="number" id="t3-weight" placeholder="{{placeholderWeight}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelValue}}</label>
-                                    <input type="number" id="t3-value" placeholder="{{placeholderFurnitureValue}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>{{t3_labelSpecialCondition}}</label>
-                                <select id="t3-specialCondition">
-                                    <option value="">{{selectOption}}</option>
-                                    <option value="cam">{{t3_optionCam}}</option>
-                                    <option value="ahsap">{{t3_optionAhsap}}</option>
-                                    <option value="dokuma">{{t3_optionDokuma}}</option>
-                                    <option value="metal">{{t3_optionMetal}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t3_prevStep()">{{btnBack}}</button>
-                            <button class="btn-next" onclick="t3_nextStep()">{{btnNext}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="t3-step3" role="tabpanel" aria-labelledby="t3-step3-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="t3-step3-title">{{step2Title}}</h2>
-                        </header>
-                        <div class="address-form">
-                            <div class="form-group">
-                                <label>{{labelLoadAddress}}</label>
-                                <input type="text" id="t3-fromAddress" placeholder="{{placeholderStoreAddress}}">
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelDeliveryAddress}}</label>
-                                <input type="text" id="t3-toAddress" placeholder="{{placeholderHomeAddress}}">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{t3_labelFloor}}</label>
-                                    <select id="t3-floor">
-                                        <option value="">{{selectOption}}</option>
-                                        <option value="zemin">{{t3_optionZemin}}</option>
-                                        <option value="1">{{t3_option1Kat}}</option>
-                                        <option value="2">{{t3_option2Kat}}</option>
-                                        <option value="3">{{t3_option3Kat}}</option>
-                                        <option value="4">{{t3_option4Kat}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>{{t3_labelElevator}}</label>
-                                    <select id="t3-elevator">
-                                        <option value="">{{selectOption}}</option>
-                                        <option value="var">{{t3_optionElevatorYes}}</option>
-                                        <option value="yok">{{t3_optionElevatorNo}}</option>
-                                        <option value="kucuk">{{t3_optionElevatorSmall}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t3_prevStep()">{{btnBack}}</button>
-                            <button class="btn-next" onclick="t3_nextStep()">{{btnNext}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="t3-step4" role="tabpanel" aria-labelledby="t3-step4-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">4</span>
-                            <h2 id="t3-step4-title">{{step3Title}}</h2>
-                        </header>
-                        <div class="contact-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelFullName}}</label>
-                                    <input type="text" id="t3-fullName" placeholder="{{placeholderName}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelPhone}}</label>
-                                    <input type="tel" id="t3-phone" placeholder="{{placeholderPhone}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelEmail}}</label>
-                                <input type="email" id="t3-email" placeholder="{{placeholderEmail}}">
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelSpecialInstructions}}</label>
-                                <textarea id="t3-specialInstructions" placeholder="{{placeholderDeliveryNotes}}"></textarea>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t3_prevStep()">{{btnBack}}</button>
-                            <button class="btn-next" onclick="t3_calculatePrice()">{{btnCalculate}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="t3-step5" role="tabpanel" aria-labelledby="t3-step5-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">5</span>
-                            <h2 id="t3-step5-title">{{step4Title}}</h2>
-                        </header>
-                        <div class="price-result">
-                            <div class="service-details">
-                                <h3>{{t3_servicesTitle}}</h3>
-                                <div class="services-list">
-                                    <div class="service-item"><i class="fas fa-shield-alt"></i><span>{{t3_service1}}</span></div>
-                                    <div class="service-item"><i class="fas fa-truck"></i><span>{{t3_service2}}</span></div>
-                                    <div class="service-item"><i class="fas fa-user-friends"></i><span>{{t3_service3}}</span></div>
-                                    <div class="service-item"><i class="fas fa-clipboard-check"></i><span>{{t3_service4}}</span></div>
-                                </div>
-                            </div>
-                            <div class="tracking-info">
-                                <h3>{{trackingLabel}} <span id="t3-trackingNumber">TEST345678</span></h3>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t3_prevStep()">{{btnBack}}</button>
-                            <button class="btn-primary" onclick="t3_submitRequest()">{{btnSubmit}}</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    </div>
-  </div>
-</div>
-
-<div class="modulex" id="modulex-4" style="display: none;">
-  <div class="t4">
-    <div class="container">
-            <section class="form-section">
-                <div class="form-container">
-                    <h3>{{pageTitle}}</h3>
-                    <div class="step active" id="t4-step1" role="tabpanel" aria-labelledby="t4-step1-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">1</span>
-                            <h2 id="t4-step1-title">{{step2Title}}</h2>
-                        </header>
-                        <div class="address-form">
-                            <div class="country-selector">
-                                <div class="form-group">
-                                    <label>{{labelFromCountry}}</label>
-                                    <select id="t4-fromCountry">
-                                        <option value="">{{labelCountry}}</option>
-                                        <option value="turkiye">Türkiye</option>
-                                        <option value="almanya">Almanya</option>
-                                        <option value="ingiltere">İngiltere</option>
-                                        <option value="fransa">Fransa</option>
-                                        <option value="hollanda">Hollanda</option>
-                                        <option value="avusturya">Avusturya</option>
-                                        <option value="isvicre">İsviçre</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="t4-fromCity" placeholder="{{placeholderCity}}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="t4-fromAddress" placeholder="{{placeholderAddressDetail}}">
-                                </div>
-                            </div>
-                            <div class="country-selector">
-                                <div class="form-group">
-                                    <label>{{labelToCountry}}</label>
-                                    <select id="t4-toCountry">
-                                        <option value="">{{labelCountry}}</option>
-                                        <option value="turkiye">Türkiye</option>
-                                        <option value="almanya">Almanya</option>
-                                        <option value="ingiltere">İngiltere</option>
-                                        <option value="fransa">Fransa</option>
-                                        <option value="hollanda">Hollanda</option>
-                                        <option value="avusturya">Avusturya</option>
-                                        <option value="isvicre">İsviçre</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="t4-toCity" placeholder="{{placeholderCity}}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="t4-toAddress" placeholder="{{placeholderAddressDetail}}">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{t4_labelItemType}}</label>
-                                    <select id="t4-itemType">
-                                        <option value="">{{selectOption}}</option>
-                                        <option value="komple">{{t4_optionKomple}}</option>
-                                        <option value="kismi">{{t4_optionKismi}}</option>
-                                        <option value="mobilya">{{t4_optionMobilya}}</option>
-                                        <option value="esya">{{t4_optionEsya}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>{{t4_labelVolume}}</label>
-                                    <input type="number" id="t4-volume" placeholder="{{placeholderVolume}}">
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn-next" onclick="t4_nextStep()">{{btnNext}}</button>
-                    </div>
-                    <div class="step" id="t4-step2" role="tabpanel" aria-labelledby="t4-step2-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">2</span>
-                            <h2 id="t4-step2-title">{{step3Title}}</h2>
-                        </header>
-                        <div class="contact-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelFullName}}</label>
-                                    <input type="text" id="t4-fullName" placeholder="{{placeholderName}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelPhone}}</label>
-                                    <input type="tel" id="t4-phone" placeholder="{{placeholderPhone}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelEmail}}</label>
-                                <input type="email" id="t4-email" placeholder="{{placeholderEmail}}">
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelSpecialInstructions}}</label>
-                                <textarea id="t4-specialInstructions" placeholder="{{placeholderMoveNotes}}"></textarea>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t4_prevStep()">{{btnBack}}</button>
-                            <button class="btn-next" onclick="t4_calculatePrice()">{{btnCalculate}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="t4-step3" role="tabpanel" aria-labelledby="t4-step3-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="t4-step3-title">{{step4Title}}</h2>
-                        </header>
-                        <div class="price-result">
-                            <div class="international-info">
-                                <h3>{{t4_intlTitle}}</h3>
-                                <div class="info-grid">
-                                    <div class="info-card"><i class="fas fa-ship" aria-hidden="true"></i><h4>{{t4_sea}}</h4><p>{{t4_seaDesc}}</p></div>
-                                    <div class="info-card"><i class="fas fa-plane" aria-hidden="true"></i><h4>{{t4_air}}</h4><p>{{t4_airDesc}}</p></div>
-                                    <div class="info-card"><i class="fas fa-file-alt" aria-hidden="true"></i><h4>{{t4_customs}}</h4><p>{{t4_customsDesc}}</p></div>
-                                    <div class="info-card"><i class="fas fa-shield-alt" aria-hidden="true"></i><h4>{{t4_insurance}}</h4><p>{{t4_insuranceDesc}}</p></div>
-                                </div>
-                            </div>
-                            <div class="tracking-info">
-                                <h3>{{trackingLabel}} <span id="t4-trackingNumber">INT456789</span></h3>
-                                <p>{{t4_trackingNote}}</p>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t4_prevStep()">{{btnBack}}</button>
-                            <button class="btn-primary" onclick="t4_submitRequest()">{{btnSubmit}}</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    </div>
-  </div>
-</div>
-
-
-<div class="modulex" id="modulex-5" style="display: none;">
-  <div class="t5">
-    <div class="container">
-            <section class="form-section">
-                <div class="form-container">
-                    <h3>{{pageTitle}}</h3>
-                    <div class="step active" id="t5-step1">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">1</span>
-                            <h2>{{t5_step1Title}}</h2>
-                        </header>
-                        <div class="vehicle-grid">
-                            <div class="vehicle-card" data-vehicle="otomobil" role="button" tabindex="0" aria-label="{{t5_vehicleCar}} - {{t5_vehicleCarDesc}}">
-                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="{{t5_vehicleCar}}" width="80" height="80" loading="lazy">
-                                <h3>{{t5_vehicleCar}}</h3>
-                                <p>{{t5_vehicleCarDesc}}</p>
-                            </div>
-                            <div class="vehicle-card" data-vehicle="motosiklet" role="button" tabindex="0" aria-label="{{t5_vehicleBike}} - {{t5_vehicleBikeDesc}}">
-                                <img src="/module/akf1q6/images/motor-bike.jpg" alt="{{t5_vehicleBike}}" width="80" height="80" loading="lazy">
-                                <h3>{{t5_vehicleBike}}</h3>
-                                <p>{{t5_vehicleBikeDesc}}</p>
-                            </div>
-                            <div class="vehicle-card" data-vehicle="ticari" role="button" tabindex="0" aria-label="{{t5_vehicleCommercial}} - {{t5_vehicleCommercialDesc}}">
-                                <img src="/module/akf1q6/images/arac-tasimaciligi.jpg" alt="{{t5_vehicleCommercial}}" width="80" height="80" loading="lazy">
-                                <h3>{{t5_vehicleCommercial}}</h3>
-                                <p>{{t5_vehicleCommercialDesc}}</p>
-                            </div>
-                            <div class="vehicle-card" data-vehicle="suv" role="button" tabindex="0" aria-label="{{t5_vehicleSuv}} - {{t5_vehicleSuvDesc}}">
-                                <img src="/module/akf1q6/images/4-4-car.jpg" alt="{{t5_vehicleSuv}}" width="80" height="80" loading="lazy">
-                                <h3>{{t5_vehicleSuv}}</h3>
-                                <p>{{t5_vehicleSuvDesc}}</p>
-                            </div>
-                        </div>
-                        <button class="btn-next" onclick="t5_nextStep()">{{btnNext}}</button>
-                    </div>
-                    <div class="step" id="t5-step2">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">2</span>
-                            <h2>{{t5_step2Title}}</h2>
-                        </header>
-                        <div class="vehicle-details-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{t5_labelBrand}}</label>
-                                    <input type="text" id="t5-brand" placeholder="{{placeholderVehicleBrand}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{t5_labelModel}}</label>
-                                    <input type="text" id="t5-model" placeholder="{{placeholderVehicleModel}}">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{t5_labelYear}}</label>
-                                    <input type="number" id="t5-year" placeholder="{{placeholderYear}}" min="1990" max="2024">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{t5_labelFuel}}</label>
-                                    <select id="t5-fuelType">
-                                        <option value="">{{selectOption}}</option>
-                                        <option value="benzin">{{t5_optionBenzin}}</option>
-                                        <option value="dizel">{{t5_optionDizel}}</option>
-                                        <option value="hibrit">{{t5_optionHibrit}}</option>
-                                        <option value="elektrik">{{t5_optionElektrik}}</option>
-                                        <option value="lpg">{{t5_optionLpg}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{t3_labelDimensions}}</label>
-                                    <input type="number" id="t5-length" placeholder="{{placeholderLength}}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" id="t5-width" placeholder="{{placeholderWidth}}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" id="t5-height" placeholder="{{placeholderHeight}}">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelWeight}}</label>
-                                    <input type="number" id="t5-weight" placeholder="{{placeholderWeight}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{t5_labelCondition}}</label>
-                                    <select id="t5-condition">
-                                        <option value="">{{selectOption}}</option>
-                                        <option value="calisir">{{t5_optionCalisir}}</option>
-                                        <option value="calismaz">{{t5_optionCalismaz}}</option>
-                                        <option value="hasarli">{{t5_optionHasarli}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t5_prevStep()">{{btnBack}}</button>
-                            <button class="btn-next" onclick="t5_nextStep()">{{btnNext}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="t5-step3" role="tabpanel" aria-labelledby="t5-step3-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">3</span>
-                            <h2 id="t5-step3-title">{{step2Title}}</h2>
-                        </header>
-                        <div class="address-form">
-                            <div class="form-group">
-                                <label>{{labelLoadAddress}}</label>
-                                <input type="text" id="t5-fromAddress" placeholder="{{placeholderVehicleAddress}}">
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelDeliveryAddress}}</label>
-                                <input type="text" id="t5-toAddress" placeholder="{{placeholderTo}}">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{t5_labelLoadingDifficulty}}</label>
-                                    <select id="t5-loadingDifficulty">
-                                        <option value="">{{selectOption}}</option>
-                                        <option value="kolay">{{t5_optionKolay}}</option>
-                                        <option value="orta">{{t5_optionOrta}}</option>
-                                        <option value="zor">{{t5_optionZor}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>{{t5_labelDistance}}</label>
-                                    <input type="number" id="t5-distance" placeholder="{{placeholderDistance}}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t5_prevStep()">{{btnBack}}</button>
-                            <button class="btn-next" onclick="t5_nextStep()">{{btnNext}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="t5-step4" role="tabpanel" aria-labelledby="t5-step4-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">4</span>
-                            <h2 id="t5-step4-title">{{step3Title}}</h2>
-                        </header>
-                        <div class="contact-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{labelFullName}}</label>
-                                    <input type="text" id="t5-fullName" placeholder="{{placeholderName}}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{labelPhone}}</label>
-                                    <input type="tel" id="t5-phone" placeholder="{{placeholderPhone}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelEmail}}</label>
-                                <input type="email" id="t5-email" placeholder="{{placeholderEmail}}">
-                            </div>
-                            <div class="form-group">
-                                <label>{{labelSpecialInstructions}}</label>
-                                <textarea id="t5-specialInstructions" placeholder="{{placeholderVehicleNotes}}"></textarea>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t5_prevStep()">{{btnBack}}</button>
-                            <button class="btn-next" onclick="t5_calculatePrice()">{{btnCalculate}}</button>
-                        </div>
-                    </div>
-                    <div class="step" id="t5-step5" role="tabpanel" aria-labelledby="t5-step5-title">
-                        <header class="step-header">
-                            <span class="step-number" aria-hidden="true">5</span>
-                            <h2 id="t5-step5-title">{{step4Title}}</h2>
-                        </header>
-                        <div class="price-result">
-                            <div class="service-details">
-                                <h3>{{t5_servicesTitle}}</h3>
-                                <div class="services-list">
-                                    <div class="service-item"><i class="fas fa-truck"></i><span>{{t5_service1}}</span></div>
-                                    <div class="service-item"><i class="fas fa-shield-alt"></i><span>{{t5_service2}}</span></div>
-                                    <div class="service-item"><i class="fas fa-user-friends"></i><span>{{t5_service3}}</span></div>
-                                    <div class="service-item"><i class="fas fa-route"></i><span>{{t5_service4}}</span></div>
-                                    <div class="service-item"><i class="fas fa-clipboard-check"></i><span>{{t5_service5}}</span></div>
-                                    <div class="service-item"><i class="fas fa-clock"></i><span>{{t5_service6}}</span></div>
-                                </div>
-                            </div>
-                            <div class="tracking-info">
-                                <h3>{{trackingLabel}} <span id="t5-trackingNumber">VEH567890</span></h3>
-                                <p>{{t5_trackingNote}}</p>
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn-back" onclick="t5_prevStep()">{{btnBack}}</button>
-                            <button class="btn-primary" onclick="t5_submitRequest()">{{btnSubmit}}</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    </div>
-  </div>
-</div>
-<span id="akf1q6-alertSuccess" style="display:none">{{alertSuccess}}</span>
-<span id="akf1q6-alertT2" style="display:none">{{alertT2Success}}</span>
-<span id="akf1q6-alertT3" style="display:none">{{alertT3Success}}</span>
-<span id="akf1q6-alertT4" style="display:none">{{alertT4Success}}</span>
-<span id="akf1q6-alertT5" style="display:none">{{alertT5Success}}</span>
-
-
-
-
-
-
-
 
 <style>
-    /* ========== TEKLİF MODÜLÜ – Müşteri tasarımı (premium) ========== */
-    /* Ana menü: kartlar */
-    .modulex {
-        display: flex;
-        gap: 24px;
-        row-gap: 28px;
-        justify-content: center;
-        align-items: stretch;
-        width: var(--max);
-        flex-wrap: wrap;
-        padding: 32px 24px 48px;
-        background: linear-gradient(180deg, #f0f7f6 0%, #ffffff 100%);
-        border-radius: 20px;
-        margin: 0 auto;
-        max-width: 1200px;
-    }
+  /* ═══ akf1q6 Menü – Sütun düzeni, tasarımsal + animasyonlu ═══ */
+  .tkl-menu {
+    --tkl-primary: #006B65;
+    --tkl-primary-dark: #004d47;
+    --tkl-accent: #4ade80;
+    --tkl-glass: rgba(255, 255, 255, 0.85);
+    --tkl-glass-border: rgba(255, 255, 255, 0.5);
+    --tkl-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    --tkl-shadow-hover: 0 20px 50px rgba(0, 107, 101, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    box-sizing: border-box;
+  }
 
-    .modulex-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 14px;
-        padding: 0;
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 107, 101, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
-        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        flex: 1 1 200px;
-        max-width: 240px;
-        min-height: 260px;
-        cursor: pointer;
-        box-sizing: border-box;
-        border: 2px solid transparent;
-        overflow: hidden;
-    }
+  /* Sütun kartı – link ise varsayılan stil kaldırılır; giriş animasyonu (sırayla) */
+  .tkl-menu .modulex-item {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.35rem 1.75rem;
+    min-height: 56px;
+    box-sizing: border-box;
+    background: var(--tkl-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--tkl-glass-border);
+    border-radius: 20px;
+    box-shadow: var(--tkl-shadow);
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-24px);
+    animation: tkl-item-enter 0.5s ease forwards;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+  }
 
-    .modulex-item:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 32px rgba(0, 107, 101, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
-        border-color: #006B65;
-    }
+  .tkl-menu .modulex-item:nth-child(1) { animation-delay: 0.05s; }
+  .tkl-menu .modulex-item:nth-child(2) { animation-delay: 0.12s; }
+  .tkl-menu .modulex-item:nth-child(3) { animation-delay: 0.19s; }
+  .tkl-menu .modulex-item:nth-child(4) { animation-delay: 0.26s; }
+  .tkl-menu .modulex-item:nth-child(5) { animation-delay: 0.33s; }
 
-    .modulex-item-img {
-        width: 100%;
-        height: 160px;
-        object-fit: cover;
-        border-radius: 0;
-        transition: transform 0.35s ease;
+  @keyframes tkl-item-enter {
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
+  }
 
-    .modulex-item:hover .modulex-item-img {
-        transform: scale(1.06);
-    }
+  /* Hover: hafif büyüme + gölge + parlama kenarı */
+  .tkl-menu .modulex-item:hover {
+    transform: scale(1.02) translateX(6px);
+    box-shadow: var(--tkl-shadow-hover);
+    border-color: rgba(0, 107, 101, 0.35);
+    background: rgba(255, 255, 255, 0.95);
+  }
 
-    .modulex-item-title {
-        font-weight: 700;
-        font-size: 1.05rem;
-        color: #0b2e2c;
-        text-align: center;
-        line-height: 1.35;
-        margin: 0;
-        padding: 0 16px 20px;
-        letter-spacing: 0.02em;
-    }
+  .tkl-menu .modulex-item:hover .modulex-item-icon {
+    transform: scale(1.08);
+  }
 
-    /* Ortak: container ve form kutusu */
-    .t1 .container, .t2 .container, .t3 .container, .t4 .container, .t5 .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-    }
-    .t1 .form-section, .t2 .form-section, .t3 .form-section, .t4 .form-section, .t5 .form-section {
-        padding: 40px 0 56px;
-        background: linear-gradient(180deg, #f0f7f6 0%, #ffffff 12%);
-    }
-    .t1 .form-container, .t2 .form-container, .t3 .form-container, .t4 .form-container, .t5 .form-container {
-        max-width: 820px;
-        margin: 0 auto;
-        background: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 8px 40px rgba(0, 107, 101, 0.1), 0 2px 12px rgba(0, 0, 0, 0.06);
-        padding: 40px 36px;
-        border: 1px solid rgba(0, 107, 101, 0.08);
-    }
-    .t1 .form-container h1, .t1 .form-container h3, .t2 .form-container h3, .t3 .form-container h3, .t4 .form-container h3, .t5 .form-container h3 {
-        text-align: center;
-        font-size: 1.75rem;
-        color: #006B65;
-        margin-bottom: 2rem;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-    }
-    .t1 .step, .t2 .step, .t3 .step, .t4 .step, .t5 .step { display: none; }
-    .t1 .step.active, .t2 .step.active, .t3 .step.active, .t4 .step.active, .t5 .step.active { display: block; }
-    .t1 .step-header, .t2 .step-header, .t3 .step-header, .t4 .step-header, .t5 .step-header {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 2rem;
-        padding-bottom: 1.25rem;
-        border-bottom: 2px solid #e8f0ef;
-    }
-    .t1 .step-number, .t2 .step-number, .t3 .step-number, .t4 .step-number, .t5 .step-number {
-        background: linear-gradient(145deg, #006B65, #005a55);
-        color: #fff;
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 1.2rem;
-        box-shadow: 0 4px 12px rgba(0, 107, 101, 0.35);
-    }
-    .t1 .step-header h2, .t1 .step-header h4, .t2 .step-header h2, .t2 .step-header h4, .t3 .step-header h2, .t3 .step-header h4, .t4 .step-header h2, .t4 .step-header h4, .t5 .step-header h2, .t5 .step-header h4 {
-        font-size: 1.35rem;
-        color: #0b2e2c;
-        font-weight: 700;
-        margin: 0;
-    }
+  .tkl-menu .modulex-item:focus {
+    outline: 2px solid var(--tkl-primary);
+    outline-offset: 3px;
+  }
 
-    /* t1 – Kargo / Paket formu */
-    .t1 .items-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
-    .t1 .item-card {
-        background: #fafbfc;
-        border: 2px solid #e8eeed;
-        border-radius: 14px;
-        padding: 1.5rem;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.25s ease;
-    }
-    .t1 .item-card:hover { border-color: #006B65; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 107, 101, 0.12); background: #fff; }
-    .t1 .item-card.selected { border-color: #006B65; background: #e8f5f4; box-shadow: 0 6px 20px rgba(0, 107, 101, 0.15); }
-    .t1 .item-card img { width: 72px; height: 72px; object-fit: cover; border-radius: 12px; margin-bottom: 0.75rem; }
-    .t1 .item-card h3 { font-size: 1.1rem; color: #006B65; margin-bottom: 0.35rem; font-weight: 700; }
-    .t1 .item-card p { color: #5a6c6b; font-size: 0.9rem; margin: 0; }
-    .t1 .address-form, .t1 .contact-form { display: grid; gap: 1.25rem; }
-    .t1 .form-group { display: flex; flex-direction: column; }
-    .t1 .form-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .t1 .form-group label { font-weight: 600; color: #0b2e2c; margin-bottom: 0.5rem; font-size: 0.95rem; }
-    .t1 .form-group input, .t1 .form-group textarea {
-        padding: 14px 16px;
-        border: 2px solid #e0e6e5;
-        border-radius: 12px;
-        font-size: 1rem;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .t1 .form-group input:focus, .t1 .form-group textarea:focus {
-        outline: none;
-        border-color: #006B65;
-        box-shadow: 0 0 0 4px rgba(0, 107, 101, 0.12);
-    }
-    .t1 .form-group textarea { min-height: 100px; resize: vertical; }
-    .t1 .btn-next, .t1 .btn-back, .t1 .btn-primary {
-        padding: 14px 32px;
-        border: none;
-        border-radius: 12px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.25s ease;
-        letter-spacing: 0.03em;
-    }
-    .t1 .btn-next, .t1 .btn-primary {
-        background: linear-gradient(145deg, #006B65, #005a55);
-        color: #fff;
-        box-shadow: 0 4px 14px rgba(0, 107, 101, 0.35);
-    }
-    .t1 .btn-next:hover, .t1 .btn-primary:hover {
-        background: linear-gradient(145deg, #005a55, #004d47);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 107, 101, 0.4);
-    }
-    .t1 .btn-back { background: #5a6c6b; color: #fff; }
-    .t1 .btn-back:hover { background: #4a5c5b; transform: translateY(-2px); cursor: pointer; }
-    .t1 .step-buttons { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
-    .t1 .price-result { text-align: center; padding: 2rem 0; }
-    .t1 .price-card { background: linear-gradient(135deg, #006B65, #004d47); color: #fff; padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem; }
-    .t1 .price-card h5 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
-    .t1 .price-range { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-    .t1 .min-price, .t1 .max-price { font-size: 2.25rem; font-weight: 700; color: #cedc00; }
-    .t1 .separator { font-size: 1.75rem; font-weight: 300; }
-    .t1 .price-note { font-size: 0.9rem; opacity: 0.9; }
-    .t1 .tracking-info {
-        background: linear-gradient(90deg, #e8f5f4 0%, #f0f7f6 100%);
-        padding: 1.25rem 1.5rem;
-        border-radius: 12px;
-        border-left: 4px solid #006B65;
-    }
-    .t1 .tracking-info h3 { color: #006B65; font-size: 1.1rem; font-weight: 700; margin: 0 0 0.25rem 0; }
-    .t1 .tracking-info span { font-weight: 700; color: #004d47; }
+  /* Sol kenar vurgu çizgisi (hover’da animasyon) */
+  .tkl-menu .modulex-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--tkl-primary) 0%, var(--tkl-accent) 100%);
+    border-radius: 20px 0 0 20px;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
 
-    @media (max-width: 768px) {
-        .t1 .form-container { padding: 24px 20px; border-radius: 16px; }
-        .t1 .form-row { grid-template-columns: 1fr; }
-        .t1 .step-buttons { flex-direction: column; }
-        .t1 .price-range { flex-direction: column; gap: 0.5rem; }
-        .t1 .min-price, .t1 .max-price { font-size: 1.85rem; }
-    }
-    @media (max-width: 480px) { .t1 .container { padding: 0 16px; } }
+  .tkl-menu .modulex-item:hover::before {
+    transform: scaleY(1);
+  }
 
-    /* t2 – Ticari eşya */
-    .t2 .address-form, .t2 .contact-form { display: grid; gap: 1.25rem; }
-    .t2 .form-group { display: flex; flex-direction: column; }
-    .t2 .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .t2 .form-group label { font-weight: 600; color: #0b2e2c; margin-bottom: 0.5rem; font-size: 0.95rem; }
-    .t2 .form-group input, .t2 .form-group select, .t2 .form-group textarea {
-        padding: 14px 16px; border: 2px solid #e0e6e5; border-radius: 12px; background: #fff;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .t2 .form-group input:focus, .t2 .form-group select:focus, .t2 .form-group textarea:focus {
-        outline: none; border-color: #006B65; box-shadow: 0 0 0 4px rgba(0, 107, 101, 0.12);
-    }
-    .t2 .btn-next, .t2 .btn-back, .t2 .btn-primary {
-        padding: 14px 32px; border: 0; border-radius: 12px; font-weight: 600; cursor: pointer;
-        transition: all 0.25s ease; letter-spacing: 0.03em;
-    }
-    .t2 .btn-next, .t2 .btn-primary { background: linear-gradient(145deg, #006B65, #005a55); color: #fff; box-shadow: 0 4px 14px rgba(0, 107, 101, 0.35); }
-    .t2 .btn-next:hover, .t2 .btn-primary:hover { background: linear-gradient(145deg, #005a55, #004d47); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 107, 101, 0.4); cursor: pointer; }
-    .t2 .btn-back { background: #5a6c6b; color: #fff; }
-    .t2 .btn-back:hover { background: #4a5c5b; transform: translateY(-2px); cursor: pointer; }
-    .t2 .step-buttons { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
-    .t2 .price-result { text-align: center; padding: 2rem 0; }
-    .t2 .additional-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
-    .t2 .info-card { background: linear-gradient(90deg, #e8f5f4 0%, #f0f7f6 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #006B65; }
-    @media (max-width: 768px) { .t2 .form-container { padding: 24px 20px; } .t2 .form-row { grid-template-columns: 1fr; } .t2 .step-buttons { flex-direction: column; } }
+  /* Tip kodu rozeti – animasyonlu */
+  .tkl-menu .modulex-item-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--tkl-primary) 0%, var(--tkl-primary-dark) 100%);
+    border-radius: 10px;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 12px rgba(0, 107, 101, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-    /* t3 – Mobilya */
-    .t3 .furniture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
-    .t3 .furniture-card {
-        background: #fafbfc; border: 2px solid #e8eeed; border-radius: 14px; padding: 1.5rem; text-align: center;
-        cursor: pointer; transition: all 0.25s ease;
-    }
-    .t3 .furniture-card:hover { border-color: #006B65; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 107, 101, 0.12); background: #fff; }
-    .t3 .furniture-card.selected { border-color: #006B65; background: #e8f5f4; box-shadow: 0 6px 20px rgba(0, 107, 101, 0.15); }
-    .t3 .furniture-card img { width: 72px; height: 72px; object-fit: cover; border-radius: 12px; margin-bottom: 0.75rem; }
-    .t3 .details-form, .t3 .address-form, .t3 .contact-form { display: grid; gap: 1.25rem; }
-    .t3 .form-group { display: flex; flex-direction: column; }
-    .t3 .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .t3 .form-group label { font-weight: 600; color: #0b2e2c; margin-bottom: 0.5rem; }
-    .t3 .form-group input, .t3 .form-group select, .t3 .form-group textarea { padding: 14px 16px; border: 2px solid #e0e6e5; border-radius: 12px; background: #fff; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-    .t3 .form-group input:focus, .t3 .form-group select:focus, .t3 .form-group textarea:focus { outline: none; border-color: #006B65; box-shadow: 0 0 0 4px rgba(0, 107, 101, 0.12); }
-    .t3 .btn-next, .t3 .btn-back, .t3 .btn-primary { padding: 14px 32px; border: 0; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; letter-spacing: 0.03em; }
-    .t3 .btn-next, .t3 .btn-primary { background: linear-gradient(145deg, #006B65, #005a55); color: #fff; box-shadow: 0 4px 14px rgba(0, 107, 101, 0.35); }
-    .t3 .btn-next:hover, .t3 .btn-primary:hover { background: linear-gradient(145deg, #005a55, #004d47); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 107, 101, 0.4); cursor: pointer; }
-    .t3 .btn-back { background: #5a6c6b; color: #fff; }
-    .t3 .btn-back:hover { background: #4a5c5b; transform: translateY(-2px); cursor: pointer; }
-    .t3 .price-card { background: linear-gradient(135deg, #006B65, #004d47); color: #fff; padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem; }
-    .t3 .price-range .min-price, .t3 .price-range .max-price { color: #cedc00; }
-    @media (max-width: 768px) { .t3 .form-container { padding: 24px 20px; } .t3 .form-row { grid-template-columns: 1fr; } .t3 .furniture-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } }
+  .tkl-menu .modulex-item:hover .modulex-item-badge {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 107, 101, 0.45);
+  }
 
-    /* t4 – Uluslararası */
-    .t4 .country-selector { background: linear-gradient(90deg, #e8f5f4 0%, #f0f7f6 100%); padding: 1.5rem; border-radius: 14px; margin-bottom: 1.5rem; border: 2px solid #d0e5e3; }
-    .t4 .address-form, .t4 .contact-form { display: grid; gap: 1.25rem; }
-    .t4 .form-group { display: flex; flex-direction: column; }
-    .t4 .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .t4 .form-group label { font-weight: 600; color: #0b2e2c; margin-bottom: 0.5rem; }
-    .t4 .form-group input, .t4 .form-group select, .t4 .form-group textarea { padding: 14px 16px; border: 2px solid #e0e6e5; border-radius: 12px; background: #fff; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-    .t4 .form-group input:focus, .t4 .form-group select:focus, .t4 .form-group textarea:focus { outline: none; border-color: #006B65; box-shadow: 0 0 0 4px rgba(0, 107, 101, 0.12); }
-    .t4 .btn-next, .t4 .btn-back, .t4 .btn-primary { padding: 14px 32px; border: 0; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; letter-spacing: 0.03em; }
-    .t4 .btn-next, .t4 .btn-primary { background: linear-gradient(145deg, #006B65, #005a55); color: #fff; box-shadow: 0 4px 14px rgba(0, 107, 101, 0.35); }
-    .t4 .btn-next:hover, .t4 .btn-primary:hover { background: linear-gradient(145deg, #005a55, #004d47); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 107, 101, 0.4); cursor: pointer; }
-    .t4 .btn-back { background: #5a6c6b; color: #fff; }
-    .t4 .btn-back:hover { background: #4a5c5b; transform: translateY(-2px); cursor: pointer; }
-    .t4 .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
-    .t4 .info-card { background: #fafbfc; padding: 1.5rem; border-radius: 14px; text-align: center; border: 2px solid #e8eeed; transition: all 0.25s ease; cursor: default; }
-    .t4 .info-card:hover { border-color: #006B65; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 107, 101, 0.12); }
-    .t4 .tracking-info { background: linear-gradient(90deg, #e8f5f4 0%, #f0f7f6 100%); padding: 1.25rem 1.5rem; border-radius: 12px; border-left: 4px solid #006B65; }
-    .t4 .price-range .min-price, .t4 .price-range .max-price { color: #cedc00; }
-    @media (max-width: 768px) { .t4 .form-container { padding: 24px 20px; } .t4 .form-row { grid-template-columns: 1fr; } }
+  /* Material Symbols ikon – yuvarlak kutu + hover zoom */
+  .tkl-menu .modulex-item-icon {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #f0f0f0 0%, #e5e5e5 100%);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    font-size: 40px;
+    color: var(--tkl-primary);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+  }
 
-    /* t5 – Araç */
-    .t5 .vehicle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
-    .t5 .vehicle-card {
-        background: #fafbfc; border: 2px solid #e8eeed; border-radius: 14px; padding: 1.5rem; text-align: center;
-        cursor: pointer; transition: all 0.25s ease;
-    }
-    .t5 .vehicle-card:hover { border-color: #006B65; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 107, 101, 0.12); background: #fff; }
-    .t5 .vehicle-card.selected { border-color: #006B65; background: #e8f5f4; box-shadow: 0 6px 20px rgba(0, 107, 101, 0.15); }
-    .t5 .vehicle-card img { width: 72px; height: 72px; object-fit: cover; border-radius: 12px; margin-bottom: 0.75rem; }
-    .t5 .vehicle-details-form, .t5 .address-form, .t5 .contact-form { display: grid; gap: 1.25rem; }
-    .t5 .form-group { display: flex; flex-direction: column; }
-    .t5 .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .t5 .form-group label { font-weight: 600; color: #0b2e2c; margin-bottom: 0.5rem; }
-    .t5 .form-group input, .t5 .form-group select, .t5 .form-group textarea { padding: 14px 16px; border: 2px solid #e0e6e5; border-radius: 12px; background: #fff; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-    .t5 .form-group input:focus, .t5 .form-group select:focus, .t5 .form-group textarea:focus { outline: none; border-color: #006B65; box-shadow: 0 0 0 4px rgba(0, 107, 101, 0.12); }
-    .t5 .btn-next, .t5 .btn-back, .t5 .btn-primary { padding: 14px 32px; border: 0; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; letter-spacing: 0.03em; }
-    .t5 .btn-next, .t5 .btn-primary { background: linear-gradient(145deg, #006B65, #005a55); color: #fff; box-shadow: 0 4px 14px rgba(0, 107, 101, 0.35); }
-    .t5 .btn-next:hover, .t5 .btn-primary:hover { background: linear-gradient(145deg, #005a55, #004d47); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 107, 101, 0.4); cursor: pointer; }
-    .t5 .btn-back { background: #5a6c6b; color: #fff; }
-    .t5 .btn-back:hover { background: #4a5c5b; transform: translateY(-2px); cursor: pointer; }
-    .t5 .price-card { background: linear-gradient(135deg, #006B65, #004d47); color: #fff; padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem; }
-    .t5 .price-range .min-price, .t5 .price-range .max-price { color: #cedc00; }
-    .t5 .services-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-    .t5 .service-item { display: flex; align-items: center; gap: 10px; padding: 0.5rem 0; }
-    .t5 .tracking-info { background: linear-gradient(90deg, #e8f5f4 0%, #f0f7f6 100%); padding: 1.25rem 1.5rem; border-radius: 12px; border-left: 4px solid #006B65; }
-    @media (max-width: 768px) { .t5 .form-container { padding: 24px 20px; } .t5 .form-row { grid-template-columns: 1fr; } .t5 .vehicle-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } }
+  .tkl-menu .modulex-item-icon.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
 
-    @media (max-width: 1024px) {
-        #modulex { justify-content: center; padding: 24px 20px 40px; gap: 20px; row-gap: 24px; }
+  /* Başlık – sütunda sola hizalı */
+  .tkl-menu .modulex-item-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: left;
+    line-height: 1.4;
+    flex: 1;
+    padding-right: 0.75rem;
+  }
+
+  /* Menü sonu – ileri ikonu */
+  .tkl-menu .modulex-item-arrow {
+    flex-shrink: 0;
+    font-size: 24px;
+    color: var(--tkl-primary);
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .tkl-menu .modulex-item-arrow.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .tkl-menu .modulex-item:hover .modulex-item-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  /* Tablet: geniş alan korunur, yan boşluklar */
+  @media (max-width: 768px) {
+    .tkl-menu {
+      max-width: 100%;
+      padding: 1.25rem 1rem;
+      gap: 1rem;
     }
-    @media (max-width: 768px) {
-        #modulex { padding: 20px 16px 32px; gap: 16px; row-gap: 20px; border-radius: 16px; }
-        #modulex .modulex-item { flex: 1 1 calc(50% - 12px); max-width: none; min-height: 220px; }
-        .modulex-item-img { height: 130px; }
-        .modulex-item-title { font-size: 0.95rem; padding: 0 12px 16px; }
+    .tkl-menu .modulex-item {
+      padding: 1.2rem 1.5rem;
+      gap: 1.25rem;
     }
-    @media (max-width: 480px) {
-        #modulex { padding: 16px 12px 24px; }
-        #modulex .modulex-item { flex: 1 1 100%; min-height: 200px; }
-        .modulex-item-img { height: 140px; }
+    .tkl-menu .modulex-item-icon {
+      width: 72px;
+      height: 72px;
+      min-width: 72px;
+      min-height: 72px;
+      font-size: 36px;
     }
+    .tkl-menu .modulex-item-title {
+      font-size: 1.1rem;
+    }
+    .tkl-menu .modulex-item-arrow {
+      font-size: 22px;
+    }
+  }
+
+  /* Mobil: tam genişlik, güvenli dokunma alanı (min 44px), safe-area */
+  @media (max-width: 480px) {
+    .tkl-menu {
+      padding: 1rem max(1rem, env(safe-area-inset-right)) 1rem max(1rem, env(safe-area-inset-left));
+      gap: 0.875rem;
+    }
+    .tkl-menu .modulex-item {
+      padding: 1rem 1.25rem;
+      gap: 1rem;
+      min-height: 52px;
+      border-radius: 16px;
+    }
+    .tkl-menu .modulex-item::before {
+      border-radius: 16px 0 0 16px;
+    }
+    .tkl-menu .modulex-item-icon {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      min-height: 64px;
+      border-radius: 14px;
+      font-size: 32px;
+    }
+    .tkl-menu .modulex-item-title {
+      font-size: 1rem;
+      padding-right: 0.5rem;
+    }
+    .tkl-menu .modulex-item-arrow {
+      font-size: 20px;
+    }
+    .tkl-menu .modulex-item-badge {
+      top: 0.75rem;
+      right: 0.75rem;
+      padding: 0.3rem 0.55rem;
+      font-size: 0.65rem;
+    }
+  }
 </style>
 
-
-<script>
-    function pageteklif(id) {
-        console.log(id);
-        document.getElementById('modulex').style.display = 'none';
-        document.getElementById(id).style.display = 'block';
-        if (id === 'modulex-3') {
-            t3_loadFromApi();
-        }
-    }
-    async function getUrunler() {
-        try {
-            var response = await fetch('https://api.hanbroscargo.com/urunler.php');
-            var data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('API hatası:', error);
-            return [];
-        }
-    }
-
-
-    // Teklif adım akışı (kritik kural: sadece var - Global_sayfaac ile uyum)
-    var currentStep = 1;
-    var totalSteps = 4;
-    function nextStep() {
-        if (currentStep < totalSteps) {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            currentStep++;
-            document.getElementById(`step${currentStep}`).classList.add('active');
-        }
-    }
-    function prevStep() {
-        if (currentStep > 1) {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            currentStep--;
-            document.getElementById(`step${currentStep}`).classList.add('active');
-        }
-    }
-    function calculatePrice() {
-        nextStep();
-    }
-    function submitRequest() {
-        var el = document.getElementById('akf1q6-alertSuccess');
-        alert(el ? el.textContent : 'Teklif talebiniz başarıyla gönderildi!');
-    }
-    // Eşya seçimi
-    setTimeout(function() {
-        document.querySelectorAll('#modulex-1 .item-card').forEach(function(card) {
-            card.addEventListener('click', function() {
-                document.querySelectorAll('#modulex-1 .item-card').forEach(function(c) { c.classList.remove('selected'); });
-                this.classList.add('selected');
-            });
-        });
-    }, 100);
-
-    // t2 akış (ticari)
-    var t2_currentStep = 1; var t2_totalSteps = 3;
-    function t2_nextStep(){ if(t2_currentStep < t2_totalSteps){ document.getElementById(`t2-step${t2_currentStep}`).classList.remove('active'); t2_currentStep++; document.getElementById(`t2-step${t2_currentStep}`).classList.add('active'); } }
-    function t2_prevStep(){ if(t2_currentStep > 1){ document.getElementById(`t2-step${t2_currentStep}`).classList.remove('active'); t2_currentStep--; document.getElementById(`t2-step${t2_currentStep}`).classList.add('active'); } }
-    function t2_calculatePrice(){ t2_nextStep(); }
-    function t2_submitRequest(){ var el = document.getElementById('akf1q6-alertT2'); alert(el ? el.textContent : 'Ticari eşya taşıma talebiniz başarıyla gönderildi!'); }
-
-    // t3 akış (mobilya)
-    var t3_currentStep = 1; var t3_totalSteps = 5;
-    function t3_nextStep(){ if(t3_currentStep < t3_totalSteps){ document.getElementById(`t3-step${t3_currentStep}`).classList.remove('active'); t3_currentStep++; document.getElementById(`t3-step${t3_currentStep}`).classList.add('active'); } }
-    function t3_prevStep(){ if(t3_currentStep > 1){ document.getElementById(`t3-step${t3_currentStep}`).classList.remove('active'); t3_currentStep--; document.getElementById(`t3-step${t3_currentStep}`).classList.add('active'); } }
-    function t3_calculatePrice(){ t3_nextStep(); }
-    function t3_submitRequest(){ var el = document.getElementById('akf1q6-alertT3'); alert(el ? el.textContent : 'Mobilya taşıma talebiniz başarıyla gönderildi!'); }
-    function t3_bindFurnitureClicks(){
-        document.querySelectorAll('#modulex-3 .furniture-card').forEach(function(card){
-            card.addEventListener('click', function(){
-                document.querySelectorAll('#modulex-3 .furniture-card').forEach(function(c){ c.classList.remove('selected'); });
-                this.classList.add('selected');
-            });
-        });
-    }
-    var t3_loaded = false;
-    async function t3_loadFromApi(){
-        try{
-            if(t3_loaded) return;
-            var grid = document.querySelector('#modulex-3 .furniture-grid');
-            if(!grid) return;
-            var items = await getUrunler();
-            if(Array.isArray(items) && items.length){
-                var htmlItems = items.map(function(it, idx){
-                    var title = it.title || it.name || it.baslik || 'Ürün ' + (idx+1);
-                    var desc = it.desc || it.description || it.aciklama || '';
-                    var img = it.image || it.img || it.resim || '/module/akf1q6/images/mobilya-tasimaciligi.jpg';
-                    var dataKey = it.id || it.slug || idx;
-                    return `
-                            <div class="furniture-card" data-item="${String(dataKey)}">
-                                <img src="${img}" alt="${title}">
-                                <h3>${title}</h3>
-                                <p>${desc}</p>
-                            </div>`;
-                }).join('');
-                grid.innerHTML = htmlItems;
-                t3_bindFurnitureClicks();
-                t3_loaded = true;
-            } else {
-                // veri yoksa mevcut statik içerik kalsın
-                t3_bindFurnitureClicks();
-            }
-        }catch(err){
-            console.error('t3_loadFromApi hata:', err);
-            t3_bindFurnitureClicks();
-        }
-    }
-    setTimeout(function(){ t3_loadFromApi(); }, 100);
-
-    // t4 akış (uluslararası)
-    var t4_currentStep = 1; var t4_totalSteps = 3;
-    function t4_nextStep(){ if(t4_currentStep < t4_totalSteps){ document.getElementById(`t4-step${t4_currentStep}`).classList.remove('active'); t4_currentStep++; document.getElementById(`t4-step${t4_currentStep}`).classList.add('active'); } }
-    function t4_prevStep(){ if(t4_currentStep > 1){ document.getElementById(`t4-step${t4_currentStep}`).classList.remove('active'); t4_currentStep--; document.getElementById(`t4-step${t4_currentStep}`).classList.add('active'); } }
-    function t4_calculatePrice(){ t4_nextStep(); }
-    function t4_submitRequest(){ var el = document.getElementById('akf1q6-alertT4'); alert(el ? el.textContent : 'Uluslararası taşıma talebiniz başarıyla gönderildi!'); }
-    function t4_updateCityOptions(citySelectId, country){ var citySelect = document.getElementById(citySelectId); if(!citySelect){return;} citySelect.innerHTML=''; var placeholder=document.createElement('option'); placeholder.value=''; placeholder.textContent='Şehir seçin'; citySelect.appendChild(placeholder); var cities={ 'turkiye':['İstanbul','Ankara','İzmir','Bursa','Antalya'], 'almanya':['Berlin','Hamburg','Münih','Köln','Frankfurt'], 'ingiltere':['Londra','Manchester','Birmingham','Liverpool','Leeds'], 'fransa':['Paris','Lyon','Marsilya','Toulouse','Nice'], 'hollanda':['Amsterdam','Rotterdam','Den Haag','Utrecht','Eindhoven'], 'avusturya':['Viyana','Graz','Linz','Salzburg','Innsbruck'], 'isvicre':['Zürih','Cenevre','Basel','Bern','Lozan'] }; if(cities[country]){ cities[country].forEach(function(city){ var option=document.createElement('option'); option.value=city; option.textContent=city; citySelect.appendChild(option); }); } }
-    setTimeout(function(){
-        var fromC=document.getElementById('t4-fromCountry'); var toC=document.getElementById('t4-toCountry');
-        if(fromC) fromC.addEventListener('change', function(){ t4_updateCityOptions('t4-fromCity', this.value); });
-        if(toC) toC.addEventListener('change', function(){ t4_updateCityOptions('t4-toCity', this.value); });
-    },100);
-
-    // t5 akış (araç)
-    var t5_currentStep = 1; var t5_totalSteps = 5;
-    function t5_nextStep(){ if(t5_currentStep < t5_totalSteps){ document.getElementById(`t5-step${t5_currentStep}`).classList.remove('active'); t5_currentStep++; document.getElementById(`t5-step${t5_currentStep}`).classList.add('active'); } }
-    function t5_prevStep(){ if(t5_currentStep > 1){ document.getElementById(`t5-step${t5_currentStep}`).classList.remove('active'); t5_currentStep--; document.getElementById(`t5-step${t5_currentStep}`).classList.add('active'); } }
-    function t5_calculatePrice(){ t5_nextStep(); }
-    function t5_submitRequest(){ var el = document.getElementById('akf1q6-alertT5'); alert(el ? el.textContent : 'Araç taşıma talebiniz başarıyla gönderildi!'); }
-    function t5_setDefaultValues(vehicleType){ var defaults={ 'otomobil':{length:450,width:180,height:150,weight:1500}, 'motosiklet':{length:200,width:80,height:120,weight:200}, 'ticari':{length:550,width:200,height:220,weight:2500}, 'suv':{length:480,width:190,height:180,weight:2000} }; var v=defaults[vehicleType]; if(!v) return; var ids=['length','width','height','weight']; ids.forEach(function(k){ var el=document.getElementById('t5-'+k); if(el) el.value=v[k]; }); }
-    setTimeout(function(){ document.querySelectorAll('#modulex-5 .vehicle-card').forEach(function(card){ card.addEventListener('click', function(){ document.querySelectorAll('#modulex-5 .vehicle-card').forEach(function(c){ c.classList.remove('selected'); }); this.classList.add('selected'); var vehicleType=this.dataset.vehicle; t5_setDefaultValues(vehicleType); }); }); },100);
-</script>
+<div class="tkl-menu" id="modulex">{{menu}}</div>

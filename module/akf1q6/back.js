@@ -1,16 +1,33 @@
-// Dinamik menu: desing.data kartlarından menü HTML üretilir.
-// {{menu}} placeholder'ı render'da desing key'i olmadığı için back.js'de doldurulur.
+// Taşıma tipleri: RE (Zati), FU (Mobilya), CO (Ticari), CA (Kargo), AU (Araç)
+// Menü tıklanınca go1ilz (Akıllı Hesaplama) sayfasına ilgili kategori hash'i ile yönlendirilir.
+var GO1ILZ_HASH = ['zati', 'mobilya', 'ticari', 'kargo', 'arac'];
 var menuHtml = '';
-if (typeof json !== 'undefined' && json.desing && json.desing.data && Array.isArray(json.desing.data)) {
-    var lang = (json.lang && json.lang === 'en') ? 'en' : 'tr';
-    for (var i = 0; i < json.desing.data.length; i++) {
-        var it = json.desing.data[i];
-        var title = (it.title && it.title[lang]) ? it.title[lang] : (it.title && it.title.tr) ? it.title.tr : (it.title && it.title.en) ? it.title.en : 'Kart ' + (i + 1);
-        var img = it.img ? ('/module/akf1q6/images/' + it.img) : '/module/akf1q6/images/kargo-tasimaciligi.jpg';
-        var modulexId = 'modulex-' + (i + 1);
-        menuHtml += '<div class="modulex-item" role="button" tabindex="0" onclick="pageteklif(\'' + modulexId + '\')" style="cursor: pointer;" aria-label="' + title + '">';
-        menuHtml += '<img class="modulex-item-img" src="' + img + '" alt="' + title + '" width="80" height="80" loading="lazy">';
-        menuHtml += '<span class="modulex-item-title">' + title + '</span></div>';
-    }
+// material-symbols-outlined ikon adları: Zati, Mobilya, Ticari, Kargo, Araç
+var TASIMA_TIPLERI = [
+    { code: 'RE', title: { tr: 'Zati', en: 'Personal Effects' }, icon: 'inventory_2' },
+    { code: 'FU', title: { tr: 'Mobilya', en: 'Furniture' }, icon: 'weekend' },
+    { code: 'CO', title: { tr: 'Ticari', en: 'Commercial' }, icon: 'business_center' },
+    { code: 'CA', title: { tr: 'Kargo', en: 'Cargo' }, icon: 'local_shipping' },
+    { code: 'AU', title: { tr: 'Araç', en: 'Vehicle' }, icon: 'directions_car' }
+];
+var lang = (typeof json !== 'undefined' && json.lang && json.lang === 'en') ? 'en' : 'tr';
+var data = (typeof json !== 'undefined' && json.desing && json.desing.data && Array.isArray(json.desing.data)) ? json.desing.data : null;
+var go1ilzBase = '/' + lang + '/akilli-hesaplama/';
+for (var i = 0; i < TASIMA_TIPLERI.length; i++) {
+    var tip = TASIMA_TIPLERI[i];
+    var it = data && data[i] ? data[i] : tip;
+    var title = (it.title && it.title[lang]) ? it.title[lang]
+              : (it.title && it.title.tr) ? it.title.tr
+              : (it.title && it.title.en) ? it.title.en
+              : tip.title[lang];
+    var iconName = (it && it.icon) ? it.icon : tip.icon;
+    var hash = GO1ILZ_HASH[i] || 'zati';
+    var href = go1ilzBase + '#' + hash;
+    menuHtml += '<a class="modulex-item" href="' + href + '" aria-label="' + title + '">';
+    menuHtml += '<span class="modulex-item-badge">' + tip.code + '</span>';
+    menuHtml += '<span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">' + iconName + '</span>';
+    menuHtml += '<span class="modulex-item-title">' + title + '</span>';
+    menuHtml += '<span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>';
+    menuHtml += '</a>';
 }
 html = html.replace(/\{\{menu\}\}/g, menuHtml || '');
