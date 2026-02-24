@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Han Bros Cargo</title>
+  <meta name="description" content="Han Bros Cargo, İngiltere, Almanya, Hollanda, Fransa, Belçika, Lüksemburg, Avusturya ve Londra evden eve taşımacılık, uluslararası kargo ve nakliyat hizmetleri sunan güvenilir bir nakliye firmasıdır." />
+  <link rel="canonical" href="https://hanbroscargo.com/" />
+  <link rel="alternate" hreflang="tr" href="https://hanbroscargo.com/tr/" />
+  <link rel="alternate" hreflang="en" href="https://hanbroscargo.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://hanbroscargo.com/tr/" />
   <script>
 (function() {
   var available = ["tr","en"];
@@ -29,9 +34,13 @@
   if (chosen === null) {
     chosen = fallbackEn;
   }
-  location.replace('/' + chosen + '/');
+  var target = '/' + chosen + '/' + (location.search || '') + (location.hash || '');
+  location.replace(target);
 })();
   </script>
 </head>
-<body><p>Han Bros Cargo</p></body>
+<body>
+  <p>Han Bros Cargo</p>
+  <noscript><p>Dil seçin: <a href="/tr/">TR</a> | <a href="/en/">EN</a></p></noscript>
+</body>
 </html>

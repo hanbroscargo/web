@@ -13,11 +13,23 @@
 
       <div class="header-actions">
         <nav class="contact-buttons" aria-label="Hızlı erişim butonları">
-          <a href="/{{lang}}/gonderi-takip/" class="btn-track" title="{{gonder}} - Gönderi takip sayfasına git">
+         
+         
+            
+          <a href="https://hanbros.poodify.com/" target="_blank" class="btn-track" title="{{gonder}} - {{trackPageTitle}}">
+            <i class="icon" aria-hidden="true"><img src="/img/cmkhy5/e-link.png" alt="{{elink}}" width="50" ></i>
+            <span>{{elink}}</span>
+          </a>
+
+         
+         
+          <a href="/{{lang}}/gonderi-takip/" class="btn-quote" title="{{gonder}} - {{trackPageTitle}}">
             <i class="icon" aria-hidden="true">🚛</i>
             <span>{{gonder}}</span>
           </a>
-          <a href="/{{lang}}/teklif-al/" class="btn-quote" title="{{teklifal}} - Teklif al sayfasına git">
+
+
+          <a href="/{{lang}}/teklif-al/" class="btn-quote" title="{{teklifal}} - {{quotePageTitle}}">
             <i class="icon" aria-hidden="true">✏️</i>
             <span>{{teklifal}}</span>
           </a>
@@ -49,6 +61,9 @@
     </div>
   </nav>
 </header>
+
+
+
 <style>
   .lang_telif {
     display: flex;
@@ -288,14 +303,16 @@
     left: 100%;
   }
 
+  /* Gönderi takip / Online takip butonları: tıklanabilir alanda el imleci */
   .btn-track {
+    cursor: pointer;
     background: white;
     color: #006b65;
     border: 2px solid #006b65;
   }
 
   .btn-track:hover {
-    background: #006b65;
+    background: #cedc00;
     color: white;
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 8px 25px rgba(0, 107, 100, 0.25);
@@ -315,7 +332,9 @@
     border-color: #004d47;
   }
 
+  /* İkon üzerinde el (pointer) imleci */
   .contact-buttons .icon {
+    cursor: pointer;
     font-size: 18px;
     display: flex;
     align-items: center;
