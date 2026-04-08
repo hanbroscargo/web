@@ -77,7 +77,7 @@
 
 </main>
 
-<!-- Teklif Al Popup -->
+
 <div class="volume-edit-popup" id="quote-popup" style="display: none;">
     <div class="popup-overlay" onclick="closeQuoteModal()"></div>
     <div class="popup-content quote-popup-content">
@@ -125,7 +125,7 @@
     </div>
 </div>
 
-<!-- Hacim Düzenleme Popup -->
+
 <div class="volume-edit-popup" id="volume-edit-popup" style="display: none;">
     <div class="popup-overlay" onclick="closeVolumeEditPopup()"></div>
     <div class="popup-content">
@@ -864,7 +864,7 @@
         gap: 12px;
     }
 
-    /* Teklif Al butonu: yeşil arka plan */
+    
     .total-summary {
         display: flex;
         align-items: center;
@@ -891,7 +891,7 @@
         font-size: 20px;
     }
 
-    /* Teklif al butonu: total-summary artık tıklanabilir */
+    
     .total-summary-btn {
         cursor: pointer;
         border: none;
@@ -1122,9 +1122,9 @@
         min-height: 0;
     }
 
-    /* Teklif al: sayfa içi bölüm */
+    
 
-    /* Teklif popup: form için daha geniş alan */
+    
     .quote-popup-content {
         max-width: 680px;
         width: 95%;
@@ -1624,26 +1624,27 @@
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <script>
-    // Ürün adetlerini tutan global obje (ürün ID → adet)
+
+
     var productCounters = {};
-    // Ürün verilerini tutan global obje (ürün ID → ürün objesi, hacim/ağırlık hesabı için)
+
     var productData = {};
-    // Kullanıcının özelleştirdiği hacim değerleri (ürün ID → m³)
+
     var editedVolumes = {};
-    // Kullanıcının özelleştirdiği boyut/ağırlık değerleri (ürün ID → {width, depth, height, weight})
+
     var editedDimensions = {};
-    // Tüm ürünler listesi (arama için)
+
     var allProducts = [];
-    // Aktif kategori
+
     var currentCategory = null;
-    // Popup'ta düzenlenmekte olan ürün ID'si
+
     var editingProductId = null;
 
     var GO1ILZ_API_BASE = 'https://api.hanbroscargo.workers.dev';
     var STORAGE_KEY_GO1ILZ = 'hanbroscargo_go1ilz_akilli_hesaplama';
 
-    // --- localStorage ---
 
     function saveToLocalStorage() {
         try {
@@ -1698,7 +1699,6 @@
         }
     }
 
-    // --- Toplam sayaç ---
 
     function updateTotalCounter() {
         var totalAdet = 0;
@@ -1733,7 +1733,6 @@
         saveToLocalStorage();
     }
 
-    // --- PDF ---
 
     function padZero(n) {
         return n < 10 ? '0' + n : '' + n;
@@ -1742,70 +1741,65 @@
     function buildPDFContent(doc, addedProducts, totalAdet, totalHacim, totalAgirlik, lang, now, logoBase64, logoHeight, logoImgHeight) {
         var locale = lang === 'en' ? 'en-US' : 'tr-TR';
         var dateStr = now.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-        var st = { yPos: logoHeight + 30 };
 
-        doc.setFont('helvetica', 'bold');
+        var fontName = doc._pdfTrFont ? 'RobotoTR' : 'helvetica';
+
+        doc.setFont(fontName, 'bold');
         doc.setFontSize(18);
         doc.setTextColor(0, 154, 150);
         doc.text(getTranslation('product-list'), 105, logoHeight + 10, { align: 'center' });
 
-        doc.setFont('helvetica', 'normal');
+        doc.setFont(fontName, 'normal');
         doc.setFontSize(10);
         doc.setTextColor(100, 100, 100);
         doc.text(getTranslation('date') + ' ' + dateStr, 105, logoHeight + 18, { align: 'center' });
 
-        function drawTableHeader() {
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(10);
-            doc.setTextColor(0, 0, 0);
-            doc.text('#', 12, st.yPos);
-            doc.text(getTranslation('product-name'), 20, st.yPos);
-            doc.text(getTranslation('category'), 85, st.yPos);
-            doc.text(getTranslation('quantity'), 130, st.yPos);
-            doc.text(getTranslation('volume'), 150, st.yPos);
-            doc.text(getTranslation('weight'), 170, st.yPos);
-            st.yPos += 5;
-            doc.setLineWidth(0.5);
-            doc.setDrawColor(0, 154, 150);
-            doc.line(10, st.yPos, 200, st.yPos);
-            st.yPos += 8;
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(8);
-        }
-
-        drawTableHeader();
-
+        var tableData = [];
         for (var i = 0; i < addedProducts.length; i++) {
             var p = addedProducts[i];
-            if (st.yPos > 270) {
-                doc.addPage();
-                if (logoBase64) doc.addImage(logoBase64, 'PNG', 10, 10, 50, logoImgHeight);
-                st.yPos = logoHeight + 30;
-                drawTableHeader();
-            }
-            var name = p.name.length > 40 ? p.name.substring(0, 37) + '...' : p.name;
-            var category = p.category.length > 20 ? p.category.substring(0, 17) + '...' : p.category;
-            doc.text((i + 1).toString(), 12, st.yPos);
-            doc.text(name, 20, st.yPos, { maxWidth: 60 });
-            doc.text(category, 85, st.yPos);
-            doc.text(p.count.toString(), 130, st.yPos);
-            doc.text(p.totalVolume > 0 ? p.totalVolume.toFixed(2) : '-', 150, st.yPos);
-            doc.text(p.totalWeight > 0 ? p.totalWeight.toFixed(2) : '-', 170, st.yPos);
-            st.yPos += 7;
+            tableData.push([
+                (i + 1).toString(),
+                p.name,
+                p.category,
+                p.count.toString(),
+                p.totalVolume > 0 ? p.totalVolume.toFixed(2) : '-',
+                p.totalWeight > 0 ? p.totalWeight.toFixed(2) : '-'
+            ]);
         }
 
-        st.yPos += 5;
-        doc.setLineWidth(0.3);
-        doc.setDrawColor(200, 200, 200);
-        doc.line(10, st.yPos, 200, st.yPos);
-        st.yPos += 8;
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(10);
-        doc.setTextColor(0, 154, 150);
-        doc.text(getTranslation('total'), 20, st.yPos);
-        doc.text(totalAdet.toString(), 130, st.yPos);
-        doc.text(totalHacim > 0 ? totalHacim.toFixed(2) : '-', 150, st.yPos);
-        doc.text(totalAgirlik > 0 ? totalAgirlik.toFixed(2) : '-', 170, st.yPos);
+        var totalsRow = [
+            getTranslation('total'),
+            '',
+            '',
+            totalAdet.toString(),
+            totalHacim > 0 ? totalHacim.toFixed(2) : '-',
+            totalAgirlik > 0 ? totalAgirlik.toFixed(2) : '-'
+        ];
+
+        tableData.push(totalsRow);
+
+        doc.autoTable({
+            startY: logoHeight + 25,
+            head: [
+                [getTranslation('#'), getTranslation('product-name'), getTranslation('category'), getTranslation('quantity'), getTranslation('volume'), getTranslation('weight')]
+            ],
+            body: tableData,
+            theme: 'grid',
+            styles: {
+                font: fontName,
+                fontSize: 8
+            },
+            headStyles: {
+                fillColor: [0, 154, 150],
+                textColor: 255
+            },
+            footStyles: {
+                fillColor: [0, 154, 150],
+                textColor: 255
+            },
+            margin: { top: 0, left: 10, right: 10, bottom: 0 },
+            tableWidth: 'auto'
+        });
     }
 
     function downloadPDF() {
@@ -1856,7 +1850,29 @@
         var lang = getCurrentLang();
         var now = new Date();
 
-        fetch('/img/logo.png')
+        function loadTurkishFont(pdfDoc) {
+            return fetch('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/fonts/Roboto/Roboto-Regular.ttf')
+                .then(function (res) {
+                    if (!res.ok) throw new Error('font yok');
+                    return res.arrayBuffer();
+                })
+                .then(function (buf) {
+                    var binary = '';
+                    var bytes = new Uint8Array(buf);
+                    for (var i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+                    var base64 = btoa(binary);
+                    pdfDoc.addFileToVFS('Roboto-Regular.ttf', base64);
+                    pdfDoc.addFont('Roboto-Regular.ttf', 'RobotoTR', 'normal');
+                    pdfDoc.addFont('Roboto-Regular.ttf', 'RobotoTR', 'bold');
+                    pdfDoc._pdfTrFont = true;
+                })
+                .catch(function () {
+                    pdfDoc._pdfTrFont = false;
+                });
+        }
+
+        loadTurkishFont(doc).then(function () {
+        return fetch('/img/logo.png')
             .then(function (res) {
                 if (!res.ok) throw new Error('logo yok');
                 return res.blob();
@@ -1880,9 +1896,9 @@
                 var fileName = 'urun-listesi-' + now.getFullYear() + padZero(now.getMonth() + 1) + padZero(now.getDate()) + '-' + padZero(now.getHours()) + padZero(now.getMinutes()) + '.pdf';
                 doc.save(fileName);
             });
+        });
     }
 
-    // --- Dil ---
 
     function getCurrentLang() {
         var path = window.location.pathname;
@@ -1898,7 +1914,6 @@
         return getCurrentLang() === 'tr' ? parts[0] : (parts[1] || parts[0]);
     }
 
-    // --- Çeviri ---
 
     var translationsCache = null;
 
@@ -1949,7 +1964,6 @@
         if (textEl) textEl.textContent = getTranslation('clear-cart');
     }
 
-    // --- Hacim hesaplama ---
 
     function calculateVolume(width, depth, height) {
         if (!width || !depth || !height) return 0;
@@ -1966,7 +1980,6 @@
         calculatedVolume.textContent = volume > 0 ? volume.toFixed(2) + ' m³' : '0.00 m³';
     }
 
-    // --- Popup ---
 
     function openVolumeEditPopup(productId) {
         var product = productData[productId];
@@ -2092,7 +2105,6 @@
         saveToLocalStorage();
     }
 
-    // --- Buton güncelleme ---
 
     function updateDecreaseButton(button, count) {
         if (!button) return;
@@ -2163,7 +2175,6 @@
         }
     }
 
-    // --- Sepet ---
 
     function clearCart() {
         var id;
@@ -2181,7 +2192,6 @@
         updateCategoryBadges();
     }
 
-    // --- Arama ---
 
     function clearSearch() {
         var searchInput = document.getElementById('search-input');
@@ -2205,7 +2215,6 @@
         }
     }
 
-    // --- Kategori badge ---
 
     function updateCategoryBadges() {
         var categoryTabs = document.querySelectorAll('.category-tab');
@@ -2244,7 +2253,6 @@
         }
     }
 
-    // --- Öneriler ---
 
     function showSuggestions(searchTerm) {
         var suggestionsContainer = document.getElementById('search-suggestions');
@@ -2332,7 +2340,6 @@
         renderSearchResults(filteredProducts);
     }
 
-    // --- Ürün kartı oluşturma (tek kaynak) ---
 
     function createProductCard(product) {
         var productId = product.ID;
@@ -2448,7 +2455,6 @@
         return card;
     }
 
-    // --- Render (GLOBAL — clearSearch ve performSearch buradan çağırır) ---
 
     function renderProducts(category, searchTerm) {
         currentCategory = category;
@@ -2500,14 +2506,7 @@
         categoriesContent.appendChild(grid);
     }
 
-    /**
-     * URL hash'e göre kategorileri filtreler.
-     * #ticari → sadece Ticari (ve Muhtelif)
-     * #zati → ARAÇ, TİCARİ, YEMEK ODASI hariç
-     * #mobilya → Yatak, Salon, Çocuk-Genç, Balkon-Bahçe, Hol, Misafir, Yemek Odası, Mutfak, Banyo, Muhtelif
-     * #kargo → ARAÇ ve TİCARİ hariç (zati ile aynı)
-     * #arac veya #vehicle → sadece ARAÇ / VEHICLE
-     */
+    
     function getCategoriesFilteredByHash(allCategories) {
         var hash = (location.hash || '').replace(/^#/, '').toLowerCase().trim();
         if (!hash) return allCategories;
@@ -2539,7 +2538,6 @@
         return allCategories;
     }
 
-    // --- Ürün yükleme ---
 
     function loadProducts(retryCount) {
         retryCount = retryCount || 0;
@@ -2705,7 +2703,6 @@
         });
     }
 
-    // --- Teklif al ---
 
     function openQuoteModal() {
         var totalAdet = 0, totalHacim = 0, totalAgirlik = 0;

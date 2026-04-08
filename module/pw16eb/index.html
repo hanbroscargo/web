@@ -19,7 +19,7 @@
             </header>
             
             <section id="esya-listesi" class="metrekup-items-grid" aria-label="Eşya listesi">
-                <!-- Eşya girişleri dinamik olarak eklenecek -->
+                
             </section>
             
             <section class="metrekup-bottom-section" aria-labelledby="results-title">
@@ -55,17 +55,15 @@
 
 
 <script>
-// Eşya listesi ve hesaplama değişkenleri
 var items = [];
 var itemCounter = 0;
 
-// Sayfa yüklendiğinde
 setTimeout(function() {
     initializeCalculator();
 }, 100);
 
 function initializeCalculator() {
-    // İlk 3 eşya alanını oluştur
+
     for (var i = 1; i <= 3; i++) {
         addItem();
     }
@@ -122,8 +120,7 @@ function addItem() {
     '</div>';
     
     container.insertAdjacentHTML('beforeend', itemHtml);
-    
-    // Eşya objesi oluştur
+
     items.push({
         id: itemId,
         quantity: 1,
@@ -140,13 +137,11 @@ function removeItem(itemId) {
     if (itemElement) {
         itemElement.remove();
     }
-    
-    // Array'den kaldır
+
     items = items.filter(function(item) {
         return item.id !== itemId;
     });
-    
-    // Tüm eşyaları yeniden numaralandır
+
     renumberItems();
     
     updateTotals();
@@ -155,32 +150,27 @@ function removeItem(itemId) {
 function renumberItems() {
     var container = document.getElementById('esya-listesi');
     var allItems = container.querySelectorAll('.metrekup-item-card');
-    
-    // Her eşyayı sırayla yeniden numaralandır
+
     for (var i = 0; i < allItems.length; i++) {
         var itemElement = allItems[i];
         var newNumber = i + 1;
         var oldId = itemElement.id.replace('item-', '');
         var newId = newNumber;
-        
-        // Eğer ID değiştiyse, tüm ID'leri güncelle
+
         if (parseInt(oldId) !== newId) {
-            // Yeni ID ile element ID'sini güncelle
+
             itemElement.id = 'item-' + newId;
-            
-            // Numarayı güncelle
+
             var numberElement = itemElement.querySelector('.metrekup-item-number');
             if (numberElement) {
                 numberElement.textContent = newId;
             }
-            
-            // Başlığı güncelle
+
             var titleElement = itemElement.querySelector('.metrekup-item-title');
             if (titleElement) {
                 titleElement.textContent = '{{itemTitle}} ' + newId;
             }
-            
-            // Input ID'lerini güncelle
+
             var lengthInput = itemElement.querySelector('#length-' + oldId);
             if (lengthInput) {
                 lengthInput.id = 'length-' + newId;
@@ -210,19 +200,17 @@ function renumberItems() {
                 weightInput.id = 'weight-' + newId;
                 weightInput.setAttribute('oninput', 'calculateItem(' + newId + ')');
             }
-            
-            // Hacim gösterimini güncelle
+
             var volumeElement = itemElement.querySelector('#item-volume-' + oldId);
             if (volumeElement) {
                 volumeElement.id = 'item-volume-' + newId;
             }
-            
-            // Silme butonunu güncelle
+
             var removeButton = itemElement.querySelector('.metrekup-btn-remove');
             if (removeButton) {
                 removeButton.setAttribute('onclick', 'removeItem(' + newId + ')');
             } else if (newId > 3) {
-                // Eğer 3'ten büyükse ve buton yoksa ekle
+
                 var headerElement = itemElement.querySelector('.metrekup-item-header');
                 if (headerElement) {
                     var newRemoveButton = '<button onclick="removeItem(' + newId + ')" class="metrekup-btn-remove">×</button>';
@@ -234,25 +222,22 @@ function renumberItems() {
                     }
                 }
             }
-            
-            // Items array'indeki ID'yi ve input değerlerini güncelle
+
             var itemIndex = items.findIndex(function(item) {
                 return item.id === parseInt(oldId);
             });
             if (itemIndex !== -1) {
-                // Input değerlerini al ve items array'ine kaydet
+
                 var lengthValue = lengthInput ? parseFloat(lengthInput.value) || 0 : 0;
                 var widthValue = widthInput ? parseFloat(widthInput.value) || 0 : 0;
                 var heightValue = heightInput ? parseFloat(heightInput.value) || 0 : 0;
                 var quantityValue = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
                 var weightValue = weightInput ? parseFloat(weightInput.value) || 0 : 0;
-                
-                // Hacim hesapla
+
                 var singleVolume = (lengthValue * widthValue * heightValue) / 1000000;
                 var totalVolume = singleVolume * quantityValue;
                 var totalWeight = weightValue * quantityValue;
-                
-                // Items array'ini güncelle
+
                 items[itemIndex] = {
                     id: newId,
                     quantity: quantityValue,
@@ -264,14 +249,13 @@ function renumberItems() {
                     volume: totalVolume,
                     singleVolume: singleVolume
                 };
-                
-                // Hacim gösterimini güncelle
+
                 if (volumeElement) {
                     volumeElement.textContent = totalVolume.toFixed(2);
                 }
             }
         } else {
-            // ID aynıysa sadece silme butonunu kontrol et
+
             var removeButton = itemElement.querySelector('.metrekup-btn-remove');
             if (newId <= 3 && removeButton) {
                 removeButton.remove();
@@ -302,13 +286,11 @@ function calculateItem(itemId) {
     var width = parseFloat(widthInput.value) || 0;
     var height = parseFloat(heightInput.value) || 0;
     var weight = parseFloat(weightInput.value) || 0;
-    
-    // Metreküp hesapla (cm³'den m³'e çevir) ve adet ile çarp
+
     var singleVolume = (length * width * height) / 1000000;
     var totalVolume = singleVolume * quantity;
     var totalWeight = weight * quantity;
-    
-    // Array'i güncelle veya oluştur
+
     var itemIndex = items.findIndex(function(item) {
         return item.id === itemId;
     });
@@ -337,8 +319,7 @@ function calculateItem(itemId) {
             singleVolume: singleVolume
         });
     }
-    
-    // Eşya hacmini göster
+
     updateItemVolume(itemId, totalVolume);
     
     updateTotals();
@@ -371,7 +352,7 @@ function updateTotals() {
 }
 
 function clearAll() {
-    // Tüm input alanlarını temizle
+
     items.forEach(function(item) {
         var quantityInput = document.getElementById('quantity-' + item.id);
         var lengthInput = document.getElementById('length-' + item.id);
@@ -385,10 +366,9 @@ function clearAll() {
         if (heightInput) heightInput.value = '';
         if (weightInput) weightInput.value = '';
     });
-    
-    // Items array'ini sıfırla
+
     items = items.map(function(item) {
-        // Hacim gösterimini sıfırla
+
         updateItemVolume(item.id, 0);
         
         return {
@@ -407,7 +387,6 @@ function clearAll() {
     updateTotals();
 }
 
-// Debug için console log
 console.log('Metreküp hesaplama modülü yüklendi');
 </script>
 

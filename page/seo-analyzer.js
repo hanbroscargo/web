@@ -1,18 +1,11 @@
-/**
- * SEO ve Dil Analiz Scripti
- * Han Bros Cargo sayfa analizi için
- * 
- * Bu script tüm sayfa dosyalarını analiz eder ve SEO iyileştirme önerileri oluşturur.
- */
+
 
 var fs = require('fs');
 var path = require('path');
 
-// Analiz edilecek klasör yolu
 var pageDir = __dirname;
 var outputFile = path.join(pageDir, 'todolist.md');
 
-// SEO kriterleri
 var SEO_CRITERIA = {
     textMinLength: 2500,        // text.tr minimum karakter sayısı (HTML tag'leri hariç)
     descriptionMaxLength: 180,  // description.tr maksimum karakter sayısı
@@ -21,23 +14,19 @@ var SEO_CRITERIA = {
     nameMaxLength: 100         // name.tr maksimum karakter sayısı
 };
 
-// HTML tag'lerini temizleyerek sadece metni al
 function stripHtmlTags(html) {
     if (!html) return '';
     return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 }
 
-// Metin uzunluğunu hesapla (HTML tag'leri hariç)
 function getTextLength(text) {
     return stripHtmlTags(text).length;
 }
 
-// Soru-cevap bölümü var mı kontrol et
 function hasFAQSection(text) {
     if (!text) return false;
     var cleanText = stripHtmlTags(text).toLowerCase();
-    
-    // Soru-cevap göstergeleri
+
     var faqIndicators = [
         'soru',
         'cevap',
@@ -51,8 +40,7 @@ function hasFAQSection(text) {
         'hangi',
         '?'
     ];
-    
-    // En az 2 soru işareti veya soru kelimesi olmalı
+
     var questionMarks = (text.match(/\?/g) || []).length;
     var hasQuestionWords = faqIndicators.some(function(indicator) {
         return cleanText.includes(indicator);
@@ -61,7 +49,6 @@ function hasFAQSection(text) {
     return questionMarks >= 2 || (hasQuestionWords && questionMarks >= 1);
 }
 
-// Sayfa dosyasını analiz et
 function analyzePage(filePath, pageId) {
     try {
         var content = fs.readFileSync(filePath, 'utf8');
@@ -69,8 +56,7 @@ function analyzePage(filePath, pageId) {
         
         var issues = [];
         var warnings = [];
-        
-        // Name kontrolü
+
         if (!pageData.name || !pageData.name.tr) {
             issues.push('❌ **name.tr** alanı eksik');
         } else {
@@ -81,8 +67,7 @@ function analyzePage(filePath, pageId) {
                 warnings.push('⚠️ **name.en** çevirisi eksik');
             }
         }
-        
-        // Description kontrolü
+
         if (!pageData.description || !pageData.description.tr) {
             issues.push('❌ **description.tr** alanı eksik');
         } else {
@@ -93,8 +78,7 @@ function analyzePage(filePath, pageId) {
                 warnings.push('⚠️ **description.en** çevirisi eksik');
             }
         }
-        
-        // Keyword kontrolü
+
         if (!pageData.keyword || !pageData.keyword.tr) {
             issues.push('❌ **keyword.tr** alanı eksik');
         } else {
@@ -105,8 +89,7 @@ function analyzePage(filePath, pageId) {
                 warnings.push('⚠️ **keyword.en** çevirisi eksik');
             }
         }
-        
-        // Spot kontrolü
+
         if (!pageData.spot || !pageData.spot.tr) {
             issues.push('❌ **spot.tr** alanı eksik');
         } else {
@@ -117,8 +100,7 @@ function analyzePage(filePath, pageId) {
                 warnings.push('⚠️ **spot.en** çevirisi eksik');
             }
         }
-        
-        // Text kontrolü (EN ÖNEMLİ)
+
         if (!pageData.text || !pageData.text.tr) {
             issues.push('❌ **text.tr** alanı eksik');
         } else {
@@ -126,8 +108,7 @@ function analyzePage(filePath, pageId) {
             if (textLength < SEO_CRITERIA.textMinLength) {
                 issues.push('❌ **text.tr** çok kısa (' + textLength + ' harf, min: ' + SEO_CRITERIA.textMinLength + ' harf olmalı)');
             }
-            
-            // Soru-cevap kontrolü
+
             if (!hasFAQSection(pageData.text.tr)) {
                 issues.push('❌ **text.tr** içinde soru-cevap (FAQ) bölümü eksik');
             }
@@ -159,7 +140,6 @@ function analyzePage(filePath, pageId) {
     }
 }
 
-// Tüm sayfa dosyalarını bul ve analiz et
 function analyzeAllPages() {
     var results = [];
     var totalPages = 0;
@@ -167,15 +147,13 @@ function analyzeAllPages() {
     var pagesWithWarnings = 0;
     
     console.log('📊 Sayfa analizi başlatılıyor...\n');
-    
-    // Tüm alt klasörleri tara
+
     var dirs = fs.readdirSync(pageDir);
     
     dirs.forEach(function(dir) {
         var dirPath = path.join(pageDir, dir);
         var stat = fs.statSync(dirPath);
-        
-        // Klasör ise ve index.json dosyası varsa
+
         if (stat.isDirectory() && dir !== 'node_modules' && dir !== '.git') {
             var indexPath = path.join(dirPath, 'index.json');
             
@@ -190,8 +168,7 @@ function analyzeAllPages() {
                 if (analysis.hasWarnings) {
                     pagesWithWarnings++;
                 }
-                
-                // İlerleme göster
+
                 if (totalPages % 50 === 0) {
                     console.log('  ✓ ' + totalPages + ' sayfa analiz edildi...');
                 }
@@ -214,11 +191,9 @@ function analyzeAllPages() {
     };
 }
 
-// Markdown todo list oluştur
 function generateTodoList(analysisData) {
     var md = [];
-    
-    // Başlık
+
     md.push('# 📋 SEO ve Dil İyileştirme Todo Listesi');
     md.push('');
     md.push('**Oluşturulma Tarihi:** ' + new Date().toLocaleString('tr-TR'));
@@ -229,13 +204,11 @@ function generateTodoList(analysisData) {
     md.push('- **Sorunlu Sayfa:** ' + analysisData.stats.withIssues);
     md.push('- **Uyarılı Sayfa:** ' + analysisData.stats.withWarnings);
     md.push('');
-    
-    // Öncelik sıralaması: Önce kritik sorunlar, sonra uyarılar
+
     var criticalPages = analysisData.results.filter(function(r) { return r.hasIssues; });
     var warningPages = analysisData.results.filter(function(r) { return !r.hasIssues && r.hasWarnings; });
     var okPages = analysisData.results.filter(function(r) { return !r.hasIssues && !r.hasWarnings; });
-    
-    // Kritik sorunlar
+
     if (criticalPages.length > 0) {
         md.push('## 🔴 Kritik Sorunlar (' + criticalPages.length + ' sayfa)');
         md.push('');
@@ -243,7 +216,7 @@ function generateTodoList(analysisData) {
         md.push('');
         
         criticalPages.forEach(function(page, index) {
-            // Sayfa isminden spesifik bilgileri kaldır (fiyat, tarih, rakam vb.)
+
             var cleanPageName = page.pageName
                 .replace(/fiyat[ılar]*/gi, 'fiyatlandırma')
                 .replace(/\d+\s*(tl|gbp|eur|usd|£|€|\$)/gi, '')
@@ -275,8 +248,7 @@ function generateTodoList(analysisData) {
             md.push('');
         });
     }
-    
-    // Uyarılar
+
     if (warningPages.length > 0) {
         md.push('## ⚠️ Uyarılar (' + warningPages.length + ' sayfa)');
         md.push('');
@@ -284,7 +256,7 @@ function generateTodoList(analysisData) {
         md.push('');
         
         warningPages.forEach(function(page, index) {
-            // Sayfa isminden spesifik bilgileri kaldır
+
             var cleanPageName = page.pageName
                 .replace(/fiyat[ılar]*/gi, 'fiyatlandırma')
                 .replace(/\d+\s*(tl|gbp|eur|usd|£|€|\$)/gi, '')
@@ -307,16 +279,14 @@ function generateTodoList(analysisData) {
             md.push('');
         });
     }
-    
-    // Başarılı sayfalar
+
     if (okPages.length > 0) {
         md.push('## ✅ Sorunsuz Sayfalar (' + okPages.length + ' sayfa)');
         md.push('');
         md.push('> Bu sayfalar tüm SEO kriterlerini karşılıyor.');
         md.push('');
     }
-    
-    // SEO Kriterleri ve Detaylı Yönergeler
+
     md.push('## 📝 SEO Kriterleri ve Yazım Yönergeleri');
     md.push('');
     md.push('### ✅ Zorunlu Kriterler');
@@ -552,18 +522,14 @@ function generateTodoList(analysisData) {
     return md.join('\n');
 }
 
-// Ana fonksiyon
 function main() {
     console.log('🚀 SEO Analiz Scripti Başlatılıyor...\n');
-    
-    // Analiz yap
+
     var analysisData = analyzeAllPages();
-    
-    // Todo list oluştur
+
     console.log('📝 Todo listesi oluşturuluyor...\n');
     var todoList = generateTodoList(analysisData);
-    
-    // Dosyaya yaz
+
     fs.writeFileSync(outputFile, todoList, 'utf8');
     
     console.log('✅ Todo listesi oluşturuldu: ' + outputFile);
@@ -574,5 +540,4 @@ function main() {
     console.log('\n✨ İşlem tamamlandı!\n');
 }
 
-// Script çalıştır
 main();

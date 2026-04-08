@@ -1,7 +1,7 @@
 
     <style>
  
-        /* Root Variables */
+        
         :root {
             --primary-color: #006B65;
             --primary-gradient: linear-gradient(135deg, #006B65 0%, #4ade80 100%);
@@ -14,7 +14,7 @@
             --shadow-strong: 0 24px 96px rgba(0, 0, 0, 0.5);
         }
 
-        /* Main Container */
+        
         .eberbu-container {
             max-width: 1000px;
             margin: 20px auto;
@@ -50,7 +50,7 @@
             75% { transform: translateX(-10px) translateY(20px); }
         }
 
-        /* Hero Section */
+        
         .eberbu-hero {
             background: var(--primary-gradient);
             padding: 60px 40px;
@@ -127,7 +127,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Search Section */
+        
         .eberbu-search-section {
             padding: 50px 40px;
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
@@ -286,7 +286,7 @@
             transform: translateX(5px);
         }
 
-        /* Status Section */
+        
         .eberbu-status-section {
             padding: 30px 40px;
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
@@ -334,7 +334,7 @@
             margin: 0;
         }
 
-        /* Timeline Section */
+        
         .eberbu-timeline-section {
             padding: 40px;
             background: white;
@@ -431,7 +431,7 @@
             line-height: 1.6;
         }
 
-        /* Loading States */
+        
         .eberbu-loading {
             text-align: center;
             padding: 80px 20px;
@@ -490,7 +490,7 @@
             75% { transform: translateX(5px); }
         }
 
-        /* Floating Action Button */
+        
         .eberbu-fab {
             position: fixed;
             bottom: 30px;
@@ -524,7 +524,7 @@
             color: white;
         }
 
-        /* Responsive Design */
+        
         @media screen and (max-width: 768px) {
             .eberbu-container {
                 margin: 10px;
@@ -583,7 +583,7 @@
             }
         }
         
-        /* Light mode enhancements */
+        
         @media (prefers-color-scheme: light) {
             .eberbu-container {
                 background: linear-gradient(135deg, #006B65 0%, #004d47 100%);
@@ -607,7 +607,7 @@
 
 
     <main class="eberbu-container" role="main">
-        <!-- Hero Section -->
+        
         <header class="eberbu-hero" role="banner">
             <div class="eberbu-hero-content">
                 <div class="eberbu-hero-icon" aria-hidden="true">
@@ -619,7 +619,7 @@
             <div class="eberbu-hero-particles" aria-hidden="true"></div>
         </header>
 
-        <!-- Search Section -->
+        
         <section class="eberbu-search-section" aria-labelledby="search-title">
             <header class="eberbu-search-header">
                 <div class="eberbu-search-icon" aria-hidden="true">
@@ -648,7 +648,7 @@
             </form>
         </section>
 
-        <!-- Status Section -->
+        
         <section class="eberbu-status-section" id="statusSection" style="display: none;" aria-live="polite" aria-atomic="true">
             <header class="eberbu-status-header">
                 <div class="eberbu-status-icon" aria-hidden="true">
@@ -661,12 +661,12 @@
             </header>
         </section>
         
-        <!-- Timeline Section -->
+        
         <section class="eberbu-timeline-section" id="timeline" aria-label="{{timelineAriaLabel}}" role="region">
             
         </section>
 
-        <!-- Dil metinleri - back.js tarafından doldurulur (sadece tr/en) -->
+        
         <script id="eberbu-i18n">
         if (typeof eberbuLang === 'undefined') { var eberbuLang = '{{lang}}'; }
         if (typeof eberbuLoadingText === 'undefined') { var eberbuLoadingText = '{{loadingText}}'; }
@@ -675,14 +675,13 @@
         if (typeof eberbuTrackingStatusFormat === 'undefined') { var eberbuTrackingStatusFormat = '{{trackingStatusFormat}}'; }
         </script>
 
-        <!-- Floating Action Button -->
+        
         <button class="eberbu-fab" id="fabButton" style="display: none; cursor: pointer;" aria-label="{{fabRefresh}}" title="{{fabRefresh}}">
             <span class="material-symbols-outlined" aria-hidden="true">refresh</span>
         </button>
     </main>
 
 <script>
-        // Kritik kural: DOMContentLoaded yasak, setTimeout kullan
         var searchFormEl = document.getElementById('searchForm');
         var trackingInputEl = document.getElementById('trackingInput');
         setTimeout(function() {

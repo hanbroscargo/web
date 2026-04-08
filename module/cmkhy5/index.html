@@ -249,7 +249,7 @@
     margin: 0;
     padding: 0;
     padding: 10px;
-    /* overflow-x: auto; */
+    
   }
 
   .modulexmenulistbody {
@@ -303,7 +303,7 @@
     left: 100%;
   }
 
-  /* Gönderi takip / Online takip butonları: tıklanabilir alanda el imleci */
+  
   .btn-track {
     cursor: pointer;
     background: white;
@@ -331,7 +331,7 @@
     border-color: #004d47;
   }
 
-  /* İkon üzerinde el (pointer) imleci */
+  
   .contact-buttons .icon {
     cursor: pointer;
     font-size: 18px;
@@ -432,12 +432,12 @@
       align-items: flex-end;
     }
     
-    /* Mobilde dil seçimi gizli */
+    
     .lang_telif .modulextitlebodylang {
       display: none;
     }
     
-    /* Mobilde header-actions görünür olmalı */
+    
     .lang_telif .header-actions {
       display: flex !important;
       position: fixed;
@@ -470,7 +470,7 @@
   }
 
   @media screen and (max-width: 768px) {
-    /* Mobilde lang_telif görünür olmalı (header-actions için) */
+    
     .lang_telif {
       display: flex !important;
       flex-direction: column;
@@ -481,7 +481,7 @@
       display: none;
     }
 
-    /* Mobilde alt sabit bar */
+    
     .lang_telif .header-actions {
       position: fixed !important;
       bottom: 0 !important;
@@ -528,13 +528,13 @@
       font-size: 13px;
     }
 
-    /* Body'ye alt padding ekle (sabit bar için alan) */
+    
     body {
       padding-bottom: 75px !important;
     }
 
 
-    /* Overlay/Backdrop */
+    
     .mobile-menu-overlay {
       position: fixed;
       top: 0;
@@ -567,7 +567,7 @@
       width: 100%;
     }
 
-    /* Slide-in Menü */
+    
     .modulexmenulistbody {
       position: fixed;
       top: 0;
@@ -594,7 +594,7 @@
       transition: none;
     }
 
-    /* Kapatma Butonu */
+    
     .mobile-menu-close {
       display: flex;
       align-items: center;
@@ -627,7 +627,7 @@
       flex-direction: column;
     }
 
-    /* Dil seçici - en alta */
+    
     .mobile-lang-wrapper {
       display: flex;
       justify-content: center;
@@ -721,7 +721,7 @@
 <script>
   setTimeout(function () {
     try {
-      // Direkt selector kullan - daha güvenilir
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".modulexmenulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -733,7 +733,6 @@
 
       var mql = window.matchMedia("(max-width: 768px)");
 
-      // Menüyü aç fonksiyonu
       function openMenu() {
         if (menuBody) {
           menuBody.classList.add("is-visible");
@@ -746,11 +745,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-        // Body scroll'u engelle
+
         document.body.style.overflow = "hidden";
       }
 
-      // Menüyü kapat fonksiyonu
       function closeMenu() {
         if (menuBody) {
           menuBody.classList.remove("is-visible");
@@ -766,15 +764,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-        // Body scroll'u geri getir
+
         document.body.style.overflow = "";
-        // Focus'u menü butonuna geri ver
+
         if (toggle) {
           toggle.focus();
         }
       }
 
-      // Toggle butonu
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -785,7 +782,6 @@
         }
       });
 
-      // Kapatma butonu
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -794,7 +790,6 @@
         });
       }
 
-      // Overlay'e tıklanınca kapat
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -803,7 +798,6 @@
         });
       }
 
-      // Swipe-to-close özelliği (mobil uygulamalar gibi)
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
@@ -811,7 +805,6 @@
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
 
-      // Menü genişliğini al
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
@@ -819,7 +812,6 @@
         return 320;
       }
 
-      // Touch başlangıcı
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -831,7 +823,6 @@
         menuWidth = getMenuWidth();
       }, { passive: true });
 
-      // Touch hareketi
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -841,18 +832,15 @@
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
 
-        // Yatay hareket dikey hareketten fazlaysa swipe
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
 
-          // Sadece sağa çekme (pozitif deltaX)
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-            
-            // Overlay opacity ayarla
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -861,7 +849,6 @@
         }
       }, { passive: false });
 
-      // Touch bitişi
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -870,12 +857,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-          
-          // Eğer yeterince sağa çekildiyse menüyü kapat
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-            // Geri animasyon
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -886,7 +872,6 @@
         }
       }, { passive: true });
 
-      // Touch iptal
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -898,7 +883,6 @@
         }
       }, { passive: true });
 
-      // Menü içindeki linklere tıklanınca kapat
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -907,14 +891,12 @@
         }
       });
 
-      // ESC tuşu ile kapat
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
 
-      // Klavye navigasyonu (Enter ve Space)
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -926,10 +908,9 @@
         }
       });
 
-      // Breakpoint değişikliği
       function handleBreakpoint() {
         if (!mql.matches) {
-          // Desktop'ta menüyü kapat
+
           if (menuBody) {
             menuBody.classList.remove("is-visible");
           }

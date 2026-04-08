@@ -1,8 +1,8 @@
-// Taşıma tipleri: RE (Zati), FU (Mobilya), CO (Ticari), CA (Kargo), AU (Araç)
-// Menü tıklanınca go1ilz (Akıllı Hesaplama) sayfasına ilgili kategori hash'i ile yönlendirilir.
+
+
 var GO1ILZ_HASH = ['zati', 'mobilya', 'ticari', 'kargo', 'arac'];
 var menuHtml = '';
-// material-symbols-outlined ikon adları: Zati, Mobilya, Ticari, Kargo, Araç
+
 var TASIMA_TIPLERI = [
     { code: 'RE', title: { tr: 'Zati', en: 'Personal Effects' }, icon: 'inventory_2' },
     { code: 'FU', title: { tr: 'Mobilya', en: 'Furniture' }, icon: 'weekend' },

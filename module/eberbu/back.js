@@ -1,5 +1,5 @@
-// Eberbu modülü - Gönderi Takip (sadece Türkçe ve İngilizce)
-// json.lang sadece tr veya en ise kullanılır, değilse tr varsayılır
+
+
 if (typeof json === 'undefined') {
   var json = {};
 }

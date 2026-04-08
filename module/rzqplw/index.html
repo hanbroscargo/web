@@ -161,7 +161,7 @@
     }
   }
 
-  /* Hata mesajı tasarımı */
+  
   .error-container {
     background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
     border: 2px solid #feb2b2;
@@ -204,7 +204,7 @@
     text-align: left;
   }
 
-  /* Yükleniyor mesajı tasarımı */
+  
   .loading-container {
     background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
     border: 2px solid #9ae6b4;
@@ -256,7 +256,6 @@
 
 <script>
 (function() {
-  // URL'den id parametresini al
   var urlParams = new URLSearchParams(window.location.search);
   var kodParam = urlParams.get('id');
   
@@ -267,11 +266,7 @@
     formContainer.innerHTML = '<div class="error-container"><div class="error-icon">⚠️</div><h3>Geçersiz Link</h3><p>İndirim çeki kodu bulunamadı. Lütfen doğru linki kullanın.</p></div>';
     return;
   }
-
-  // Yükleniyor mesajı göster
   formContainer.innerHTML = '<div class="loading-container"><div class="loading-spinner"></div><h3>Kod kontrol ediliyor...</h3></div>';
-  
-  // codelist.json dosyasını yükle ve kontrol et
   fetch('/module/rzqplw/codelist.json')
     .then(function(response) {
       if (!response.ok) {
@@ -280,7 +275,6 @@
       return response.json();
     })
     .then(function(kodListesi) {
-      // Kodun listede olup olmadığını kontrol et
       var kodGecerli = false;
       for (var i = 0; i < kodListesi.length; i++) {
         if (kodListesi[i].url === kodParam) {
@@ -288,23 +282,15 @@
           break;
         }
       }
-
-      // Kod geçersizse hata göster
       if (!kodGecerli) {
         formContainer.innerHTML = '<div class="error-container"><div class="error-icon">❌</div><h3>Geçersiz Kod</h3><p>Girdiğiniz indirim çeki kodu geçersizdir. Lütfen doğru kodu kontrol ediniz.</p><div class="error-details">İndirim çeki kodunuzu fuardan aldığınız kart veya belgeden kontrol edebilirsiniz.</div></div>';
         return;
       }
-
-      // Kod geçerliyse formu geri yükle
       formContainer.innerHTML = originalFormHTML;
-      
-      // Kod değerini input'a yerleştir
       var kodInput = document.getElementById('kod');
       if (kodInput) {
         kodInput.value = kodParam;
       }
-
-      // Form gönderim işlemi
       var form = document.getElementById('indirimForm');
       if (form) {
         form.addEventListener('submit', function(e) {
@@ -315,14 +301,10 @@
           var email = document.getElementById('email').value.trim();
           var mesaj = document.getElementById('mesaj').value.trim();
           var kod = kodParam;
-
-          // Validasyon
           if (!adsoyad || !telefon || !email) {
             alert('Lütfen zorunlu alanları doldurunuz.');
             return;
           }
-
-          // WhatsApp mesajı oluştur
           var whatsappMessage = '🎟️ *İndirim Çeki Formu*\n\n';
           whatsappMessage += '📋 *Kod:* ' + kod + '\n';
           whatsappMessage += '👤 *Ad Soyad:* ' + adsoyad + '\n';
@@ -332,13 +314,9 @@
           if (mesaj) {
             whatsappMessage += '💬 *Mesaj:* ' + mesaj + '\n';
           }
-
-          // WhatsApp URL'i oluştur
           var whatsappNumber = '905418504646';
           var encodedMessage = encodeURIComponent(whatsappMessage);
           var whatsappUrl = 'https://api.whatsapp.com/send/?phone=' + whatsappNumber + '&text=' + encodedMessage + '&app_absent=0';
-
-          // WhatsApp'ı aç
           window.open(whatsappUrl, '_blank');
         });
       }
