@@ -4,10 +4,10 @@ var GO1ILZ_HASH = ['zati', 'mobilya', 'ticari', 'kargo', 'arac'];
 var menuHtml = '';
 
 var TASIMA_TIPLERI = [
-    { code: 'RE', title: { tr: 'Zati', en: 'Personal Effects' }, icon: 'inventory_2' },
-    { code: 'FU', title: { tr: 'Mobilya', en: 'Furniture' }, icon: 'weekend' },
-    { code: 'CO', title: { tr: 'Ticari', en: 'Commercial' }, icon: 'business_center' },
-    { code: 'CA', title: { tr: 'Kargo', en: 'Cargo' }, icon: 'local_shipping' },
+    { code: 'CA', title: { tr: 'Zati', en: 'Personal Effects' }, icon: 'inventory_2' },
+    { code: 'CO', title: { tr: 'Mobilya', en: 'Furniture' }, icon: 'weekend' },
+    { code: 'FU', title: { tr: 'Ticari', en: 'Commercial' }, icon: 'business_center' },
+    { code: 'RE', title: { tr: 'Kargo', en: 'Cargo' }, icon: 'local_shipping' },
     { code: 'AU', title: { tr: 'Araç', en: 'Vehicle' }, icon: 'directions_car' }
 ];
 var lang = (typeof json !== 'undefined' && json.lang && json.lang === 'en') ? 'en' : 'tr';
