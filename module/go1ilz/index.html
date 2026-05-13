@@ -2753,35 +2753,185 @@
             (getTranslation('total-weight') || 'Ağırlık') + ': ' + (agirlik ? parseFloat(agirlik).toFixed(1) : '0') + ' kg';
     }
 
+    function toFixedNumber(value, digits) {
+        var num = parseFloat(value);
+        if (!isFinite(num)) return 0;
+        return parseFloat(num.toFixed(digits));
+    }
+
+    function buildSourceDateText() {
+        var now = new Date();
+        var day = String(now.getDate()).padStart(2, '0');
+        var month = String(now.getMonth() + 1).padStart(2, '0');
+        var year = now.getFullYear();
+        var hour = String(now.getHours()).padStart(2, '0');
+        var minute = String(now.getMinutes()).padStart(2, '0');
+        var second = String(now.getSeconds()).padStart(2, '0');
+
+        return day + '.' + month + '.' + year + ' ' + hour + ':' + minute + ':' + second;
+    }
+
+    function getCurrentLanguageCode() {
+
+        var raw = '';
+        if (typeof navigator !== 'undefined') {
+            raw = navigator.language || navigator.userLanguage || '';
+        }
+        raw = String(raw || '').toLowerCase().trim();
+        if (!raw) return 'tr';
+        if (raw.indexOf('-') !== -1) return raw.split('-')[0];
+        if (raw.indexOf('_') !== -1) return raw.split('_')[0];
+        return raw.length > 2 ? raw.slice(0, 2) : raw;
+    }
+
+    function getRequestTypeFromHash() {
+
+
+
+        var hash = (location.hash || '').replace(/^#/, '').toLowerCase().trim();
+        if (hash === 'zati') return 'CA';
+        if (hash === 'mobilya') return 'CO';
+        if (hash === 'ticari') return 'FU';
+        if (hash === 'kargo') return 'RE';
+        if (hash === 'arac' || hash === 'vehicle') return 'AU';
+        return 'RE';
+    }
+
+    function getTrackingNumber() {
+        var now = new Date();
+        return 'WEB' + now.getFullYear() +
+            String(now.getMonth() + 1).padStart(2, '0') +
+            String(now.getDate()).padStart(2, '0') +
+            String(now.getHours()).padStart(2, '0') +
+            String(now.getMinutes()).padStart(2, '0') +
+            String(now.getSeconds()).padStart(2, '0');
+    }
+
+    function guessCityFromAddress(addressText) {
+        if (!addressText) return '';
+        var trimmed = String(addressText).trim();
+        if (!trimmed) return '';
+        var parts = trimmed.split(',');
+        return (parts[0] || '').trim();
+    }
+
+    function buildLocationObject(addressText, countryCode, isFromLocation) {
+        var location = {
+            Country: countryCode || '',
+            City: guessCityFromAddress(addressText),
+            Town: '',
+            PostCode: '',
+            GateNumber: '',
+            AddresText: addressText || '',
+            HasLoadElevator: false,
+            MovingDistance: 0,
+            FlatLevel: 0,
+            DoWeHaveSpecialService: false,
+            SpecialServiceDescription: '',
+            SpecialServicePrice: 0,
+            HasFreeParkingArea: false
+        };
+        if (isFromLocation) {
+            location.WillWeDoDisassembly = false;
+            location.WillWeDoPackaging = true;
+            location.LoadingPlace = null;
+        } else {
+            location.WillWeDoAssembly = false;
+            location.WillWeDoUnPackaging = false;
+        }
+        return location;
+    }
+
     function getQuotePayloadFromGo1ilz() {
         var firstGroup = '';
         var totalAdet = 0, totalHacim = 0, totalAgirlik = 0;
-        var id, count, p, vol, ed, w;
+        var requestDetails = [];
+        var id, count, p, vol, ed, w, itemName;
         for (id in productCounters) {
             if (!productCounters.hasOwnProperty(id)) continue;
             count = productCounters[id] || 0;
             if (count <= 0 || !productData[id]) continue;
             p = productData[id];
             if (!firstGroup && p.ProductGroup) firstGroup = p.ProductGroup;
-            vol = editedVolumes[id] !== undefined ? editedVolumes[id] : (p.Volume || 0);
+            vol = editedVolumes[id] !== undefined ? parseFloat(editedVolumes[id]) : parseFloat(p.Volume || 0);
             ed = editedDimensions[id];
             w = (ed && ed.weight !== undefined) ? parseFloat(ed.weight) : (p.Weight ? parseFloat(p.Weight) : 0);
             totalAdet += count;
-            totalHacim += count * vol;
-            totalAgirlik += count * w;
+            totalHacim += count * (isFinite(vol) ? vol : 0);
+            totalAgirlik += count * (isFinite(w) ? w : 0);
+            itemName = getTextByLang(p.Name) || '';
+            requestDetails.push({
+                ItemCode: p.Code || '',
+                ItemDescription: itemName,
+                ItemGroup: p.ProductGroup || null,
+                ItemNotes: '',
+                WillWeDoSpecialPackaging: false,
+                UnitType: 'Collies',
+                IsStackable: false,
+                ActualTotalQuantity: count,
+                ExpMinTotalWeight: 0,
+                ExpMaxTotalWeight: 0,
+                ActualTotalWeight: toFixedNumber(count * w, 4),
+                ExpMinTotalVolume: toFixedNumber(count * vol, 4),
+                ExpMaxTotalVolume: toFixedNumber(count * vol, 4),
+                ActualTotalVolume: toFixedNumber(count * vol, 4),
+                Ladameter: 0
+            });
         }
+        var fromAddress = (document.getElementById('quote-from') && document.getElementById('quote-from').value) || '';
+        var toAddress = (document.getElementById('quote-to') && document.getElementById('quote-to').value) || '';
+        var name = (document.getElementById('quote-name') && document.getElementById('quote-name').value) || '';
+        var email = (document.getElementById('quote-email') && document.getElementById('quote-email').value) || '';
+        var phone = (document.getElementById('quote-phone') && document.getElementById('quote-phone').value) || '';
+        var message = (document.getElementById('quote-message') && document.getElementById('quote-message').value) || '';
+        var normalizedVolume = toFixedNumber(totalHacim, 4);
+        var normalizedWeight = toFixedNumber(totalAgirlik, 4);
+        var languageCode = getCurrentLanguageCode();
+        var requestType = getRequestTypeFromHash();
         return {
-            transportType: 'RE',
-            productGroup: firstGroup || 'SALON / LOUNGE',
-            fromAddress: (document.getElementById('quote-from') && document.getElementById('quote-from').value) || '',
-            toAddress: (document.getElementById('quote-to') && document.getElementById('quote-to').value) || '',
-            name: (document.getElementById('quote-name') && document.getElementById('quote-name').value) || '',
-            email: (document.getElementById('quote-email') && document.getElementById('quote-email').value) || '',
-            phone: (document.getElementById('quote-phone') && document.getElementById('quote-phone').value) || '',
-            message: (document.getElementById('quote-message') && document.getElementById('quote-message').value) || '',
-            totalQuantity: totalAdet,
-            totalVolume: totalHacim,
-            totalWeight: totalAgirlik
+            SourceDetail: {
+                Company: 'WEBSITE',
+                MACAddress: 'hanbroscargo.com',
+                IP: window.location.hostname || '',
+                Date: buildSourceDateText(),
+                Language: languageCode
+            },
+            RequestMaster: {
+                TrackingNumber: getTrackingNumber(),
+                Status: 'Reservation',
+                RequestType: requestType,
+                OrderType: 'Musteriden Teslim Alinacak',
+                ExpShipmentDate: '',
+                CustomerCode: phone || '',
+                CustomerName: name || '',
+                CustomerNumber: phone || '',
+                CustomerEmail: email || '',
+                ReceiverCode: phone || '',
+                ReceiverName: name || '',
+                ReceiverNumber: phone || '',
+                ReceiverEmail: email || '',
+                WeCanContactViaEmail: true,
+                WeCanContactViaPhone: true,
+                ActualTotalQuantity: totalAdet,
+                ExpMinTotalWeight: 0,
+                ExpMaxTotalWeight: 0,
+                ActualTotalWeight: normalizedWeight,
+                ExpMinTotalVolume: normalizedVolume,
+                ExpMaxTotalVolume: normalizedVolume,
+                ActualTotalVolume: normalizedVolume,
+                ActualTotalLadameter: 0,
+                TargetCustomResponsibility: '',
+                OriginCustomResponsibility: '',
+                CustomerHasEORINumber: true,
+                TruckCanVisitTargetLocation: true,
+                PriceCalculationType: '',
+                LogisticsSite: 'GZT',
+                Message: message,
+                ProductGroup: firstGroup || 'SALON / LOUNGE'
+            },
+            FromLocation: buildLocationObject(fromAddress, 'TR', true),
+            ToLocation: buildLocationObject(toAddress, 'DE', false),
+            RequestDetails: requestDetails
         };
     }
 
@@ -2795,7 +2945,7 @@
         }
         if (resultEl) resultEl.innerHTML = '';
         var payload = getQuotePayloadFromGo1ilz();
-        fetch(GO1ILZ_API_BASE + '/quote', {
+        fetch(GO1ILZ_API_BASE + '/price', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
