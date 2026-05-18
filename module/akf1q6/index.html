@@ -234,3 +234,440 @@
 </style>
 
 <div class="tkl-menu" id="modulex">{{menu}}</div>
+<div class="tkl-actions">
+  <button type="button" class="tkl-quote-open-btn" onclick="akf1q6OpenQuotePopup()">Teklif al</button>
+</div>
+
+<div class="tkl-quote-popup tkl-hidden" id="akf1q6-quote-popup" style="display:none;">
+  <div class="tkl-quote-overlay" onclick="akf1q6CloseQuotePopupAnimated()"></div>
+  <div class="tkl-quote-content" id="akf1q6-quote-content">
+    <div class="tkl-quote-header">
+      <div class="tkl-quote-title">Teklif al</div>
+      <button type="button" class="tkl-quote-close" onclick="akf1q6CloseQuotePopupAnimated()">x</button>
+    </div>
+    <form class="tkl-quote-form" onsubmit="return akf1q6SendQuote(event);">
+      <div class="tkl-quote-grid">
+        <div class="tkl-quote-field">
+          <label for="akf1q6-request-type">Kategori</label>
+          <select id="akf1q6-request-type" class="tkl-quote-input">
+            <option value="CA">Zati (CA)</option>
+            <option value="CO">Mobilya (CO)</option>
+            <option value="FU">Ticari (FU)</option>
+            <option value="RE">Kargo (RE)</option>
+            <option value="AU">Arac (AU)</option>
+          </select>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-name">Ad Soyad</label>
+          <input id="akf1q6-name" class="tkl-quote-input" type="text" required>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-email">E-posta</label>
+          <input id="akf1q6-email" class="tkl-quote-input" type="email" required>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-phone">Telefon</label>
+          <input id="akf1q6-phone" class="tkl-quote-input" type="text" required>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-from">Nereden</label>
+          <input id="akf1q6-from" class="tkl-quote-input" type="text" required>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-to">Nereye</label>
+          <input id="akf1q6-to" class="tkl-quote-input" type="text" required>
+        </div>
+      </div>
+      <div class="tkl-quote-field">
+        <label for="akf1q6-message">Mesaj</label>
+        <textarea id="akf1q6-message" class="tkl-quote-input tkl-quote-textarea"></textarea>
+      </div>
+      <div id="akf1q6-quote-result" class="tkl-quote-result"></div>
+      <button id="akf1q6-quote-send-btn" class="tkl-quote-send-btn" type="submit">Teklifi gonder</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .tkl-actions { display:flex; justify-content:center; margin: 8px 0 16px; }
+  .tkl-quote-open-btn { border:0; border-radius:10px; padding:10px 18px; background:#006B65; color:#fff; cursor:pointer; }
+  .tkl-quote-popup { position:fixed; inset:0; z-index:10001; display:flex; align-items:center; justify-content:center; }
+  .tkl-hidden { display:none !important; }
+  .tkl-quote-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+  .tkl-quote-content { position:relative; z-index:2; width:min(680px,92vw); max-height:90vh; overflow:auto; border-radius:16px; background:#fff; padding:16px; box-sizing:border-box; animation:tklQuoteOpen .25s ease; }
+  .tkl-quote-content.tkl-closing { animation:tklQuoteClose .35s ease forwards; }
+  .tkl-quote-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+  .tkl-quote-title { font-size:18px; font-weight:700; }
+  .tkl-quote-close { border:0; background:transparent; font-size:18px; cursor:pointer; }
+  .tkl-quote-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; }
+  .tkl-quote-field { margin-bottom:10px; }
+  .tkl-quote-field label { display:block; font-size:13px; margin-bottom:4px; }
+  .tkl-quote-input { width:100%; box-sizing:border-box; border:1px solid #cfd4dc; border-radius:8px; padding:9px 10px; }
+  .tkl-quote-textarea { min-height:80px; resize:vertical; }
+  .tkl-quote-send-btn { border:0; border-radius:10px; padding:12px 18px; background:#16a34a; color:#fff; cursor:pointer; width:100%; display:flex; align-items:center; justify-content:center; gap:8px; }
+  .tkl-quote-send-btn.tkl-sent { animation:tklQuoteSent 1.1s ease-in-out infinite; background:#15803d; }
+  .tkl-ok-icon {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.22);
+    font-weight:700;
+    font-size:13px;
+    transform:scale(0.7);
+    opacity:0;
+  }
+  .tkl-quote-send-btn.tkl-sent .tkl-ok-icon {
+    animation:tklOkPop .55s ease-out forwards, tklOkPulse 1s ease-in-out .55s infinite;
+  }
+  .tkl-quote-result { min-height:22px; font-size:13px; margin:8px 0; white-space:pre-line; }
+  .tkl-quote-result.success { color:#0a7c36; }
+  .tkl-quote-result.error { color:#b91c1c; }
+  .tkl-quote-result .tkl-result-line { display:block; margin-top:4px; }
+  .tkl-quote-result .tkl-result-label { font-weight:700; margin-right:6px; }
+  @keyframes tklQuoteSent { 0% { transform:scale(1);} 50% {transform:scale(1.03);} 100% {transform:scale(1);} }
+  @keyframes tklOkPop { 0% { transform:scale(0.7); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+  @keyframes tklOkPulse { 0% { transform:scale(1);} 50% { transform:scale(1.12);} 100% { transform:scale(1);} }
+  @keyframes tklQuoteOpen { from {opacity:0; transform:translateY(8px);} to {opacity:1; transform:translateY(0);} }
+  @keyframes tklQuoteClose { from {opacity:1; transform:translateY(0);} to {opacity:0; transform:translateY(10px);} }
+</style>
+
+<script>
+  var AKF1Q6_API_BASE = 'https://api.hanbroscargo.workers.dev';
+  var akf1q6CloseTimer = null;
+
+  function akf1q6RememberSelectedType(typeCode) {
+    try { localStorage.setItem('akf1q6_request_type', typeCode || 'RE'); } catch (e) {}
+  }
+
+  function akf1q6GetRememberedType() {
+    var typeCode = 'RE';
+    try { typeCode = localStorage.getItem('akf1q6_request_type') || 'RE'; } catch (e) {}
+    return typeCode;
+  }
+
+  function akf1q6GetLanguageCode() {
+    var raw = (typeof navigator !== 'undefined') ? (navigator.language || navigator.userLanguage || 'tr') : 'tr';
+    raw = String(raw || 'tr').toLowerCase();
+    if (raw.indexOf('-') !== -1) return raw.split('-')[0];
+    if (raw.indexOf('_') !== -1) return raw.split('_')[0];
+    return raw.length > 2 ? raw.slice(0, 2) : raw;
+  }
+
+  function akf1q6BuildDateText() {
+    var now = new Date();
+    var day = String(now.getDate()).padStart(2, '0');
+    var month = String(now.getMonth() + 1).padStart(2, '0');
+    var year = now.getFullYear();
+    var hour = String(now.getHours()).padStart(2, '0');
+    var minute = String(now.getMinutes()).padStart(2, '0');
+    var second = String(now.getSeconds()).padStart(2, '0');
+    return day + '.' + month + '.' + year + ' ' + hour + ':' + minute + ':' + second;
+  }
+
+  function akf1q6BuildTrackingNumber() {
+    var now = new Date();
+    return 'AKF' + now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0') + String(now.getHours()).padStart(2, '0') + String(now.getMinutes()).padStart(2, '0') + String(now.getSeconds()).padStart(2, '0');
+  }
+
+  function akf1q6ToNumber(value, digits) {
+    var num = parseFloat(value);
+    if (!isFinite(num)) return 0;
+    return parseFloat(num.toFixed(digits));
+  }
+
+  function akf1q6BuildLocation(addressText, countryCode, isFromLocation) {
+    var obj = {
+      Country: countryCode || '',
+      City: '',
+      Town: '',
+      PostCode: '',
+      GateNumber: '',
+      AddresText: addressText || '',
+      HasLoadElevator: false,
+      MovingDistance: 0,
+      FlatLevel: 0,
+      DoWeHaveSpecialService: false,
+      SpecialServiceDescription: '',
+      SpecialServicePrice: 0,
+      HasFreeParkingArea: false
+    };
+    if (isFromLocation) {
+      obj.WillWeDoDisassembly = false;
+      obj.WillWeDoPackaging = true;
+      obj.LoadingPlace = null;
+    } else {
+      obj.WillWeDoAssembly = false;
+      obj.WillWeDoUnPackaging = false;
+    }
+    return obj;
+  }
+
+  function akf1q6ClearCloseTimer() {
+    if (akf1q6CloseTimer) {
+      clearTimeout(akf1q6CloseTimer);
+      akf1q6CloseTimer = null;
+    }
+  }
+
+  function akf1q6ForceCloseQuotePopup() {
+    var popup = document.getElementById('akf1q6-quote-popup');
+    var content = document.getElementById('akf1q6-quote-content');
+    if (popup) {
+      popup.classList.add('tkl-hidden');
+      popup.style.display = 'none';
+    }
+    if (content) content.classList.remove('tkl-closing');
+    document.body.style.overflow = '';
+  }
+
+  function akf1q6CloseQuotePopupAnimated() {
+    akf1q6ClearCloseTimer();
+    var popup = document.getElementById('akf1q6-quote-popup');
+    var content = document.getElementById('akf1q6-quote-content');
+    if (!popup || popup.classList.contains('tkl-hidden')) {
+      akf1q6ForceCloseQuotePopup();
+      return;
+    }
+    if (content) content.classList.add('tkl-closing');
+    setTimeout(function () {
+      akf1q6ForceCloseQuotePopup();
+      akf1q6ResetSendButton();
+      var resultEl = document.getElementById('akf1q6-quote-result');
+      if (resultEl) resultEl.innerHTML = '';
+    }, 360);
+  }
+
+  function akf1q6OpenQuotePopup() {
+    akf1q6ClearCloseTimer();
+    var popup = document.getElementById('akf1q6-quote-popup');
+    var content = document.getElementById('akf1q6-quote-content');
+    var typeSelect = document.getElementById('akf1q6-request-type');
+    if (typeSelect) typeSelect.value = akf1q6GetRememberedType();
+    if (popup) {
+      popup.classList.remove('tkl-hidden');
+      popup.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    if (content) content.classList.remove('tkl-closing');
+  }
+
+  function akf1q6ResetSendButton() {
+    var btn = document.getElementById('akf1q6-quote-send-btn');
+    if (!btn) return;
+    btn.disabled = false;
+    btn.classList.remove('tkl-sent');
+    btn.innerHTML = 'Teklifi gonder';
+  }
+
+  function akf1q6IsAcceptedResponse(respObj) {
+    if (respObj && respObj.ok) return true;
+    var parsed = null;
+    try { parsed = JSON.parse(respObj && respObj.text ? respObj.text : ''); } catch (e) {}
+    if (!parsed) return false;
+    if (parsed.success === true || parsed.Success === true || parsed.IsSuccess === true) return true;
+    if (parsed.Data && (parsed.Data.success === true || parsed.Data.Success === true || parsed.Data.IsSuccess === true)) return true;
+    if (parsed.Data && (parsed.Data.TrackingNumber || parsed.Data.RequestNumber || parsed.Data.Price || parsed.Data.TotalPrice)) return true;
+    return false;
+  }
+
+  function akf1q6ParseResponseBody(respObj) {
+    var parsed = null;
+    try { parsed = JSON.parse(respObj && respObj.text ? respObj.text : ''); } catch (e) {}
+    return parsed;
+  }
+
+  function akf1q6ExtractSuccessInfo(parsedBody, rawText) {
+    var info = { trackingNumber: '', messageText: '' };
+    if (parsedBody) {
+      info.trackingNumber =
+        parsedBody.TrackingNumber ||
+        parsedBody.trackingNumber ||
+        (parsedBody.Data && (parsedBody.Data.TrackingNumber || parsedBody.Data.trackingNumber)) ||
+        (parsedBody.Result && (parsedBody.Result.TrackingNumber || parsedBody.Result.trackingNumber)) ||
+        '';
+
+      info.messageText =
+        parsedBody.message ||
+        parsedBody.Message ||
+        (parsedBody.Data && (parsedBody.Data.message || parsedBody.Data.Message)) ||
+        (parsedBody.Result && (parsedBody.Result.message || parsedBody.Result.Message)) ||
+        '';
+    }
+
+    if ((!info.trackingNumber || !info.messageText) && rawText) {
+      var trackingMatch = rawText.match(/"TrackingNumber"\s*:\s*"([^"]+)"/i);
+      var messageMatch = rawText.match(/"message"\s*:\s*"([^"]+)"/i) || rawText.match(/"Message"\s*:\s*"([^"]+)"/i);
+      if (!info.trackingNumber && trackingMatch && trackingMatch[1]) {
+        info.trackingNumber = trackingMatch[1];
+      }
+      if (!info.messageText && messageMatch && messageMatch[1]) {
+        info.messageText = messageMatch[1];
+      }
+    }
+
+    return info;
+  }
+
+  function akf1q6BuildPayload() {
+    var typeSelect = document.getElementById('akf1q6-request-type');
+    var typeCode = (typeSelect && typeSelect.value) ? typeSelect.value : 'RE';
+    var name = (document.getElementById('akf1q6-name') && document.getElementById('akf1q6-name').value) || '';
+    var email = (document.getElementById('akf1q6-email') && document.getElementById('akf1q6-email').value) || '';
+    var phone = (document.getElementById('akf1q6-phone') && document.getElementById('akf1q6-phone').value) || '';
+    var fromAddress = (document.getElementById('akf1q6-from') && document.getElementById('akf1q6-from').value) || '';
+    var toAddress = (document.getElementById('akf1q6-to') && document.getElementById('akf1q6-to').value) || '';
+    var message = (document.getElementById('akf1q6-message') && document.getElementById('akf1q6-message').value) || '';
+    var totalVolume = akf1q6ToNumber(0, 4);
+    var totalWeight = akf1q6ToNumber(0, 4);
+    akf1q6RememberSelectedType(typeCode);
+    return {
+      SourceDetail: {
+        Company: 'WEBSITE',
+        MACAddress: 'hanbroscargo.com',
+        IP: window.location.hostname || '',
+        Date: akf1q6BuildDateText(),
+        Language: akf1q6GetLanguageCode()
+      },
+      RequestMaster: {
+        TrackingNumber: akf1q6BuildTrackingNumber(),
+        Status: 'Reservation',
+        RequestType: typeCode,
+        OrderType: 'Musteriden Teslim Alinacak',
+        ExpShipmentDate: '',
+        CustomerCode: phone || '',
+        CustomerName: name || '',
+        CustomerNumber: phone || '',
+        CustomerEmail: email || '',
+        ReceiverCode: phone || '',
+        ReceiverName: name || '',
+        ReceiverNumber: phone || '',
+        ReceiverEmail: email || '',
+        WeCanContactViaEmail: true,
+        WeCanContactViaPhone: true,
+        ActualTotalQuantity: 0,
+        ExpMinTotalWeight: 0,
+        ExpMaxTotalWeight: 0,
+        ActualTotalWeight: totalWeight,
+        ExpMinTotalVolume: totalVolume,
+        ExpMaxTotalVolume: totalVolume,
+        ActualTotalVolume: totalVolume,
+        ActualTotalLadameter: 0,
+        TargetCustomResponsibility: '',
+        OriginCustomResponsibility: '',
+        CustomerHasEORINumber: true,
+        TruckCanVisitTargetLocation: true,
+        PriceCalculationType: '',
+        LogisticsSite: 'GZT',
+        Message: message
+      },
+      FromLocation: akf1q6BuildLocation(fromAddress, 'TR', true),
+      ToLocation: akf1q6BuildLocation(toAddress, 'DE', false),
+      RequestDetails: [
+        {
+          ItemCode: 'AKF1Q6',
+          ItemDescription: 'Website talep',
+          ItemGroup: null,
+          ItemNotes: message || '',
+          WillWeDoSpecialPackaging: false,
+          UnitType: 'Collies',
+          IsStackable: false,
+          ActualTotalQuantity: 1,
+          ExpMinTotalWeight: 0,
+          ExpMaxTotalWeight: 0,
+          ActualTotalWeight: totalWeight,
+          ExpMinTotalVolume: totalVolume,
+          ExpMaxTotalVolume: totalVolume,
+          ActualTotalVolume: totalVolume,
+          Ladameter: 0
+        }
+      ]
+    };
+  }
+
+  function akf1q6SendQuote(event) {
+    if (event) event.preventDefault();
+    akf1q6ClearCloseTimer();
+    var btn = document.getElementById('akf1q6-quote-send-btn');
+    var resultEl = document.getElementById('akf1q6-quote-result');
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.remove('tkl-sent');
+      btn.textContent = 'Gonderiliyor...';
+    }
+    if (resultEl) {
+      resultEl.innerHTML = '';
+      resultEl.className = 'tkl-quote-result';
+    }
+    var payload = akf1q6BuildPayload();
+    fetch(AKF1Q6_API_BASE + '/price', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function (res) {
+      return res.text().then(function (text) {
+        return { ok: res.ok, status: res.status, text: text };
+      });
+    })
+    .then(function (respObj) {
+      var parsedBody = akf1q6ParseResponseBody(respObj);
+      if (akf1q6IsAcceptedResponse(respObj)) {
+        if (btn) {
+          btn.disabled = false;
+          btn.classList.add('tkl-sent');
+          btn.innerHTML = '<span class=\"tkl-ok-icon\">OK</span><span>Gonderildi</span>';
+        }
+        if (resultEl) {
+          var successInfo = akf1q6ExtractSuccessInfo(parsedBody, respObj && respObj.text ? respObj.text : '');
+          resultEl.className = 'tkl-quote-result success';
+          resultEl.innerHTML =
+            '<span class=\"tkl-result-line\">Gonderildi.</span>' +
+            '<span class=\"tkl-result-line\"><span class=\"tkl-result-label\">TrackingNumber:</span>' + (successInfo.trackingNumber || '-') + '</span>' +
+            '<span class=\"tkl-result-line\"><span class=\"tkl-result-label\">Mesaj:</span>' + (successInfo.messageText || '-') + '</span>';
+        }
+        akf1q6CloseTimer = setTimeout(function () {
+          akf1q6CloseQuotePopupAnimated();
+        }, 5000);
+      } else {
+        var errMsg = 'Gonderim basarisiz.';
+        try {
+          var parsedErr = parsedBody || JSON.parse(respObj.text || '');
+          errMsg = parsedErr.message || parsedErr.Message || parsedErr.error || parsedErr.Error || errMsg;
+        } catch (e) {}
+        if (resultEl) {
+          resultEl.className = 'tkl-quote-result error';
+          resultEl.textContent = errMsg;
+        }
+        akf1q6ResetSendButton();
+      }
+    })
+    .catch(function (err) {
+      if (resultEl) {
+        resultEl.className = 'tkl-quote-result error';
+        resultEl.textContent = 'Gonderim hatasi: ' + (err && err.message ? err.message : 'Bilinmeyen hata');
+      }
+      akf1q6ResetSendButton();
+    });
+    return false;
+  }
+
+  setTimeout(function () {
+    var links = document.querySelectorAll('.tkl-menu .modulex-item[data-request-type]');
+    var i;
+    for (i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function () {
+        akf1q6RememberSelectedType(this.getAttribute('data-request-type') || 'RE');
+      });
+    }
+    var selectEl = document.getElementById('akf1q6-request-type');
+    if (selectEl) {
+      selectEl.value = akf1q6GetRememberedType();
+      selectEl.addEventListener('change', function () {
+        akf1q6RememberSelectedType(this.value || 'RE');
+      });
+    }
+  }, 0);
+</script>

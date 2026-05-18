@@ -78,7 +78,7 @@
 </main>
 
 
-<div class="volume-edit-popup" id="quote-popup" style="display: none;">
+"<div class="volume-edit-popup is-hidden" id="quote-popup" style="display: none;">
     <div class="popup-overlay" onclick="closeQuoteModal()"></div>
     <div class="popup-content quote-popup-content">
         <div class="popup-header">
@@ -1044,6 +1044,10 @@
         justify-content: center;
     }
 
+    .volume-edit-popup.is-hidden {
+        display: none !important;
+    }
+
     .popup-overlay {
         position: absolute;
         top: 0;
@@ -1210,6 +1214,24 @@
         box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
     }
 
+    .quote-submit-btn.sent {
+        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        box-shadow: 0 6px 18px rgba(21, 128, 61, 0.45);
+        animation: quoteSentPulse 1.1s ease-in-out infinite;
+    }
+
+    @keyframes quoteSentPulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.03);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
     .quote-result {
         margin-top: 12px;
         min-height: 24px;
@@ -1222,6 +1244,21 @@
 
     .quote-result.error {
         color: #c00;
+    }
+
+    .quote-popup-content.quote-closing {
+        animation: quotePopupFadeOut 0.35s ease forwards;
+    }
+
+    @keyframes quotePopupFadeOut {
+        from {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(10px) scale(0.98);
+        }
     }
 
     .popup-product-info {
@@ -2704,9 +2741,65 @@
     }
 
 
+    var quoteModalCloseTimer = null;
+
+    function clearQuoteModalCloseTimer() {
+        if (quoteModalCloseTimer) {
+            clearTimeout(quoteModalCloseTimer);
+            quoteModalCloseTimer = null;
+        }
+    }
+
+    function forceCloseQuoteModal() {
+        var popup = document.getElementById('quote-popup');
+        var popupContent = document.querySelector('#quote-popup .quote-popup-content');
+        if (popup) {
+            popup.classList.add('is-hidden');
+            popup.style.display = 'none';
+        }
+        if (popupContent) {
+            popupContent.classList.remove('quote-closing');
+        }
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+    }
+
+    function closeQuoteModalAnimated() {
+        var popup = document.getElementById('quote-popup');
+        var popupContent = document.querySelector('#quote-popup .quote-popup-content');
+        if (!popup || popup.classList.contains('is-hidden')) {
+            forceCloseQuoteModal();
+            return;
+        }
+        if (popupContent) {
+            popupContent.classList.add('quote-closing');
+        }
+        setTimeout(function () {
+            forceCloseQuoteModal();
+        }, 360);
+    }
+
+    function isQuoteAcceptedResponse(r) {
+        if (r && r.ok) return true;
+        var parsed = null;
+        try {
+            parsed = JSON.parse(r && r.text ? r.text : '');
+        } catch (e) {}
+        if (!parsed) return false;
+        if (parsed.success === true || parsed.Success === true || parsed.IsSuccess === true) return true;
+        if (parsed.status === 'success' || parsed.Status === 'success') return true;
+        if (parsed.Data && (parsed.Data.success === true || parsed.Data.Success === true || parsed.Data.IsSuccess === true)) return true;
+        if (parsed.Data && (parsed.Data.TrackingNumber || parsed.Data.RequestNumber || parsed.Data.Price || parsed.Data.TotalPrice)) return true;
+        var msg = String(parsed.message || parsed.Message || parsed.error || parsed.Error || '').toLowerCase();
+        if (msg.indexOf('success') !== -1 || msg.indexOf('basar') !== -1 || msg.indexOf('alindi') !== -1) return true;
+        return false;
+    }
+
     function openQuoteModal() {
         var totalAdet = 0, totalHacim = 0, totalAgirlik = 0;
         var id, count, p, vol, ed, w;
+        clearQuoteModalCloseTimer();
         for (id in productCounters) {
             if (!productCounters.hasOwnProperty(id)) continue;
             count = productCounters[id] || 0;
@@ -2722,27 +2815,35 @@
         fillQuoteCartSummary(totalAdet, totalHacim, totalAgirlik);
         var resultEl = document.getElementById('quote-result');
         if (resultEl) resultEl.innerHTML = '';
+        resetQuoteSendButtonState();
 
        
 
         var popup = document.getElementById('quote-popup');
+        var popupContent = document.querySelector('#quote-popup .quote-popup-content');
         if (popup) {
+            popup.classList.remove('is-hidden');
             popup.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             document.body.style.position = 'fixed';
             document.body.style.width = '100%';
         }
+        if (popupContent) {
+            popupContent.classList.remove('quote-closing');
+        }
     }
 
     function closeQuoteModal() {
-        var popup = document.getElementById('quote-popup');
-        if (popup) popup.style.display = 'none';
+        clearQuoteModalCloseTimer();
+        forceCloseQuoteModal();
+    }
 
- 
-
-        document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.width = '';
+    function resetQuoteSendButtonState() {
+        var btn = document.getElementById('quote-send-btn');
+        if (!btn) return;
+        btn.disabled = false;
+        btn.classList.remove('sent');
+        btn.textContent = getTranslation('quote-send-btn') || 'Teklif gönder';
     }
 
     function fillQuoteCartSummary(adet, hacim, agirlik) {
@@ -2939,8 +3040,10 @@
         if (event) event.preventDefault();
         var btn = document.getElementById('quote-send-btn');
         var resultEl = document.getElementById('quote-result');
+        clearQuoteModalCloseTimer();
         if (btn) {
             btn.disabled = true;
+            btn.classList.remove('sent');
             btn.textContent = getTranslation('quote-sending') || 'Gönderiliyor...';
         }
         if (resultEl) resultEl.innerHTML = '';
@@ -2958,13 +3061,26 @@
         .then(function (r) {
             if (btn) {
                 btn.disabled = false;
+                btn.classList.remove('sent');
                 btn.textContent = getTranslation('quote-send-btn') || 'Teklif gönder';
             }
-            if (r.ok) {
+            if (isQuoteAcceptedResponse(r)) {
                 if (resultEl) {
                     resultEl.className = 'quote-result success';
                     resultEl.textContent = getTranslation('quote-success') || 'Teklif talebiniz alındı.';
                 }
+                if (btn) {
+
+                    btn.classList.add('sent');
+                    btn.textContent = 'Talebiniz alindi';
+                }
+
+                quoteModalCloseTimer = setTimeout(function () {
+                    closeQuoteModalAnimated();
+                    resetQuoteSendButtonState();
+                    var currentResult = document.getElementById('quote-result');
+                    if (currentResult) currentResult.innerHTML = '';
+                }, 5000);
             } else {
                 var errData = null;
                 try { errData = JSON.parse(r.text); } catch (e) {}
@@ -2979,11 +3095,13 @@
                     resultEl.className = 'quote-result error';
                     resultEl.textContent = errMsg || (getTranslation('quote-error') || 'Gönderim başarısız.');
                 }
+                resetQuoteSendButtonState();
             }
         })
         .catch(function (err) {
             if (btn) {
                 btn.disabled = false;
+                btn.classList.remove('sent');
                 btn.textContent = getTranslation('quote-send-btn') || 'Teklif gönder';
             }
             if (resultEl) {
