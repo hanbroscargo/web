@@ -11,7 +11,7 @@
 <!-- Projedeki sayfalar ve açıklamaları buraya yazılacak -->
 
 ## Modül Yapısı
-- `module/go1ilz/` - Ürün katalog ve sepet yönetimi modülü
+- Ürün katalog ve sepet yönetimi modülü (klasör: `module/go1` + `ilz/`)
   - Ürün kategorileri ve detayları
   - Arama ve filtreleme işlevselliği
   - Sepet yönetimi (adet, hacim, ağırlık hesaplamaları)
@@ -26,7 +26,7 @@
 - Her modül kendi HTML, CSS ve JavaScript dosyalarını içerir
 - Modüller localStorage kullanarak kullanıcı verilerini saklar
 - Modüller HTML5, CSS3 ve ES6 JavaScript özellikleri kullanır
-- `go1ilz` modülü: Ürün katalog ve sepet yönetimi sistemi
+- Ürün katalog modülü (`go1` + `ilz` kimliği): sepet ve teklif sistemi
   - Kullanıcılar ürün kategorilerine göre gezer
   - Ürünleri sepete ekleyip çıkarabilir
   - Toplam hacim ve ağırlık hesaplamaları yapar
@@ -36,4 +36,4 @@
 ## Geliştirme Notları
 <!-- Yapılan değişiklikler, kararlar, bilinen sorunlar -->
 
-- 2026-04-08: `go1ilz` modülü eklendi - Ürün katalog ve sepet yönetimi sistemi
+- 2026-04-08: Ürün katalog modülü eklendi (`module/go1` + `ilz/`) — sepet ve teklif sistemi
