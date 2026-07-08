@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=f0tix" />
-  <link rel="preload" href="/src/cookie.css?v=f0tix" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=wtmu8" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=wtmu8" />
+  <link rel="preload" href="/src/cookie.css?v=wtmu8" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=f0tix" />
+    <link rel="stylesheet" href="/src/cookie.css?v=wtmu8" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=f0tix" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=wtmu8" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=f0tix">
+<link rel="stylesheet" href="style.css?v=wtmu8">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=jr0ks" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=nz65m" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/birmingham-ev-tasima-sirketleri/tr.webp?v=kb7ey" width="100%" alt="Birmingham Home Moving Companies and International Shipping" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/birmingham-ev-tasima-sirketleri/tr.webp?v=lh3vy" width="100%" alt="Birmingham Home Moving Companies and International Shipping" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Han Bros Cargo is with You While Moving to Birmingham</h2><p class="b0000-pd5-lead">Birmingham, located right in the heart of England and being the country's second largest city, becomes a new starting point for thousands of families and students every year. In this big journey stretching from Turkey to Birmingham (Solihull, Edgbaston, Sutton Coldfield, etc.), we are with you with our more than 20 years of experience as Han Bros Cargo. We deliver your belongings without damage by managing the complex customs rules of the UK and local logistics dynamics of Birmingham with professional meticulousness.</p><h3>Why Should You Choose Us on the Birmingham Route?</h3><p>Birmingham's central location in the 'West Midlands' region is a great advantage for logistics operations. We reflect this advantage to our customers as cost and speed:</p><ul class="b0000-pd5-features"><li><strong>UK Customs (Post-Brexit) Expertise:</strong> We manage your tax exemption applications with our expert team in the ToR (Transfer of Residence) processes for entry of goods to the UK after Brexit.</li><li><strong>Comprehensive Packaging and Assembly:</strong> Your furniture is disassembled by our carpenters, packaged at international standards, and installed in the rooms you want in your new home in Birmingham.</li><li><strong>Partial Flight Advantage:</strong> Thanks to our regular weekly vehicles going to Birmingham, you can move economically without paying full truck prices even if you have only a few boxes or limited belongings.</li><li><strong>Sigma Certified Security:</strong> We offer modern tracking systems and full comprehensive CMR insurance for the road safety of your belongings.</li></ul><h3>Birmingham Intra-City Distribution and Logistics</h3><p>Thanks to Birmingham's strategic location on the 'M6' and 'M5' motorways, we provide fast access to all districts throughout Birmingham. Whether it's student belongings going to the Aston University area or antique furniture being moved to a luxury villa in Solihull; we come with equipment and permits suitable for Birmingham's narrow streets and parking protocols for every load. With our local partner network in Birmingham, we can also offer 'Premium' services such as post-delivery installation and collection of packaging waste in our standard package.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>What is the house moving time from Turkey to Birmingham?</summary><p>Depending on customs procedures and ferry/tunnel crossings, delivery from Turkey to your door in Birmingham takes between an average of 12 and 16 days.</h3><details class="b0000-pd5-faq-item"><summary>Will I pay customs duty while taking belongings to the UK?</summary><p>If you are settling in Birmingham and have received the necessary ToR (Transfer of Residence) approval, you can take your personal belongings exempt from customs duty.</h3><h3>Do you have a solution for buildings with narrow streets within Birmingham?</h3><p>Yes, for multi-story buildings in the center of Birmingham, we can deliver to every floor and street with our external facade elevators or small-volume transfer vehicles (vans).</h3><h3>What does the insurance of my belongings cover?</h3><p>Our CMR insurance covers major risks such as accidents, fire, and theft. With our optional 'All-Risk' insurance, we also secure operational risks such as scratches and breakages.</h3><h3>Do you have a special price for student box shipments?</h3><p>We have very suitable 'Partial Student Package' prices according to the number of boxes for our students going to universities in Birmingham (UoB, BCU, Aston).</h3><p>Leave the logistics stress to us while building a new life in Birmingham. Get a free quote now to move safely and comfortably under the guidance of Han Bros Cargo!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=u4jff" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=jlkro" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=f0tix"></script>
-  <script defer src="/src/cookie.js?v=f0tix"></script>
+  <script defer src="/src/mx-ui.js?v=wtmu8"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=wtmu8"></script>
+  <script defer src="/src/cookie.js?v=wtmu8"></script>
 
   <script>
     setTimeout(function() {

@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=iha9z" />
-  <link rel="preload" href="/src/cookie.css?v=iha9z" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=qwawf" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=qwawf" />
+  <link rel="preload" href="/src/cookie.css?v=qwawf" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=iha9z" />
+    <link rel="stylesheet" href="/src/cookie.css?v=qwawf" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=iha9z" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=qwawf" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=iha9z">
+<link rel="stylesheet" href="style.css?v=qwawf">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=f26e9" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=ufjrq" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/ingiltere-mutfak-mobilya-tasimaciligi/tr.webp?v=tleim" width="100%" alt="UK kitchen furniture transport" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/ingiltere-mutfak-mobilya-tasimaciligi/tr.webp?v=ytgqx" width="100%" alt="UK kitchen furniture transport" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>UK Kitchen Furniture Transport</h2><p class="b0000-pd5-lead">Han Bros Cargo offers specialized expertise in kitchen furniture transport to the UK. We are experienced in moving special items like kitchen cabinets, countertops, wall units and kitchen storage systems.</p><h3>Kitchen Furniture Transport Features</h3><ul class="b0000-pd5-features"><li><strong>Special Protection Systems:</strong> Special corner protectors and wrapping techniques for countertops and granite surfaces</li><li><strong>Modular System Transport:</strong> Safe transport by disassembling kitchen modules into parts</li><li><strong>Appliance Integration:</strong> Protected transport of built-in ovens, hoods and dishwashers</li><li><strong>Granite and Marble Transport:</strong> Special transport solutions for delicate natural stone surfaces</li><li><strong>Installation Service:</strong> Post-delivery installation support option in the UK</li></ul><h3>Kitchen Furniture Transport Process</h3><ol><li><strong>Pre-Inspection:</strong> Determining kitchen dimensions and special requirements</li><li><strong>Disassembly Plan:</strong> Detailed planning for safe dismantling</li><li><strong>Protective Packing:</strong> Individual protection and labeling for each piece</li><li><strong>Special Transport Container:</strong> Dedicated section for kitchen items</li><li><strong>Customs Procedures:</strong> Special document preparation for kitchen items</li><li><strong>Installation Support:</strong> Installation service in the UK if needed</li></ol><h3>Why Han Bros Cargo for Kitchen Furniture Transport?</h3><ul class="b0000-pd5-features"><li>Special transport techniques and experience for kitchen furniture</li><li>Expert approach for granite, marble and natural stone surfaces</li><li>Safe integration of electrical kitchen appliances</li><li>Technical knowledge in modular system transport</li><li>Full service package with installation support</li></ul><p><strong>Contact us for detailed technical consultation and special price quote for kitchen furniture transport to the UK.</strong></p></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=iiazv" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=ht5s4" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=iha9z"></script>
-  <script defer src="/src/cookie.js?v=iha9z"></script>
+  <script defer src="/src/mx-ui.js?v=qwawf"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=qwawf"></script>
+  <script defer src="/src/cookie.js?v=qwawf"></script>
 
   <script>
     setTimeout(function() {

@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=yir2f" />
-  <link rel="preload" href="/src/cookie.css?v=yir2f" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=rbkuc" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=rbkuc" />
+  <link rel="preload" href="/src/cookie.css?v=rbkuc" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=yir2f" />
+    <link rel="stylesheet" href="/src/cookie.css?v=rbkuc" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=yir2f" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=rbkuc" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=yir2f">
+<link rel="stylesheet" href="style.css?v=rbkuc">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=dg6n0" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=az0n3" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/g1se5nu88e/wpvb6.webp?v=so115" width="100%" alt="Luxembourg Door-to-Door Moving & Logistics Solutions" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/g1se5nu88e/wpvb6.webp?v=z9w6p" width="100%" alt="Luxembourg Door-to-Door Moving & Logistics Solutions" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Strategic Logistics and Door-to-Door Moving Guide to Luxembourg</h2><p class="b0000-pd5-lead">Located in the heart of Europe as a center of finance and diplomacy, Luxembourg holds great logistical importance despite its small size. As Han Bros Cargo, we combine your moving process from Turkey to Luxembourg with the 'Small Country Advantage'. Luxembourg's tight integration with its neighbors Germany, France, and Belgium offers us a wide range of motion, especially in personal effects and furniture transportation. With our distribution network penetrating every point from narrow city streets to modern business centers, we don't just move your belonging; we ensure a seamless start to your new life.</p><h3>Professional Solutions Offered in Luxembourg Transportation</h3><p>Our service range is designed to adapt to Luxembourg's high living standards and bureaucratic precision:</p><ul class="b0000-pd5-features"><li><strong>Full and Partial Transport:</strong> Whether you move your entire house or just send a few pieces of items; we offer volume-oriented solutions for your needs.</li><li><strong>Advanced Customs Consultancy:</strong> We personally manage your paperwork process so that you can benefit from Luxembourg's tax advantages and customs exemptions (within the scope of personal effects).</li><li><strong>Logistics via Belgium:</strong> Thanks to our dominance in the region, we provide 25-35% cost savings by strategically optimizing our shipments via Belgium.</li><li><strong>Full-Service Packaging:</strong> We provide shock-absorbing wrapping and professional packaging support at Luxembourg standards for your fragile items.</li></ul><h3>Why Han Bros Cargo on the Luxembourg Line?</h3><p>Moving to Luxembourg is not just an item transport job, but an art of planning. As Han Bros Cargo, we organize regular weekly flights to every region from Luxembourg City to Esch-sur-Alzette. Using the advantages offered by the Schengen area, we minimize waiting times at customs. With our insured transportation approach, we secure every kilometer of your belongings and prevent surprise costs with our transparent price policy. In your journey to this elite country of Europe, Han Bros' logistics assurance is always with you.</p><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Is customs duty paid when moving household goods to Luxembourg?</summary><p>If you have documents proving your settlement in Luxembourg and your items have been in your use for at least 6 months, you may be exempted from customs duty within the scope of personal effects.</p></details><details class="b0000-pd5-faq-item"><summary>How many days does shipping from Turkey to Luxembourg take?</summary><p>Our standard delivery time in road transport is 10-14 business days, including customs. This period can be further shortened with Express options.</p></details><details class="b0000-pd5-faq-item"><summary>Do you install my furniture in Luxembourg?</summary><p>Yes, within our 'Premium' service package, de-assembly and assembly services in your new home are provided by our professional teams.</p></details><details class="b0000-pd5-faq-item"><summary>Do you have item storage facilities in Luxembourg?</summary><p>In our contracted warehouses within Luxembourg or in border regions, we can safely store your belongings for as long as you wish.</p></details><details class="b0000-pd5-faq-item"><summary>Is there a limit in partial (piece goods) transport?</summary><p>We can send piece goods in any volume starting from a minimum of 1-2 cubic meters.</p></details><p>Get professional support for a new beginning in Luxembourg. Move safely with Han Bros Cargo!</p></section></article></div>
     
   </div>
@@ -577,7 +551,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=d8vbq" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=xgsio" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -676,7 +650,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -692,8 +666,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=yir2f"></script>
-  <script defer src="/src/cookie.js?v=yir2f"></script>
+  <script defer src="/src/mx-ui.js?v=rbkuc"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=rbkuc"></script>
+  <script defer src="/src/cookie.js?v=rbkuc"></script>
 
   <script>
     setTimeout(function() {

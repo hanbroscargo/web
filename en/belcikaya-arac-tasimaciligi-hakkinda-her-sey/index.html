@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=y19h8" />
-  <link rel="preload" href="/src/cookie.css?v=y19h8" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=h4742" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=h4742" />
+  <link rel="preload" href="/src/cookie.css?v=h4742" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=y19h8" />
+    <link rel="stylesheet" href="/src/cookie.css?v=h4742" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=y19h8" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=h4742" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=y19h8">
+<link rel="stylesheet" href="style.css?v=h4742">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=oqccf" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=aso8n" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/belcika-arac-rehber/tr.webp?v=xls16" width="100%" alt="Belgium Vehicle Shipping and Customs Procedures Guide" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/belcika-arac-rehber/tr.webp?v=n8ane" width="100%" alt="Belgium Vehicle Shipping and Customs Procedures Guide" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Professional Process Management in Belgium Vehicle Shipping</h2><p class="b0000-pd5-lead">Belgium, the heart of the European Union, is an important destination for vehicles coming from Turkey with its strategic ports and advanced logistics infrastructure. As Han Bros Cargo, we offer end-to-end expertise for your passenger vehicles, classic cars, SUVs, or motorcycles you want to move to Belgium (Brussels, Antwerp, Ghent, Charleroi, etc.). We both speed up your vehicle's delivery process and provide a cost advantage, especially with our operational power at the Port of Antwerp.</p><h3>Step-by-Step Belgium Vehicle Shipping</h3><p>In the process from your vehicle being picked up from your address in Turkey to being delivered to your door in Belgium, we follow these critical steps:</p><ul class="b0000-pd5-features"><li><strong>Pre-Preparation and Appraisal:</strong> Your vehicle's current condition is photographed and required documents for international shipping (License, power of attorney, etc.) are checked.</li><li><strong>Customs Clearance Processes:</strong> We guide you on the 'Form 705' and other local documents required for you to benefit from customs duty exemption in case of moving to Belgium (change of residence).</li><li><strong>Shipping Models:</strong> According to your budget, we use open auto carrier trucks or closed-box special tow trucks for luxury vehicles requiring higher security.</li><li><strong>Port and Plate Procedures:</strong> We manage the E705 document and customs declaration processes required for the local registration procedures of your vehicle reaching Belgium with our local partners.</li></ul><h3>Antwerp Port: Your Logistics Advantage</h3><p>Most of our Belgium shipments are performed through Antwerp, which is the second-largest port in Europe. As Han Bros Cargo, thanks to our customs-bonded warehouses in this region, we minimize waiting times when your vehicle reaches the port and quickly move to address delivery. Additionally, we ensure you don't get stuck at any bureaucratic obstacles with our documentation support suitable for Belgium's multilingual (French, Flemish, German) structure.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Can I take my vehicle to Belgium customs-free when moving?</summary><p>Yes, if you have resided in Turkey for the last 12 months and your vehicle has been registered to you for at least 6 months, you can import your vehicle exempt from customs duty (Personal Effects) within the scope of moving to Belgium.</p></details><details class="b0000-pd5-faq-item"><summary>What is the average shipping time?</summary><p>Vehicle shipments to Belgium departing from Turkey take an average of 10-14 days depending on customs procedures and road conditions.</h3><details class="b0000-pd5-faq-item"><summary>Can I carry my personal belongings inside the vehicle?</summary><p>You are allowed to carry a reasonable amount (average 50-60 kg) of textiles and personal items in the trunk and back seat of the vehicle in a way that does not block the driver's view.</h3><h3>How much does the CMR insurance protect my vehicle?</h3><p>All our vehicles are under international CMR responsibility insurance. A full comprehensive All-Risk transport insurance over the market value of the vehicle can also be made depending on your request.</p></details></details><details class="b0000-pd5-faq-item"><summary>Who will deliver my vehicle in Belgium?</summary><p>After customs procedures are finished, your vehicle is delivered to the address you specified by our local partners in Belgium or directly by our trucks.</p></details><p>Han Bros Cargo is always with you for a safe, transparent, and professional vehicle shipping experience on the Belgium route. Get a free quote now!</p></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=dfpva" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=h5cm9" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=y19h8"></script>
-  <script defer src="/src/cookie.js?v=y19h8"></script>
+  <script defer src="/src/mx-ui.js?v=h4742"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=h4742"></script>
+  <script defer src="/src/cookie.js?v=h4742"></script>
 
   <script>
     setTimeout(function() {

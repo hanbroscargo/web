@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=yvubz" />
-  <link rel="preload" href="/src/cookie.css?v=yvubz" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=vwqd2" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=vwqd2" />
+  <link rel="preload" href="/src/cookie.css?v=vwqd2" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=yvubz" />
+    <link rel="stylesheet" href="/src/cookie.css?v=vwqd2" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=yvubz" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=vwqd2" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=yvubz">
+<link rel="stylesheet" href="style.css?v=vwqd2">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=f3vki" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=fejvu" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/gaziantepten-ingiltereye-koli-gonderme/tr.webp?v=etutl" width="100%" alt="Gaziantep'ten İngiltere'ye Koli Gönderme" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/gaziantepten-ingiltereye-koli-gonderme/tr.webp?v=mrmmz" width="100%" alt="Gaziantep'ten İngiltere'ye Koli Gönderme" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Gaziantep'ten İngiltere'ye Koli Gönderme</h2><p class="b0000-pd5-lead">Gaziantep'ten İngiltere'ye taşınmak, sadece fiziksel bir yer değişimi değil, yeni bir hayata başlangıçtır. Gaziantep'ten İngiltere'ye Koli Gönderme hizmetimizle bu geçiş sürecini sizin için en konforlu hale getiriyoruz.</p><h3>Gaziantep'ten İngiltere'ye Lojistik Sürecimiz</h3><p>Gaziantep'ten gerçekleştirdiğimiz taşımalarda Güneydoğu Anadolu çıkışlı uzun mesafe taşımacılığı kullanıyoruz. İki nokta arasındaki mesafe yaklaşık <strong>4.100 km</strong> olup, tahmini teslimat süremiz <strong>15-18 gün</strong>'dir. Bölgesel aktarma merkezlerimiz üzerinden güvenli sevkiyat. Çeyiz ve hassas eşya gönderimlerinde özel ambalajlama ile müşterilerimize özel avantajlar sunuyoruz.</p><h3>Koli Gönderme Hizmet Detayları</h3><p><strong>Express Koli ve Paket Gönderimi</strong> odaklı hizmetimizde teknik detaylar ön plandadır. 300kg altı gönderiler için Minivan Express veya Hava Kargo seçenekleri daha uygundur. Kapınızdan alınan koliler barkodlanarak takip sistemine işlenir. Ayrıca, Acil gönderiler için 48-72 saat teslimat opsiyonu. avantajımızdan da yararlanabilirsiniz.</p><h3>Profesyonel Paketleme ve Gümrükleme</h3><p>Eşyalarınızın güvenliği bizim için önceliktir. Kırılacak eşyalarınız için "kraft kağıt + balonlu naylon" kombinasyonu kullanıyoruz. Gümrük tarafında ise Brexit sonrası zorlaşan prosedürleri sizin adınıza uzman ekibimiz yönetmektedir.</p><h4>Süreç Nasıl İşler?</h4><ul class="b0000-pd5-features"><li><strong>Ekspertiz:</strong> Gaziantep'ten adresinizde hacim tespiti.</li><li><strong>Operasyon:</strong> Kapınızdan alınan koliler barkodlanarak takip sistemine işlenir.</li><li><strong>Gümrük:</strong> Gaziantep'ten ihracat ve İngiltere'ye ithalat işlemleri.</li><li><strong>Teslimat:</strong> Randevulu teslimat ve kurulum desteği.</li></ul><h3>Sıkça Sorulan Sorular</h3><h4>Depolama hizmetiniz var mı?</h4><p>Evet, hem Türkiye'de hem de İngiltere'de güvenli depolarımız mevcuttur. İstediğiniz süre kadar eşyalarınızı bekletebiliriz.</p><h4>Sigorta neleri kapsar?</h4><p>All-Risk sigortamız, eşyaların paketlenmesinden teslimatına kadar olan süreçte kaza, yangın ve hırsızlık risklerini kapsar.</p><h4>Gümrük vergisi çıkar mı?</h4><p>Zati eşya statüsünde ToR onayı alırsanız vergi ödemezsiniz. 300kg altı gönderiler için Minivan Express veya Hava Kargo seçenekleri daha uygundur.</p><h3>Sonuç ve İletişim</h3><p>Gaziantep'ten İngiltere'ye Koli Gönderme için Han Bros Cargo güvencesini tercih edin. Bölgesel aktarma merkezlerimiz üzerinden güvenli sevkiyat avantajlarımızla tanışmak için hemen arayın.</p><p style="font-size:0.8em; color:#777;">Etiketler: paketleme ambalaj, zati eşya gümrük, uluslararası nakliyat, mobilya ihracatı, e-arşiv fatura, c3 belgesi, Gaziantep'ten nakliye, Koli Gönderme fiyat.</p></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=cq7sl" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=fbla1" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=yvubz"></script>
-  <script defer src="/src/cookie.js?v=yvubz"></script>
+  <script defer src="/src/mx-ui.js?v=vwqd2"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=vwqd2"></script>
+  <script defer src="/src/cookie.js?v=vwqd2"></script>
 
   <script>
     setTimeout(function() {

@@ -613,8 +613,8 @@
                 <div class="eberbu-hero-icon" aria-hidden="true">
                     <div class="eberbu-hero-icon-inner">🚛</div>
                 </div>
-                <h1 class="eberbu-hero-title">{{heroTitle}}</h1>
-                <p class="eberbu-hero-subtitle">{{heroSubtitle}}</p>
+                <h1 class="eberbu-hero-title">Kargo Takip Sistemi</h1>
+                <p class="eberbu-hero-subtitle">Gönderinizin durumunu anlık olarak takip edin</p>
             </div>
             <div class="eberbu-hero-particles" aria-hidden="true"></div>
         </header>
@@ -625,21 +625,21 @@
                 <div class="eberbu-search-icon" aria-hidden="true">
                     <span class="material-symbols-outlined" aria-hidden="true">search</span>
                 </div>
-                <h2 id="search-title" class="eberbu-search-title">{{searchTitle}}</h2>
-                <p class="eberbu-search-subtitle">{{searchSubtitle}}</p>
+                <h2 id="search-title" class="eberbu-search-title">Gönderi Sorgula</h2>
+                <p class="eberbu-search-subtitle">Takip numaranızı girerek gönderinizin güncel durumunu öğrenin</p>
             </header>
             
-            <form class="eberbu-search-form" id="searchForm" aria-label="{{formAriaLabel}}">
+            <form class="eberbu-search-form" id="searchForm" aria-label="Gönderi takip formu">
                 <div class="eberbu-input-group">
                     <div class="eberbu-input-icon" aria-hidden="true">
                         <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
                     </div>
-                    <label for="trackingInput" class="sr-only">{{inputPlaceholder}}</label>
-                    <input type="text" class="eberbu-search-input" id="trackingInput" name="trackingNumber" placeholder="{{inputPlaceholder}}" required aria-label="{{inputAriaLabel}}">
+                    <label for="trackingInput" class="sr-only">Takip numarası giriniz (örn: CA-250000-0000)</label>
+                    <input type="text" class="eberbu-search-input" id="trackingInput" name="trackingNumber" placeholder="Takip numarası giriniz (örn: CA-250000-0000)" required aria-label="Takip numarası giriniz">
                     <div class="eberbu-input-underline" aria-hidden="true"></div>
                 </div>
-                <button type="submit" class="eberbu-search-btn" aria-label="{{searchBtnAriaLabel}}" style="cursor: pointer;">
-                    <span class="eberbu-btn-text">{{btnSearch}}</span>
+                <button type="submit" class="eberbu-search-btn" aria-label="Gönderi sorgula" style="cursor: pointer;">
+                    <span class="eberbu-btn-text">Sorgula</span>
                     <div class="eberbu-btn-icon" aria-hidden="true">
                         <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                     </div>
@@ -655,28 +655,28 @@
                     <span class="material-symbols-outlined" aria-hidden="true">info</span>
                 </div>
                 <div class="eberbu-status-info">
-                    <h2 id="tracking-info">{{statusDefault}}</h2>
-                    <p class="eberbu-status-desc">{{statusDesc}}</p>
+                    <h2 id="tracking-info">Takip numarası giriniz</h2>
+                    <p class="eberbu-status-desc">Gönderinizin güncel durumu aşağıda listelenmektedir</p>
                 </div>
             </header>
         </section>
         
         
-        <section class="eberbu-timeline-section" id="timeline" aria-label="{{timelineAriaLabel}}" role="region">
+        <section class="eberbu-timeline-section" id="timeline" aria-label="Gönderi takip geçmişi" role="region">
             
         </section>
 
         
         <script id="eberbu-i18n">
-        if (typeof eberbuLang === 'undefined') { var eberbuLang = '{{lang}}'; }
-        if (typeof eberbuLoadingText === 'undefined') { var eberbuLoadingText = '{{loadingText}}'; }
-        if (typeof eberbuErrorNotFound === 'undefined') { var eberbuErrorNotFound = '{{errorNotFound}}'; }
-        if (typeof eberbuErrorNoHistory === 'undefined') { var eberbuErrorNoHistory = '{{errorNoHistory}}'; }
-        if (typeof eberbuTrackingStatusFormat === 'undefined') { var eberbuTrackingStatusFormat = '{{trackingStatusFormat}}'; }
+        if (typeof eberbuLang === 'undefined') { var eberbuLang = 'tr'; }
+        if (typeof eberbuLoadingText === 'undefined') { var eberbuLoadingText = 'Yükleniyor...'; }
+        if (typeof eberbuErrorNotFound === 'undefined') { var eberbuErrorNotFound = 'Sipariş bulunamadı veya bir hata oluştu.'; }
+        if (typeof eberbuErrorNoHistory === 'undefined') { var eberbuErrorNoHistory = 'Bu takip numarası için geçmiş bulunamadı.'; }
+        if (typeof eberbuTrackingStatusFormat === 'undefined') { var eberbuTrackingStatusFormat = '{0} takip numaralı siparişinizin durumu aşağıdaki gibidir.'; }
         </script>
 
         
-        <button class="eberbu-fab" id="fabButton" style="display: none; cursor: pointer;" aria-label="{{fabRefresh}}" title="{{fabRefresh}}">
+        <button class="eberbu-fab" id="fabButton" style="display: none; cursor: pointer;" aria-label="Yenile" title="Yenile">
             <span class="material-symbols-outlined" aria-hidden="true">refresh</span>
         </button>
     </main>

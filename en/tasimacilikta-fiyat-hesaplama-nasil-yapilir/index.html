@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=e629j" />
-  <link rel="preload" href="/src/cookie.css?v=e629j" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=b7nac" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=b7nac" />
+  <link rel="preload" href="/src/cookie.css?v=b7nac" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=e629j" />
+    <link rel="stylesheet" href="/src/cookie.css?v=b7nac" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=e629j" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=b7nac" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=e629j">
+<link rel="stylesheet" href="style.css?v=b7nac">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=pllet" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=l816m" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/fiyat-hesaplama-nasil-yapilir/tr.webp?v=duzcz" width="100%" alt="How Is Shipping Price Calculated? Comprehensive Guide" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/fiyat-hesaplama-nasil-yapilir/tr.webp?v=xp52r" width="100%" alt="How Is Shipping Price Calculated? Comprehensive Guide" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Smart Budgeting in Logistics: How Are Shipping Prices Determined?</h2><p class="b0000-pd5-lead">In international transportation, 'price calculation' means much more than just a figure; it is a mathematical combination of many variables, from the route of your shipment to the type of packaging. As Han Bros Cargo, we ensure that you clearly see your freight costs from the very beginning with the transparent pricing policy we offer to our customers. Whether it is a small parcel or a complete household good, our pricing process is carried out in full compliance with international logistics standards (IATA and road norms). Accurate calculation not only protects your budget but also increases the operational efficiency of the shipment.</p><h3>4 Basic Criteria Affecting Pricing</h3><p>The main factors considered when preparing your shipping quote are:</p><ul class="b0000-pd5-features"><li><strong>Volume and Weight Balance (Volumetric):</strong> The space occupied by your items (width x length x height) is compared with the actual weight. In road transport, 'Chargeable Weight' is usually determined based on the 1 m3 = 333 kg standard.</li><li><strong>Distance and Destination:</strong> The kilometers from the point of origin (e.g., Istanbul) to the destination (e.g., Berlin) and the highway, bridge, and tunnel tolls on the route are added to the cost.</li><li><strong>Transportation Mode and Speed:</strong> Partial (groupage) transportation is the most economical option, while express services or full truck rentals are priced differently depending on the speed.</li><li><strong>Additional Services and Customs:</strong> Professional support items such as packaging, elevator loading, insurance, and customs declaration are included in the total price.</li></ul><h3>No Room for Surprises with Transparent Pricing</h3><p>There is no room for the concept of 'hidden costs' at Han Bros Cargo. The quotes sent to you through our online price calculation tools and expert consultants clearly include fuel surcharges, customs entry-exit fees, and door-to-door delivery costs. The type of your items (furniture, automobile, commercial load, etc.) also plays an important role in the price calculation process. For example, while special towing costs come into play in vehicle transportation, volumetric optimization comes to the fore in household goods. Our goal is not to offer you the cheapest price, but the highest quality service at the most optimized cost.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>How is the M3 (Cubic Meter) calculation done?</summary><p>You can find the volume by multiplying the width, length, and height measurements of your item in meters with each other. For example; 1m x 1m x 1m = 1 m3.</h3><details class="b0000-pd5-faq-item"><summary>What is cubic weight calculation and why is it important?</summary><p>Volumetric weight (Desi) is the volume weight of a cargo. It is calculated with the formula (Width x Length x Height) / 3000 (or 5000 depending on the firm). It ensures fair pricing of lightweight but bulky items.</h3><h3>How long is the price quote valid for?</h3><p>Due to fluctuations in exchange rates and fuel prices, logistics quotes usually have a validity period of 7 to 15 days.</h3><h3>Are customs duties included in the calculation?</h3><p>The customs clearance service fee is usually included in our price quote; however, customs/import taxes paid to the state are determined separately according to the type of good and the customs regime.</h3><h3>What should I do to get the most suitable price?</h3><p>You can get the best prices by dismantling your items as much as possible to reduce the volume and by finalizing your shipment date at least 2 weeks in advance.</h3><p>Optimize your transportation costs today. Experience the privilege of error-free and transparent price calculation with Han Bros Cargo!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=lkpwb" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=nvrcu" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=e629j"></script>
-  <script defer src="/src/cookie.js?v=e629j"></script>
+  <script defer src="/src/mx-ui.js?v=b7nac"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=b7nac"></script>
+  <script defer src="/src/cookie.js?v=b7nac"></script>
 
   <script>
     setTimeout(function() {

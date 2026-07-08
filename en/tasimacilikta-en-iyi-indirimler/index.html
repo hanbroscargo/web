@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=gm9sv" />
-  <link rel="preload" href="/src/cookie.css?v=gm9sv" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=qu7tl" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=qu7tl" />
+  <link rel="preload" href="/src/cookie.css?v=qu7tl" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=gm9sv" />
+    <link rel="stylesheet" href="/src/cookie.css?v=qu7tl" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=gm9sv" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=qu7tl" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=gm9sv">
+<link rel="stylesheet" href="style.css?v=qu7tl">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=kj55u" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=jlmda" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/en-iyi-indirimler/tr.webp?v=mnw6s" width="100%" alt="Best Discounts and Opportunities in International Shipping" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/en-iyi-indirimler/tr.webp?v=t5gzm" width="100%" alt="Best Discounts and Opportunities in International Shipping" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Smart Savings in Logistics: Best Discount Strategies</h2><p class="b0000-pd5-lead">Managing costs in international shipping does not mean sacrificing quality service. As Han Bros Cargo, we always aim to offer the highest standards to our customers with the most competitive prices. The discount models we developed for you to optimize your transport budget lighten the logistics burden of both corporate exporters and individual home-moving customers. In this guide, you will discover how you can save more in shipping processes and how to catch our current discount opportunities.</p><h3>Main Discount Items That Will Reduce Your Shipping Costs</h3><p>Ways to save in the Han Bros Cargo ecosystem:</p><ul class="b0000-pd5-features"><li><strong>Early Reservation Advantage:</strong> By clarifying your shipment date 4-6 weeks in advance, you can get a fixed price guarantee much more suitable than current market freights.</li><li><strong>Groupage (Partial) Transport Discounts:</strong> If your items are few, you pay only a small part of the complete vehicle cost by sharing the truck with other customers.</li><li><strong>Bulk Shipping and Annual Agreements:</strong> We apply special 'Loyalty Discounts' to our corporate customers who perform regular shipments, which reduce costs per unit cargo as the volume increases.</li><li><strong>Request via Digital Channels:</strong> When you create your quotes through the smart forms on our website, you can earn an 'Online Reservation' discount in honor of the reduction in manual operation costs.</li></ul><h3>Hidden Saving Tips in Logistics</h3><p>In addition to discounts, correct planning also provides great savings. For example, by moving your move dates out of the most intense (mid-season) periods of the logistics sector, you can benefit from 'Off-Season' opportunities. Also, you can go for discounts in labor items by disassembling your furniture yourself or preparing packaging materials yourself in Han Bros standards. Our aim is to offer you not only a price discount but also a strategic partnership that will pull your total logistics costs down.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Can I benefit from two different discounts at the same time?</summary><p>Discounts can be combined according to campaign conditions. For example, you can use the early booking discount and the payment method discount at the same time.</h3><details class="b0000-pd5-faq-item"><summary>Are there special discounts for students or appointed civil servants?</summary><p>Yes, in certain periods, we have special incentive discounts for public personnel in appointment periods and students going abroad.</h3><h3>Does the quality of service decrease when I get a discounted price?</h3><p>Never. The same professional teams, same insurance assurance, and same modern vehicles are used in our discounted shipments as well.</h3><h3>Do you reflect it to the customer when freight prices fall?</h3><p>Yes, we closely follow the decreases in the global freight market and instantly reflect our cost advantages in our current quotes.</h3><h3>How to make a discounted annual agreement for corporate customers?</h3><p>A special protocol is prepared for you based on your annual shipment volume and routes. You can meet with our corporate sales representative for details.</h3><p>You are in the right place for solutions that consider your pocket in international shipping. Request a quote to see our current discount rates and start saving now!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=tfwhc" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=zmbdd" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=gm9sv"></script>
-  <script defer src="/src/cookie.js?v=gm9sv"></script>
+  <script defer src="/src/mx-ui.js?v=qu7tl"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=qu7tl"></script>
+  <script defer src="/src/cookie.js?v=qu7tl"></script>
 
   <script>
     setTimeout(function() {

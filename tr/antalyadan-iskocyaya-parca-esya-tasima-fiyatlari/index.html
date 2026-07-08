@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=w8yih" />
-  <link rel="preload" href="/src/cookie.css?v=w8yih" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=f7m0e" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=f7m0e" />
+  <link rel="preload" href="/src/cookie.css?v=f7m0e" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=w8yih" />
+    <link rel="stylesheet" href="/src/cookie.css?v=f7m0e" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=w8yih" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=f7m0e" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=w8yih">
+<link rel="stylesheet" href="style.css?v=f7m0e">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=i6znj" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=lc5nv" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/antalyadan-iskocyaya-parca-esya-tasima-fiyatlari/tr.webp?v=gcep3" width="100%" alt="Antalya'dan İskoçya'ya Parça Eşya Taşıma Fiyatları" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/antalyadan-iskocyaya-parca-esya-tasima-fiyatlari/tr.webp?v=y4qnx" width="100%" alt="Antalya'dan İskoçya'ya Parça Eşya Taşıma Fiyatları" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Antalya'dan İskoçya'ya Parça Eşya Taşıma Fiyatları</h2><p class="b0000-pd5-lead"><strong>Antalya'dan İskoçya'ya parça eşya taşıma fiyatları</strong> konusunda profesyonel çözümler arıyorsanız doğru yerdesiniz. Türkiye ve Birleşik Krallık arasındaki güçlü lojistik ağımızla, parça eşya taşıma ihtiyaçlarınızda yanınızdayız. Han Bros Cargo olarak, süreçlerinizi en hızlı ve güvenli şekilde yönetiyoruz.</p><h3>Profesyonel Parça Eşya Taşıma Süreci Nasıl İşler?</h3><p>Antalya'dan İskoçya'ya gerçekleştirilecek taşımacılık işlemlerinde dikkat edilmesi gereken en önemli nokta, gümrük prosedürleri ve paketleme kalitesidir. Eşyalarınızın güvenliği için uluslararası standartlarda ambalajlama malzemeleri kullanıyoruz. Brexit sonrası değişen gümrük mevzuatına tam hakimiyetimiz sayesinde, bürokratik engellere takılmadan teslimat sağlıyoruz.</p<h3>Taşımacılık ve Lojistik Planlaması</h3><p>Her taşıma işlemi kendine özgü gereksinimler barındırır. Parça eşya taşıma hizmetimizde öncelikle ücretsiz ekspertiz ve hacim hesaplaması yapıyoruz. Bu sayede net fiyatlandırma çıkarabiliyoruz. Eşyalarınızın Antalya'dan alınıp İskoçya'ya teslim edilmesine kadar geçen süreci online takip sistemimiz üzerinden anlık olarak izleyebilirsiniz.</p><h4>Adım Adım Taşıma Süreci</h4><ul class="b0000-pd5-features"><li><strong>Ekspertiz ve Planlama:</strong> Eşyalarınızın yerinde incelenmesi ve taşıma planının oluşturulması.</li><li><strong>Paketleme and Ambalajlama:</strong> Kırılacak eşyalar, mobilyalar ve elektronik cihazlar için özel koruyucu malzemelerle paketleme.</li><li><strong>Gümrük İşlemleri:</strong> Gerekli evrakların hazırlanması ve Antalya'dan çıkış, İskoçya'ya giriş gümrükleme süreçlerinin yönetimi.</li><li><strong>Lojistik ve Transfer:</strong> Modern araç filomuzla karayolu veya denizyolu (intermodal) taşımacılığın gerçekleştirilmesi.</li><li><strong>Teslimat ve Kurulum:</strong> Yeni adresinizde eşyaların odaya teslimi ve isteğe bağlı mobilya kurulumu.</li></ul><h3>Fiyatlandırma Politikamız</h3><p>Antalya'dan İskoçya'ya parça eşya taşıma fiyatları belirlenirken eşya hacmi (m3), mesafe ve tercih edilen ek hizmetler (depolama, sigorta vb.) dikkate alınır. Han Bros Cargo olarak şeffaf fiyat politikasıyla, sürpriz maliyetler olmadan hizmet sunuyoruz. Güncel fiyat teklifi almak için bizimle iletişime geçebilirsiniz.</p><h3>Sıkça Sorulan Sorular ve Detaylı Bilgiler</h3><p>Uluslararası nakliyat sektörü, deneyim ve titizlik gerektirir. Firma seçiminden gümrüklemesine, sigortadan teslimata kadar her aşama bir bütün olarak yönetilmelidir. Aşağıda, müşterilerimizin parça eşya taşıma hizmeti alırken en çok merak ettiği konulara değindik.</p<h3>Sık Sorulan Sorular (FAQ)</h3><h4>1. Taşıma süresi ne kadar sürer?</h4><p>Ortalama teslimat süresi, seçilen taşıma moduna (Express Minivan veya TIR) ve gümrük yoğunluğuna bağlı olarak 4 ile 14 gün arasında değişmektedir. Antalya'dan İskoçya'ya parkurunda düzenli seferlerimiz bulunmaktadır.</p><h4>2. Gümrük vergisi öder miyim?</h4><p>Zati eşya (kişisel ev eşyası) taşımlarında, belirli şartları (Transfer of Residence - ToR) sağlamanız durumunda gümrük vergisinden muaf olabilirsiniz. Ticari eşyalarda ise mevzuata uygun vergilendirme yapılır. Uzmanlarımız bu konuda ücretsiz danışmanlık vermektedir.</p><h4>3. Eşyalarım sigortalı mı?</h4><p>Evet, tüm taşıma operasyonlarımızda All-Risk sigorta veya CMR sigortası kapsamında eşyalarınız güvence altına alınmaktadır. Olası hasar durumlarında sigorta prosedürleri firmamız tarafından takip edilir.</p><h4>4. Paketlemeyi kendim yapabilir miyim?</h4><p>Kişisel eşyalarınızı (kıyafet, kitap vb.) kolileyebilirsiniz ancak mobilya, beyaz eşya ve hassas eşyaların paketlenmesinin profesyonel ekibimiz tarafından yapılması, sigorta kapsamı ve güvenli taşıma için önemle tavsiye edilir.</p><h3>Sonuç</h3><p>Antalya'dan İskoçya'ya parça eşya taşıma fiyatları hizmetimizle ilgili daha fazla bilgi almak, rezervasyon yapmak veya ücretsiz ekspertiz talebinde bulunmak için web sitemizdeki formu doldurabilir veya doğrudan telefon numaralarımızdan bize ulaşabilirsiniz. Han Bros Cargo, mesafeleri kısaltır.</p></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=moo6t" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=v2l0x" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=w8yih"></script>
-  <script defer src="/src/cookie.js?v=w8yih"></script>
+  <script defer src="/src/mx-ui.js?v=f7m0e"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=f7m0e"></script>
+  <script defer src="/src/cookie.js?v=f7m0e"></script>
 
   <script>
     setTimeout(function() {

@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=zb6c8" />
-  <link rel="preload" href="/src/cookie.css?v=zb6c8" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=afe2k" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=afe2k" />
+  <link rel="preload" href="/src/cookie.css?v=afe2k" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=zb6c8" />
+    <link rel="stylesheet" href="/src/cookie.css?v=afe2k" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=zb6c8" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=afe2k" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=zb6c8">
+<link rel="stylesheet" href="style.css?v=afe2k">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=u9mn6" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=d57js" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/jg1oria5p8/kpxm0.webp?v=jcqnp" width="100%" alt="Ticari Eşya Taşımacılığı" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/jg1oria5p8/kpxm0.webp?v=lx0h9" width="100%" alt="Ticari Eşya Taşımacılığı" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Ticari Eşya Taşımacılığı Hizmeti</h2><p class="b0000-pd5-lead">Han Bros Cargo olarak ticari eşya ve yük taşımacılığı konusunda kapsamlı lojistik çözümleri sunuyoruz. İşletmelerin uluslararası ticaret ihtiyaçlarını karşılamak için profesyonel taşımacılık hizmetleri sağlıyoruz.</p><h3>Hizmet Kapsamımız</h3><p>Ticari eşya taşımacılığı hizmetimiz, ticari yüklerin toplanmasından teslim edilmesine kadar tüm süreçleri kapsar. Parsiyel yük, komple yük, paletli yük ve konteyner taşımacılığı seçenekleri mevcuttur. İşletmelerin ihtiyaçlarına özel lojistik çözümleri sunuyoruz.</p><h3>Parsiyel Yük Taşımacılığı</h3><p>Küçük ve orta ölçekli ticari yükler için parsiyel yük taşımacılığı hizmeti sunuyoruz. Parsiyel yük taşımacılığında, farklı müşterilerin yükleri aynı araçta birleştirilerek maliyet etkin bir taşıma sağlanır. Bu yöntem özellikle küçük hacimli ticari gönderiler için ekonomiktir.</p><h3>Komple Yük Taşımacılığı</h3><p>Büyük hacimli ticari yükler için komple yük taşımacılığı hizmeti sunuyoruz. Komple yük taşımacılığında, tüm araç veya konteyner tek bir müşteriye tahsis edilir. Bu yöntem büyük hacimli gönderiler için daha hızlı ve güvenli bir seçenektir.</p><h3>Paletli Yük Taşımacılığı</h3><p>Paletli ticari yükler için özel taşıma çözümleri sunuyoruz. Paletler özel forkliftler ile yüklenir ve boşaltılır. Paletli yük taşımacılığında, yüklerin güvenli sabitlenmesi ve hasar önleme önlemleri alınır. Standart palet boyutları ve özel palet boyutları için hizmet sunulur.</p><h3>Konteyner Taşımacılığı</h3><p>Büyük hacimli ticari yükler için konteyner taşımacılığı hizmeti sunuyoruz. 20 feet ve 40 feet konteyner seçenekleri mevcuttur. Konteyner taşımacılığında, yüklerin konteyner içinde düzenlenmesi ve sabitlenmesi önemlidir. Özel konteyner tipleri (soğutmalı, açık üst, yan açılır) için de hizmet sunulur.</p><h3>Paketleme ve Ambalajlama</h3><p>Ticari eşyalarınızın güvenli taşınması için profesyonel paketleme hizmeti sunuyoruz. Ürün türüne göre özel ambalajlama yöntemleri uygulanır. Kırılgan ürünler için özel koruyucu ambalajlar, elektronik ürünler için anti-statik ambalajlar kullanılır. Endüstriyel ürünler için sağlam karton veya ahşap kasa ambalajlar hazırlanır.</p><h3>Gümrük İşlemleri</h3><p>Ticari eşya taşımacılığında gümrük işlemleri kritik öneme sahiptir. Gümrük mevzuatına hakim ekibimiz, tüm gümrük belgelerinin hazırlanması, fatura düzenlenmesi, menşe belgesi hazırlanması ve gümrük işlemlerinin takibi konusunda profesyonel destek sağlar. İthalat, ihracat ve transit işlemleri yönetilir.</p><h3>Sigorta ve Güvence</h3><p>Tüm ticari eşya taşımacılığı hizmetlerimizde kapsamlı sigorta seçenekleri sunuyoruz. Yüklerinizin değerine göre sigorta poliçesi düzenlenir ve taşıma süresince tam koruma sağlanır. Hasar durumunda sigorta şirketi ile koordineli tazminat süreci yönetilir.</p><h3>Takip ve Raporlama</h3><p>Ticari yüklerinizin taşıma sürecini online takip sistemi ile anlık olarak takip edebilirsiniz. Taşıma rotası, konum bilgisi ve tahmini teslimat tarihi sistem üzerinden paylaşılır. İşletmeler için özel raporlama hizmetleri sunulur. Aylık, haftalık ve günlük taşıma raporları hazırlanır.</p><h3>Teslimat Seçenekleri</h3><p>Ticari eşyalarınızın teslimatı için farklı seçenekler sunuyoruz. Kapıdan kapıya teslimat, depo teslimi, liman teslimi ve terminal teslimi seçenekleri mevcuttur. Teslimat zamanı ve yeri müşteri ihtiyaçlarına göre planlanır. Acil teslimat hizmeti de sunulur.</p><h3>Özel Çözümler</h3><p>Farklı sektörlerin ihtiyaçlarına özel lojistik çözümleri sunuyoruz. Tekstil, gıda, elektronik, otomotiv yedek parça, makine ve ekipman gibi farklı sektörler için özel taşıma planlaması yapılır. Soğuk zincir taşımacılığı, tehlikeli madde taşımacılığı ve değerli eşya taşımacılığı için özel hizmetler sunulur.</p><p>Han Bros Cargo ile ticari eşya taşımacılığında güvenilir, profesyonel ve kaliteli hizmet. İşletmenizin lojistik ihtiyaçları için bizimle iletişime geçin.</p></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=hvncb" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=pc5xv" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=zb6c8"></script>
-  <script defer src="/src/cookie.js?v=zb6c8"></script>
+  <script defer src="/src/mx-ui.js?v=afe2k"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=afe2k"></script>
+  <script defer src="/src/cookie.js?v=afe2k"></script>
 
   <script>
     setTimeout(function() {

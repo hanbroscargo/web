@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=ppsc4" />
-  <link rel="preload" href="/src/cookie.css?v=ppsc4" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=dteew" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=dteew" />
+  <link rel="preload" href="/src/cookie.css?v=dteew" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=ppsc4" />
+    <link rel="stylesheet" href="/src/cookie.css?v=dteew" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=ppsc4" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=dteew" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=ppsc4">
+<link rel="stylesheet" href="style.css?v=dteew">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=c37e2" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=muni0" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/ev-esyasi-paketleme-hizmeti/tr.webp?v=qxhj3" width="100%" alt="Professional Packaging in International Household Goods Shipping" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/ev-esyasi-paketleme-hizmeti/tr.webp?v=n7e9n" width="100%" alt="Professional Packaging in International Household Goods Shipping" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Foundation of a Damage-Free Journey: Professional Packaging and Wrapping</h2><p class="b0000-pd5-lead">The most critical stage of the thousands-of-kilometers journey in international transport is packaging. The 'Professional Packaging Service' we offer as Han Bros Cargo ensures that your belongings are under full protection against vibrations, moisture changes, and external impacts. We don't just put your belongings into boxes; we use scientific packaging methods and materials at international standards according to the sensitivity degree of each piece. Correct packaging not only protects your belongings but is also the strongest guarantee of your insurance processes.</p><h3>Which Packaging Material Do We Use for Which Item?</h3><p>Expert equipment we use for the safety of your belongings:</p><ul class="b0000-pd5-features"><li><strong>Sensitive Glass and Kitchenware:</strong> Each piece is first wrapped in white papers, then placed in special separator boxes (honeycomb systems).</li><li><strong>Sofa and Textile Products:</strong> On protective stretches against dust and moisture, shock-absorbing bubble wrap and thick cardboard housing are applied.</li><li><strong>Furniture and White Goods:</strong> Products supported with corner protectors are completely covered with 'Kraft' paper bubble wraps and armored against impacts.</li><li><strong>Artworks and Electronic Devices:</strong> We offer custom-sized wooden crating service for sensitive loads that should not lose their value.</li></ul><h3>Controlled and Labeled Shipment System</h3><p>Our packaging process is not just about wrapping. Each packaged box is labeled with a content list and room number. In this way, the 'Packing List' is created without errors in customs processes and there is no confusion about which box goes to which room in your new home. Han Bros Cargo's trained packaging personnel gives quality control approval before each shipment. Thanks to professional packaging, the space inside the vehicle is used with maximum efficiency (volume optimization), which causes your freight costs to drop. Remember, good packaging reduces shipping stress by half.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Does the price drop if I do the packaging service myself?</summary><p>Yes, if you pack your items yourself, labor and material costs can be deducted from the freight. However, professional packaging is recommended for international insurance to be fully valid.</h3><details class="b0000-pd5-faq-item"><summary>Are all packaging materials included in the price?</summary><p>In our full-service options, all consumables such as boxes, bubble wrap, corner protectors, and stretch are provided by Han Bros Cargo.</h3><h3>Do you have extra secure boxes for fragile items?</h3><p>Yes, we use special 'Heavy-Duty' boxes with double corrugation and high impact resistance for porcelains and crystals.</h3><h3>Is there a possibility of hanging boxes for hanging textile products?</h3><p>Absolutely. We serve with wardrobe-type hanging boxes so that even the ironing of your dresses is not spoiled.</h3><h3>Do you disinfect my belongings after packaging them?</h3><p>In line with your request, disinfection processes according to our hygiene standards can be performed before packaging or during the storage process.</h3><p>Entrust your belongings to Han Bros's expertise, not to the difficulties of the road. Be at peace with our professional packaging service!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=tcrx2" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=pvx9d" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=ppsc4"></script>
-  <script defer src="/src/cookie.js?v=ppsc4"></script>
+  <script defer src="/src/mx-ui.js?v=dteew"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=dteew"></script>
+  <script defer src="/src/cookie.js?v=dteew"></script>
 
   <script>
     setTimeout(function() {

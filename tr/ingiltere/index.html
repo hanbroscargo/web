@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=hgp4j" />
-  <link rel="preload" href="/src/cookie.css?v=hgp4j" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=eykgr" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=eykgr" />
+  <link rel="preload" href="/src/cookie.css?v=eykgr" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=hgp4j" />
+    <link rel="stylesheet" href="/src/cookie.css?v=eykgr" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=hgp4j" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=eykgr" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=hgp4j">
+<link rel="stylesheet" href="style.css?v=eykgr">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=aqjes" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=vx48r" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/f7xqkhoaxi/me7nz.webp?v=zh0lt" width="100%" alt="İngiltere" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/f7xqkhoaxi/me7nz.webp?v=q6pcw" width="100%" alt="İngiltere" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Birleşik Krallık Yolculuğunuzda Profesyonel Çözüm Ortağınız</h2><p class="b0000-pd5-lead">Brexit sonrası değişen ticaret ve lojistik kurallarıyla birlikte, Türkiye'den İngiltere'ye (Londra, Manchester, Birmingham, Liverpool vb.) eşya veya kargo göndermek artık daha fazla uzmanlık gerektiriyor. Han Bros Cargo olarak, hem Türkiye'deki köklü altyapımız hem de Londra'daki yerel ofisimizle İngiltere hattında benzersiz bir hizmet kalitesi sunuyoruz. Gümrükleme süreçlerinden kapıya teslimata kadar her aşamada İngiliz ve Türk mevzuatlarına tam uyumlu çözümler üreterek, müşterilerimizin Birleşik Krallık hayallerini kolaylaştırıyoruz.</p><h3>İngiltere Hattında Sunduğumuz Ayrıcalıklı Hizmetler</h3><p>Londra merkezli operasyon gücümüzle yanınızdayız:</p><ul class="b0000-pd5-features"><li><strong>Brexit Sonrası Gümrük Danışmanlığı:</strong> T1, T2 belgeleri ve ATA karnesi gibi karmaşık gümrük süreçlerini profesyonel ekibimizle yöneterek zaman kayıplarını ve ek vergileri önlüyoruz.</li><li><strong>Haftalık Düzenli Seferler:</strong> Karayolu ve denizyolu entegre taşıma modellerimizle her hafta düzenli olarak Türkiye'den İngiltere'ye çıkış yapıyoruz.</li><li><strong>Zati Eşya Taşımacılığı (TOR1):</strong> İngiltere'ye taşınan vatandaşlarımız için Transfer of Residence (TOR) başvurularında rehberlik ederek gümrük vergisi muafiyetinden yararlanmanızı sağlıyoruz.</li><li><strong>Uçtan Uca Takip ve Sigorta:</strong> Karayolu CMR sigortasına ek olarak, tüm Birleşik Krallık rotasında canlı GPS takip imkanı sunuyoruz.</li><li><strong>Londra ve Çevresi Dağıtım Ağı:</strong> Londra ofisimiz aracılığıyla, ada genelinde dar sokaklar dahil her noktaya uygun küçük araçlarla kapıya teslimat yapabiliyoruz.</li></ul><h3>Neden Han Bros Cargo ile İngiltere?</h3><p>İngiltere lojistiğinde en büyük farkımız, her iki ülkede de kendi fiziksel ofislerimizin bulunmasıdır. Bu durum, gümrük kapılarındaki (Dover, Folkestone vb.) bekleme sürelerini minimize etmemizi ve yerel sorunları anında çözmemizi sağlar. Ev eşyası taşımacılığından ticari paletli yüklerinize kadar her türlü gönderiniz için 'Parsiyel (Grupaj)' hizmetimizle maliyet avantajı sağlıyoruz. Profesyonel ekibimiz İngilizce ve Türkçe dillerinde 7/24 destek vererek, eşyalarınızın nerede olduğu ve gümrük durumu hakkında sizi sürekli bilgilendirir. Han Bros Cargo ile İngiltere, artık sadece bir deniz aşırı ülke değil, lojistik açıdan komşunuz kadar yakındır.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Türkiye'den İngiltere'ye eşya taşımak ne kadar sürer?</summary><p>Gümrük süreçleri ve kullanılan rotaya bağlı olarak karayolu sevkiyatlarımız ortalama 12 ile 16 gün arasında tamamlanmaktadır.</p></details><details class="b0000-pd5-faq-item"><summary>TOR (Transfer of Residence) belgesi nedir?</summary><p>İngiltere'ye yerleşen kişilerin ev eşyalarını vergisiz getirebilmesi için HM Revenue and Customs'dan almaları gereken onay kodudur. Uzmanlarımız bu süreçte size destek olur.</p></details><details class="b0000-pd5-faq-item"><summary>İngiltere gümrüğünde vergi çıkar mı?</summary><p>Yeni (ticari) ürünlerde KDV ve gümrük vergisi uygulanır. Ancak TOR kapsamında getirilen kullanılmış ev eşyaları uygunluk durumuna göre vergiden muaftır.</p></details><details class="b0000-pd5-faq-item"><summary>Londra dışında başka şehirlere teslimat yapıyor musunuz?</summary><p>Evet, Manchester, Birmingham, Leeds, Glasgow ve Edinburgh dahil olmak üzere Birleşik Krallık'ın tüm şehirlerine teslimat yapıyoruz.</p></details><details class="b0000-pd5-faq-item"><summary>Mobilya montajı İngiltere'de de yapılıyor mu?</summary><p>Evet, Londra ofisimiz bünyesindeki profesyonel montaj ekiplerimizle İngiltere'deki evinizde kurulum hizmeti sunabiliyoruz.</p></details><p>İngiltere'ye taşınmak veya kargo göndermek için doğru adrestesiniz. Han Bros Cargo ile güvenli yolculuğa şimdi başlayın!</p></section></article></div>
     
   </div>
@@ -577,7 +551,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=v2wkm" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=fivf1" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -676,7 +650,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -692,8 +666,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=hgp4j"></script>
-  <script defer src="/src/cookie.js?v=hgp4j"></script>
+  <script defer src="/src/mx-ui.js?v=eykgr"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=eykgr"></script>
+  <script defer src="/src/cookie.js?v=eykgr"></script>
 
   <script>
     setTimeout(function() {

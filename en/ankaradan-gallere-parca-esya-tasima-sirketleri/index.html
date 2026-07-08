@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=rlwxx" />
-  <link rel="preload" href="/src/cookie.css?v=rlwxx" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=ocaa5" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=ocaa5" />
+  <link rel="preload" href="/src/cookie.css?v=ocaa5" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=rlwxx" />
+    <link rel="stylesheet" href="/src/cookie.css?v=ocaa5" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=rlwxx" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=ocaa5" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=rlwxx">
+<link rel="stylesheet" href="style.css?v=ocaa5">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=veplq" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=paff5" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/ankaradan-gallere-parca-esya-tasima-sirketleri/tr.webp?v=xwbal" width="100%" alt="Ankara to Wales Partial Load Transport Companies" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/ankaradan-gallere-parca-esya-tasima-sirketleri/tr.webp?v=xy9yf" width="100%" alt="Ankara to Wales Partial Load Transport Companies" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Partial Item Shipping Companies from Ankara to Wales</h2><p class="b0000-pd5-lead">If you are looking for professional solutions for <strong>partial item shipping companies from Ankara to Wales</strong>, you are in the right place. With our strong logistics network between Turkey and the UK, we are by your side for your partial item shipping needs. As Han Bros Cargo, we manage your processes in the fastest and safest way.</p><h3>How Does the Professional Partial Item Shipping Process Work?</h3><p>The most important point to consider in the transport processes to be carried out from Ankara to Wales is the customs procedures and packaging quality. We use international standard packaging materials for the safety of your belongings. Thanks to our full command of the changing customs legislation after Brexit, we provide delivery without getting stuck in bureaucratic obstacles.</p><h3>Transport and Logistics Planning</h3><p>Each transport process has its own unique requirements. In our Partial Item Shipping service, we first perform a free survey and volume calculation. In this way, we can come up with the right planning. You can instantly monitor the process from picking up your belongings from Ankara to delivering them to Wales via our online tracking system.</p><h4>Step-by-Step Transport Process</h4><ul class="b0000-pd5-features"><li><strong>Survey and Planning:</strong> Inspection of your belongings on-site and creation of the transport plan.</li><li><strong>Packaging and Wrapping:</strong> Packaging with special protective materials for fragile items, furniture, and electronic devices.</li><li><strong>Customs Procedures:</strong> Preparation of necessary documents and management of export customs from Ankara and import customs to Wales.</li><li><strong>Logistics and Transfer:</strong> Realization of road or sea (intermodal) transport with our modern vehicle fleet.</li><li><strong>Delivery and Installation:</strong> Delivery of the items to the room at the new address and optional furniture installation.</li></ul><h3>Why Should You Choose Us?</h3><p>With our expert staff, wide agency network, and customer satisfaction-oriented approach, we offer a guarantee for all transfers you will make to Wales. We also provide full support on issues such as C3 form processes in personal effects transport and ToR (Transfer of Residence) consultancy.</p><h3>Frequently Asked Questions and Detailed Information</h3><p>The international moving sector requires experience and meticulousness. Every stage from company selection to customs clearance, from insurance to delivery must be managed as a whole. Below, we have addressed the issues that our customers are most curious about when receiving Partial Item Shipping services.</p><h3>Frequently Asked Questions (FAQ)</h3><h4>1. How long does transport take?</h4><p>The average delivery time varies between 4 and 14 days, depending on the chosen transport mode (Express Minivan or Truck) and customs intensity. We have regular flights on the Ankara to Wales route.</p><h4>2. Do I pay customs duty?</h4><p>In personal effects transport, you may be exempt from customs duty if you meet certain conditions (Transfer of Residence - ToR). For commercial items, taxation is carried out in accordance with the legislation. Our experts provide free consultancy on this issue.</p><h4>3. Are my items insured?</h4><p>Yes, your items are covered under All-Risk insurance or CMR insurance in all our transport operations. In case of possible damage, insurance procedures are followed by our company.</p><h4>4. Can I pack the items myself?</h4><p>You can box your personal belongings (clothes, books, etc.), but it is strongly recommended that the packaging of furniture, appliances, and fragile items be done by our professional team for insurance coverage and safe transport.</p><h3>Conclusion</h3><p>To get more information about our partial item shipping companies service from Ankara to Wales, to make a reservation or to request a free survey, you can fill out the form on our website or reach us directly via our phone numbers. Han Bros Cargo shortens the distances.</p></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=kwmyq" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=h72xs" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=rlwxx"></script>
-  <script defer src="/src/cookie.js?v=rlwxx"></script>
+  <script defer src="/src/mx-ui.js?v=ocaa5"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=ocaa5"></script>
+  <script defer src="/src/cookie.js?v=ocaa5"></script>
 
   <script>
     setTimeout(function() {

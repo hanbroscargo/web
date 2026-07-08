@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=c8f3t" />
-  <link rel="preload" href="/src/cookie.css?v=c8f3t" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=a7b87" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=a7b87" />
+  <link rel="preload" href="/src/cookie.css?v=a7b87" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=c8f3t" />
+    <link rel="stylesheet" href="/src/cookie.css?v=a7b87" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=c8f3t" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=a7b87" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=c8f3t">
+<link rel="stylesheet" href="style.css?v=a7b87">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=o2k97" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=h2ynu" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/diyarbakir-avusturya-mobilya/tr.webp?v=yj898" width="100%" alt="Furniture Shipping and Logistics from Diyarbakir to Austria" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/diyarbakir-avusturya-mobilya/tr.webp?v=bcz7s" width="100%" alt="Furniture Shipping and Logistics from Diyarbakir to Austria" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Journey of Comfort from Diyarbakir to Europe: Furniture Shipping</h2><p class="b0000-pd5-lead">Sending furniture from Diyarbakir, the ancient city of Southeast Anatolia and the rising industrial center, to Austria, the heart of Europe, is now much safer with Han Bros Cargo. We deliver the furniture we receive from Diyarbakir's local production network or new products you purchased from stores to all cities of Austria such as Vienna, Graz, Linz, and Innsbruck with professional standards. On this logistics line stretching from the heart of Mesopotamia to the foothills of the Alps, we carry your valuable furniture with a damage-free delivery guarantee.</p><h3>Our Strengths in Diyarbakir-Austria Furniture Shipment</h3><p>Privileges we offer in furniture shipping:</p><ul class="b0000-pd5-features"><li><strong>Expert Furniture Packaging:</strong> Your belongings are meticulously packaged at your address in Diyarbakir against the harsh conditions of international shipment (corner protectors, bubble wrap, cardboard supports).</li><li><strong>Customs and Documentation Support:</strong> Our team manages commercial and individual document processes (personal effects status or commercial invoice) required for furniture at Austria customs.</li><li><strong>Direct Regional Shipment:</strong> We ship the loads we pick up from Diyarbakir to Austria via the fastest route without unnecessary transfers.</li><li><strong>Installation and Placement Service:</strong> At your destination address in Austria, we don't just leave your furniture at the door; we carry it to the room and perform professional installation.</li></ul><h3>Address of Secure and Insured Shipping</h3><p>Transporting large-volume and sensitive products such as furniture by road for thousands of kilometers requires great responsibility. As Han Bros Cargo, we reduce risks to zero with anti-vibration systems we use in our entire fleet and CMR insurance assurance. For furniture manufacturers leaving the Diyarbakir Organized Industrial Zone, we also optimize freight costs with our 'Groupage' (shared truck) options. From the moment your belongings leave the workshop or home in Diyarbakir, they can be tracked 24/7 via GPS until the final delivery point in Austria.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>How is the furniture cargo price from Diyarbakir to Austria determined?</summary><p>Prices are calculated according to the total m3 (volume) value of the furniture, the loading floor in Diyarbakir, and the distance of the destination point in Austria.</h3><details class="b0000-pd5-faq-item"><summary>Can I send only 1 sofa set?</summary><p>Yes, we have partial services for shipments of all scales, from a single piece of furniture to the furniture of a complete house.</h3><h3>Is there a risk of my products getting stuck at customs?</h3><p>As long as you share the necessary export or personal effects documents with us completely, customs processes are managed smoothly by Han Bros.</h3><h3>How many days does transport take?</h3><p>A furniture truck leaving Diyarbakir makes delivery to the address in Austria in an average of 10 to 14 days depending on customs density.</h3><h3>What is done in case of damage?</h3><p>All products are within the scope of insurance. In case of an adverse situation noticed during delivery, the damage is compensated within the framework of CMR insurance.</h3><p>Work with the right logistics partner for furniture shipping from Diyarbakir to Austria. Han Bros Cargo is waiting for you for a free survey and price quote!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=uwwf0" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=bkagr" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=c8f3t"></script>
-  <script defer src="/src/cookie.js?v=c8f3t"></script>
+  <script defer src="/src/mx-ui.js?v=a7b87"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=a7b87"></script>
+  <script defer src="/src/cookie.js?v=a7b87"></script>
 
   <script>
     setTimeout(function() {

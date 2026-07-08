@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=yvzh9" />
-  <link rel="preload" href="/src/cookie.css?v=yvzh9" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=m530w" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=m530w" />
+  <link rel="preload" href="/src/cookie.css?v=m530w" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=yvzh9" />
+    <link rel="stylesheet" href="/src/cookie.css?v=m530w" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=yvzh9" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=m530w" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=yvzh9">
+<link rel="stylesheet" href="style.css?v=m530w">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=x70vj" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=f4see" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/hollanda-mobilya-ipuclari/tr.webp?v=we47m" width="100%" alt="Golden Tips You Should Know When Shipping Furniture to Netherlands" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/hollanda-mobilya-ipuclari/tr.webp?v=b1h9d" width="100%" alt="Golden Tips You Should Know When Shipping Furniture to Netherlands" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Suggestions for Safe and Smart Furniture Transport on the Road to Holland</h2><p class="b0000-pd5-lead">An international furniture shipment is not just putting items inside the truck; it is a cleverly planned strategy. The biggest challenges encountered while sending items from Turkey to Holland (Netherlands) are usually not logistics, but planning errors. As Han Bros Cargo, we share the experiences we have gained from thousands of shipments we have carried out so far with you as 'golden tips'. This information will save you both time and money in deliveries to all kinds of settlement units from the narrow canal houses of Amsterdam to the modern residences of Eindhoven. The security of your furniture starts with correct information.</p><h3>4 Basic Tips for a Smooth Holland Shipment</h3><p>Our expert suggestions that will make your moving process easier:</p><ul class="b0000-pd5-features"><li><strong>Do Volume Optimization:</strong> Definitely disassemble the decomposable (knock-down) parts of your furniture. Less volume (m3) means less cost. Store screws and connection parts in a special bag by labeling them.</li><li><strong>Sidewall Protection and Layered Packaging:</strong> Just blankets are not enough against vibrations on foreign roads. Put cardboard corner protectors on the corners of your furniture and isolate the outermost layer from humidity with bubble wrap.</li><li><strong>Prepare the Customs Inventory Honestly:</strong> Using detailed descriptions like '6 porcelain plates, 2 pots' instead of 'Kitchen Supplies' in your list reduces the risk of 'full inspection' at customs.</li><li><strong>Know the Rotterdam-Amsterdam Difference:</strong> If your house is in the center of Amsterdam, finalize with your transporter that parking permission must be obtained from the municipality before the delivery day or the need for an elevator (Verhuislift).</li></ul><h3>Non-Damage Guarantee with Han Bros Cargo</h3><p>We don't just provide vehicles to our customers; we offer a 'damage prevention culture'. While making the loading plan of your furniture (with Tetris logic), we calculate the gravity centers and place the most sensitive parts in the safest compartments. Thanks to our local knowledge base in Holland, we know in advance in which city at what time there is a traffic ban or in which street an elevator can be set up. This local expertise means not only comfort for you, but also getting rid of possible delay fines. Your furniture doesn't just set out with us, they reach their new places in Holland with 'zero damage'.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Should I also take my kitchen cabinets?</summary><p>In most of the rental houses in Holland, the kitchen is ready. Instead of taking fixed cabinets, taking only portable (freestanding) and furniture you love provides m3 savings.</h3><details class="b0000-pd5-faq-item"><summary>What is the biggest risk when sending furniture to Holland?</summary><p>The biggest risk is inadequate packaging and incorrect customs declaration. Han Bros Cargo eliminates risks by offering full support in both subjects.</h3><h3>Should I do the elevator rental process?</h3><p>No, as Han Bros Cargo, we organize elevator (Verhuislift) rental and operator support thanks to our wide network in Holland.</h3><h3>How long do my belongings wait on the road?</h3><p>Since there is no transfer in our direct trucks, your belongings land in Holland as they were loaded in Turkey; unnecessary waiting in the warehouse is not made.</h3><h3>Do you perform a special process for antique furniture?</h3><p>Yes, we have special 'Soft-Wrap' packaging and wooden crate (crating) options for antique and art works.</h3><p>Experience speaks, furniture arrives safely. Don't leave your Holland move to chance with Han Bros Cargo!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=moe8t" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=iy4al" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=yvzh9"></script>
-  <script defer src="/src/cookie.js?v=yvzh9"></script>
+  <script defer src="/src/mx-ui.js?v=m530w"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=m530w"></script>
+  <script defer src="/src/cookie.js?v=m530w"></script>
 
   <script>
     setTimeout(function() {

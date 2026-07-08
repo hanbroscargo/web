@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=nyy73" />
-  <link rel="preload" href="/src/cookie.css?v=nyy73" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=u8ztn" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=u8ztn" />
+  <link rel="preload" href="/src/cookie.css?v=u8ztn" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=nyy73" />
+    <link rel="stylesheet" href="/src/cookie.css?v=u8ztn" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=nyy73" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=u8ztn" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=nyy73">
+<link rel="stylesheet" href="style.css?v=u8ztn">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=tyzw6" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=bus3r" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/avusturya-ev-esyasi-nasil-yapilir/tr.webp?v=vc3eh" width="100%" alt="Avusturya'ya Ev Eşyası Taşıma İşlemi Nasıl Yapılır?" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/avusturya-ev-esyasi-nasil-yapilir/tr.webp?v=o5f2z" width="100%" alt="Avusturya'ya Ev Eşyası Taşıma İşlemi Nasıl Yapılır?" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Adım Adım Avusturya'ya Taşınma Yolculuğu</h2><p class="b0000-pd5-lead">Yeni bir ülkeye, özellikle de Avrupa'nın kalbi Avusturya'ya taşınmak heyecan verici bir başlangıçtır. Ancak, binlerce kilometre mesafeyi kapsayan uluslararası bir evden eve nakliyat operasyonu, profesyonel bir planlama gerektirir. Han Bros Cargo olarak, Türkiye'den Avusturya'ya giden bu yolu sizin için 5 ana aşamaya böldük. İşte eşyalarınızın kapınızdan alınıp yeni adresinize kurulmasına kadar geçen o kusursuz süreç:</p><h3>1. Ücretsiz Ekspertiz ve Planlama</h3><p>Her başarılı operasyon doğru veriyle başlar. Uzmanlarımız evinize gelerek veya görüntülü görüşme yoluyla taşınacak eşyaların listesini çıkarır. Bu aşamada eşyalarınızın hacmi (m3), hassasiyet derecesi ve Avusturya'daki varış adresinin fiziksel koşulları (kat durumu, dar sokak vb.) analiz edilir. Size en uygun nakliye yöntemi ve şeffaf fiyat teklifi sunulur.</p><h3>2. Profesyonel Paketleme ve Envanter Kaydı</h3><p>Uluslararası taşımacılıkta eşyalarınız birden fazla transfer noktasından geçebilir. Bu nedenle "Double Wrapped" (çift katlı) paketleme sistemimizle mobilyalarınızı ve beyaz eşyalarınızı koruma altına alıyoruz. Her koli ve eşya üzerine numara verilir ve detaylı bir "Packing List" (Çeki Listesi) oluşturulur. Bu liste, hem sigorta hem de gümrük işlemleri için hayati önem taşır.</p><h3>3. Gümrükleme ve Dokümantasyon Desteği</h3><p>Avusturya gümrüğü (Zollamt), zati eşya taşımalarında belirli belgeler talep eder. Han Bros Cargo olarak; noter onaylı vekaletname, beyanname hazırlığı ve Avusturya'da eşyaların vergiden muaf çekilmesi için gerekli olan oturum/iş sözleşmesi gibi belgelerin yönetiminde size tam destek veriyoruz. Gümrük müşavirlerimiz, sınır kapılarındaki (genellikle Kapıkule ve Nickelsdorf) işlemleri sizin adınıza hızla tamamlar.</p><h3>4. Transit Yolculuk ve GPS Takip</h3><p>Eşyalarınız modern tırlarımıza yüklendikten sonra yolculuk başlar. Bulgaristan, Sırbistan ve Macaristan rotasını izleyerek Avusturya'ya ulaşan araçlarımızı GPS üzerinden anlık olarak takip edebilirsiniz. Güvenli sürüş prensiplerimiz gereği sarsıntısız ve emniyetli bir seyir sağlıyoruz.</p><h3>5. Adreste Kurulum ve Teslimat</h3><p>Eşyalarınız Viyana, Graz, Linz veya Innsbruck'taki yeni evinize ulaştığında, sadece taşımakla kalmıyoruz. Paketleri açıyor, mobilyalarınızın montajını gerçekleştiriyor ve eşyaları odalarınıza yerleştiriyoruz. Size sadece yeni evinizin keyfini sürmek kalıyor.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Eşyalarımı kendim paketleyebilir miyim?</summary><p>Evet, ancak gümrükteki "Packing List" doğruluğu ve sigorta kapsamı açısından kırılabilecek hassas eşyaların Han Bros Cargo uzmanları tarafından paketlenmesini öneriyoruz.</p></details><details class="b0000-pd5-faq-item"><summary>Avusturya'da eşyalarım gümrüğe takılır mı?</summary><p>Gerekli evraklar (oturum kağıdı gibi) tam olduğu sürece zati eşyalarınızda gümrük engeli yaşanmaz. Han Bros Cargo bu prosedürleri sizin yerinize yönetir.</p></details><details class="b0000-pd5-faq-item"><summary>Taşıma esnasında eşyalarım sigortalı mı?</summary><p>Evet, tüm taşımalarımız uluslararası CMR sigortası ve envanter değeri üzerinden yapılan ek nakliye sigortası ile tam güvence altındadır.</p></details><details class="b0000-pd5-faq-item"><summary>Eskimiş eşyalarımı Avusturya'ya götürmek ekonomik mi?</summary><p>Avusturya'da mobilya fiyatları yüksek olduğu için, kaliteli ve kullanılabilir durumdaki eşyalarınızı götürmek genellikle yeni almaktan çok daha ekonomiktir.</p></details><details class="b0000-pd5-faq-item"><summary>Çıkış ve varış adreslerinde asansör gerekli mi?</summary><p>Eğer bina içi merdivenler dar veya eşyalarınız yüksek katlara çıkacaksa, hem Türkiye'de hem Avusturya'da dış cephe asansörü kurulumu yapabilmekteyiz.</p></details><p>Avusturya'daki yeni hayatınıza stressiz bir başlangıç yapmak için lojistik partneriniz hazır. Han Bros Cargo ile profesyonelliğin tadını çıkarın!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=balkt" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=vnqbd" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=nyy73"></script>
-  <script defer src="/src/cookie.js?v=nyy73"></script>
+  <script defer src="/src/mx-ui.js?v=u8ztn"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=u8ztn"></script>
+  <script defer src="/src/cookie.js?v=u8ztn"></script>
 
   <script>
     setTimeout(function() {

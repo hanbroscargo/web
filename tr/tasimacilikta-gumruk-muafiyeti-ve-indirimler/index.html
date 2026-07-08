@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=he1kp" />
-  <link rel="preload" href="/src/cookie.css?v=he1kp" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=f16sm" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=f16sm" />
+  <link rel="preload" href="/src/cookie.css?v=f16sm" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=he1kp" />
+    <link rel="stylesheet" href="/src/cookie.css?v=f16sm" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=he1kp" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=f16sm" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=he1kp">
+<link rel="stylesheet" href="style.css?v=f16sm">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=y8222" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=ek5hp" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/gumruk-muafiyet-indirimler/tr.webp?v=u31lg" width="100%" alt="Gümrük Muafiyeti ve İndirimler: Az Vergi Çok Kazanç" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/gumruk-muafiyet-indirimler/tr.webp?v=k7ti2" width="100%" alt="Gümrük Muafiyeti ve İndirimler: Az Vergi Çok Kazanç" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Gümrük Giderlerinde Tasarruf Sanatı: Muafiyetler ve Yasal Teşvikler</h2><p class="b0000-pd5-lead">Uluslararası taşımacılıkta toplam maliyetin önemli bir kısmını gümrük vergileri ve KDV oluşturur. Ancak doğru bilgi ve doğru lojistik partneriyle bu maliyetleri yasal çerçevede minimize etmek, hatta tamamen sıfırlamak mümkündür. Han Bros Cargo olarak, müşterilerimize sadece taşıma hizmeti değil, aynı zamanda 'maliyet optimizasyonu' hizmeti de sunuyoruz. Gümrük muafiyetleri ve indirimler, gönderinizin içeriğine ve sizin yasal durumunuza göre değişkenlik gösterir. Bizim görevimiz, bu muafiyetlerin kapısını sizin için açacak olan belgeleri ve stratejileri en doğru şekilde kurgulamaktır.</p><h3>En Çok Kullanılan Gümrük Muafiyetleri Nelerdir?</h3><p>Hizmet verdiğimiz rotalarda en yaygın karşılaşılan vergi avantajları şunlardır:</p><ul class="b0000-pd5-features"><li><strong>Zati Eşya (Ev Taşıma) Muafiyeti:</strong> Eğer bir ülkeden diğerine ikametgahınızı taşıyorsanız, belirli bir süre kullandığınız kişisel eşyalarınızı gümrük vergisi ödemeden ithal edebilirsiniz.</li><li><strong>Sanayi Ürünlerinde ATR Avantajı:</strong> Türkiye'den AB ülkelerine gidecek olan Türk menşeli sanayi ürünleri, ATR belgesi sayesinde 'Gümrük Birliği' kapsamında vergisiz geçiş hakkı kazanır.</li><li><strong>Hediye ve Numune Limiti:</strong> Ticari olmayan ve belirli bir değer limitinin (örneğin İngiltere için 135 GBP altı gibi) altında kalan düşük değerli gönderilerde gümrük vergisi avantajları bulunur.</li><li><strong>Geçici İthalat:</strong> Bir sergi, fuar veya tamir amacıyla gönderilen ve geri dönecek olan ürünler için sağlanan teminatsız geçiş kolaylıkları.</li></ul><h3>Neden Han Bros Cargo ile Muafiyet Daha Kolay?</h3><p>Biz gümrükte 'bekleyip görmek' yerine proaktif hareket ediyoruz. Özellikle İngiltere'ye taşınacak olan müşterilerimizin Transfer of Residence (ToR) formlarını dolurken ve teknik eksikleri giderirken ücretsiz danışmanlık sağlıyoruz. Bu danışmanlık sayesinde müşterilerimiz çoğu zaman binlerce Euro/Pound tutarındaki vergi yükünden kurtulmaktadır. Ayrıca, büyük hacimli veya düzenli sevkiyat yapan kurumsal müşterilerimize, gümrük süreçlerindeki hızları sayesinde dolaylı 'zaman tasarrufu indirimleri' yansıtıyoruz. Han Bros ile çalışmak, gümrükte daha az ödemek ve daha çok kazanmak demektir.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Gümrük muafiyeti için en önemli şart nedir?</summary><p>Muafiyet türüne göre değişmekle birlikte, en önemli şart genellikle eşyanın 'ticari nitelikte olmaması' ve şahsın o ülkede kalıcı bir bağının (ikamet, iş vb.) bulunmasıdır.</p></details><details class="b0000-pd5-faq-item"><summary>İkinci el mobilya alıp yurtdışına göndersem muafiyetten yararlanabilir miyim?</summary><p>Genellikle hayır. Muafiyet, sizin halihazırda kullandığınız ve sahip olduğunuz eşyaları kapsar. Yeni aldığınız ürünler ticari rejimlere tabi tutulabilir.</p></details><details class="b0000-pd5-faq-item"><summary>ATR belgesini nereden alabilirim?</summary><p>ATR belgesi ihracatçı firmanın bağlı olduğu Ticaret Odası'ndan alınır ve gümrükte onaylatılır. Han Bros bu süreci sizin adınıza yönetebilir.</p></details><details class="b0000-pd5-faq-item"><summary>Gümrük indirimi almak için bir süre sınırı var mı?</summary><p>Ev eşyası muafiyetlerinde genellikle gittiğiniz ülkeye yerleştikten sonraki ilk 12 ay içinde eşyalarınızı getirmeniz şartı aranır.</p></details><details class="b0000-pd5-faq-item"><summary>Muafiyet alamama durumunda vergi oranları çok yüksek mi?</summary><p>Vergi oranları eşyanın türüne (GTİP kodu) göre değişir. Bazı ürünlerde %0 iken, bazılarında %10-20 aralığında olabilir. Bu yüzden ön analiz yapmak kritiktir.</p></details><p>Vergi yükünü azaltın, bütçenizi koruyun. Han Bros Cargo ile gümrük muafiyetlerinden hemen yararlanın!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=wjvo7" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=vug3f" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=he1kp"></script>
-  <script defer src="/src/cookie.js?v=he1kp"></script>
+  <script defer src="/src/mx-ui.js?v=f16sm"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=f16sm"></script>
+  <script defer src="/src/cookie.js?v=f16sm"></script>
 
   <script>
     setTimeout(function() {

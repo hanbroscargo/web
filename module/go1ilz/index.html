@@ -1663,25 +1663,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <script>
-
-
     var productCounters = {};
-
     var productData = {};
-
     var editedVolumes = {};
-
     var editedDimensions = {};
-
     var allProducts = [];
-
     var currentCategory = null;
-
     var editingProductId = null;
 
     var GO1ILZ_API_BASE = 'https://api.hanbroscargo.workers.dev';
     var STORAGE_KEY_GO1ILZ = 'hanbroscargo_go1ilz_akilli_hesaplama';
-
 
     function saveToLocalStorage() {
         try {
@@ -1736,7 +1727,6 @@
         }
     }
 
-
     function updateTotalCounter() {
         var totalAdet = 0;
         var totalHacim = 0;
@@ -1769,7 +1759,6 @@
         updateCategoryBadges();
         saveToLocalStorage();
     }
-
 
     function padZero(n) {
         return n < 10 ? '0' + n : '' + n;
@@ -1936,7 +1925,6 @@
         });
     }
 
-
     function getCurrentLang() {
         var path = window.location.pathname;
         if (path.indexOf('/tr/') !== -1) return 'tr';
@@ -1950,7 +1938,6 @@
         for (var i = 0; i < parts.length; i++) parts[i] = parts[i].trim();
         return getCurrentLang() === 'tr' ? parts[0] : (parts[1] || parts[0]);
     }
-
 
     var translationsCache = null;
 
@@ -2001,7 +1988,6 @@
         if (textEl) textEl.textContent = getTranslation('clear-cart');
     }
 
-
     function calculateVolume(width, depth, height) {
         if (!width || !depth || !height) return 0;
         return (parseFloat(width) * parseFloat(depth) * parseFloat(height)) / 1000000;
@@ -2016,7 +2002,6 @@
         var volume = calculateVolume(widthInput.value, depthInput.value, heightInput.value);
         calculatedVolume.textContent = volume > 0 ? volume.toFixed(2) + ' m³' : '0.00 m³';
     }
-
 
     function openVolumeEditPopup(productId) {
         var product = productData[productId];
@@ -2142,7 +2127,6 @@
         saveToLocalStorage();
     }
 
-
     function updateDecreaseButton(button, count) {
         if (!button) return;
         if (count === 1) {
@@ -2212,7 +2196,6 @@
         }
     }
 
-
     function clearCart() {
         var id;
         for (id in productCounters) { if (productCounters.hasOwnProperty(id)) delete productCounters[id]; }
@@ -2228,7 +2211,6 @@
         }
         updateCategoryBadges();
     }
-
 
     function clearSearch() {
         var searchInput = document.getElementById('search-input');
@@ -2251,7 +2233,6 @@
             }
         }
     }
-
 
     function updateCategoryBadges() {
         var categoryTabs = document.querySelectorAll('.category-tab');
@@ -2289,7 +2270,6 @@
             }
         }
     }
-
 
     function showSuggestions(searchTerm) {
         var suggestionsContainer = document.getElementById('search-suggestions');
@@ -2376,7 +2356,6 @@
         }
         renderSearchResults(filteredProducts);
     }
-
 
     function createProductCard(product) {
         var productId = product.ID;
@@ -2492,7 +2471,6 @@
         return card;
     }
 
-
     function renderProducts(category, searchTerm) {
         currentCategory = category;
         var categoriesContent = document.getElementById('categories-content');
@@ -2574,7 +2552,6 @@
         }
         return allCategories;
     }
-
 
     function loadProducts(retryCount) {
         retryCount = retryCount || 0;
@@ -2740,7 +2717,6 @@
         });
     }
 
-
     var quoteModalCloseTimer = null;
 
     function clearQuoteModalCloseTimer() {
@@ -2868,12 +2844,10 @@
         var hour = String(now.getHours()).padStart(2, '0');
         var minute = String(now.getMinutes()).padStart(2, '0');
         var second = String(now.getSeconds()).padStart(2, '0');
-
         return day + '.' + month + '.' + year + ' ' + hour + ':' + minute + ':' + second;
     }
 
     function getCurrentLanguageCode() {
-
         var raw = '';
         if (typeof navigator !== 'undefined') {
             raw = navigator.language || navigator.userLanguage || '';
@@ -2886,9 +2860,6 @@
     }
 
     function getRequestTypeFromHash() {
-
-
-
         var hash = (location.hash || '').replace(/^#/, '').toLowerCase().trim();
         if (hash === 'zati') return 'CA';
         if (hash === 'mobilya') return 'CO';
@@ -3070,11 +3041,9 @@
                     resultEl.textContent = getTranslation('quote-success') || 'Teklif talebiniz alındı.';
                 }
                 if (btn) {
-
                     btn.classList.add('sent');
                     btn.textContent = 'Talebiniz alindi';
                 }
-
                 quoteModalCloseTimer = setTimeout(function () {
                     closeQuoteModalAnimated();
                     resetQuoteSendButtonState();

@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=zfev0" />
-  <link rel="preload" href="/src/cookie.css?v=zfev0" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=eyixt" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=eyixt" />
+  <link rel="preload" href="/src/cookie.css?v=eyixt" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=zfev0" />
+    <link rel="stylesheet" href="/src/cookie.css?v=eyixt" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=zfev0" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=eyixt" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=zfev0">
+<link rel="stylesheet" href="style.css?v=eyixt">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=r6r97" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=b8bos" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/belcika-ev-esyasi-fiyatlari/tr.webp?v=y8fwm" width="100%" alt="Belçika'ya Ev Eşyası Taşımacılığı Fiyatları 2026" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/belcika-ev-esyasi-fiyatlari/tr.webp?v=byvty" width="100%" alt="Belçika'ya Ev Eşyası Taşımacılığı Fiyatları 2026" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Belçika'ya Ev Eşyası Taşınma Maliyetlerini Etkileyen Faktörler</h2><p class="b0000-pd5-lead">Türkiye'den Belçika'ya (Antwerp, Brüksel, Gent vb.) taşınırken bütçe planlaması yapmak, sürecin en kritik aşamalarından biridir. Han Bros Cargo olarak, gizli ücret barındırmayan, şeffaf ve rekabetçi bir fiyatlandırma modeli uyguluyoruz. Belçika ev eşyası taşımacılığı fiyatlarımız; eşyalarınızın tırda kapladığı hacim (metreküp/m3), sunulacak hizmetin kapsamı ve varış adresinizin özelliklerine göre değişkenlik gösterir.</p><h3>Belçika Nakliye Fiyatlarını Hesaplama Yöntemi</h3><p>Uluslararası evden eve nakliyatta fiyatlandırma genellikle hacim bazlıdır. İşte maliyetinizi şekillendiren temel faktörler:</p><ul class="b0000-pd5-features"><li><strong>Hacim (m3):</strong> Eşyalarınızın kapladığı toplam alan fiyatın ana belirleyicisidir. 1+1, 2+1 veya 3+1 evlerin ortalama hacimleri farklılaştığı için m3 birim fiyatı üzerinden hesaplama yapılır.</li><li><strong>Hizmet Paketi:</strong> Sadece nakliye (Door-to-terminal), standart (Kapıdan kapıya) veya full-servis (Paketleme ve Montaj dahil) seçenekleri arasında fiyat farkları bulunur.</li><li><strong>Gümrük İşlemleri:</strong> Belçika'da gümrük muafiyeti için gerekli evrakların hazırlanması ve müşavirlik hizmetleri teklifimize dahildir; ancak oluşabilecek ek vergiler (eğer muafiyet yoksa) haricen belirtilir.</li><li><strong>Lokasyon Avantajı:</strong> Antwerp ve çevresi gibi lojistik merkezlere olan sevkiyatlar, daha iç kesimlerdeki kırsal bölgelere göre daha ekonomik navlun fiyatlarına sahip olabilir.</li></ul><h3>Maliyet Tasarrufu İçin 'Han Bros' İpuçları</h3><p>Belçika taşınmanızı daha ekonomik hale getirmek için parsiyel (piece goods) taşımacılık seçeneğimizi kullanabilirsiniz. Bir tırın tamamını kiralamak yerine, sadece eşyanızın hacmi kadar ödeme yaparak tırın diğer müşterilerle paylaşıldığı bu sistem, maliyetleri %30'a varan oranlarda düşürür. Ayrıca erken rezervasyon ve sezon dışı taşınmalar için özel indirimlerimizden faydalanabilirsiniz.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Belçika'ya ev taşıma fiyatları ortalama ne kadardır?</summary><p>Hacme göre değişmekle birlikte, parsiyel gönderiler 1.500€'dan başlarken, tam tır (Full Truck) sevkiyatları mesafe ve ek hizmetlere göre 4.000€ - 6.000€ bandına kadar çıkabilmektedir.</p></details><details class="b0000-pd5-faq-item"><summary>Metreküp (m3) hesabı nasıl yapılıyor?</summary><p>Eşyalarınızın her birinin 'En x Boy x Yükseklik' ölçüleri alınarak toplam hacim bulunur. Ücretsiz online ekspertizimiz ile net m3 bilginizi öğrenebilirsiniz.</p></details><details class="b0000-pd5-faq-item"><summary>Gümrükleme masrafları navlun fiyatına dahil mi?</summary><p>Evet, standart paketlerimizde Türkiye çıkış gümrüklemesi ve Belçika varış gümrük danışmanlığı fiyata dahildir. Belçika'da ödenmesi gereken yerel liman masrafları genellikle teklifte belirtilir.</p></details><details class="b0000-pd5-faq-item"><summary>Taşıma sigortası için ek ücret öder miyim?</summary><p>CMR sorumluluk sigortası tüm nakliye tekliflerimize dahildir. Ancak yüksek değerli eşyalar için yapılan 'All-Risk' emtia sigortası eşya bedeli üzerinden küçük bir prim karşılığı eklenir.</p></details><details class="b0000-pd5-faq-item"><summary>Öğrenciler için özel bir indirim uygulanıyor mu?</summary><p>Brüksel veya Gent gibi şehirlerdeki üniversitelere giden öğrencilerimizin koli gönderimleri için özel 'Eğitim Desteği' indirimlerimiz mevcuttur.</p></details><p>Belçika yolunda bütçenizi sarsmadan taşının! Han Bros Cargo'nun profesyonel hesaplama araçları ve güncel navlun listesiyle en doğru fiyatı almak için hemen başvurun.</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=cgpyp" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=i5v2s" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=zfev0"></script>
-  <script defer src="/src/cookie.js?v=zfev0"></script>
+  <script defer src="/src/mx-ui.js?v=eyixt"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=eyixt"></script>
+  <script defer src="/src/cookie.js?v=eyixt"></script>
 
   <script>
     setTimeout(function() {

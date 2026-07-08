@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=pr6aq" />
-  <link rel="preload" href="/src/cookie.css?v=pr6aq" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=j3cxy" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=j3cxy" />
+  <link rel="preload" href="/src/cookie.css?v=j3cxy" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=pr6aq" />
+    <link rel="stylesheet" href="/src/cookie.css?v=j3cxy" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=pr6aq" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=j3cxy" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=pr6aq">
+<link rel="stylesheet" href="style.css?v=j3cxy">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=tx8yl" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=uewcd" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/hatay-belcika-ticari/tr.webp?v=hgk8l" width="100%" alt="Hatay to Belgium Commercial Goods Shipping and Logistics" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/hatay-belcika-ticari/tr.webp?v=yzyiu" width="100%" alt="Hatay to Belgium Commercial Goods Shipping and Logistics" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>The Safe Route of Trade from Hatay to Belgium: Han Bros Cargo</h2><p class="b0000-pd5-lead">Hatay is one of the shining stars of export with its strategic location in the south of Turkey, developed industry, and fertile lands. As Han Bros Cargo, we carry all the commercial potential of Hatay, especially textiles, furniture, automotive spare parts, and fresh vegetables-fruits, to the Belgian market (Antwerp, Brussels, Ghent). Thanks to our land network integrated with the sea route of İskenderun Port, we lower your costs by offering 'intermodal' transport solutions. In commercial cargo, we don't just carry, we take all the logistics burden off your shoulders from customs processes to document management.</p><h3>Private Sector Solutions: Speed and Discipline</h3><p>We know that different sectors have different logistics needs. We show a special approach to each product group on our Hatay-Belgium line:</p><ul class="b0000-pd5-features"><li><strong>Industrial Products:</strong> We offer low-bed and large-volume truck options for heavy loads coming out of the İskenderun industrial zone.</li><li><strong>Food Logistics (Reefer):</strong> We use advanced climate-controlled vehicles to deliver Hatay's agricultural products to the supermarket shelves in Belgium with the freshness of the first day.</li><li><strong>Textile and E-Commerce:</strong> From boutique productions to large shipments, we increase your competitive power in the Belgian market with hanging transport and express courier options.</li><li><strong>Partial (LCL) Shipping:</strong> We create a 'cheap cargo' advantage for your loads that will not fill a truck by providing shared space with our other customers.</li></ul><h3>Han Bros Privilege in Belgian Customs</h3><p>Belgium is the heart of the European Union and one of the countries where customs legislation is most strictly applied. Han Bros Cargo works fully integrated with Belgium's local customs systems (PLDA). In this way, your loads coming out of Hatay pass through the Port of Antwerp or land border gates quickly without being stuck at the borders. We protect your commercial profits with our consultancy service that guides Turkish exporters especially on VAT exemptions and 'Fiscal Representation' issues. For the producers of Hatay, the world is now smaller.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>What is the delivery time from Hatay to Belgium?</summary><p>While our land partial shipments usually take 7-10 business days, we can reduce this period to 4-6 days with our express options.</h3><details class="b0000-pd5-faq-item"><summary>Is it cheaper to send loads via İskenderun Port?</summary><p>In large-volume and heavy-tonnage loads, sea route combination can offer significant cost advantages compared to the road. You can contact us for a detailed analysis.</h3><h3>Can you prepare my customs declaration?</h3><p>Yes, we professionally prepare your export and import declarations through our customs brokers in both countries.</h3><h3>Which standards do you apply in fresh fruit-vegetable shipping?</h3><p>All our reefer vehicles are equipped with new generation systems that comply with international ATP standards and can perform instant temperature tracking.</h3><h3>Is it possible to send a small container or pallet?</h3><p>Yes, with our 'Partial Loading' service, we also serve for your small commercial shipments starting from a single pallet.</h3><p>We carry the export power of Hatay to Europe. Cross commercial borders with Han Bros Cargo!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=y6xdi" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=ak2v6" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=pr6aq"></script>
-  <script defer src="/src/cookie.js?v=pr6aq"></script>
+  <script defer src="/src/mx-ui.js?v=j3cxy"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=j3cxy"></script>
+  <script defer src="/src/cookie.js?v=j3cxy"></script>
 
   <script>
     setTimeout(function() {

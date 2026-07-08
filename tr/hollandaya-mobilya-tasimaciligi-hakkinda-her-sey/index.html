@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=idswy" />
-  <link rel="preload" href="/src/cookie.css?v=idswy" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=gqthz" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=gqthz" />
+  <link rel="preload" href="/src/cookie.css?v=gqthz" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=idswy" />
+    <link rel="stylesheet" href="/src/cookie.css?v=gqthz" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=idswy" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=gqthz" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=idswy">
+<link rel="stylesheet" href="style.css?v=gqthz">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=x8jtn" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=xrru0" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/hollanda-mobilya-rehber/tr.webp?v=jcf8w" width="100%" alt="Hollanda'ya Mobilya Taşımacılığı: Kapsamlı Rehber 2026" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/hollanda-mobilya-rehber/tr.webp?v=byqqu" width="100%" alt="Hollanda'ya Mobilya Taşımacılığı: Kapsamlı Rehber 2026" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Hollanda Mobilya Taşımacılığında Stratejik Planlama ve Yerel Bilgi</h2><p class="b0000-pd5-lead">Türkiye'den Hollanda'ya (Netherlands) mobilya taşınması, sadece mesafe kat etmek değil, Avrupa'nın en yoğun ve düzenli lojistik ağlarından birinde hatasız ilerlemektir. Han Bros Cargo olarak hazırladığımız bu 'kapsamlı rehber', mobilyalarınızın Ege veya Marmara'daki imalatçısından çıkıp Lale Bahçeleri ile ünlü Hollanda topraklarına varışına kadar olan her adımı aydınlatır. Hollanda'nın coğrafi yapısı (düz olması) lojistik bir avantaj sunsa da, tarihi şehir merkezlerindeki mimari yapı (dar binalar) özel ekipman ihtiyacını doğurur. Rehberimiz, bu dinamikleri sizin lehinize çevirmek için hazırlandı.</p><h3>Hollanda Lojistiğinin Ana Arterleri: Rotterdam ve Diğerleri</h3><p>Mobilya sevkiyatınızda rotayı belirleyen temel unsurlar şunlardır:</p><ul class="b0000-pd5-features"><li><strong>Rotterdam Liman Avantajı:</strong> Dünya lojistik merkezi olan Rotterdam, denizyolu-karayolu aktarmalarında eşsiz bir hız ve kapasite sunar. Mobilyalarınızın buradaki depolarımızda geçici konaklaması maliyetleri düşürür.</li><li><strong>Amsterdam & Lahey Dinamikleri:</strong> Bu şehirlerdeki dar sokaklar ve tarihi doku, teslimatlarda 'küçük araç' ve 'asansör' kullanımını zorunlu kılar. Han Bros bu ekipmanlara her an erişim sağlar.</li><li><strong>Düz Coğrafya & Otoyol Ağı:</strong> Hollanda'nın mükemmel otoyol altyapısı, mobilyalarınızın tır üzerindeki sarsıntısını minimize eder ve 'tam zamanında teslimat' (Just-in-Time) imkanını artırır.</li><li><strong>Eindhoven & Utrecht Lojistik Hub'ları:</strong> Bu bölgelere yapılan sevkiyatlar, kara taşımacılığında dağıtım hızı açısından stratejik öneme sahiptir.</li></ul><h3>Han Bros Cargo İle Hollanda'da Kusursuz Teslimat</h3><p>Mobilyalarınızı sadece taşımıyoruz, onları Hollanda'daki yaşam alanınızın birer parçası haline getiriyoruz. Uzman ekiplerimiz, Hollanda gümrüklerinde zati eşya muafiyeti (Verhuizing) için gerekli olan tüm 'Inventory' listelerini hazırlar. Teslimat sırasında, mobilyalarınızın de-montaj sırasında ayrılan vidalarından kurulum şemalarına kadar her detay kontrolümüz altındadır. Rotterdam'daki depolama alanlarımız sayesinde, eviniz henüz hazır değilse mobilyalarınızı güvenli ve nemden uzak ortamlarda bekletebiliriz. Bizim için her koltuk takımı, her yatak odası yeni bir hayatın başlangıcıdır ve bu başlangıcı mükemmelleştirmek görevimizdir.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Hollanda'da mobilya teslimatı için asansör şart mı?</summary><p>Tarihi Amsterdam ve Rotterdam binalarında merdivenler çok dar ve dik olduğu için %90 oranında 'Verhuislift' (Dış cephe asansörü) kullanımı zorunludur.</p></details><details class="b0000-pd5-faq-item"><summary>Kendi mobilyalarımı sigortalatmam gerekir mi?</summary><p>Han Bros Cargo her sevkiyatı CMR sigortası ile korur ancak çok kıymetli/antika mobilyalarınız için ek 'All-Risk' poliçesi yaptırmanızı öneririz.</p></details><details class="b0000-pd5-faq-item"><summary>Hollanda nakliyesi için hangi belgeler zorunlu?</summary><p>Kimlik fotokopisi, eşya listesi (çeki listesi), oturum belgesi veya iş sözleşmesi gümrük için temel evraklardır.</p></details><details class="b0000-pd5-faq-item"><summary>Parsiyel taşıma mı yoksa komple tır mı seçmeliyim?</summary><p>Eğer mobilyalarınız 20 m3'ten azsa parsiyel (grupaj) seçeneği çok daha ekonomiktir. 30 m3 üzeri sevkiyatlarda ise size özel komple tır tahsis edebiliriz.</p></details><details class="b0000-pd5-faq-item"><summary>İkinci el mobilyalarda KDV çıkar mı?</summary><p>Kişisel kullanım amacıyla götürülen ve en az 6 aydır kullanılan mobilyalar KDV ve gümrük vergisinden muaftır.</p></details><p>Mobilyalarınızın pusulası Han Bros Cargo! Hollanda rehberimizle yeni evinizi güvenle döşeyin.</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=h5d4t" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=boct9" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=idswy"></script>
-  <script defer src="/src/cookie.js?v=idswy"></script>
+  <script defer src="/src/mx-ui.js?v=gqthz"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=gqthz"></script>
+  <script defer src="/src/cookie.js?v=gqthz"></script>
 
   <script>
     setTimeout(function() {

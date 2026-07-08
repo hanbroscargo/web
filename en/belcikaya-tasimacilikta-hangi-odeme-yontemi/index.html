@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=lmx4v" />
-  <link rel="preload" href="/src/cookie.css?v=lmx4v" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=ogv2l" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=ogv2l" />
+  <link rel="preload" href="/src/cookie.css?v=ogv2l" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=lmx4v" />
+    <link rel="stylesheet" href="/src/cookie.css?v=ogv2l" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=lmx4v" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=ogv2l" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=lmx4v">
+<link rel="stylesheet" href="style.css?v=ogv2l">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=smv0q" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=kxayk" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/belcika-hangi-odeme-yontemi/tr.webp?v=wo4tl" width="100%" alt="Belgium Shipping Payment Options and Financial Information" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/belcika-hangi-odeme-yontemi/tr.webp?v=gna3i" width="100%" alt="Belgium Shipping Payment Options and Financial Information" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Flexible and Secure Payment Solutions in Belgium Shipping</h2><p class="b0000-pd5-lead">At Han Bros Cargo, we care about the transparency and ease of your financial transactions as much as the safety of your belongings in your logistics processes stretching from Turkey to Belgium. Since managing international shipping costs is critical for businesses and families, we offer the most suitable payment models for your budget on the Belgium route. Here are the financial solutions we offer for your loads going to your buyer or new address in Belgium:</p><h3>Basic Payment Models Offered</h3><p>Whether you are transporting individual personal effects or performing corporate B2B shipments, you can use these payment channels:</p><ul class="b0000-pd5-features"><li><strong>Bank Transfer and EFT:</strong> The most commonly used method. You can start the shipment process by transferring to our TRY, EUR, or USD accounts.</li><li><strong>Online Credit Card Payment:</strong> You can pay with your credit card through the 3D Secure security infrastructure on our website and benefit from installment options specific to your cards such as World, Bonus, or Maximum.</li><li><strong>Collection via Courier:</strong> In some cases, payment options via our mobile POS devices during the pickup of items from the address or at the time of delivery can be offered.</li><li><strong>Mail Order:</strong> Our mail-order system is also active for our customers who want to make secure remote payments.</li></ul><h3>Advantages for Corporate Customers</h3><p>We offer 'Current Account Management' specific to our businesses that regularly perform commercial shipments to Belgium. In this way, instead of paying separately for each shipment, you can benefit from monthly or weekly collective billing and maturity opportunities. Additionally, our finance team supports you regarding VAT exemptions and billing details for return loads departing from Belgium.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Can I pay for shipping to Belgium in Euros?</summary><p>Yes, we can perform billing either TRY-based or EUR-based as you wish. You can perform your payment from Belgium or Turkey.</h3><details class="b0000-pd5-faq-item"><summary>How many installments do you make on my credit card?</summary><p>We offer options between 2 and 9 installments according to the banks we have agreements with. You can learn about maturity difference and current campaign rates from your customer representative.</h3><h3>How much of the payment do I need to make when?</h3><p>In our standard procedure; it is in the form of 20% down payment during reservation, 40% when items leave the Turkey border, and closing the remaining balance before delivery at the destination.</h3><h3>When is the invoice issued after payment?</h3><p>When your payment is completed or shipment starts, your e-invoice is created and sent to your email address. An official invoice compatible with the customs declaration is issued.</h3><h3>Is a refund made in case of cancellation?</h3><p>In cancellations made before the items are on the road, the down payment amount (by deducting official expenses made) is paid back to you within the framework of our refund policy.</p></details></details><p>Payment processes are no longer a burden while moving to Belgium with Han Bros Cargo! Move with peace with our reliable, flexible, and transparent payment systems. Contact us for a free survey and price quote.</p></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=jvqt7" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=x5709" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=lmx4v"></script>
-  <script defer src="/src/cookie.js?v=lmx4v"></script>
+  <script defer src="/src/mx-ui.js?v=ogv2l"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=ogv2l"></script>
+  <script defer src="/src/cookie.js?v=ogv2l"></script>
 
   <script>
     setTimeout(function() {

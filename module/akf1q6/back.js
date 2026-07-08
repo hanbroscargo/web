@@ -1,8 +1,6 @@
 
-
 var GO1ILZ_HASH = ['zati', 'mobilya', 'ticari', 'kargo', 'arac'];
 var menuHtml = '';
-
 var TASIMA_TIPLERI = [
     { code: 'CA', title: { tr: 'Zati', en: 'Personal Effects' }, icon: 'inventory_2' },
     { code: 'CO', title: { tr: 'Mobilya', en: 'Furniture' }, icon: 'weekend' },

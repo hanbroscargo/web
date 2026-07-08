@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=gqz2z" />
-  <link rel="preload" href="/src/cookie.css?v=gqz2z" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=wuwzv" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=wuwzv" />
+  <link rel="preload" href="/src/cookie.css?v=wuwzv" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=gqz2z" />
+    <link rel="stylesheet" href="/src/cookie.css?v=wuwzv" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=gqz2z" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=wuwzv" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=gqz2z">
+<link rel="stylesheet" href="style.css?v=wuwzv">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=w6nkn" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=hr31g" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/erzurum-fransa-en-ucuz/tr.webp?v=gega8" width="100%" alt="Erzurum'dan Fransa'ya En Ekonomik Kargo Fiyatları" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/erzurum-fransa-en-ucuz/tr.webp?v=rmttm" width="100%" alt="Erzurum'dan Fransa'ya En Ekonomik Kargo Fiyatları" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Erzurum'dan Fransa'ya Hesaplı Taşımacılık Rehberi</h2><p class="b0000-pd5-lead">Erzurum'dan Fransa'nın (Paris, Marsilya, Lyon, Strazburg vb.) tüm şehirlerine kargo veya ev eşyası göndermek, doğru stratejiyle düşündüğünüzden çok daha uygun maliyetli olabilir. Han Bros Cargo olarak, Doğu Anadolu'daki müşterilerimizin Avrupa'ya olan lojistik ihtiyaçlarını, bütçelerini sarsmayacak 'Ekonomik Paket' seçenekleriyle karşılıyoruz. Erzurum'dan Fransa'ya uzanan bu uzun yolda, hızı ve güvenliği korurken navlun fiyatlarını nasıl minimize ettiğimizi keşfedin. Artık kaliteli lojistik hizmetine ulaşmak için servet harcamanıza gerek yok!</p><h3>Erzurum-Fransa Hattında Tasarruf Etmenin Yolları</h3><p>Navlun maliyetlerinizi aşağı çeken hizmet modellerimiz:</p><ul class="b0000-pd5-features"><li><strong>Parsiyel (Grupaj) Yükleme:</strong> Eşyalarınızın tırın tamamını doldurmadığı durumlarda, alanı diğer müşterilerle paylaşarak sadece kendi hacminiz (m3) kadar ödeme yaparsınız.</li><li><strong>Erken Rezervasyon İndirimleri:</strong> Planlı taşınmalarınızda randevunuzu önceden oluşturarak sezonluk fiyat artışlarından etkilenmez, sabit en iyi fiyat garantisi kazanırsınız.</li><li><strong>Hafif ve Hacimli Yük Optimizasyonu:</strong> Eşyalarınızı en küçük hacme sığacak şekilde paketleyerek, gereksiz 'Boş Navlun' ödemesinin (havayı taşımamanın) önüne geçiyoruz.</li><li><strong>Gümrükleme Birleştirme:</strong> Birden fazla müşterinin gümrük işlemlerini toplu yöneterek, dosya başı işlem maliyetlerini minimize ediyoruz.</li></ul><h3>Neden En Ucuz Seçenek Han Bros Cargo?</h3><p>Bizim için 'en ucuz' olmak, sadece düşük fiyat vermek değil, verimsiz maliyetleri ortadan kaldırmaktır. Erzurum'daki yerel toplama ağımız sayesinde ek servis maliyetlerini düşürüyoruz. Fransa'daki güçlü dağıtım ağımızla da varış noktasında 'Last Mile' maliyetlerini minimize ediyoruz. Üstelik en uygun fiyatlı sevkiyatlarımızda dahi CMR sigortasından, GPS takibinden ve profesyonel müşteri desteğinden asla taviz vermiyoruz. Erzurum'dan Fransa'ya giden kargolarınız her zaman emin ellerde ve her zaman en iyi fiyatla taşınır.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Erzurum'dan Fransa'ya kargo fiyatları neye göre hesaplanır?</summary><p>Fiyatlandırma temel olarak eşyanızın hacmine (m3), Erzurum'daki alım noktasına ve Fransa'daki teslimat şehrine göre belirlenir.</p></details><details class="b0000-pd5-faq-item"><summary>En ucuz taşıma yöntemi hangisidir?</summary><p>Zaman açısından aciliyetiniz yoksa, haftalık düzenli çıkan parsiyel (grupaj) karayolu tır servisimiz en ekonomik seçenektir.</p></details><details class="b0000-pd5-faq-item"><summary>Öğrenciler ve yeni taşınanlar için ekstra indirim var mı?</summary><p>Evet, belirli dönemlerde Fransa'ya eğitim veya iş için giden bireysel müşterilerimize özel 'Taşınma Destek İndirimleri' uyguluyoruz.</p></details><details class="b0000-pd5-faq-item"><summary>Düşük fiyatlı taşımada eşyalarım zarar görür mü?</summary><p>Asla. Tüm yüklemelerimiz yüksek güvenlik standartlarında yapılır ve fiyat indirimleri sadece operasyonel verimlilikten kaynaklanır, emniyetten değil.</p></details><details class="b0000-pd5-faq-item"><summary>Erzurum'dan kapıya alım yapıyor musunuz?</summary><p>Evet, Erzurum merkez ve ilçelerinden eşyalarınızı kapınızdan teslim alıp Fransa'daki yeni adresinize kapıdan kapıya teslim ediyoruz.</p></details><p>Erzurum'dan Fransa'ya en ucuz kargo teklifini almak için Han Bros Cargo ile bugün iletişime geçin. Cebinizi düşünen kaliteli lojistik bir tık uzağınızda!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=b19pl" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=culs4" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=gqz2z"></script>
-  <script defer src="/src/cookie.js?v=gqz2z"></script>
+  <script defer src="/src/mx-ui.js?v=wuwzv"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=wuwzv"></script>
+  <script defer src="/src/cookie.js?v=wuwzv"></script>
 
   <script>
     setTimeout(function() {

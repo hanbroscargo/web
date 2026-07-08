@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=q8phs" />
-  <link rel="preload" href="/src/cookie.css?v=q8phs" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=zs0qw" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=zs0qw" />
+  <link rel="preload" href="/src/cookie.css?v=zs0qw" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=q8phs" />
+    <link rel="stylesheet" href="/src/cookie.css?v=zs0qw" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=q8phs" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=zs0qw" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=q8phs">
+<link rel="stylesheet" href="style.css?v=zs0qw">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=bpioz" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=hztn9" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/hangi-sezon-daha-uygun/tr.webp?v=blwue" width="100%" alt="Which Season Is More Suitable for Shipping? Seasonal Price Guide" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/hangi-sezon-daha-uygun/tr.webp?v=atlx7" width="100%" alt="Which Season Is More Suitable for Shipping? Seasonal Price Guide" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Timing is Everything: Profitable Season Management in Logistics</h2><p class="b0000-pd5-lead">International shipping costs are determined not only by fuel or distance, but also by the 'supply-demand' balance. As Han Bros Cargo, we offer our customers not only shipping services but also timing consultancy to optimize their budgets. There is no single answer to the question 'Which season is more suitable?'; however, it is in our hands to create the most logical calendar according to the urgency of your shipment and your budget. Seasonal changes on European roads directly affect not only prices but also customs waiting times and shipment security.</p><h3>Shipping Analysis by Season</h3><p>Logistics operations show these characteristic features at different periods of the year:</p><ul class="b0000-pd5-features"><li><strong>Summer Season (Peak Period):</strong> It is the busiest period with the closing of schools and the increase in residential changes. Prices may increase and finding a vehicle may become difficult due to high demand. Early booking is a must.</li><li><strong>Winter Season (Opportunity Period):</strong> More economical prices can be offered with the relative decrease in demand. However, 'Express' options may be safer due to weather conditions such as snow and icing.</li><li><strong>Spring and Autumn (Balanced Period):</strong> These are the most ideal periods for home moving and furniture logistics because both weather conditions are mild and the market is stable.</li><li><strong>Holiday Periods (Christmas/Eid):</strong> The decrease in the number of personnel at border gates and ports may prolong customs processes.</li></ul><h3>Season Strategies to Lower Costs</h3><p>While working with Han Bros Cargo, you can save 15-20% by coinciding your shipment with 'off-season' periods when the market is stagnant. Especially in cargo shipments, you can benefit from our special 'truck rental' campaigns in the winter months. On the other hand, if you have to move in the summer, you can get a fixed price guarantee without being affected by the 'Busy Season Hike' with reservations you make at least 1-2 months in advance. For us, no matter what the season is, your load is always our priority.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Is it risky to ship in winter?</summary><p>We are fully prepared for winter conditions with our advanced vehicle fleet and experienced drivers. There may only be slight flexibility (1-2 days) in delivery times due to road conditions.</h3><details class="b0000-pd5-faq-item"><summary>In which month is the cheapest shipping done?</summary><p>January and February are usually the months when demand is calmest in international logistics and therefore campaigns are most intense.</h3><h3>When should I call to move before school opens?</h3><p>We recommend you to finalize your reservation at the end of June or the beginning of July in order not to be affected by the great intensity in August.</h3><h3>Do customs waiting times change by season?</h3><p>Yes, especially since holiday departures in the summer months increase passenger traffic at border gates, congestion can also occur in truck crossings.</h3><h3>Do you serve during holiday periods?</h3><p>Our field teams do not stop operations, but customs clearance procedures may be delayed to the next business day according to the official holiday calendar of customs administrations.</h3><p>Planned moving pays off. Let's choose the most suitable season for you together with Han Bros Cargo!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=tyybz" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=f1buu" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=q8phs"></script>
-  <script defer src="/src/cookie.js?v=q8phs"></script>
+  <script defer src="/src/mx-ui.js?v=zs0qw"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=zs0qw"></script>
+  <script defer src="/src/cookie.js?v=zs0qw"></script>
 
   <script>
     setTimeout(function() {

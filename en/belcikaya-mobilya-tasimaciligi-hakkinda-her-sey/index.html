@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=u9vo7" />
-  <link rel="preload" href="/src/cookie.css?v=u9vo7" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=uk0do" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=uk0do" />
+  <link rel="preload" href="/src/cookie.css?v=uk0do" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=u9vo7" />
+    <link rel="stylesheet" href="/src/cookie.css?v=uk0do" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=u9vo7" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=uk0do" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=u9vo7">
+<link rel="stylesheet" href="style.css?v=uk0do">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=acgam" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=pybr7" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/belcika-mobilya-rehber/tr.webp?v=ba9tn" width="100%" alt="Furniture Shipping, Assembly and Logistics Guide for Belgium" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/belcika-mobilya-rehber/tr.webp?v=v6au6" width="100%" alt="Furniture Shipping, Assembly and Logistics Guide for Belgium" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>We Expertly Transport Your Furniture from Turkey to Belgium</h2><p class="b0000-pd5-lead">The transportation of your furniture, which is the soul of your home, from Turkey to Belgium (Brussels, Antwerp, Ghent, etc.) is not just a loading-unloading process; it's a complex process that includes carpentry, precise packaging, and customs expertise. As Han Bros Cargo, we deliver all your furniture groups, from newly bought furniture to antique-value family heirlooms, with professional meticulousness even to the narrowest streets of Belgium.</p><h3>'Han Bros' Standards in Furniture Logistics</h3><p>We apply the following standards so that your furniture maintains its form during the approximately 3,000-kilometer journey on the Belgium route:</p><ul class="b0000-pd5-features"><li><strong>Professional Disassembly:</strong> Your cabinets, bed units, and large tables are disassembled by our expert carpenters. Each piece is marked with a special coding system for ease of assembly.</li><li><strong>Tiered Packaging System:</strong> Your furniture is armored first with soft materials preventing scratches, then with shock-absorbing bubble wraps, and finally with hard corner protectors.</li><li><strong>Elevator Shipping Supports:</strong> As a solution to the narrow stair structures in the historic buildings of Brussels and Ghent, we safely evacuate your furniture from windows using our external facade elevators.</li><li><strong>Customs and Exemption Support:</strong> We prepare your inventory lists and required declarations so that your belongings enter the Belgium customs exempt from tax within the scope of 'personal effects.'</li></ul><h3>City-Based Delivery Planning</h3><p>Thanks to our proximity to the Antwerp port and our local logistics network in Brussels, we quickly distribute your furniture within the city. From the busy customs area of Antwerp to the calm canals of Ghent, we dominate local shipping rules at every point. With our weekly partial flights, even if you don't move your entire home, you can send just a sofa set to Belgium at very economical freight prices.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Is tax incurred in Belgium for newly bought furniture?</summary><p>Belgium customs may demand VAT and customs duty for furniture bought newer than 6 months. However, your second-hand personal furniture is within the scope of exemption.</h3><details class="b0000-pd5-faq-item"><summary>Do you perform the assembly of the furniture at our address in Belgium?</summary><p>Absolutely! Disassembly and assembly service are included in our standard package. Our carpenters deliver your furniture by setting them up in the rooms you want.</h3><h3>Do you transport custom-made furniture like kitchen cabinets or children's rooms?</h3><p>Yes, we re-install all kinds of modular or fixed furniture by disassembling them on-site in a way suitable for your new home in Belgium.</h3><h3>Can I send just one console or piano to Belgium?</h3><p>Of course. Thanks to our Partial (Groupage) service, you can send a single piece of valuable furniture without having to fill the entire truck.</h3><h3>What happens if my furniture is scratched during transport?</h3><p>All your furniture is under CMR insurance. Since we perform professional packaging, the risk is minimal; however, in case of a mishap, we provide compensation for your damage through the insurance process.</h3><p>Your furniture finds its new place in Belgium with Han Bros Cargo. Create your free quote today for professional, insured, and carpentry-supported furniture shipping!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=n0v1g" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=i1lt9" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=u9vo7"></script>
-  <script defer src="/src/cookie.js?v=u9vo7"></script>
+  <script defer src="/src/mx-ui.js?v=uk0do"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=uk0do"></script>
+  <script defer src="/src/cookie.js?v=uk0do"></script>
 
   <script>
     setTimeout(function() {

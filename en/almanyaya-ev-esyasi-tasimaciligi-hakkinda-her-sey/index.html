@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=rep1c" />
-  <link rel="preload" href="/src/cookie.css?v=rep1c" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=xlj0w" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=xlj0w" />
+  <link rel="preload" href="/src/cookie.css?v=xlj0w" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=rep1c" />
+    <link rel="stylesheet" href="/src/cookie.css?v=xlj0w" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=rep1c" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=xlj0w" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=rep1c">
+<link rel="stylesheet" href="style.css?v=xlj0w">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=ocux8" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=qd6ye" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/almanya-ev-esyasi-rehber/tr.webp?v=udxck" width="100%" alt="Germany Moving Guide (Household Goods & Regulations)" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/almanya-ev-esyasi-rehber/tr.webp?v=ilv5q" width="100%" alt="Germany Moving Guide (Household Goods & Regulations)" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Everything You Need to Know When Moving to Germany</h2><p class="b0000-pd5-lead">Moving from Turkey to Germany is a great excitement, but it brings many questions with it. How can I take my belongings? Do I pay tax at customs? Which company should I trust? This comprehensive guide prepared by Han Bros Cargo illuminates all dark spots in the household goods shipping process to Germany. Our goal is to ensure your belongings are safely with you as you start your new life.</p><h3>Personal Belongings Status and Tax Exemption</h3><p>German customs legislation (Zoll) grants the right to bring household items tax-free to individuals who meet certain conditions. This is called "Personal Belongings" (Übersiedlungsgut). To benefit from this exemption:</p><ul class="b0000-pd5-features"><li><strong>Usage Condition:</strong> The transported items must have been used by you in Turkey for at least 6 months.</li><li><strong>Residence Change:</strong> You must be terminating your residence in Turkey and establishing a new residence in Germany.</li><li><strong>Time Limit:</strong> You must have brought your belongings within 12 months after entering Germany.</li></ul><h3>Planning Your Shipping Cost</h3><p>When planning costs, focus not only on the shipping figure but on the scope of the service offered. Han Bros Cargo quotes usually cover end-to-end service. The most basic factor affecting the price is m3 (volume) information. To reduce volume, leaving behind items you no longer need in Turkey is the most logical cost-reduction method. Also, the quality of packaging materials is the most critical item determining whether things will be damaged or not.</p><h3>City-Based Delivery in Germany</h3><p>Germany's logistics infrastructure is quite developed. At Han Bros Cargo, after our vehicle reaches big centers like Munich, Stuttgart, Berlin, or Hamburg, we can deliver to the most remote towns with our local distribution network. Providing prior information for narrow streets or floor heights in the city ensures that professional equipment like elevators is ready on the delivery day.</p><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Can I take a newly purchased appliance to Germany?</summary><p>New (brand new) products do not fall under personal belongings status. For these products, current VAT and customs duty must be paid at German customs. It is generally not recommended to take products newer than 6 months.</p></details><details class="b0000-pd5-faq-item"><summary>Which documents are mandatory for personal belongings?</summary><p>Passport copy, German residence (Anmeldung) certificate, item list (inventory), customs power of attorney, and shipping contract are the main documents.</p></details><details class="b0000-pd5-faq-item"><summary>Do you disassemble and reassemble my furniture?</summary><p>Yes, our professional teams handle the disassembly of your furniture in Turkey and complete the assembly processes in your new home in Germany for delivery.</p></details><details class="b0000-pd5-faq-item"><summary>Can I track my belongings during transport?</summary><p>Yes, you are periodically informed about the vehicle's location and customs status through our shipping coordinator.</p></details><details class="b0000-pd5-faq-item"><summary>Which shipping method is the safest?</summary><p>Road transport is the safest and most balanced method for household shipping because it involves fewer transfers and items are transported directly inside the truck.</p></details><p>Moving to Germany is much easier with Han Bros Cargo. With our sectoral knowledge and strong logistics network, your belongings are in safe hands. Get free consultancy today!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=iyzqz" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=crxe0" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=rep1c"></script>
-  <script defer src="/src/cookie.js?v=rep1c"></script>
+  <script defer src="/src/mx-ui.js?v=xlj0w"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=xlj0w"></script>
+  <script defer src="/src/cookie.js?v=xlj0w"></script>
 
   <script>
     setTimeout(function() {

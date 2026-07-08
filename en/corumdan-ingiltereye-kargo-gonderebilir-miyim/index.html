@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=nl88n" />
-  <link rel="preload" href="/src/cookie.css?v=nl88n" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=par0t" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=par0t" />
+  <link rel="preload" href="/src/cookie.css?v=par0t" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=nl88n" />
+    <link rel="stylesheet" href="/src/cookie.css?v=par0t" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=nl88n" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=par0t" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=nl88n">
+<link rel="stylesheet" href="style.css?v=par0t">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=hg9lw" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=zlk0l" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/corum-ingiltere-kargo/tr.webp?v=o9ny4" width="100%" alt="Corum to UK Cargo and Logistics Services" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/corum-ingiltere-kargo/tr.webp?v=kpztn" width="100%" alt="Corum to UK Cargo and Logistics Services" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>From the Center of Anatolia to Britain: Cargo Line from Corum to UK</h2><p class="b0000-pd5-lead">We are building a reliable cargo bridge from Corum, known for its local delicacies and developing industry, to every point of the United Kingdom (England, Scotland, Wales). As Han Bros Cargo, we simplify the complex post-Brexit customs rules for cargo shipments from Corum and deliver your belongings safely to every city from London to Manchester, Birmingham to Liverpool. With the professional logistics support we offer on the Corum-UK route, no matter the distance, your shipments are at your door at the time we promised.</p><h3>Why Should You Choose Us for UK Shipments Originating from Corum?</h3><p>Advantages we offer with our expertise on the UK route:</p><ul class="b0000-pd5-features"><li><strong>Brexit Customs Expertise:</strong> In the import customs processes that changed after England left the EU, we provide full support in ToR documents and commercial invoice declarations.</li><li><strong>Regular Partial (LTL) Flights:</strong> We provide great savings in freight prices by combining your boxes or palletized loads coming from Corum with other shipments.</li><li><strong>Comprehensive Packaging and Protection:</strong> We package your loads with industrial-type protective materials against long-distance conditions and overseas (ferry/tunnel) crossings.</li><li><strong>End-to-End Digital Tracking:</strong> You can track your cargo via GPS 24/7 from the moment we pick it up from Corum until the final address in the UK.</li></ul><h3>Seamless Cargo Experience from Corum to UK</h3><p>No matter the volume of your cargo, Han Bros Cargo's professional field teams are with you at every stage. By picking up from every district of Corum (Sungurlu, Alaca, Osmancik, etc.), we deliver your loads as quickly as possible to the UK borders via Europe. Thanks to our local distribution network and customs consultants in the UK, we complete the nationalization process of your belongings without getting stuck. We minimize time loss with the 'Fast Discharge' system we developed especially for individual personal effects and sample shipments.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>How many days does cargo from Corum to the UK take?</summary><p>Our road partial cargos are delivered between an average of 12 and 16 days depending on the customs situation.</h3><details class="b0000-pd5-faq-item"><summary>Will I pay tax at UK customs?</summary><p>If you have a valid Transfer of Residence (ToR) certificate, you do not pay tax on your personal effects; for commercial shipments, VAT and customs duties determined by the UK are applied.</h3><h3>Do you insure my cargo?</h3><p>Yes, all our shipments are under international CMR insurance. We can also perform additional 'All-Risk' insurance for your valuable cargos.</h3><h3>What types of products are prohibited to send?</h3><p>It is not possible to send flammable substances, fresh food, medicine (without prescription), and products prohibited by UK laws via cargo.</h3><h3>Is there a minimum limit to send a box of belongings?</h3><p>No, there is no lower limit in our box-based shipments; even if it's only a single box, we can provide shipping with economic prices.</h3><p>Trust Han Bros Cargo's experience for the fastest and most economical cargo solutions from Corum to the UK. Start the process by getting a free price quote now!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=l46ew" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=qdejg" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=nl88n"></script>
-  <script defer src="/src/cookie.js?v=nl88n"></script>
+  <script defer src="/src/mx-ui.js?v=par0t"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=par0t"></script>
+  <script defer src="/src/cookie.js?v=par0t"></script>
 
   <script>
     setTimeout(function() {

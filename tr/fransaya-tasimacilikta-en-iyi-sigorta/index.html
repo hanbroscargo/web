@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=cimu8" />
-  <link rel="preload" href="/src/cookie.css?v=cimu8" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=oygnj" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=oygnj" />
+  <link rel="preload" href="/src/cookie.css?v=oygnj" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=cimu8" />
+    <link rel="stylesheet" href="/src/cookie.css?v=oygnj" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=cimu8" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=oygnj" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=cimu8">
+<link rel="stylesheet" href="style.css?v=oygnj">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=z0m3j" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=l32ha" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/fransa-en-iyi-sigorta/tr.webp?v=h8eik" width="100%" alt="Fransa'ya Taşımacılıkta Sigorta ve Finansal Güvence" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/fransa-en-iyi-sigorta/tr.webp?v=dmody" width="100%" alt="Fransa'ya Taşımacılıkta Sigorta ve Finansal Güvence" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Fransa Yolculuğunda Eşyalarınız Güvende: Sigorta ve Risk Yönetimi</h2><p class="b0000-pd5-lead">Türkiye'den Fransa'ya ev eşyası, kargo veya araç gönderirken en temel ihtiyaçlarınızdan biri 'iç huzuru'dur. Binlerce kilometrelik yol kateden eşyalarınızın, Avrupa otobanlarındaki her türlü riske karşı finansal olarak korunması gerekir. Han Bros Cargo olarak sunduğumuz 'Fransa Taşımacılık Sigortası', sadece kanuni bir zorunluluk (CMR) değil, aynı zamanda müşterilerimize olan saygımızın bir göstergesidir. Paris, Lyon, Marsilya veya Bordeaux fark etmeksizin, sevkiyatınızın her metresinde Han Bros güvencesini ve en saygın sigorta kuruluşlarının desteğini yanınızda hissedersiniz.</p><h3>Fransa Hattı İçin En İyi Sigorta Seçeneklerimiz</h3><p>Gönderinizin türüne ve değerine göre seçebileceğiniz poliçe çözümleri:</p><ul class="b0000-pd5-features"><li><strong>All-Risk (Tam Kapsamlı) Sigorta:</strong> Eşyalarınızın yüklendiği andan boşaltıldığı ana kadar; kaza, hırsızlık, yangın ve doğal afet gibi tüm dış riskleri kapsayan en güvenli yöntemdir.</li><li><strong>CMR Sigortası:</strong> Uluslararası karayolu taşımacılığı hukuku uyarınca zorunlu olan, taşımacı kusurlarına karşı temel hukuki koruma sağlar.</li><li><strong>Zati Eşya ve Araç Sigortası:</strong> İkinci el ev eşyaları ve motorlu araçlar için piyasa değerini korumaya yönelik, Fransa gümrüklerinde de kabul gören özel poliçelerdir.</li><li><strong>Kırılgan Eşya Koruması:</strong> Antikalar, müzik aletleri veya sanat eserleri için standart dışı özel teminatlar sunuyoruz.</li></ul><h3>Neden Han Bros Cargo'nun Sigorta Desteğini Seçmelisiniz?</h3><p>Bir sigorta poliçesinin gerçek değeri, bir hasar oluştuğunda anlaşılır. Han Bros Cargo olarak, olası bir aksaklık durumunda 'Hızlı Tazminat Akışı' prensibiyle hareket ediyoruz. Profesyonel ekspertiz ağımız sayesinde hasar tespitlerini ivedilikle yapıyor, Fransız ve Türk sigorta hukukuna hakim hukukçularımızla süreci takip ediyoruz. Sigortamız, sadece eşyanızın değerini değil, aynı zamanda paketleme ve taşıma emeğimizi de güvence altına alır. GPS üzerinden 7/24 izlediğimiz araçlarımızla riskleri minimize ederken, sigorta desteğiyle de beklenmedik olaylara karşı mali zırhınızı oluşturuyoruz. Fransa'ya huzurla taşınmanız için biz tüm detayları düşündük.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Fransa'ya gönderilen her kargo sigortalı mıdır?</summary><p>Han Bros Cargo ile yapılan tüm sevkiyatlar CMR sigortası ile yasal güvence altındadır. Ancak tam maddi koruma için 'All-Risk' poliçesi ek olarak önerilir.</p></details><details class="b0000-pd5-faq-item"><summary>Hasar durumunda rapor nasıl tutulur?</summary><p>Teslimat anında eşyalarınızı kontrol etmeli ve bir hasar fark ederseniz, teslimat personeliyle birlikte mutlaka 'Hasar Tespit Tutanağı' tutmalısınız.</p></details><details class="b0000-pd5-faq-item"><summary>Sigorta ücreti neye göre hesaplanır?</summary><p>Sigorta primi, eşyalarınızın beyan ettiğiniz toplam maddi değeri ve taşıma rotasının uzunluğu/risk seviyesine göre düşük bir yüzde üzerinden hesaplanır.</p></details><details class="b0000-pd5-faq-item"><summary>Kullanılmış (ikinci el) eşyalar sigortalanabilir mi?</summary><p>Evet, zati eşya statüsündeki kullanılmış mobilya ve ev gereçleri için de geniş kapsamlı sigorta çözümleri sunuyoruz.</p></details><details class="b0000-pd5-faq-item"><summary>Sigorta süreci ne zaman başlar?</summary><p>Poliçeniz, eşyalarınızın aracımıza yüklenmesiyle aktif hale gelir ve yeni adresinizde araçtan indirilip size teslim edildiği an sona erer.</p></details><p>Fransa taşımacılığında riskleri sıfıra indirin. Han Bros Cargo ile en iyi sigorta paketleri için hemen iletişime geçin!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=w6vm8" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=jvrrq" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=cimu8"></script>
-  <script defer src="/src/cookie.js?v=cimu8"></script>
+  <script defer src="/src/mx-ui.js?v=oygnj"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=oygnj"></script>
+  <script defer src="/src/cookie.js?v=oygnj"></script>
 
   <script>
     setTimeout(function() {

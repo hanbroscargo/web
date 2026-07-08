@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=b46hm" />
-  <link rel="preload" href="/src/cookie.css?v=b46hm" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=f6m5p" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=f6m5p" />
+  <link rel="preload" href="/src/cookie.css?v=f6m5p" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=b46hm" />
+    <link rel="stylesheet" href="/src/cookie.css?v=f6m5p" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=b46hm" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=f6m5p" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=b46hm">
+<link rel="stylesheet" href="style.css?v=f6m5p">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=t0nd2" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=k06eq" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/fransa-kargo-ne-kadar/tr.webp?v=awtpe" width="100%" alt="Fransa Kargo Fiyatları ve Ekonomik Paket Seçenekleri" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/fransa-kargo-ne-kadar/tr.webp?v=mhl8l" width="100%" alt="Fransa Kargo Fiyatları ve Ekonomik Paket Seçenekleri" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Fransa'ya Gönderim Maliyetlerini Optimize Edin: Şeffaf Fiyatlandırma</h2><p class="b0000-pd5-lead">Türkiye ile Avrupa Birliği arasındaki en önemli ticaret köprülerinden biri olan Fransa hattında kargo gönderimi yaparken, maliyetleri en başından bilmek planlama yapmanızı kolaylaştırır. Han Bros Cargo olarak, 'Fransa'ya Kargo Ne Kadar?' sorusuna, gizli maliyet barındırmayan her şey dahil (all-inclusive) fiyat tekliflerimizle yanıt veriyoruz. Paris'in metropol bölgelerinden Marsilya'nın limanlarına kadar Fransa'nın geneline yayılan geniş ağımızla, paketinizin boyutuna ve teslimat hızına göre en ekonomik çözümleri sunuyoruz. Amacımız, sadece taşımak değil, lojistik bütçenizi en verimli şekilde kullanmanızı sağlamaktır.</p><h3>Fransa Kargo Ücretini Belirleyen Temel Dinamikler</h3><p>Teklifimiz hazırlanırken baz alınan ana unsurlar:</p><ul class="b0000-pd5-features"><li><strong>Hacimsel Ağırlık (Desi/M3):</strong> Paketinizin kapladığı alan ile gerçek kilosu karşılaştırılır. Lojistik standartlarına göre hangisi yüksekse fiyatlandırma onun üzerinden yapılır.</li><li><strong>Varış Şehri ve Bölge:</strong> Paris, Lyon ve Marsilya gibi ana terminallere yakın şehirler daha ekonomik olabilirken, iç kısımlardaki sahil kasabaları veya dağlık bölgeler için mesafe farkı uygulanır.</li><li><strong>Teslimat Hızı:</strong> 'Ekspres Servis' seçeneklerimizle birkaç günde teslimat sağlanırken, 'Ekonomik Servis' ile bir miktar daha uzun sürede çok daha uygun fiyatlara gönderim yapabilirsiniz.</li><li><strong>Gümrük ve TVA Danışmanlığı:</strong> Fransa'ya yapılan gönderilerde oluşabilecek TVA (KDV) ve gümrük vergisi konularında size önceden bilgi vererek sürpriz ödemelerin önüne geçiyoruz.</li></ul><h3>Neden Han Bros Cargo'yu Tercih Etmelisiniz?</h3><p>Fransa kargo pazarında bizi öne çıkaran en büyük özellik, 'Gizli Maliyet Yok' garantimizdir. Yakıt sürşarjı veya otoyol geçişleri gibi kalemler teklifimize dahildir. Han Bros Cargo olarak, hem kurumsal ihracatçıların hem de bireysel göndericilerin her bir kuruşunun değerli olduğunu biliyoruz. Profesyonel paketleme danışmanlığımızla kargonuzun hacmini optimize ederek navlun ücretini düşürmenize yardımcı oluyoruz. Ayrıca tüm sevkiyatlarımız CMR sigortası ile güvence altına alınır. Siz sadece paketinizi hazırlayın, Fransa'nın neresinde olursa olsun güvenli ve ucuz teslimatın keyfini çıkarın. Hemen online teklif alarak maliyetlerinizi karşılaştırın.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Küçük bir koliyi Fransa'ya göndermenin maliyeti nedir?</summary><p>Koli boyutlarına ve ağırlığına göre değişmekle birlikte, 1-5 kg arası küçük paketler için çok rekabetçi başlangıç fiyatlarımız mevcuttur.</p></details><details class="b0000-pd5-faq-item"><summary>Fransa gümrüğünde ekstra vergi öder miyim?</summary><p>Ticari ürünlerde Fransa yasalarına göre KDV (TVA) ve gümrük vergisi çıkabilir. Ancak düşük değerli hediyelikler veya numunelerde muafiyet sınırları bulunabilir.</p></details><details class="b0000-pd5-faq-item"><summary>Paris dışındaki şehirlere (Lyon, Nice vb.) fiyat farkı var mı?</summary><p>Ana rotalarımız üzerindeki büyük şehirler standart fiyatlandırılırken, uzak dağıtım noktaları için küçük bir bölge farkı uygulanmaktadır.</p></details><details class="b0000-pd5-faq-item"><summary>Fiyat teklifi almam ne kadar zaman alır?</summary><p>Web sitemizdeki teklif formu üzerinden veya müşteri hizmetlerimizi arayarak saniyeler içinde kargonuz için fiyat alabilirsiniz.</p></details><details class="b0000-pd5-faq-item"><summary>Kargo ücretine kapıdan kapıya teslimat dahil mi?</summary><p>Evet, Han Bros Cargo teklifleri aksi belirtilmedikçe Türkiye'deki adresten alım ve Fransa'daki adrese teslimat süreçlerinin tamamını kapsar.</p></details><p>Fransa kargo maliyetlerinde tasarruf etmeye bugün başlayın. Han Bros Cargo ile en iyi fiyat teklifini Almak İçin Buraya Tıklayın!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=l4pyt" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=zs0an" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=b46hm"></script>
-  <script defer src="/src/cookie.js?v=b46hm"></script>
+  <script defer src="/src/mx-ui.js?v=f6m5p"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=f6m5p"></script>
+  <script defer src="/src/cookie.js?v=f6m5p"></script>
 
   <script>
     setTimeout(function() {

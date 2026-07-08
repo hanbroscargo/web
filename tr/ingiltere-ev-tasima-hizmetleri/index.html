@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=fnrmc" />
-  <link rel="preload" href="/src/cookie.css?v=fnrmc" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=qf9x3" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=qf9x3" />
+  <link rel="preload" href="/src/cookie.css?v=qf9x3" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=fnrmc" />
+    <link rel="stylesheet" href="/src/cookie.css?v=qf9x3" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=fnrmc" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=qf9x3" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=fnrmc">
+<link rel="stylesheet" href="style.css?v=qf9x3">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=d0k1p" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=l0553" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/ingiltere-ev-tasima-hizmetleri/tr.webp?v=olggp" width="100%" alt="İngiltere ev taşıma hizmetleri" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/ingiltere-ev-tasima-hizmetleri/tr.webp?v=mzl3l" width="100%" alt="İngiltere ev taşıma hizmetleri" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>İngiltere Ev Taşıma Hizmetleri</h2><p class="b0000-pd5-lead">Han Bros Cargo, İngiltere'ye yönelik geniş kapsamlı ev taşıma hizmet paketleri sunmaktadır. Her bütçe ve ihtiyaca uygun çözümlerle hizmetinizdeyiz.</p><h3>Hizmet Paketlerimiz</h3><ul class="b0000-pd5-features"><li><strong>Tam Hizmet Paketi:</strong> Paketleme, yükleme, taşıma, gümrük işlemleri ve teslimat dahil komple hizmet</li><li><strong>Kısmi Hizmet Paketi:</strong> Sadece taşıma ve teslimat, paketleme müşteri tarafından yapılır</li><li><strong>Kurumsal Paket:</strong> Şirket taşınmaları için özel çözümler ve toplu fiyatlandırma</li><li><strong>Özel Eşya Taşıma:</strong> Piyano, antika mobilya, sanat eserleri gibi özel eşyalar için uzman hizmet</li><li><strong>Depolama Hizmeti:</strong> Geçici depolama ve sonrasında teslimat seçeneği</li></ul><h3>Detaylı Hizmet Açıklamaları</h3><h4>Paketleme Hizmeti</h4><ul class="b0000-pd5-features"><li>Profesyonel paketleme malzemeleri (karton, strafor, bubble wrap)</li><li>Hassas eşyalar için özel ambalajlama teknikleri</li><li>Eşya envanteri ve fotoğraflama</li><li>Etiketleme ve kategorilendirme</li></ul><h4>Yükleme ve Taşıma</h4><ul class="b0000-pd5-features"><li>Modern ve bakımlı araç filosu</li><li>Özel ekipman ile güvenli yükleme</li><li>Eşyaların sabitlenmesi ve korunması</li><li>GPS takip sistemi ile anlık konum bilgisi</li></ul><h4>Gümrük ve Belge İşlemleri</h4><ul class="b0000-pd5-features"><li>Brexit sonrası gümrük prosedürleri</li><li>Ev eşyası listesi hazırlama</li><li>Gümrük beyannameleri</li><li>Vergi hesaplama ve ödeme desteği</li></ul><h3>Fiyatlandırma</h3><p>İngiltere ev taşıma hizmetleri fiyatları şu faktörlere göre belirlenir:</p><ul class="b0000-pd5-features"><li>Eşya hacmi ve ağırlığı</li><li>Mesafe ve rota</li><li>Seçilen hizmet paketi</li><li>Ek hizmetler (paketleme, depolama, montaj)</li><li>Gümrük masrafları</li></ul><p>Şeffaf fiyatlandırma ile önceden net bilgi alırsınız, gizli maliyet yoktur.</p><h3>Sigorta Kapsamı</h3><p>Tüm ev taşıma hizmetlerimiz kapsamlı sigorta ile korunur. Standart sigorta kapsamı yanında, değerli eşyalar için yüksek değerli sigorta seçenekleri sunuyoruz.</p><h3>Neden Han Bros Cargo?</h3><ul class="b0000-pd5-features"><li>Geniş hizmet yelpazesi ve esnek paket seçenekleri</li><li>Profesyonel ekip ve modern teknoloji</li><li>Şeffaf fiyatlandırma ve rekabetçi fiyatlar</li><li>Kapsamlı sigorta kapsamı</li><li>Zamanında teslimat garantisi</li></ul><p><strong>İngiltere ev taşıma hizmetleri hakkında detaylı bilgi almak ve size özel fiyat teklifi almak için bizimle iletişime geçin.</strong></p></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=gg5ag" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=ziguw" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=fnrmc"></script>
-  <script defer src="/src/cookie.js?v=fnrmc"></script>
+  <script defer src="/src/mx-ui.js?v=qf9x3"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=qf9x3"></script>
+  <script defer src="/src/cookie.js?v=qf9x3"></script>
 
   <script>
     setTimeout(function() {

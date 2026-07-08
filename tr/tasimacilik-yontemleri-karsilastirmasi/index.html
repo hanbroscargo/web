@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=btpyz" />
-  <link rel="preload" href="/src/cookie.css?v=btpyz" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=u7qig" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=u7qig" />
+  <link rel="preload" href="/src/cookie.css?v=u7qig" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=btpyz" />
+    <link rel="stylesheet" href="/src/cookie.css?v=u7qig" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=btpyz" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=u7qig" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=btpyz">
+<link rel="stylesheet" href="style.css?v=u7qig">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=guifc" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=hzi0t" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/tasimacilik-yontemleri-karsilastirma/tr.webp?v=gcwps" width="100%" alt="Taşımacılık Yöntemleri Karşılaştırma Rehberi 2026" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/tasimacilik-yontemleri-karsilastirma/tr.webp?v=yqprp" width="100%" alt="Taşımacılık Yöntemleri Karşılaştırma Rehberi 2026" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Lojistik Karar Destek Rehberi: Yükünüze En Uygun Taşıma Modu</h2><p class="b0000-pd5-lead">Modern ticaret ve bireysel taşımacılık dünyasında 'nasıl taşımalı?' sorusu, 'nereye taşımalı?' sorusu kadar kritiktir. Türkiye'den dünyaya açılan lojistik koridorlarında, Han Bros Cargo olarak müşterilerimize karayolu, denizyolu ve havayolu seçeneklerini sunarken her birinin kendine has avantajlarını ve sınırlarını şeffafça paylaşıyoruz. 'Taşımacılık yöntemleri karşılaştırması' sadece bir fiyat kıyaslaması değil, aynı zamanda yükünüzün güvenliği, gümrük süreçlerinin hızı ve operasyonel esneklik açısından yapılan bir mühendislik çalışmasıdır. Doğru mod seçimi, toplam maliyetinizi %50 oranında optimize edebilir.</p><h3>Uluslararası Taşıma Modlarının Karakteristik Analizi</h3><p>Lojistik ihtiyaçlarınıza göre tercih edebileceğiniz ana yöntemlerin detaylı incelemesi:</p><ul class="b0000-pd5-features"><li><strong>Karayolu Taşımacılığı (Hızlı ve Esnek):</strong> Özellikle Avrupa, Orta Doğu ve Türki Cumhuriyetler hattında 'kapıdan kapıya' en verimli yöntemdir. Ara yüklemeleri ve aktarmaları minimize ederek hasar riskini düşürür. 7-10 gün içinde teslimat imkanıyla 'zaman/maliyet' dengesinde birincidir.</li><li><strong>Denizyolu Taşımacılığı (Ekonomik ve Yüksek Kapasite):</strong> Kıtalararası sevkiyatlarda ve çok ağır endüstriyel yüklerde rakipsizdir. Konteyner bazlı taşımacılık sayesinde büyük hacimleri en düşük maliyetle taşır. Ancak süreler 20-45 gün bandında seyredebilir.</li><li><strong>Havayolu Taşımacılığı (Hız ve Güvenlik):</strong> Çok acil belgeler, yüksek değerli elektronikler veya bozulabilir ürünler için tek seçenektir. 24-72 saat içinde küresel teslimat sağlar. Güvenlik standartları en yüksek seviyededir ancak maliyeti en yüksek olan moddur.</li><li><strong>Demiryolu Taşımacılığı (Sürdürülebilir ve Stabil):</strong> Çevre dostu yük taşımacılığında karbon ayak izini düşüren, hava şartlarından en az etkilenen ve geniş hacimli yükleri uygun fiyata taşıyan bir alternatiftir.</li></ul><h3>Han Bros Cargo Farkıyla Mod Seçimi ve Optimizasyon</h3><p>Biz sadece bir taşımacı değiliz; yükünüzün 'lojistik mimarıyız'. Örneğin; eğer bir ev eşyası taşıyorsanız ve bütçeniz kısıtlıysa karayolu 'Parsiyel' seçeneğini öneriyoruz. Eğer ticari bir ihracat yapıyorsanız ve ürünlerinizin raf ömrü kısaysa 'Express Minivan' karayolu çözümümüzle havayolu hızını yarı fiyatına sunuyoruz. Gümrük danışmanlarımız, seçtiğiniz her yöntem için özel evrak hazırlığı yaparak gümrükteki 'X-Ray' veya muayene sürelerini kısaltacak stratejiler geliştirir. Han Bros Cargo ile modlar arasında kaybolmayın; hedefinize en verimli yolla ulaşın.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Karayolu mu yoksa denizyolu mu daha güvenlidir?</summary><p>Hassas ve aktarma yapılmasını istemediğiniz eşyalarda karayolu, 'tek tır' avantajı nedeniyle daha güvenlidir. Denizyolunda ise gemi sarsıntısı ve liman aktarmaları ekstra paketleme titizliği gerektirir.</p></details><details class="b0000-pd5-faq-item"><summary>En ucuz taşıma yöntemi hangisidir?</summary><p>Hacimce büyük ve acil olmayan gönderiler için her zaman 'Denizyolu LCL (Parsiyel)' veya 'FCL (Tam Konteyner)' en ekonomik çözümdür.</p></details><details class="b0000-pd5-faq-item"><summary>Havayolu kargoda ağırlık limiti var mı?</summary><p>Yolcu uçakları ile kargo uçakları arasında kapasite farkı olsa da, ticari yüklerin çoğunluğu havayoluyla gönderilebilir; ancak maliyet analizi yapılmalıdır.</p></details><details class="b0000-pd5-faq-item"><summary>Kombine (Intermodal) taşımacılık yapıyor musunuz?</summary><p>Evet, maliyeti düşürmek ve süreci hızlandırmak için tır-vapur veya tır-tren gibi hibrit modelleri sıklıkla kullanıyoruz.</p></details><details class="b0000-pd5-faq-item"><summary>Taşıma süresini gümrük işlemleri ne kadar etkiler?</summary><p>Taşıma modundan bağımsız olarak, yanlış hazırlanan evraklar süreci 3 günden 15 güne kadar uzatabilir. Han Bros Cargo bu noktada tam destek sunar.</p></details><p>Yükünüzün rehberi, bütçenizin dostu olun. Han Bros Cargo ile doğru taşıma yöntemini bugün seçin!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=uk0am" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=glefj" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=btpyz"></script>
-  <script defer src="/src/cookie.js?v=btpyz"></script>
+  <script defer src="/src/mx-ui.js?v=u7qig"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=u7qig"></script>
+  <script defer src="/src/cookie.js?v=u7qig"></script>
 
   <script>
     setTimeout(function() {

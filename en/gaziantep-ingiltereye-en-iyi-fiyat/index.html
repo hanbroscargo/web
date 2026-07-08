@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=sdper" />
-  <link rel="preload" href="/src/cookie.css?v=sdper" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=oxtfl" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=oxtfl" />
+  <link rel="preload" href="/src/cookie.css?v=oxtfl" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=sdper" />
+    <link rel="stylesheet" href="/src/cookie.css?v=oxtfl" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=sdper" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=oxtfl" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=sdper">
+<link rel="stylesheet" href="style.css?v=oxtfl">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=g0tgd" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=wbci8" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/gaziantep-ingiltere-en-iyi-fiyat/tr.webp?v=z3moi" width="100%" alt="Gaziantep UK Cargo: Best Price Guarantee and Campaigns" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/gaziantep-ingiltere-en-iyi-fiyat/tr.webp?v=xkryg" width="100%" alt="Gaziantep UK Cargo: Best Price Guarantee and Campaigns" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Economic and Secure Cargo Shipment from Gaziantep to the UK</h2><p class="b0000-pd5-lead">Cost management is the most critical element in shipments made from Gaziantep, one of Turkey's export centers, to the UK. As Han Bros Cargo, we offer the 'Best Price' guarantee by analyzing the needs of Gaziantep industry and individual senders. Regardless of London, Manchester, Birmingham or Liverpool, we carry both your corporate and individual cargo at the most competitive rates with our logistics line extending to every corner of the UK. Thanks to our mastery of the customs legislation changing after Brexit, we ensure that your loads departing from Gaziantep are delivered quickly and economically without getting stuck at the UK border.</p><h3>Why Best Price Advantage with Han Bros Cargo?</h3><p>Operational efficiency lies at the basis of our price policy that differentiates us from other logistics companies in the market:</p><ul class="b0000-pd5-features"><li><strong>Early Booking Opportunities:</strong> By notifying us of your shipment before your planned date, you can benefit from discounted cargo costs of up to 10%.</li><li><strong>Bulk Shipment Discounts:</strong> We offer 'Fixed Price' and volume-based advantages for companies making regular shipments or for large volume loads.</li><li><strong>Direct Line Management:</strong> Thanks to our vehicles going directly from our Gaziantep branch to UK terminals, we eliminate intermediary costs.</li><li><strong>Smart Routing:</strong> By combining sea, land and air options (Multimodal transport), we create the cheapest route according to your urgency.</li></ul><h3>Ways to Save While Moving from Gaziantep to the UK</h3><p>Han Bros Cargo is not just a transport company, but also a cost consultant for you. We ensure you pay less by minimizing the space (volume) occupied by the item with our packaging techniques. We also lower your customs costs with the guidance we offer about customs duties and VAT exemptions in the UK. From Gaziantep pistachios to textile products, from household goods to commercial samples, do not decide without getting a quote from us for all your shipments. With our strategic campaigns focused on customer satisfaction, we establish the logistics bridge between Gaziantep and the United Kingdom in the most economical way.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>How do you calculate Gaziantep-UK cargo rates?</summary><p>Our pricing is automatically calculated according to the weight, volume (desi), content of the shipment and the destination in the UK.</h3><details class="b0000-pd5-faq-item"><summary>Do you have special prices for small packages too?</summary><p>Yes, we offer very competitive rates for small volume shipments with our 'Micro-Export' and courier service.</h3><h3>Are customs costs included in the price after Brexit?</h3><p>Shipping costs are clearly stated in our quotes; customs brokerage services and taxes are presented separately line by line in a transparent manner according to the type of item.</h3><h3>Do you deliver everywhere in the UK?</h3><p>Yes, we have a door-to-door delivery network throughout the United Kingdom (including Scotland and Wales).</h3><h3>When should I contact to get the best price?</h3><p>Usually, quotes received 2-4 weeks before the loading date are the most ideal time for you to benefit from our periodic campaigns.</h3><p>We carry Gaziantep's load to the UK. Call now for the best price quote!</p></details></details></section></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=hno9w" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=ki29o" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/kurumsal">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="/en/">Home</a></li><li class="menu__item"><a class="menu__link" href="/en/hakkimizda/">Corporate</a></li><li class="menu__item"><a class="menu__link" href="/en/ulkeler/">Countries</a></li><li class="menu__item"><a class="menu__link" href="/en/akilli-hesaplama/">Smart Calculation</a></li><li class="menu__item"><a class="menu__link" href="/en/hizmetlerimiz/">Our Services</a></li><li class="menu__item"><a class="menu__link" href="/en/iletisim/">Contact</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=sdper"></script>
-  <script defer src="/src/cookie.js?v=sdper"></script>
+  <script defer src="/src/mx-ui.js?v=oxtfl"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=oxtfl"></script>
+  <script defer src="/src/cookie.js?v=oxtfl"></script>
 
   <script>
     setTimeout(function() {

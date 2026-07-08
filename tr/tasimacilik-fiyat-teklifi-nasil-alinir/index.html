@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=pf5gf" />
-  <link rel="preload" href="/src/cookie.css?v=pf5gf" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=n641t" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=n641t" />
+  <link rel="preload" href="/src/cookie.css?v=n641t" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=pf5gf" />
+    <link rel="stylesheet" href="/src/cookie.css?v=n641t" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=pf5gf" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=n641t" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=pf5gf">
+<link rel="stylesheet" href="style.css?v=n641t">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=jwpuz" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=tp11b" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/fiyat-teklifi-nasil-alinir/tr.webp?v=jq7u6" width="100%" alt="Lojistik Teklifi Al: Taşımacılık Fiyat Teklifi Nasıl Alınır?" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/fiyat-teklifi-nasil-alinir/tr.webp?v=hhpgk" width="100%" alt="Lojistik Teklifi Al: Taşımacılık Fiyat Teklifi Nasıl Alınır?" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Zaman Kaybetmeden Teklif Alın: Lojistikte Şeffaf Fiyatlandırma Süreci</h2><p class="b0000-pd5-lead">Uluslararası taşımacılık planlarken en önemli adım, bütçenizi sarsmayacak ve sürpriz maliyetler içermeyecek doğru bir fiyat teklifi almaktır. Han Bros Cargo olarak, 'Fiyat Teklifi Nasıl Alınır?' sorusuna en hızlı ve profesyonel yanıtları veriyoruz. Modern teknolojik altyapımız ve uzman operasyon ekibimiz sayesinde, gönderinizin detaylarını bizimle paylaştığınız andan itibaren size özel, her şey dahil (all-inclusive) tekliflerimizi hazırlıyoruz. İster bir ev eşyası, ister ticari bir konteyner olsun, teklif alma sürecini sizin için en basit ve verimli hale getirdik.</p><h3>Han Bros'tan Teklif Almanın 4 Kolay Yolu</h3><p>İhtiyacınıza uygun teklifi hemen şu kanallardan talep edebilirsiniz:</p><ul class="b0000-pd5-features"><li><strong>Online Teklif Formu:</strong> Web sitemizdeki akıllı formları doldurarak, eşyalarınızın m3 bilgisini ve rotasını iletin, sistemimiz size anında bir ön teklif sunsun.</li><li><strong>WhatsApp ve Canlı Destek:</strong> Eşyalarınızın fotoğraflarını çekip bize WhatsApp üzerinden gönderin, uzmanlarımız görsel analiz yaparak dakikalar içinde fiyatlandırsın.</li><li><strong>Ücretsiz Yerinde veya Video Keşif:</strong> Büyük montanlı ev taşımalarında veya kompleks projelerde, yerinde keşif yaparak veya görüntülü arama ile en kesin fiyatı garantileyin.</li><li><strong>Telefon ile Danışmanlık:</strong> Müşteri hizmetlerimizi doğrudan arayarak, lojistik uzmanlarımızla birebir görüşüp tüm detayları netleştirerek teklifinizi sesli olarak alın.</li></ul><h3>Neden Sadece Rakam Değil, 'Resmi Teklif' Almalısınız?</h3><p>Piyasada 'yaklaşık fiyat' veren pek çok platformun aksine, Han Bros Cargo size yazılı ve resmi bir teklif sunar. Bu teklif; gümrükleme, sigorta, yakıt, otoyol geçişleri ve kapıya teslimat gibi tüm kalemleri kapsar. Böylece 'Brexit Vergisi' veya 'Ek Gümrük Masrafı' gibi sonradan çıkan gizli kalemlerle karşılaşmazsınız. Teklifimizdeki maddeler, aynı zamanda birer taahhüt niteliği taşır. Profesyonel bir teklif almak, eşyalarınızın güvenliğini ve taşınma sürecinizin hukuksal güvencesini de garanti eder. Bize ulaşın, en kaliteli lojistik hizmetini en optimize fiyat teklifiyle almanın konforunu yaşayın.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Fiyat teklifi almak ücretli midir?</summary><p>Hayır, Han Bros Cargo'dan online, telefon veya yerinde keşif yoluyla teklif almak tamamen ücretsizdir ve herhangi bir yükümlülük getirmez.</p></details><details class="b0000-pd5-faq-item"><summary>Teklif almak için hangi bilgileri vermem gerekir?</summary><p>Çıkış ve varış şehirleri, eşyaların yaklaşık hacmi (veya liste), tercih edilen taşıma yöntemi ve istenen ek hizmetler (paketleme vb.) yeterlidir.</p></details><details class="b0000-pd5-faq-item"><summary>Aldığım teklif ne kadar süre geçerli kalır?</summary><p>Uluslararası navlun piyasasındaki dalgalanmalar nedeniyle tekliflerimiz genellikle 10 iş günü boyunca sabitlenmektedir.</p></details><details class="b0000-pd5-faq-item"><summary>Teklifte yazan fiyattan başka ekleme olur mu?</summary><p>Teklifimizdeki 'All-Inclusive' (Her Şey Dahil) maddesi uyarınca, gümrük rejiminde beklenmedik bir değişiklik (devlet vergileri vb.) olmadıkça fiyat değişmez.</p></details><details class="b0000-pd5-faq-item"><summary>Teklifi onayladıktan sonra süreç nasıl ilerler?</summary><p>Teklifi onaylamanızın ardından operasyon personelimiz sizinle iletişime geçer, sözleşme imzalanır ve seçilen tarihte aracımız adresinize yönlendirilir.</p></details><p>Hayallerinizi taşımaya hazırız. En uygun lojistik teklifini bugün almak için Han Bros Cargo ile hemen iletişime geçin!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=d4biw" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=tg6tu" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=pf5gf"></script>
-  <script defer src="/src/cookie.js?v=pf5gf"></script>
+  <script defer src="/src/mx-ui.js?v=n641t"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=n641t"></script>
+  <script defer src="/src/cookie.js?v=n641t"></script>
 
   <script>
     setTimeout(function() {

@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=dy4ux" />
-  <link rel="preload" href="/src/cookie.css?v=dy4ux" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=jp1c7" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=jp1c7" />
+  <link rel="preload" href="/src/cookie.css?v=jp1c7" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=dy4ux" />
+    <link rel="stylesheet" href="/src/cookie.css?v=jp1c7" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=dy4ux" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=jp1c7" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=dy4ux">
+<link rel="stylesheet" href="style.css?v=jp1c7">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=ek69l" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=bkgv8" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/antalyadan-ingiltereye-uluslararasi-tasimacilik-rehberi/tr.webp?v=k5098" width="100%" alt="Antalya'dan İngiltere'ye Uluslararası Taşımacılık Rehberi" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/antalyadan-ingiltereye-uluslararasi-tasimacilik-rehberi/tr.webp?v=klz2w" width="100%" alt="Antalya'dan İngiltere'ye Uluslararası Taşımacılık Rehberi" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Antalya'dan İngiltere'ye Uluslararası Taşımacılık Rehberi</h2><p class="b0000-pd5-lead">Lojistik departmanımız, <strong>Antalya'dan İngiltere'ye Uluslararası Taşımacılık Rehberi</strong> konusunda sektörün öncü ismidir. Antalya'dan başlayan ve İngiltere'ye son bulan lojistik operasyonumuz, kıyı şeridi ve Avrupa hattı güvenle gerçekleştirilir.</p><h3>Neden Han Bros Cargo?</h3><p>ekonomik ücretler ve sigortalı hizmet mottomuzla hareket ediyoruz. Olası hasarlara karşı "All-Risk" sigorta güvencesi sunuyoruz. Ayrıca uluslararası taşımacılık süreçlerinde tecrübeli personelimizle dil bariyeri veya prosedür karmaşası yaşamadan taşınırsınız.</p><h3>Lojistik Rota ve Zamanlama</h3><p>Taşıma araçlarımız kıyı şeridi ve Avrupa hattı hareket ederek, Dover veya Felixstowe üzerinden varış noktasına ulaşır. Antalya'dan İngiltere'ye arası mesafe yaklaşık ~3800 km olup, gümrük işlemlerine bağlı olarak teslimat süresi değişkenlik gösterebilir.</p><p>Yolculuk boyunca araç takip sistemlerimiz ile yükünüzü anlık olarak izleyebilir, operasyon ekibimizden 7/24 bilgi alabilirsiniz.</p><h3>Uluslararası Taşımacılık Sürecinde Dikkat Edilmesi Gerekenler</h3><p>Uluslararası Taşımacılık operasyonu, sadece eşyanın bir yerden bir yere gitmesi değildir. Özellikle UK gümrük mevzuatı ve kıyı şeridi ve Avrupa hattı üzerindeki lojistik dinamikler süreci etkiler. Ekibimiz, tüm bu aşamaları sizin adınıza planlar.</p><p><strong>Hizmet Detayı:</strong> Sınır tanımayan lojistik çözümlerimizle, gümrükleme dahil A'dan Z'ye profesyonel süreç yönetimi. Ayrıca eşyalarınızın hacmine göre Tır veya Minivan seçeneklerini değerlendiriyoruz.</p><h4>OPERASYON Adımları</h4><ul class="b0000-pd5-features"><li><strong>Planlama:</strong> Antalya'dan adresinizde ücretsiz ekspertiz ve hacim belirleme.</li><li><strong>Hazırlık:</strong> Tüm eşyaların uluslararası standartlarda paketlenmesi.</li><li><strong>Gümrükleme:</strong> Türkiye çıkış ve İngiltere giriş gümrük beyannamelerinin hazırlanması.</li><li><strong>Transfer:</strong> ~3800 km mesafeli güvenli yolculuk.</li><li><strong>Teslimat:</strong> Yeni adresinizde kurulum ve atık malzemelerin toplanması.</li></ul><h3>Sıkça Sorulan Sorular</h3><h4>Taşıma ne kadar sürer?</h4><p>Ortalama olarak Antalya'dan çıkışlı araçlarımız 10-14 gün içinde teslimat sağlar. Express servisimiz ise 4-6 gün sürebilir.</p><h4>Gümrük vergisi çıkar mı?</h4><p>Zati eşya kapsamında ToR (Transfer of Residence) şartlarını sağıyorsanız vergisiz taşıma mümkündür. <strong>Uluslararası Taşımacılık</strong> için gümrük danışmanlarımız size rehberlik edecektir.</p><h4>Sigorta neleri kapsar?</h4><p>Uluslararası nakliyat sigortamız, kaza, devrilme, yanma ve hırsızlık gibi ana riskleri tam kapsamlı olarak karşılar.</p><h3>Sonuç</h3><p>Antalya'dan İngiltere'ye Uluslararası Taşımacılık Rehberi taleplerinizde profesyonel destek almak için bize ulaşın. Firmamız olarak turistik bölgelere özel servisimizle sizlere en iyi deneyimi sunmayı hedefliyoruz.</p><p style="font-size:0.8em; color:#666;">Anahtar Kelimeler: parsiyel taşıma, han bros cargo güvencesi, tır nakliyesi, uluslararası nakliyat, brexit lojistik, ingiltere lojistik, türkiye ingiltere taşımacılık, mobilya montaj ekibi, Uluslararası Taşımacılık fiyatları, İngiltere'ye nakliyat firmaları.</p></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=fsaju" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=hasxm" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=dy4ux"></script>
-  <script defer src="/src/cookie.js?v=dy4ux"></script>
+  <script defer src="/src/mx-ui.js?v=jp1c7"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=jp1c7"></script>
+  <script defer src="/src/cookie.js?v=jp1c7"></script>
 
   <script>
     setTimeout(function() {

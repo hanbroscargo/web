@@ -29,16 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=ajuax" />
-  <link rel="preload" href="/src/cookie.css?v=ajuax" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=wia4q" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=wia4q" />
+  <link rel="preload" href="/src/cookie.css?v=wia4q" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=ajuax" />
+    <link rel="stylesheet" href="/src/cookie.css?v=wia4q" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=ajuax" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=wia4q" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=ajuax">
+<link rel="stylesheet" href="style.css?v=wia4q">
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=llqs1" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=tive8" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -139,7 +140,6 @@
 <script>
   setTimeout(function () {
     try {
-
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,7 +150,6 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
-
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -164,10 +163,8 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
-
         document.body.style.overflow = "hidden";
       }
-
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -182,7 +179,6 @@
           }
         }
       }
-
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -215,7 +211,6 @@
         }
       }
       initMobileSubmenuToggles();
-
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -232,14 +227,11 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
-
         document.body.style.overflow = "";
-
         if (toggle) {
           toggle.focus();
         }
       }
-
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,7 +241,6 @@
           openMenu();
         }
       });
-
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -257,7 +248,6 @@
           closeMenu();
         });
       }
-
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -265,21 +255,18 @@
           closeMenu();
         });
       }
-
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
-
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
-
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -290,7 +277,6 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
-
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -299,16 +285,13 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
-
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
-
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
-
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -316,7 +299,6 @@
           }
         }
       }, { passive: false });
-
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -325,11 +307,9 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
-
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
-
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -339,7 +319,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -350,7 +329,6 @@
           isSwiping = false;
         }
       }, { passive: true });
-
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -358,13 +336,11 @@
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
-
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -375,10 +351,8 @@
           }
         }
       });
-
       function handleBreakpoint() {
         if (!mql.matches) {
-
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -428,7 +402,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/almanya-arac-ne-kadar/tr.webp?v=hfcok" width="100%" alt="Almanya'ya Araç Taşımacılığı Fiyatları Kılavuzu" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/almanya-arac-ne-kadar/tr.webp?v=ccpqx" width="100%" alt="Almanya'ya Araç Taşımacılığı Fiyatları Kılavuzu" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Almanya'ya Araç Taşımacılığı: Fiyat ve Hizmet Detayları</h2><p class="b0000-pd5-lead">Türkiye'den Almanya'ya bir araç göndermek istendiğinde en çok merak edilen konu maliyetlerdir. Han Bros Cargo olarak, araç taşımacılığı sürecini hem ekonomik hem de güvenli bir şekilde yönetiyoruz. Almanya'ya araç taşıma fiyatları; aracın modelinden boyutuna, başlangıç noktasından varış şehrine ve tercih edilen taşıma yöntemine göre değişiklik göstermektedir. Şeffaf fiyatlandırma politikamızla, müşterilerimize gizli maliyetlerden uzak, net çözümler sunuyoruz.</p><h3>Fiyatlandırmayı Etkileyen Faktörler</h3><p>Lojistik dünyasında araç nakliyesi standart bir kargo gibi değerlendirilmez. Maliyetleri belirleyen başlıca unsurlar şunlardır:</p><ul class="b0000-pd5-features"><li><strong>Araç Tipi ve Boyutu:</strong> Standart bir binek otomobil ile bir SUV veya ticari panelvanın taşıma maliyeti farklıdır. Aracın kapladığı alan ve ağırlığı navlun fiyatını doğrudan etkiler.</li><li><strong>Teslimat Noktası:</strong> Münih veya Stuttgart gibi güney şehirleri ile Hamburg veya Berlin gibi kuzey şehirleri arasındaki mesafe fiyat farkı yaratabilir.</li><li><strong>Taşıma Yöntemi:</strong> Açık çekici (multi-carrier) kullanımı en ekonomik seçenekken, kapalı kasa çekici veya özel treyler kullanımı daha premium bir hizmet bedeli gerektirir.</li><li><strong>Gümrük ve Sigorta:</strong> Aracın değeri üzerinden yapılan nakliyat sigortası ve gümrük müşavirliği hizmetleri toplam maliyete eklenir.</li></ul><h3>Profesyonel Süreç Yönetimi</h3><p>Han Bros Cargo, aracınızı kapınızdan teslim alarak Almanya'daki gümrük noktasına veya belirlediğiniz adrese kadar tüm süreci yönetir. Araç taşımacılığında en kritik noktalardan biri, aracın taşıma aracına güvenli bir şekilde sabitlenmesidir. Uzman yükleme ekibimiz, aracınızın lastik ve şasi bağlantılarını uluslararası standartlarda yaparak yol boyunca oluşabilecek sarsıntılara karşı tam koruma sağlar.</p><h3>Gümrükleme ve Zati Eşya Statüsü</h3><p>Eğer Almanya'ya kesin dönüş yapıyorsanız veya oturum hakkınız varsa, aracınızı "zati eşya" statüsünde götürerek vergi avantajlarından yararlanabilirsiniz. Ancak bu süreç oldukça detaylı bir mevzuat bilgisi gerektirir. Danışmanlarımız, aracınızın yaşına ve modeline göre ödenmesi gereken vergileri (KDV ve ÖTV benzeri Avrupa vergileri) önceden hesaplayarak sizi bilgilendirir.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Almanya'ya araç taşıma maliyeti nasıl hesaplanır?</summary><p>Maliyet; aracın marka-modeli, boyutu, Türkiye'deki çıkış şehri ve Almanya'daki varış şehri baz alınarak hesaplanır. Güncel kur ve yakıt maliyetleri de fiyatlandırmada rol oynar.</p></details><details class="b0000-pd5-faq-item"><summary>Araç taşıma süresi ne kadardır?</summary><p>Türkiye'den Almanya'ya bir aracın karayolu ile ulaşması, rotaya ve gümrük yoğunluğuna bağlı olarak ortalama 7 ile 12 iş günü sürmektedir.</p></details><details class="b0000-pd5-faq-item"><summary>Gümrük vergileri fiyata dahil mi?</summary><p>Sunulan nakliye teklifi genellikle taşıma ve sigorta bedelini kapsar. Gümrük vergileri aracın değerine ve sizin yasal statünüze göre değişiklik gösterdiği için ayrıca hesaplanıp gümrük idaresine ödenir.</p></details><details class="b0000-pd5-faq-item"><summary>Kazalı veya çalışmayan araçlar taşınabilir mi?</summary><p>Evet, tekerlekleri dönebilen kazalı veya mekanik arızalı araçlar vinç yardımıyla taşıma araçlarımıza yüklenebilmekte ve nakliyesi gerçekleştirilebilmektedir.</p></details><details class="b0000-pd5-faq-item"><summary>Sigorta kapsamı neleri içerir?</summary><p>Araçlarımızdaki tüm yükler CRM sigortası altındadır. Ayrıca aracınızın değerine özel ek kasko/nakliyat sigortası yapılarak yolculuk esnasındaki tüm riskler teminat altına alınır.</p></details><p>Aracınızı güvenle Almanya'ya taşımak için doğru adrestesiniz. Han Bros Cargo güvencesiyle aracınızın nakliyesi için bugün bize ulaşın ve size özel fiyat teklifinizi alın!</p></section></article></div>
     
   </div>
@@ -679,7 +653,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=uv05a" alt="Support Agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=ku9mj" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -778,7 +752,7 @@
       </li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/kurumsal">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim">İletişim</a></li>
+      <li class="menu__item"><a class="menu__link" href="/tr/">Anasayfa</a></li><li class="menu__item"><a class="menu__link" href="/tr/hakkimizda/">Kurumsal</a></li><li class="menu__item"><a class="menu__link" href="/tr/ulkeler/">Ülkeler</a></li><li class="menu__item"><a class="menu__link" href="/tr/akilli-hesaplama/">Akıllı Hesaplama</a></li><li class="menu__item"><a class="menu__link" href="/tr/hizmetlerimiz/">Hizmetlerimiz</a></li><li class="menu__item"><a class="menu__link" href="/tr/iletisim/">İletişim</a></li>
     </ul>
     <p>Han Bros Cargo 2025 cognite. &copy;</p>
   </footer>
@@ -794,8 +768,9 @@
 </script>
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=ajuax"></script>
-  <script defer src="/src/cookie.js?v=ajuax"></script>
+  <script defer src="/src/mx-ui.js?v=wia4q"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=wia4q"></script>
+  <script defer src="/src/cookie.js?v=wia4q"></script>
 
   <script>
     setTimeout(function() {
