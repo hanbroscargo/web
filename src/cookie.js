@@ -1,4 +1,5 @@
 
+var cookieAutoHideTimer = null;
 function checkCookie(name) {
   return document.cookie
     .split(";")
@@ -8,6 +9,15 @@ function setCookie(name, value, days) {
   const date = new Date();
   date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
   document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+}
+function hideCookieNotice() {
+  if (cookieAutoHideTimer) {
+    clearTimeout(cookieAutoHideTimer);
+    cookieAutoHideTimer = null;
+  }
+  document.querySelector(".cookie-banner")?.remove();
+  document.querySelector(".cookie-modal")?.remove();
+  document.querySelector(".modal-overlay")?.remove();
 }
 function showCookieNotice() {
   if (!checkCookie("cookieConsent")) {
@@ -43,16 +53,23 @@ function showCookieNotice() {
     const overlay = document.createElement("div");
     overlay.className = "modal-overlay";
     document.body.appendChild(overlay);
+    cookieAutoHideTimer = setTimeout(hideCookieNotice, 5000);
   }
 }
 function showCookieDetails() {
+  if (cookieAutoHideTimer) {
+    clearTimeout(cookieAutoHideTimer);
+    cookieAutoHideTimer = null;
+  }
   document.querySelector(".cookie-modal").classList.add("active");
   document.querySelector(".modal-overlay").classList.add("active");
 }
 function acceptCookies() {
+  if (cookieAutoHideTimer) {
+    clearTimeout(cookieAutoHideTimer);
+    cookieAutoHideTimer = null;
+  }
   setCookie("cookieConsent", "true", 365);
-  document.querySelector(".cookie-banner")?.remove();
-  document.querySelector(".cookie-modal")?.remove();
-  document.querySelector(".modal-overlay")?.remove();
+  hideCookieNotice();
 }
 window.addEventListener("load", showCookieNotice);
