@@ -2879,22 +2879,42 @@
             String(now.getSeconds()).padStart(2, '0');
     }
 
-    function guessCityFromAddress(addressText) {
-        if (!addressText) return '';
+    function defaultCityForCountry(countryCode) {
+        var c = String(countryCode || '').trim().toUpperCase();
+        if (c === 'TR') return 'Istanbul';
+        if (c === 'DE') return 'Berlin';
+        return 'City';
+    }
+
+    function defaultPostCodeForCountry(countryCode) {
+        var c = String(countryCode || '').trim().toUpperCase();
+        if (c === 'TR') return '34000';
+        if (c === 'DE') return '10115';
+        if (c === 'GB' || c === 'UK') return 'SW1A1AA';
+        return '00000';
+    }
+
+    function guessCityFromAddress(addressText, countryCode) {
+        if (!addressText) return defaultCityForCountry(countryCode);
         var trimmed = String(addressText).trim();
-        if (!trimmed) return '';
-        var parts = trimmed.split(',');
-        return (parts[0] || '').trim();
+        if (!trimmed) return defaultCityForCountry(countryCode);
+        var parts = trimmed.split(/[\s,]+/);
+        var token = (parts[0] || '').trim();
+        if (token.length >= 2) return token;
+        return defaultCityForCountry(countryCode);
     }
 
     function buildLocationObject(addressText, countryCode, isFromLocation) {
+        var country = countryCode || (isFromLocation ? 'TR' : 'DE');
+        var addr = String(addressText || '').trim() || 'Website form';
+        var city = guessCityFromAddress(addr, country);
         var location = {
-            Country: countryCode || '',
-            City: guessCityFromAddress(addressText),
+            Country: country,
+            City: city || defaultCityForCountry(country),
             Town: '',
-            PostCode: '',
+            PostCode: defaultPostCodeForCountry(country),
             GateNumber: '',
-            AddresText: addressText || '',
+            AddresText: addr,
             HasLoadElevator: false,
             MovingDistance: 0,
             FlatLevel: 0,
@@ -2910,6 +2930,7 @@
         } else {
             location.WillWeDoAssembly = false;
             location.WillWeDoUnPackaging = false;
+            location.UnloadingPlace = addr;
         }
         return location;
     }

@@ -378,14 +378,40 @@
     return parseFloat(num.toFixed(digits));
   }
 
+  function akf1q6DefaultCity(countryCode) {
+    var c = String(countryCode || '').trim().toUpperCase();
+    if (c === 'TR') return 'Istanbul';
+    if (c === 'DE') return 'Berlin';
+    return 'City';
+  }
+
+  function akf1q6DefaultPostCode(countryCode) {
+    var c = String(countryCode || '').trim().toUpperCase();
+    if (c === 'TR') return '34000';
+    if (c === 'DE') return '10115';
+    if (c === 'GB' || c === 'UK') return 'SW1A1AA';
+    return '00000';
+  }
+
+  function akf1q6GuessCity(addressText, countryCode) {
+    var trimmed = String(addressText || '').trim();
+    if (trimmed) {
+      var token = (trimmed.split(/[\s,]+/)[0] || '').trim();
+      if (token.length >= 2) return token;
+    }
+    return akf1q6DefaultCity(countryCode);
+  }
+
   function akf1q6BuildLocation(addressText, countryCode, isFromLocation) {
+    var country = countryCode || (isFromLocation ? 'TR' : 'DE');
+    var addr = String(addressText || '').trim() || 'Website form';
     var obj = {
-      Country: countryCode || '',
-      City: '',
+      Country: country,
+      City: akf1q6GuessCity(addr, country),
       Town: '',
-      PostCode: '',
+      PostCode: akf1q6DefaultPostCode(country),
       GateNumber: '',
-      AddresText: addressText || '',
+      AddresText: addr,
       HasLoadElevator: false,
       MovingDistance: 0,
       FlatLevel: 0,
@@ -401,6 +427,7 @@
     } else {
       obj.WillWeDoAssembly = false;
       obj.WillWeDoUnPackaging = false;
+      obj.UnloadingPlace = addr;
     }
     return obj;
   }
