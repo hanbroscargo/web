@@ -72,13 +72,13 @@
             <div class="total-warning">
                 @volume-warning@
             </div>
-            </div>
+        </footer>
     </aside>
 
 </main>
 
 
-"<div class="volume-edit-popup is-hidden" id="quote-popup" style="display: none;">
+<div class="volume-edit-popup is-hidden" id="quote-popup" style="display: none;">
     <div class="popup-overlay" onclick="closeQuoteModal()"></div>
     <div class="popup-content quote-popup-content">
         <div class="popup-header">
@@ -1658,6 +1658,14 @@
             padding: 6px 8px;
         }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+        .modulex-wrapper *,
+        .volume-edit-popup * {
+            animation: none !important;
+            transition: none !important;
+        }
+    }
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -1970,15 +1978,46 @@
         setTimeout(applyTranslationsToModule, 0);
     }
 
-    function applyTranslationsToModule() {
-        var root = document.querySelector('.modulex-wrapper') || document.body;
-        if (!root || !root.innerHTML) return;
-        var html = root.innerHTML;
-        var changed = html.replace(/@([a-zA-Z0-9_-]+)@/g, function (match, key) {
+    function replaceAtKeysInText(text) {
+        if (!text || text.indexOf('@') === -1) return text;
+        return text.replace(/@([a-zA-Z0-9_-]+)@/g, function (match, key) {
             var val = getTranslation(key);
             return val !== key ? val : match;
         });
-        if (changed !== html) root.innerHTML = changed;
+    }
+
+    function applyTranslationsToRoot(root) {
+        if (!root) return;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var node;
+        var next;
+        while ((node = walker.nextNode())) {
+            next = replaceAtKeysInText(node.nodeValue);
+            if (next !== node.nodeValue) node.nodeValue = next;
+        }
+        var els = root.querySelectorAll('[placeholder],[aria-label],[title],[alt]');
+        var i;
+        var el;
+        var attrs = ['placeholder', 'aria-label', 'title', 'alt'];
+        var a;
+        var val;
+        var nv;
+        for (i = 0; i < els.length; i++) {
+            el = els[i];
+            for (a = 0; a < attrs.length; a++) {
+                val = el.getAttribute(attrs[a]);
+                if (!val) continue;
+                nv = replaceAtKeysInText(val);
+                if (nv !== val) el.setAttribute(attrs[a], nv);
+            }
+        }
+    }
+
+    function applyTranslationsToModule() {
+        applyTranslationsToRoot(document.querySelector('.modulex-wrapper'));
+        applyTranslationsToRoot(document.getElementById('quote-popup'));
+        applyTranslationsToRoot(document.getElementById('volume-edit-popup'));
+        updateClearCartButtonText();
     }
 
     function updateClearCartButtonText() {
@@ -2700,19 +2739,19 @@
             var errorMsg = getTranslation('loading-error') || 'Veriler yüklenemedi';
             var errorDetail;
             if (error.name === 'AbortError' || (error.message && error.message.indexOf('timeout') !== -1)) {
-                errorDetail = 'Bağlantı zaman aşımına uğradı. Lütfen internet bağlantınızı kontrol edin.';
+                errorDetail = getTranslation('timeout-error');
             } else if (error.message && error.message.indexOf('Failed to fetch') !== -1) {
-                errorDetail = 'Sunucuya bağlanılamadı. Lütfen internet bağlantınızı kontrol edin.';
+                errorDetail = getTranslation('fetch-error');
             } else if (error.message && error.message.indexOf('CORS') !== -1) {
-                errorDetail = 'CORS hatası. Lütfen daha sonra tekrar deneyin.';
+                errorDetail = getTranslation('cors-error');
             } else {
-                errorDetail = error.message || 'Bilinmeyen bir hata oluştu.';
+                errorDetail = error.message || getTranslation('unknown-error');
             }
 
             catContent.innerHTML = '<div class="no-products" style="text-align:center;padding:40px;">' +
                 '<div style="color:#dc3545;margin-bottom:10px;font-weight:600;">' + errorMsg + '</div>' +
                 '<div style="font-size:12px;color:#666;margin-bottom:15px;">' + errorDetail + '</div>' +
-                '<button onclick="loadProducts(0)" style="padding:10px 20px;background:#009a96;color:white;border:none;border-radius:5px;cursor:pointer;font-size:14px;">Tekrar Dene</button>' +
+                '<button onclick="loadProducts(0)" style="padding:10px 20px;background:#009a96;color:white;border:none;border-radius:5px;cursor:pointer;font-size:14px;">' + getTranslation('retry') + '</button>' +
                 '</div>';
         });
     }
@@ -2848,6 +2887,11 @@
     }
 
     function getCurrentLanguageCode() {
+        var pathName = (typeof window !== 'undefined' && window.location && window.location.pathname)
+            ? String(window.location.pathname)
+            : '';
+        if (pathName.indexOf('/en/') !== -1) return 'en';
+        if (pathName.indexOf('/tr/') !== -1) return 'tr';
         var raw = '';
         if (typeof navigator !== 'undefined') {
             raw = navigator.language || navigator.userLanguage || '';
@@ -2861,10 +2905,10 @@
 
     function getRequestTypeFromHash() {
         var hash = (location.hash || '').replace(/^#/, '').toLowerCase().trim();
-        if (hash === 'zati') return 'CA';
-        if (hash === 'mobilya') return 'CO';
-        if (hash === 'ticari') return 'FU';
-        if (hash === 'kargo') return 'RE';
+        if (hash === 'zati') return 'RE';
+        if (hash === 'mobilya') return 'FU';
+        if (hash === 'ticari') return 'CO';
+        if (hash === 'kargo') return 'CA';
         if (hash === 'arac' || hash === 'vehicle') return 'AU';
         return 'RE';
     }

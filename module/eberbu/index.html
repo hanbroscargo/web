@@ -603,6 +603,16 @@
                 border-color: #e0e0e0;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .eberbu-container::before,
+            .eberbu-hero::before,
+            .eberbu-hero-icon,
+            .eberbu-hero-icon-inner,
+            .eberbu-loading-spinner {
+                animation: none !important;
+            }
+        }
     </style>
 
 
@@ -743,15 +753,28 @@
                 });
         }
 
+        function eberbuGetHistory(data) {
+            if (!data) return [];
+            if (data.TransactionHistory && data.TransactionHistory.length) return data.TransactionHistory;
+            if (data.Data && data.Data.TransactionHistory && data.Data.TransactionHistory.length) {
+                return data.Data.TransactionHistory;
+            }
+            if (data.data && data.data.TransactionHistory && data.data.TransactionHistory.length) {
+                return data.data.TransactionHistory;
+            }
+            return [];
+        }
+
         function displayTrackingData(data) {
             var timeline = document.getElementById('timeline');
             var errorNoHistory = (typeof eberbuErrorNoHistory !== 'undefined') ? eberbuErrorNoHistory : 'Bu takip numarası için geçmiş bulunamadı.';
             if (!timeline) return;
-            if (!data.TransactionHistory || data.TransactionHistory.length === 0) {
+            var history = eberbuGetHistory(data);
+            if (!history.length) {
                 timeline.innerHTML = '<div class="eberbu-error">' + errorNoHistory + '</div>';
                 return;
             }
-            var sortedHistory = data.TransactionHistory.sort(function(a, b) {
+            var sortedHistory = history.slice().sort(function(a, b) {
                 return new Date(b.Date) - new Date(a.Date);
             });
             var timelineHTML = '';

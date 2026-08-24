@@ -1459,6 +1459,16 @@
                 border-color: #e0e0e0;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .eberbu-container::before,
+            .eberbu-hero::before,
+            .eberbu-hero-icon,
+            .eberbu-hero-icon-inner,
+            .eberbu-loading-spinner {
+                animation: none !important;
+            }
+        }
     
 
   .wa-advanced {

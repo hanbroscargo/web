@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=j90hi" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=j90hi" />
-  <link rel="preload" href="/src/cookie.css?v=j90hi" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=tw6l7" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=tw6l7" />
+  <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
+  <link rel="preload" href="/src/cookie.css?v=tw6l7" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=j90hi" />
+    <link rel="stylesheet" href="/src/cookie.css?v=tw6l7" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=j90hi" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=tw6l7" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=j90hi">
+<link rel="stylesheet" href="style.css?v=tw6l7">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=a2iek" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=l1af3" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -521,15 +521,28 @@
                 });
         }
 
+        function eberbuGetHistory(data) {
+            if (!data) return [];
+            if (data.TransactionHistory && data.TransactionHistory.length) return data.TransactionHistory;
+            if (data.Data && data.Data.TransactionHistory && data.Data.TransactionHistory.length) {
+                return data.Data.TransactionHistory;
+            }
+            if (data.data && data.data.TransactionHistory && data.data.TransactionHistory.length) {
+                return data.data.TransactionHistory;
+            }
+            return [];
+        }
+
         function displayTrackingData(data) {
             var timeline = document.getElementById('timeline');
             var errorNoHistory = (typeof eberbuErrorNoHistory !== 'undefined') ? eberbuErrorNoHistory : 'Bu takip numarası için geçmiş bulunamadı.';
             if (!timeline) return;
-            if (!data.TransactionHistory || data.TransactionHistory.length === 0) {
+            var history = eberbuGetHistory(data);
+            if (!history.length) {
                 timeline.innerHTML = '<div class="eberbu-error">' + errorNoHistory + '</div>';
                 return;
             }
-            var sortedHistory = data.TransactionHistory.sort(function(a, b) {
+            var sortedHistory = history.slice().sort(function(a, b) {
                 return new Date(b.Date) - new Date(a.Date);
             });
             var timelineHTML = '';
@@ -579,7 +592,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=fy0ni" alt="Support agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=h5ala" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -629,7 +642,7 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("f0000WaPanel");
+    var panel = document.getElementById("f0000WaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
@@ -702,9 +715,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=j90hi"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=j90hi"></script>
-  <script defer src="/src/cookie.js?v=j90hi"></script>
+  <script defer src="/src/mx-ui.js?v=tw6l7"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=tw6l7"></script>
+  <script defer src="/src/cookie.js?v=tw6l7"></script>
 
   <script>
     setTimeout(function() {

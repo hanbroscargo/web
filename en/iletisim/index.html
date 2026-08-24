@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=si4i7" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=si4i7" />
-  <link rel="preload" href="/src/cookie.css?v=si4i7" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=vp244" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=vp244" />
+  <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
+  <link rel="preload" href="/src/cookie.css?v=vp244" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=si4i7" />
+    <link rel="stylesheet" href="/src/cookie.css?v=vp244" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=si4i7" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=vp244" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=si4i7">
+<link rel="stylesheet" href="style.css?v=vp244">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=j7fde" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=zj3a8" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -634,12 +634,12 @@
 
 <script>
   function copyToClipboard(button) {
-    const text = button.getAttribute('data-copy');
+    var text = button.getAttribute('data-copy');
     
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(() => {
+      navigator.clipboard.writeText(text).then(function() {
         showCopyFeedback(button);
-      }).catch(err => {
+      }).catch(function(err) {
         console.error('Copy error:', err);
         fallbackCopy(text, button);
       });
@@ -649,7 +649,7 @@
   }
 
   function fallbackCopy(text, button) {
-    const textArea = document.createElement('textarea');
+    var textArea = document.createElement('textarea');
     textArea.value = text;
     textArea.style.position = 'fixed';
     textArea.style.left = '-999999px';
@@ -670,10 +670,10 @@
 
   function showCopyFeedback(button) {
     button.classList.add('copied');
-    const originalIcon = button.querySelector('.material-symbols-outlined').textContent;
+    var originalIcon = button.querySelector('.material-symbols-outlined').textContent;
     button.querySelector('.material-symbols-outlined').textContent = 'check';
     
-    setTimeout(() => {
+    setTimeout(function() {
       button.classList.remove('copied');
       button.querySelector('.material-symbols-outlined').textContent = originalIcon;
     }, 1000);
@@ -695,7 +695,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=szhx1" alt="Support agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=rlpc3" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -745,7 +745,7 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("f0000WaPanel");
+    var panel = document.getElementById("f0000WaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
@@ -818,9 +818,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=si4i7"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=si4i7"></script>
-  <script defer src="/src/cookie.js?v=si4i7"></script>
+  <script defer src="/src/mx-ui.js?v=vp244"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=vp244"></script>
+  <script defer src="/src/cookie.js?v=vp244"></script>
 
   <script>
     setTimeout(function() {

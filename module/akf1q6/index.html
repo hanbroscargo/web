@@ -61,6 +61,19 @@
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .tkl-menu .modulex-item,
+    .tkl-menu .modulex-item::before,
+    .tkl-menu .modulex-item-icon,
+    .tkl-menu .modulex-item-badge,
+    .tkl-menu .modulex-item-arrow {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
   
   .tkl-menu .modulex-item:hover {
     transform: scale(1.02) translateX(6px);
@@ -233,7 +246,7 @@
   }
 </style>
 
-<div class="tkl-menu" id="modulex"><a class="modulex-item" href="/tr/akilli-hesaplama/#zati" aria-label="Kargo ve Paket Taşımacılığı" data-request-type="CA"><span class="modulex-item-badge">CA</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">inventory_2</span><span class="modulex-item-title">Kargo ve Paket Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#mobilya" aria-label="Ticari Eşya Taşımacılığı" data-request-type="CO"><span class="modulex-item-badge">CO</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">weekend</span><span class="modulex-item-title">Ticari Eşya Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#ticari" aria-label="Yeni Mobilya Taşımacılığı" data-request-type="FU"><span class="modulex-item-badge">FU</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">business_center</span><span class="modulex-item-title">Yeni Mobilya Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#kargo" aria-label="Uluslararası Evden Eve Taşımacılık" data-request-type="RE"><span class="modulex-item-badge">RE</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">local_shipping</span><span class="modulex-item-title">Uluslararası Evden Eve Taşımacılık</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#arac" aria-label="Araç ve Motosiklet Taşımacılığı" data-request-type="AU"><span class="modulex-item-badge">AU</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">directions_car</span><span class="modulex-item-title">Araç ve Motosiklet Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a></div>
+<div class="tkl-menu" id="modulex"><a class="modulex-item" href="/tr/akilli-hesaplama/#kargo" aria-label="Kargo ve Paket Taşımacılığı" data-request-type="CA"><span class="modulex-item-badge">CA</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">local_shipping</span><span class="modulex-item-title">Kargo ve Paket Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#ticari" aria-label="Ticari Eşya Taşımacılığı" data-request-type="CO"><span class="modulex-item-badge">CO</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">business_center</span><span class="modulex-item-title">Ticari Eşya Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#mobilya" aria-label="Yeni Mobilya Taşımacılığı" data-request-type="FU"><span class="modulex-item-badge">FU</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">weekend</span><span class="modulex-item-title">Yeni Mobilya Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#zati" aria-label="Uluslararası Evden Eve Taşımacılık" data-request-type="RE"><span class="modulex-item-badge">RE</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">inventory_2</span><span class="modulex-item-title">Uluslararası Evden Eve Taşımacılık</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#arac" aria-label="Araç ve Motosiklet Taşımacılığı" data-request-type="AU"><span class="modulex-item-badge">AU</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">directions_car</span><span class="modulex-item-title">Araç ve Motosiklet Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a></div>
 <div class="tkl-actions">
   <button type="button" class="tkl-quote-open-btn" onclick="akf1q6OpenQuotePopup()">Teklif al</button>
 </div>
@@ -242,21 +255,24 @@
   <div class="tkl-quote-overlay" onclick="akf1q6CloseQuotePopupAnimated()"></div>
   <div class="tkl-quote-content" id="akf1q6-quote-content">
     <div class="tkl-quote-header">
-      <div class="tkl-quote-title">Teklif al</div>
-      <button type="button" class="tkl-quote-close" onclick="akf1q6CloseQuotePopupAnimated()">x</button>
+      <div>
+        <div class="tkl-quote-kicker">Han Bros Cargo</div>
+        <div class="tkl-quote-title">Teklif al</div>
+      </div>
+      <button type="button" class="tkl-quote-close" onclick="akf1q6CloseQuotePopupAnimated()" aria-label="Kapat">x</button>
     </div>
     <form class="tkl-quote-form" onsubmit="return akf1q6SendQuote(event);">
+      <div class="tkl-quote-field tkl-quote-type-field">
+        <label for="akf1q6-request-type">Talep tipi</label>
+        <select id="akf1q6-request-type" class="tkl-quote-input tkl-quote-type" name="RequestType" required>
+          <option value="CA">Kargo (CA)</option>
+          <option value="CO">Ticari (CO)</option>
+          <option value="FU">Mobilya (FU)</option>
+          <option value="RE">Zati eşya (RE)</option>
+          <option value="AU">Araç (AU)</option>
+        </select>
+      </div>
       <div class="tkl-quote-grid">
-        <div class="tkl-quote-field">
-          <label for="akf1q6-request-type">Kategori</label>
-          <select id="akf1q6-request-type" class="tkl-quote-input">
-            <option value="CA">Zati (CA)</option>
-            <option value="CO">Mobilya (CO)</option>
-            <option value="FU">Ticari (FU)</option>
-            <option value="RE">Kargo (RE)</option>
-            <option value="AU">Arac (AU)</option>
-          </select>
-        </div>
         <div class="tkl-quote-field">
           <label for="akf1q6-name">Ad Soyad</label>
           <input id="akf1q6-name" class="tkl-quote-input" type="text" required>
@@ -283,28 +299,33 @@
         <textarea id="akf1q6-message" class="tkl-quote-input tkl-quote-textarea"></textarea>
       </div>
       <div id="akf1q6-quote-result" class="tkl-quote-result"></div>
-      <button id="akf1q6-quote-send-btn" class="tkl-quote-send-btn" type="submit">Teklifi gonder</button>
+      <button id="akf1q6-quote-send-btn" class="tkl-quote-send-btn" type="submit">Teklifi gönder</button>
     </form>
   </div>
 </div>
 
 <style>
   .tkl-actions { display:flex; justify-content:center; margin: 8px 0 16px; }
-  .tkl-quote-open-btn { border:0; border-radius:10px; padding:10px 18px; background:#006B65; color:#fff; cursor:pointer; }
+  .tkl-quote-open-btn { border:0; border-radius:12px; padding:12px 22px; background:linear-gradient(135deg,#006B65,#004d47); color:#fff; cursor:pointer; font-weight:700; box-shadow:0 8px 20px rgba(0,107,101,.25); }
   .tkl-quote-popup { position:fixed; inset:0; z-index:10001; display:flex; align-items:center; justify-content:center; }
   .tkl-hidden { display:none !important; }
-  .tkl-quote-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.45); }
-  .tkl-quote-content { position:relative; z-index:2; width:min(680px,92vw); max-height:90vh; overflow:auto; border-radius:16px; background:#fff; padding:16px; box-sizing:border-box; animation:tklQuoteOpen .25s ease; }
+  .tkl-quote-overlay { position:absolute; inset:0; background:rgba(0,30,28,0.55); backdrop-filter:blur(4px); }
+  .tkl-quote-content { position:relative; z-index:2; width:min(680px,92vw); max-height:90vh; overflow:auto; border-radius:20px; background:#fff; padding:0 0 18px; box-sizing:border-box; animation:tklQuoteOpen .25s ease; box-shadow:0 24px 60px rgba(0,107,101,.22); }
   .tkl-quote-content.tkl-closing { animation:tklQuoteClose .35s ease forwards; }
-  .tkl-quote-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
-  .tkl-quote-title { font-size:18px; font-weight:700; }
-  .tkl-quote-close { border:0; background:transparent; font-size:18px; cursor:pointer; }
-  .tkl-quote-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; }
-  .tkl-quote-field { margin-bottom:10px; }
-  .tkl-quote-field label { display:block; font-size:13px; margin-bottom:4px; }
-  .tkl-quote-input { width:100%; box-sizing:border-box; border:1px solid #cfd4dc; border-radius:8px; padding:9px 10px; }
-  .tkl-quote-textarea { min-height:80px; resize:vertical; }
-  .tkl-quote-send-btn { border:0; border-radius:10px; padding:12px 18px; background:#16a34a; color:#fff; cursor:pointer; width:100%; display:flex; align-items:center; justify-content:center; gap:8px; }
+  .tkl-quote-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0; padding:18px 20px 16px; background:linear-gradient(135deg,#006B65,#004d47); color:#fff; }
+  .tkl-quote-kicker { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#b7f7d0; font-weight:700; margin-bottom:4px; }
+  .tkl-quote-title { font-size:22px; font-weight:800; color:#fff; }
+  .tkl-quote-close { border:0; background:rgba(255,255,255,.12); color:#fff; width:36px; height:36px; border-radius:50%; font-size:18px; cursor:pointer; }
+  .tkl-quote-form { padding:16px 20px 0; }
+  .tkl-quote-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
+  .tkl-quote-field { margin-bottom:12px; }
+  .tkl-quote-type-field { margin-bottom:16px; }
+  .tkl-quote-field label { display:block; font-size:12px; margin-bottom:6px; font-weight:700; color:#3d4f4c; letter-spacing:.03em; }
+  .tkl-quote-input { width:100%; box-sizing:border-box; border:1px solid #d5e3e0; border-radius:12px; padding:11px 12px; background:#f8fbfa; font-size:14px; }
+  .tkl-quote-input:focus { outline:2px solid rgba(0,107,101,.28); border-color:#006B65; background:#fff; }
+  .tkl-quote-type { font-weight:800; color:#006B65; background:#ecf8f6; border-color:#9dd9d2; }
+  .tkl-quote-textarea { min-height:88px; resize:vertical; }
+  .tkl-quote-send-btn { border:0; border-radius:12px; padding:13px 18px; background:linear-gradient(135deg,#16a34a,#15803d); color:#fff; cursor:pointer; width:100%; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:800; }
   .tkl-quote-send-btn.tkl-sent { animation:tklQuoteSent 1.1s ease-in-out infinite; background:#15803d; }
   .tkl-ok-icon {
     display:inline-flex;
@@ -332,11 +353,25 @@
   @keyframes tklOkPulse { 0% { transform:scale(1);} 50% { transform:scale(1.12);} 100% { transform:scale(1);} }
   @keyframes tklQuoteOpen { from {opacity:0; transform:translateY(8px);} to {opacity:1; transform:translateY(0);} }
   @keyframes tklQuoteClose { from {opacity:1; transform:translateY(0);} to {opacity:0; transform:translateY(10px);} }
+  @media (prefers-reduced-motion: reduce) {
+    .tkl-quote-content, .tkl-quote-send-btn, .tkl-ok-icon { animation: none !important; transition: none !important; }
+  }
 </style>
 
 <script>
   var AKF1Q6_API_BASE = 'https://api.hanbroscargo.com';
   var akf1q6CloseTimer = null;
+  var AKF1Q6_TXT = {
+    send: 'Teklifi gönder',
+    sending: 'Gönderiliyor...',
+    sent: 'Gönderildi',
+    sentLine: 'Gönderildi.',
+    trackingLabel: 'Takip no:',
+    messageLabel: 'Mesaj:',
+    fail: 'Gönderim başarısız.',
+    errorPrefix: 'Gönderim hatası:',
+    unknown: 'Bilinmeyen hata'
+  };
 
   function akf1q6RememberSelectedType(typeCode) {
     try { localStorage.setItem('akf1q6_request_type', typeCode || 'RE'); } catch (e) {}
@@ -349,6 +384,11 @@
   }
 
   function akf1q6GetLanguageCode() {
+    var pathName = (typeof window !== 'undefined' && window.location && window.location.pathname)
+      ? String(window.location.pathname)
+      : '';
+    if (pathName.indexOf('/en/') !== -1) return 'en';
+    if (pathName.indexOf('/tr/') !== -1) return 'tr';
     var raw = (typeof navigator !== 'undefined') ? (navigator.language || navigator.userLanguage || 'tr') : 'tr';
     raw = String(raw || 'tr').toLowerCase();
     if (raw.indexOf('-') !== -1) return raw.split('-')[0];
@@ -486,7 +526,7 @@
     if (!btn) return;
     btn.disabled = false;
     btn.classList.remove('tkl-sent');
-    btn.innerHTML = 'Teklifi gonder';
+    btn.innerHTML = AKF1Q6_TXT.send;
   }
 
   function akf1q6IsAcceptedResponse(respObj) {
@@ -550,6 +590,8 @@
     var totalWeight = akf1q6ToNumber(0, 4);
     akf1q6RememberSelectedType(typeCode);
     return {
+      RequestType: typeCode,
+      tip: typeCode,
       SourceDetail: {
         Company: 'WEBSITE',
         MACAddress: 'hanbroscargo.com',
@@ -621,7 +663,7 @@
     if (btn) {
       btn.disabled = true;
       btn.classList.remove('tkl-sent');
-      btn.textContent = 'Gonderiliyor...';
+      btn.textContent = AKF1Q6_TXT.sending;
     }
     if (resultEl) {
       resultEl.innerHTML = '';
@@ -644,21 +686,21 @@
         if (btn) {
           btn.disabled = false;
           btn.classList.add('tkl-sent');
-          btn.innerHTML = '<span class=\"tkl-ok-icon\">OK</span><span>Gonderildi</span>';
+          btn.innerHTML = '<span class=\"tkl-ok-icon\">OK</span><span>' + AKF1Q6_TXT.sent + '</span>';
         }
         if (resultEl) {
           var successInfo = akf1q6ExtractSuccessInfo(parsedBody, respObj && respObj.text ? respObj.text : '');
           resultEl.className = 'tkl-quote-result success';
           resultEl.innerHTML =
-            '<span class=\"tkl-result-line\">Gonderildi.</span>' +
-            '<span class=\"tkl-result-line\"><span class=\"tkl-result-label\">TrackingNumber:</span>' + (successInfo.trackingNumber || '-') + '</span>' +
-            '<span class=\"tkl-result-line\"><span class=\"tkl-result-label\">Mesaj:</span>' + (successInfo.messageText || '-') + '</span>';
+            '<span class=\"tkl-result-line\">' + AKF1Q6_TXT.sentLine + '</span>' +
+            '<span class=\"tkl-result-line\"><span class=\"tkl-result-label\">' + AKF1Q6_TXT.trackingLabel + '</span>' + (successInfo.trackingNumber || '-') + '</span>' +
+            '<span class=\"tkl-result-line\"><span class=\"tkl-result-label\">' + AKF1Q6_TXT.messageLabel + '</span>' + (successInfo.messageText || '-') + '</span>';
         }
         akf1q6CloseTimer = setTimeout(function () {
           akf1q6CloseQuotePopupAnimated();
         }, 5000);
       } else {
-        var errMsg = 'Gonderim basarisiz.';
+        var errMsg = AKF1Q6_TXT.fail;
         try {
           var parsedErr = parsedBody || JSON.parse(respObj.text || '');
           errMsg = parsedErr.message || parsedErr.Message || parsedErr.error || parsedErr.Error || errMsg;
@@ -673,7 +715,7 @@
     .catch(function (err) {
       if (resultEl) {
         resultEl.className = 'tkl-quote-result error';
-        resultEl.textContent = 'Gonderim hatasi: ' + (err && err.message ? err.message : 'Bilinmeyen hata');
+        resultEl.textContent = AKF1Q6_TXT.errorPrefix + (err && err.message ? err.message : AKF1Q6_TXT.unknown);
       }
       akf1q6ResetSendButton();
     });

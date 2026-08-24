@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=kkbmw" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=kkbmw" />
-  <link rel="preload" href="/src/cookie.css?v=kkbmw" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=ci2o4" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=ci2o4" />
+  <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
+  <link rel="preload" href="/src/cookie.css?v=ci2o4" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=kkbmw" />
+    <link rel="stylesheet" href="/src/cookie.css?v=ci2o4" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=kkbmw" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=ci2o4" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=kkbmw">
+<link rel="stylesheet" href="style.css?v=ci2o4">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=s6207" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=fuurw" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -454,13 +454,13 @@
             <div class="total-warning">
                 Volume and weight are used for shipping pricing.
             </div>
-            </div>
+        </footer>
     </aside>
 
 </main>
 
 
-"<div class="volume-edit-popup is-hidden" id="quote-popup" style="display: none;">
+<div class="volume-edit-popup is-hidden" id="quote-popup" style="display: none;">
     <div class="popup-overlay" onclick="closeQuoteModal()"></div>
     <div class="popup-content quote-popup-content">
         <div class="popup-header">
@@ -888,15 +888,46 @@
         setTimeout(applyTranslationsToModule, 0);
     }
 
-    function applyTranslationsToModule() {
-        var root = document.querySelector('.b0000-wrapper') || document.body;
-        if (!root || !root.innerHTML) return;
-        var html = root.innerHTML;
-        var changed = html.replace(/@([a-zA-Z0-9_-]+)@/g, function (match, key) {
+    function replaceAtKeysInText(text) {
+        if (!text || text.indexOf('@') === -1) return text;
+        return text.replace(/@([a-zA-Z0-9_-]+)@/g, function (match, key) {
             var val = getTranslation(key);
             return val !== key ? val : match;
         });
-        if (changed !== html) root.innerHTML = changed;
+    }
+
+    function applyTranslationsToRoot(root) {
+        if (!root) return;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var node;
+        var next;
+        while ((node = walker.nextNode())) {
+            next = replaceAtKeysInText(node.nodeValue);
+            if (next !== node.nodeValue) node.nodeValue = next;
+        }
+        var els = root.querySelectorAll('[placeholder],[aria-label],[title],[alt]');
+        var i;
+        var el;
+        var attrs = ['placeholder', 'aria-label', 'title', 'alt'];
+        var a;
+        var val;
+        var nv;
+        for (i = 0; i < els.length; i++) {
+            el = els[i];
+            for (a = 0; a < attrs.length; a++) {
+                val = el.getAttribute(attrs[a]);
+                if (!val) continue;
+                nv = replaceAtKeysInText(val);
+                if (nv !== val) el.setAttribute(attrs[a], nv);
+            }
+        }
+    }
+
+    function applyTranslationsToModule() {
+        applyTranslationsToRoot(document.querySelector('.b0000-wrapper'));
+        applyTranslationsToRoot(document.getElementById('quote-popup'));
+        applyTranslationsToRoot(document.getElementById('volume-edit-popup'));
+        updateClearCartButtonText();
     }
 
     function updateClearCartButtonText() {
@@ -1618,19 +1649,19 @@
             var errorMsg = getTranslation('loading-error') || 'Veriler yüklenemedi';
             var errorDetail;
             if (error.name === 'AbortError' || (error.message && error.message.indexOf('timeout') !== -1)) {
-                errorDetail = 'Bağlantı zaman aşımına uğradı. Lütfen internet bağlantınızı kontrol edin.';
+                errorDetail = getTranslation('timeout-error');
             } else if (error.message && error.message.indexOf('Failed to fetch') !== -1) {
-                errorDetail = 'Sunucuya bağlanılamadı. Lütfen internet bağlantınızı kontrol edin.';
+                errorDetail = getTranslation('fetch-error');
             } else if (error.message && error.message.indexOf('CORS') !== -1) {
-                errorDetail = 'CORS hatası. Lütfen daha sonra tekrar deneyin.';
+                errorDetail = getTranslation('cors-error');
             } else {
-                errorDetail = error.message || 'Bilinmeyen bir hata oluştu.';
+                errorDetail = error.message || getTranslation('unknown-error');
             }
 
             catContent.innerHTML = '<div class="no-products" style="text-align:center;padding:40px;">' +
                 '<div style="color:#dc3545;margin-bottom:10px;font-weight:600;">' + errorMsg + '</div>' +
                 '<div style="font-size:12px;color:#666;margin-bottom:15px;">' + errorDetail + '</div>' +
-                '<button onclick="loadProducts(0)" style="padding:10px 20px;background:#009a96;color:white;border:none;border-radius:5px;cursor:pointer;font-size:14px;">Tekrar Dene</button>' +
+                '<button onclick="loadProducts(0)" style="padding:10px 20px;background:#009a96;color:white;border:none;border-radius:5px;cursor:pointer;font-size:14px;">' + getTranslation('retry') + '</button>' +
                 '</div>';
         });
     }
@@ -1766,6 +1797,11 @@
     }
 
     function getCurrentLanguageCode() {
+        var pathName = (typeof window !== 'undefined' && window.location && window.location.pathname)
+            ? String(window.location.pathname)
+            : '';
+        if (pathName.indexOf('/en/') !== -1) return 'en';
+        if (pathName.indexOf('/tr/') !== -1) return 'tr';
         var raw = '';
         if (typeof navigator !== 'undefined') {
             raw = navigator.language || navigator.userLanguage || '';
@@ -1779,10 +1815,10 @@
 
     function getRequestTypeFromHash() {
         var hash = (location.hash || '').replace(/^#/, '').toLowerCase().trim();
-        if (hash === 'zati') return 'CA';
-        if (hash === 'mobilya') return 'CO';
-        if (hash === 'ticari') return 'FU';
-        if (hash === 'kargo') return 'RE';
+        if (hash === 'zati') return 'RE';
+        if (hash === 'mobilya') return 'FU';
+        if (hash === 'ticari') return 'CO';
+        if (hash === 'kargo') return 'CA';
         if (hash === 'arac' || hash === 'vehicle') return 'AU';
         return 'RE';
     }
@@ -1797,22 +1833,42 @@
             String(now.getSeconds()).padStart(2, '0');
     }
 
-    function guessCityFromAddress(addressText) {
-        if (!addressText) return '';
+    function defaultCityForCountry(countryCode) {
+        var c = String(countryCode || '').trim().toUpperCase();
+        if (c === 'TR') return 'Istanbul';
+        if (c === 'DE') return 'Berlin';
+        return 'City';
+    }
+
+    function defaultPostCodeForCountry(countryCode) {
+        var c = String(countryCode || '').trim().toUpperCase();
+        if (c === 'TR') return '34000';
+        if (c === 'DE') return '10115';
+        if (c === 'GB' || c === 'UK') return 'SW1A1AA';
+        return '00000';
+    }
+
+    function guessCityFromAddress(addressText, countryCode) {
+        if (!addressText) return defaultCityForCountry(countryCode);
         var trimmed = String(addressText).trim();
-        if (!trimmed) return '';
-        var parts = trimmed.split(',');
-        return (parts[0] || '').trim();
+        if (!trimmed) return defaultCityForCountry(countryCode);
+        var parts = trimmed.split(/[\s,]+/);
+        var token = (parts[0] || '').trim();
+        if (token.length >= 2) return token;
+        return defaultCityForCountry(countryCode);
     }
 
     function buildLocationObject(addressText, countryCode, isFromLocation) {
+        var country = countryCode || (isFromLocation ? 'TR' : 'DE');
+        var addr = String(addressText || '').trim() || 'Website form';
+        var city = guessCityFromAddress(addr, country);
         var location = {
-            Country: countryCode || '',
-            City: guessCityFromAddress(addressText),
+            Country: country,
+            City: city || defaultCityForCountry(country),
             Town: '',
-            PostCode: '',
+            PostCode: defaultPostCodeForCountry(country),
             GateNumber: '',
-            AddresText: addressText || '',
+            AddresText: addr,
             HasLoadElevator: false,
             MovingDistance: 0,
             FlatLevel: 0,
@@ -1828,6 +1884,7 @@
         } else {
             location.WillWeDoAssembly = false;
             location.WillWeDoUnPackaging = false;
+            location.UnloadingPlace = addr;
         }
         return location;
     }
@@ -2020,7 +2077,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=kes16" alt="Support agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=gie6a" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -2070,7 +2127,7 @@
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("f0000WaPanel");
+    var panel = document.getElementById("f0000WaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
@@ -2143,9 +2200,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=kkbmw"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=kkbmw"></script>
-  <script defer src="/src/cookie.js?v=kkbmw"></script>
+  <script defer src="/src/mx-ui.js?v=ci2o4"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=ci2o4"></script>
+  <script defer src="/src/cookie.js?v=ci2o4"></script>
 
   <script>
     setTimeout(function() {

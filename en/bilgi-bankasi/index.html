@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=hpeh9" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=hpeh9" />
-  <link rel="preload" href="/src/cookie.css?v=hpeh9" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/src/css.css?v=k5xi5" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=k5xi5" />
+  <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
+  <link rel="preload" href="/src/cookie.css?v=k5xi5" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="preload" href="/src/material-symbols-outlined.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=hpeh9" />
+    <link rel="stylesheet" href="/src/cookie.css?v=k5xi5" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=hpeh9" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=k5xi5" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=hpeh9">
+<link rel="stylesheet" href="style.css?v=k5xi5">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=g8od4" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=aakch" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -3663,13 +3663,13 @@
 
 
 <script>
-const searchInput = document.getElementById('searchInput');
-const b0000body = document.getElementById('b0000body');
-const searchCounter = document.getElementById('searchCounter');
-const maxItems = 25;
-let currentVisibleCount = 0;
-let allItems = [];
-let isSearching = false;
+var searchInput = document.getElementById('searchInput');
+var b0000body = document.getElementById('b0000body');
+var searchCounter = document.getElementById('searchCounter');
+var maxItems = 25;
+var currentVisibleCount = 0;
+var allItems = [];
+var isSearching = false;
 
 if (searchInput && b0000body && searchCounter) {
   function initializeItems() {
@@ -3678,22 +3678,22 @@ if (searchInput && b0000body && searchCounter) {
     loadMoreItems();
   }
   function loadMoreItems() {
-    const searchTerm = searchInput.value.trim().toLowerCase();
-    let itemsToShow = [];
+    var searchTerm = searchInput.value.trim().toLowerCase();
+    var itemsToShow = [];
     
     if (isSearching && searchTerm) {
-      itemsToShow = allItems.filter(item => {
-        const searchData = item.getAttribute('data-search');
+      itemsToShow = allItems.filter(function(item) {
+        var searchData = item.getAttribute('data-search');
         return searchData && searchData.includes(searchTerm);
       });
     } else {
       itemsToShow = allItems;
     }
-    allItems.forEach(item => {
+    allItems.forEach(function(item) {
       item.style.display = 'none';
     });
-    const nextBatch = currentVisibleCount + maxItems;
-    itemsToShow.forEach((item, index) => {
+    var nextBatch = currentVisibleCount + maxItems;
+    itemsToShow.forEach(function(item, index) {
       if (index < nextBatch) {
         item.style.display = 'flex';
       }
@@ -3704,12 +3704,12 @@ if (searchInput && b0000body && searchCounter) {
   }
 
   function updateCounter() {
-    const searchTerm = searchInput.value.trim().toLowerCase();
-    let totalAvailable = 0;
+    var searchTerm = searchInput.value.trim().toLowerCase();
+    var totalAvailable = 0;
     
     if (isSearching && searchTerm) {
-      totalAvailable = allItems.filter(item => {
-        const searchData = item.getAttribute('data-search');
+      totalAvailable = allItems.filter(function(item) {
+        var searchData = item.getAttribute('data-search');
         return searchData && searchData.includes(searchTerm);
       }).length;
     } else {
@@ -3722,20 +3722,20 @@ if (searchInput && b0000body && searchCounter) {
       searchCounter.textContent = `${currentVisibleCount} / ${totalAvailable} results`;
     }
   }
-  let isLoading = false;
+  var isLoading = false;
   window.addEventListener('scroll', function() {
     if (isLoading) return;
     
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var windowHeight = window.innerHeight;
+    var documentHeight = document.documentElement.scrollHeight;
     if (scrollTop + windowHeight >= documentHeight - 200) {
-      const searchTerm = searchInput.value.trim().toLowerCase();
+      var searchTerm = searchInput.value.trim().toLowerCase();
       
-      let totalAvailable = 0;
+      var totalAvailable = 0;
       if (isSearching && searchTerm) {
-        totalAvailable = allItems.filter(item => {
-          const searchData = item.getAttribute('data-search');
+        totalAvailable = allItems.filter(function(item) {
+          var searchData = item.getAttribute('data-search');
           return searchData && searchData.includes(searchTerm);
         }).length;
       } else {
@@ -3744,14 +3744,14 @@ if (searchInput && b0000body && searchCounter) {
       if (currentVisibleCount < totalAvailable) {
         isLoading = true;
         loadMoreItems();
-        setTimeout(() => {
+        setTimeout(function() {
           isLoading = false;
         }, 300);
       }
     }
   });
   searchInput.addEventListener('input', function() {
-    const searchTerm = this.value.trim().toLowerCase();
+    var searchTerm = this.value.trim().toLowerCase();
     isSearching = searchTerm.length > 0;
     currentVisibleCount = 0;
     loadMoreItems();
@@ -3777,7 +3777,7 @@ if (searchInput && b0000body && searchCounter) {
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=ap9mo" alt="Support agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=qegzi" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -3827,7 +3827,7 @@ if (searchInput && b0000body && searchCounter) {
 
 <script>
   function toggleModulexAdvanced() {
-    const panel = document.getElementById("f0000WaPanel");
+    var panel = document.getElementById("f0000WaPanel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   }
 
@@ -3900,9 +3900,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=hpeh9"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=hpeh9"></script>
-  <script defer src="/src/cookie.js?v=hpeh9"></script>
+  <script defer src="/src/mx-ui.js?v=k5xi5"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=k5xi5"></script>
+  <script defer src="/src/cookie.js?v=k5xi5"></script>
 
   <script>
     setTimeout(function() {
