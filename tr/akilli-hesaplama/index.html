@@ -589,7 +589,7 @@
     var currentCategory = null;
     var editingProductId = null;
 
-    var GO1ILZ_API_BASE = 'https://api.hanbroscargo.workers.dev';
+    var GO1ILZ_API_BASE = 'https://api.hanbroscargo.com';
     var STORAGE_KEY_GO1ILZ = 'hanbroscargo_go1ilz_akilli_hesaplama';
 
     function saveToLocalStorage() {
@@ -1485,7 +1485,7 @@
             console.error('API timeout - 20 saniye içinde yanıt alınamadı');
         }, 20000);
 
-        fetch('https://api.hanbroscargo.workers.dev/groups', {
+        fetch('https://api.hanbroscargo.com/groups', {
             method: 'GET',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             mode: 'cors',

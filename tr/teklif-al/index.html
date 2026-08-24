@@ -392,21 +392,24 @@
   <div class="tkl-quote-overlay" onclick="akf1q6CloseQuotePopupAnimated()"></div>
   <div class="tkl-quote-content" id="akf1q6-quote-content">
     <div class="tkl-quote-header">
-      <div class="tkl-quote-title">Teklif al</div>
-      <button type="button" class="tkl-quote-close" onclick="akf1q6CloseQuotePopupAnimated()">x</button>
+      <div>
+        <div class="tkl-quote-kicker">Han Bros Cargo</div>
+        <div class="tkl-quote-title">Teklif al</div>
+      </div>
+      <button type="button" class="tkl-quote-close" onclick="akf1q6CloseQuotePopupAnimated()" aria-label="Kapat">x</button>
     </div>
     <form class="tkl-quote-form" onsubmit="return akf1q6SendQuote(event);">
+      <div class="tkl-quote-field tkl-quote-type-field">
+        <label for="akf1q6-request-type">Talep tipi</label>
+        <select id="akf1q6-request-type" class="tkl-quote-input tkl-quote-type" name="RequestType" required>
+          <option value="CA">Zati eşya (CA)</option>
+          <option value="CO">Mobilya (CO)</option>
+          <option value="FU">Ticari (FU)</option>
+          <option value="RE">Kargo (RE)</option>
+          <option value="AU">Araç (AU)</option>
+        </select>
+      </div>
       <div class="tkl-quote-grid">
-        <div class="tkl-quote-field">
-          <label for="akf1q6-request-type">Kategori</label>
-          <select id="akf1q6-request-type" class="tkl-quote-input">
-            <option value="CA">Zati (CA)</option>
-            <option value="CO">Mobilya (CO)</option>
-            <option value="FU">Ticari (FU)</option>
-            <option value="RE">Kargo (RE)</option>
-            <option value="AU">Arac (AU)</option>
-          </select>
-        </div>
         <div class="tkl-quote-field">
           <label for="akf1q6-name">Ad Soyad</label>
           <input id="akf1q6-name" class="tkl-quote-input" type="text" required>
@@ -441,7 +444,7 @@
 
 
 <script>
-  var AKF1Q6_API_BASE = 'https://api.hanbroscargo.workers.dev';
+  var AKF1Q6_API_BASE = 'https://api.hanbroscargo.com';
   var akf1q6CloseTimer = null;
 
   function akf1q6RememberSelectedType(typeCode) {

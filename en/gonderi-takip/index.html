@@ -509,7 +509,7 @@
                 fabButton.onclick = function() { searchTracking(trackingNumber); };
             }
 
-            fetch('https://api.hanbroscargo.workers.dev/track?id=' + encodeURIComponent(trackingNumber))
+            fetch('https://api.hanbroscargo.com/track?id=' + encodeURIComponent(trackingNumber))
                 .then(function(response) { return response.json(); })
                 .then(function(data) {
                     displayTrackingData(data);
