@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=ubikv" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=ubikv" />
+  <link rel="stylesheet" href="/src/css.css?v=hdp5r" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=hdp5r" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=ubikv" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=hdp5r" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=ubikv" />
+    <link rel="stylesheet" href="/src/cookie.css?v=hdp5r" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=ubikv" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=hdp5r" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=ubikv">
+<link rel="stylesheet" href="style.css?v=hdp5r">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=ib9oj" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=ya16n" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/almanya-ev-esyasi-fiyatlari/tr.webp?v=g5ilr" width="100%" alt="Almanya Ev Eşyası Taşıma Fiyatları 2026" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/almanya-ev-esyasi-fiyatlari/tr.webp?v=lwgxi" width="100%" alt="Almanya Ev Eşyası Taşıma Fiyatları 2026" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Almanya'ya Ev Eşyası Taşıma Maliyetleri: Şeffaf Fiyatlandırma Rehberi</h2><p class="b0000-pd5-lead">Türkiye'den Almanya'ya taşınma kararı alan bireylerin ve ailelerin planlaması gereken en önemli kalemlerin başında nakliye maliyetleri gelmektedir. Han Bros Cargo olarak, "gizli ücret yok" prensibiyle çalışıyor ve Almanya ev eşyası taşımacılığı fiyatlarını müşterilerimize tüm detaylarıyla sunuyoruz. 2026 yılı itibarıyla güncellenen lojistik ağımız sayesinde, her bütçeye uygun farklı taşıma modülleri geliştirdik.</p><h3>Maliyetleri Belirleyen 4 Temel Unsur</h3><p>Bir nakliye teklifi oluşturulurken sistemimiz şu dört ana veriyi analiz eder:</p><ul class="b0000-pd5-features"><li><strong>Eşya Hacmi (Metreküp):</strong> Uluslararası nakliyede ağırlıktan ziyade eşyaların kapladığı alan (m3) fiyata esas alınır. 1+1, 2+1 veya 3+1 ev içerikleri için standart m3 tahminlerimiz olsa da, net fiyat ücretsiz ekspertiz sonrası verilir.</li><li><strong>Güzergah ve Şehir:</strong> Türkiye'deki çıkış noktası ile Almanya'daki varış noktası arasındaki mesafe. Örneğin, İstanbul-Münih hattı ile İzmir-Hamburg hattı arasında yol ve feribot masrafları farkı mevcuttur.</li><li><strong>Gümrükleme Hizmetleri:</strong> Zati eşya beyannamesi hazırlığı, gümrük müşavirliği ve sınır geçiş belgeleri maliyete dahil edilen kalemlerdir.</li><li><strong>Ek Hizmetler:</strong> Profesyonel paketleme, mobilya montaj-demontaj hizmetleri ve asansör kullanımı opsiyonel olarak fiyatlandırılır.</li></ul><h3>Bütçe Dostu Paket Seçenekleri</h3><p>ihtiyaca göre özelleştirilmiş çözümlerimizle yanınızdayız:</p><ol><li><strong>Ekonomik Paket:</strong> Paketlemeyi sizin yaptığınız, bizim sadece yükleme, taşıma ve gümrükleme süreçlerini yönettiğimiz seçenektir.</li><li><strong>Standart Paket:</strong> Eşyaların tarafımızca profesyonelce paketlendiği ve mobilyaların sökülüp kurulduğu "anahtar teslim" modele en yakın sistemdir.</li><li><strong>VIP Paket:</strong> İnce demontajdan yerleştirmeye, özel sigortadan depolamaya kadar her şeyin Han Bros Cargo tarafından yönetildiği konforlu taşımacılık.</li></ol><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>M3 (Metreküp) hesabı nasıl yapılır?</summary><p>Eşyaların en, boy ve yükseklik ölçüleri çarpılarak her bir parçanın hacmi bulunur. Toplam hacim, kamyon içinde kaplanacak alanı belirler. Örn: 10 adet standart koli yaklaşık 1 m3 yer tutar.</p></details><details class="b0000-pd5-faq-item"><summary>Almanya nakliye fiyatları ne zaman güncellenir?</summary><p>Fiyatlarımız, küresel yakıt maliyetleri ve döviz kurları doğrultusunda periyodik olarak revize edilmektedir. Teklif aldığınızda, fiyatımız genellikle 30 gün boyunca sabitlenir.</p></details><details class="b0000-pd5-faq-item"><summary>Gümrük vergisi fiyatın içinde mi?</summary><p>Zati eşya taşımacılığında yasal şartları sağlayan (aracın en az 6 aydır kullanımda olması gibi) müşterilerimiz vergi ödemez. Nakliye fiyatımıza gümrükleme hizmet bedelleri dahildir ancak oluşabilecek gümrük vergileri (isteğe bağlı yeni eşyalarda) müşteriye aittir.</p></details><details class="b0000-pd5-faq-item"><summary>Sigorta ücreti nasıl hesaplanır?</summary><p>Eşyaların toplam beyan değeri üzerinden binde oranlarla hesaplanan cüzi bir rakamdır. Bu ödeme, tüm sevkiyatı güvence altına aldığı için mutlaka önerilmektedir.</p></details><details class="b0000-pd5-faq-item"><summary>Kredi kartı ile ödeme seçeneği var mı?</summary><p>Evet, Han Bros Cargo olarak müşterilerimize kredi kartına taksit imkanları veya güvenli ödeme yöntemleriyle kolaylık sağlıyoruz.</p></details><p>Hayalinizdeki Almanya yaşamına başlarken maliyetleri dert etmeyin. Han Bros Cargo ile size en uygun teklifi almak için hemen m3 hesaplayıcımızı kullanın veya bizi arayın!</p></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=qqzyo" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=q7nmf" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=ubikv"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=ubikv"></script>
-  <script defer src="/src/cookie.js?v=ubikv"></script>
+  <script defer src="/src/mx-ui.js?v=hdp5r"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=hdp5r"></script>
+  <script defer src="/src/cookie.js?v=hdp5r"></script>
 
   <script>
     setTimeout(function() {

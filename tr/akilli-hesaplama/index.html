@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=futun" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=futun" />
+  <link rel="stylesheet" href="/src/css.css?v=tkkcq" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=tkkcq" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=futun" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=tkkcq" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=futun" />
+    <link rel="stylesheet" href="/src/cookie.css?v=tkkcq" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=futun" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=tkkcq" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=futun">
+<link rel="stylesheet" href="style.css?v=tkkcq">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=cuok7" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=h4zl0" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -490,8 +517,50 @@
                         <input type="text" id="quote-from" name="fromAddress" class="quote-input" />
                     </div>
                     <div class="quote-form-group">
+                        <label for="quote-from-country">Nereden - Ülke</label>
+                        <select id="quote-from-country" name="fromCountry" class="quote-input">
+                            <option value="TR" selected>Türkiye</option>
+                            <option value="GB">Birleşik Krallık</option>
+                            <option value="DE">Almanya</option>
+                            <option value="NL">Hollanda</option>
+                            <option value="FR">Fransa</option>
+                            <option value="BE">Belçika</option>
+                            <option value="LU">Lüksemburg</option>
+                            <option value="AT">Avusturya</option>
+                        </select>
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-from-city">Nereden - Şehir</label>
+                        <input type="text" id="quote-from-city" name="fromCity" class="quote-input" />
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-from-post">Nereden - Posta kodu (opsiyonel)</label>
+                        <input type="text" id="quote-from-post" name="fromPost" class="quote-input" />
+                    </div>
+                    <div class="quote-form-group">
                         <label for="quote-to">Nereye (şehir / adres)</label>
                         <input type="text" id="quote-to" name="toAddress" class="quote-input" />
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-to-country">Nereye - Ülke</label>
+                        <select id="quote-to-country" name="toCountry" class="quote-input">
+                            <option value="TR">Türkiye</option>
+                            <option value="GB">Birleşik Krallık</option>
+                            <option value="DE" selected>Almanya</option>
+                            <option value="NL">Hollanda</option>
+                            <option value="FR">Fransa</option>
+                            <option value="BE">Belçika</option>
+                            <option value="LU">Lüksemburg</option>
+                            <option value="AT">Avusturya</option>
+                        </select>
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-to-city">Nereye - Şehir</label>
+                        <input type="text" id="quote-to-city" name="toCity" class="quote-input" />
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-to-post">Nereye - Posta kodu (opsiyonel)</label>
+                        <input type="text" id="quote-to-post" name="toPost" class="quote-input" />
                     </div>
                 </div>
                 <div class="quote-form-group quote-form-message">
@@ -581,16 +650,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <script>
+
+
     var productCounters = {};
+
     var productData = {};
+
     var editedVolumes = {};
+
     var editedDimensions = {};
+
     var allProducts = [];
+
     var currentCategory = null;
+
     var editingProductId = null;
 
     var GO1ILZ_API_BASE = 'https://api.hanbroscargo.com';
     var STORAGE_KEY_GO1ILZ = 'hanbroscargo_go1ilz_akilli_hesaplama';
+
 
     function saveToLocalStorage() {
         try {
@@ -645,6 +723,7 @@
         }
     }
 
+
     function updateTotalCounter() {
         var totalAdet = 0;
         var totalHacim = 0;
@@ -677,6 +756,7 @@
         updateCategoryBadges();
         saveToLocalStorage();
     }
+
 
     function padZero(n) {
         return n < 10 ? '0' + n : '' + n;
@@ -843,6 +923,7 @@
         });
     }
 
+
     function getCurrentLang() {
         var path = window.location.pathname;
         if (path.indexOf('/tr/') !== -1) return 'tr';
@@ -856,6 +937,7 @@
         for (var i = 0; i < parts.length; i++) parts[i] = parts[i].trim();
         return getCurrentLang() === 'tr' ? parts[0] : (parts[1] || parts[0]);
     }
+
 
     var translationsCache = null;
 
@@ -937,6 +1019,7 @@
         if (textEl) textEl.textContent = getTranslation('clear-cart');
     }
 
+
     function calculateVolume(width, depth, height) {
         if (!width || !depth || !height) return 0;
         return (parseFloat(width) * parseFloat(depth) * parseFloat(height)) / 1000000;
@@ -951,6 +1034,7 @@
         var volume = calculateVolume(widthInput.value, depthInput.value, heightInput.value);
         calculatedVolume.textContent = volume > 0 ? volume.toFixed(2) + ' m³' : '0.00 m³';
     }
+
 
     function openVolumeEditPopup(productId) {
         var product = productData[productId];
@@ -1076,6 +1160,7 @@
         saveToLocalStorage();
     }
 
+
     function updateDecreaseButton(button, count) {
         if (!button) return;
         if (count === 1) {
@@ -1145,6 +1230,7 @@
         }
     }
 
+
     function clearCart() {
         var id;
         for (id in productCounters) { if (productCounters.hasOwnProperty(id)) delete productCounters[id]; }
@@ -1160,6 +1246,7 @@
         }
         updateCategoryBadges();
     }
+
 
     function clearSearch() {
         var searchInput = document.getElementById('search-input');
@@ -1182,6 +1269,7 @@
             }
         }
     }
+
 
     function updateCategoryBadges() {
         var categoryTabs = document.querySelectorAll('.category-tab');
@@ -1219,6 +1307,7 @@
             }
         }
     }
+
 
     function showSuggestions(searchTerm) {
         var suggestionsContainer = document.getElementById('search-suggestions');
@@ -1305,6 +1394,7 @@
         }
         renderSearchResults(filteredProducts);
     }
+
 
     function createProductCard(product) {
         var productId = product.ID;
@@ -1420,6 +1510,7 @@
         return card;
     }
 
+
     function renderProducts(category, searchTerm) {
         currentCategory = category;
         var categoriesContent = document.getElementById('categories-content');
@@ -1501,6 +1592,7 @@
         }
         return allCategories;
     }
+
 
     function loadProducts(retryCount) {
         retryCount = retryCount || 0;
@@ -1666,6 +1758,7 @@
         });
     }
 
+
     var quoteModalCloseTimer = null;
 
     function clearQuoteModalCloseTimer() {
@@ -1793,6 +1886,7 @@
         var hour = String(now.getHours()).padStart(2, '0');
         var minute = String(now.getMinutes()).padStart(2, '0');
         var second = String(now.getSeconds()).padStart(2, '0');
+
         return day + '.' + month + '.' + year + ' ' + hour + ':' + minute + ':' + second;
     }
 
@@ -1814,6 +1908,7 @@
     }
 
     function getRequestTypeFromHash() {
+
         var hash = (location.hash || '').replace(/^#/, '').toLowerCase().trim();
         if (hash === 'zati') return 'RE';
         if (hash === 'mobilya') return 'FU';
@@ -1858,15 +1953,22 @@
         return defaultCityForCountry(countryCode);
     }
 
-    function buildLocationObject(addressText, countryCode, isFromLocation) {
+    
+    function go1ilzDeger(id) {
+        var el = document.getElementById(id);
+        return el && el.value ? String(el.value).trim() : '';
+    }
+
+    function buildLocationObject(addressText, countryCode, isFromLocation, cityText, postText) {
         var country = countryCode || (isFromLocation ? 'TR' : 'DE');
         var addr = String(addressText || '').trim() || 'Website form';
-        var city = guessCityFromAddress(addr, country);
+        
+        var city = (cityText && String(cityText).trim()) || guessCityFromAddress(addr, country);
         var location = {
             Country: country,
             City: city || defaultCityForCountry(country),
             Town: '',
-            PostCode: defaultPostCodeForCountry(country),
+            PostCode: (postText && String(postText).trim()) || defaultPostCodeForCountry(country),
             GateNumber: '',
             AddresText: addr,
             HasLoadElevator: false,
@@ -1931,6 +2033,13 @@
         var email = (document.getElementById('quote-email') && document.getElementById('quote-email').value) || '';
         var phone = (document.getElementById('quote-phone') && document.getElementById('quote-phone').value) || '';
         var message = (document.getElementById('quote-message') && document.getElementById('quote-message').value) || '';
+        
+        var fromCountry = go1ilzDeger('quote-from-country') || 'TR';
+        var toCountry = go1ilzDeger('quote-to-country') || 'DE';
+        var fromCity = go1ilzDeger('quote-from-city');
+        var toCity = go1ilzDeger('quote-to-city');
+        var fromPost = go1ilzDeger('quote-from-post');
+        var toPost = go1ilzDeger('quote-to-post');
         var normalizedVolume = toFixedNumber(totalHacim, 4);
         var normalizedWeight = toFixedNumber(totalAgirlik, 4);
         var languageCode = getCurrentLanguageCode();
@@ -1976,8 +2085,8 @@
                 Message: message,
                 ProductGroup: firstGroup || 'SALON / LOUNGE'
             },
-            FromLocation: buildLocationObject(fromAddress, 'TR', true),
-            ToLocation: buildLocationObject(toAddress, 'DE', false),
+            FromLocation: buildLocationObject(fromAddress, fromCountry, true, fromCity, fromPost),
+            ToLocation: buildLocationObject(toAddress, toCountry, false, toCity, toPost),
             RequestDetails: requestDetails
         };
     }
@@ -2016,9 +2125,11 @@
                     resultEl.textContent = getTranslation('quote-success') || 'Teklif talebiniz alındı.';
                 }
                 if (btn) {
+
                     btn.classList.add('sent');
                     btn.textContent = 'Talebiniz alindi';
                 }
+
                 quoteModalCloseTimer = setTimeout(function () {
                     closeQuoteModalAnimated();
                     resetQuoteSendButtonState();
@@ -2077,7 +2188,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=qgm32" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=qju8k" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -2200,9 +2311,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=futun"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=futun"></script>
-  <script defer src="/src/cookie.js?v=futun"></script>
+  <script defer src="/src/mx-ui.js?v=tkkcq"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=tkkcq"></script>
+  <script defer src="/src/cookie.js?v=tkkcq"></script>
 
   <script>
     setTimeout(function() {

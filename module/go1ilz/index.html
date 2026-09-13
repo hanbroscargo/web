@@ -108,8 +108,50 @@
                         <input type="text" id="quote-from" name="fromAddress" class="quote-input" />
                     </div>
                     <div class="quote-form-group">
+                        <label for="quote-from-country">@quote-from-country@</label>
+                        <select id="quote-from-country" name="fromCountry" class="quote-input">
+                            <option value="TR" selected>@ulke-tr@</option>
+                            <option value="GB">@ulke-gb@</option>
+                            <option value="DE">@ulke-de@</option>
+                            <option value="NL">@ulke-nl@</option>
+                            <option value="FR">@ulke-fr@</option>
+                            <option value="BE">@ulke-be@</option>
+                            <option value="LU">@ulke-lu@</option>
+                            <option value="AT">@ulke-at@</option>
+                        </select>
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-from-city">@quote-from-city@</label>
+                        <input type="text" id="quote-from-city" name="fromCity" class="quote-input" />
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-from-post">@quote-from-post@</label>
+                        <input type="text" id="quote-from-post" name="fromPost" class="quote-input" />
+                    </div>
+                    <div class="quote-form-group">
                         <label for="quote-to">@quote-to@</label>
                         <input type="text" id="quote-to" name="toAddress" class="quote-input" />
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-to-country">@quote-to-country@</label>
+                        <select id="quote-to-country" name="toCountry" class="quote-input">
+                            <option value="TR">@ulke-tr@</option>
+                            <option value="GB">@ulke-gb@</option>
+                            <option value="DE" selected>@ulke-de@</option>
+                            <option value="NL">@ulke-nl@</option>
+                            <option value="FR">@ulke-fr@</option>
+                            <option value="BE">@ulke-be@</option>
+                            <option value="LU">@ulke-lu@</option>
+                            <option value="AT">@ulke-at@</option>
+                        </select>
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-to-city">@quote-to-city@</label>
+                        <input type="text" id="quote-to-city" name="toCity" class="quote-input" />
+                    </div>
+                    <div class="quote-form-group">
+                        <label for="quote-to-post">@quote-to-post@</label>
+                        <input type="text" id="quote-to-post" name="toPost" class="quote-input" />
                     </div>
                 </div>
                 <div class="quote-form-group quote-form-message">
@@ -1671,16 +1713,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <script>
+
+
     var productCounters = {};
+
     var productData = {};
+
     var editedVolumes = {};
+
     var editedDimensions = {};
+
     var allProducts = [];
+
     var currentCategory = null;
+
     var editingProductId = null;
 
     var GO1ILZ_API_BASE = 'https://api.hanbroscargo.com';
     var STORAGE_KEY_GO1ILZ = 'hanbroscargo_go1ilz_akilli_hesaplama';
+
 
     function saveToLocalStorage() {
         try {
@@ -1735,6 +1786,7 @@
         }
     }
 
+
     function updateTotalCounter() {
         var totalAdet = 0;
         var totalHacim = 0;
@@ -1767,6 +1819,7 @@
         updateCategoryBadges();
         saveToLocalStorage();
     }
+
 
     function padZero(n) {
         return n < 10 ? '0' + n : '' + n;
@@ -1933,6 +1986,7 @@
         });
     }
 
+
     function getCurrentLang() {
         var path = window.location.pathname;
         if (path.indexOf('/tr/') !== -1) return 'tr';
@@ -1946,6 +2000,7 @@
         for (var i = 0; i < parts.length; i++) parts[i] = parts[i].trim();
         return getCurrentLang() === 'tr' ? parts[0] : (parts[1] || parts[0]);
     }
+
 
     var translationsCache = null;
 
@@ -2027,6 +2082,7 @@
         if (textEl) textEl.textContent = getTranslation('clear-cart');
     }
 
+
     function calculateVolume(width, depth, height) {
         if (!width || !depth || !height) return 0;
         return (parseFloat(width) * parseFloat(depth) * parseFloat(height)) / 1000000;
@@ -2041,6 +2097,7 @@
         var volume = calculateVolume(widthInput.value, depthInput.value, heightInput.value);
         calculatedVolume.textContent = volume > 0 ? volume.toFixed(2) + ' m³' : '0.00 m³';
     }
+
 
     function openVolumeEditPopup(productId) {
         var product = productData[productId];
@@ -2166,6 +2223,7 @@
         saveToLocalStorage();
     }
 
+
     function updateDecreaseButton(button, count) {
         if (!button) return;
         if (count === 1) {
@@ -2235,6 +2293,7 @@
         }
     }
 
+
     function clearCart() {
         var id;
         for (id in productCounters) { if (productCounters.hasOwnProperty(id)) delete productCounters[id]; }
@@ -2250,6 +2309,7 @@
         }
         updateCategoryBadges();
     }
+
 
     function clearSearch() {
         var searchInput = document.getElementById('search-input');
@@ -2272,6 +2332,7 @@
             }
         }
     }
+
 
     function updateCategoryBadges() {
         var categoryTabs = document.querySelectorAll('.category-tab');
@@ -2309,6 +2370,7 @@
             }
         }
     }
+
 
     function showSuggestions(searchTerm) {
         var suggestionsContainer = document.getElementById('search-suggestions');
@@ -2395,6 +2457,7 @@
         }
         renderSearchResults(filteredProducts);
     }
+
 
     function createProductCard(product) {
         var productId = product.ID;
@@ -2510,6 +2573,7 @@
         return card;
     }
 
+
     function renderProducts(category, searchTerm) {
         currentCategory = category;
         var categoriesContent = document.getElementById('categories-content');
@@ -2591,6 +2655,7 @@
         }
         return allCategories;
     }
+
 
     function loadProducts(retryCount) {
         retryCount = retryCount || 0;
@@ -2756,6 +2821,7 @@
         });
     }
 
+
     var quoteModalCloseTimer = null;
 
     function clearQuoteModalCloseTimer() {
@@ -2883,6 +2949,7 @@
         var hour = String(now.getHours()).padStart(2, '0');
         var minute = String(now.getMinutes()).padStart(2, '0');
         var second = String(now.getSeconds()).padStart(2, '0');
+
         return day + '.' + month + '.' + year + ' ' + hour + ':' + minute + ':' + second;
     }
 
@@ -2904,6 +2971,7 @@
     }
 
     function getRequestTypeFromHash() {
+
         var hash = (location.hash || '').replace(/^#/, '').toLowerCase().trim();
         if (hash === 'zati') return 'RE';
         if (hash === 'mobilya') return 'FU';
@@ -2948,15 +3016,22 @@
         return defaultCityForCountry(countryCode);
     }
 
-    function buildLocationObject(addressText, countryCode, isFromLocation) {
+    
+    function go1ilzDeger(id) {
+        var el = document.getElementById(id);
+        return el && el.value ? String(el.value).trim() : '';
+    }
+
+    function buildLocationObject(addressText, countryCode, isFromLocation, cityText, postText) {
         var country = countryCode || (isFromLocation ? 'TR' : 'DE');
         var addr = String(addressText || '').trim() || 'Website form';
-        var city = guessCityFromAddress(addr, country);
+        
+        var city = (cityText && String(cityText).trim()) || guessCityFromAddress(addr, country);
         var location = {
             Country: country,
             City: city || defaultCityForCountry(country),
             Town: '',
-            PostCode: defaultPostCodeForCountry(country),
+            PostCode: (postText && String(postText).trim()) || defaultPostCodeForCountry(country),
             GateNumber: '',
             AddresText: addr,
             HasLoadElevator: false,
@@ -3021,6 +3096,13 @@
         var email = (document.getElementById('quote-email') && document.getElementById('quote-email').value) || '';
         var phone = (document.getElementById('quote-phone') && document.getElementById('quote-phone').value) || '';
         var message = (document.getElementById('quote-message') && document.getElementById('quote-message').value) || '';
+        
+        var fromCountry = go1ilzDeger('quote-from-country') || 'TR';
+        var toCountry = go1ilzDeger('quote-to-country') || 'DE';
+        var fromCity = go1ilzDeger('quote-from-city');
+        var toCity = go1ilzDeger('quote-to-city');
+        var fromPost = go1ilzDeger('quote-from-post');
+        var toPost = go1ilzDeger('quote-to-post');
         var normalizedVolume = toFixedNumber(totalHacim, 4);
         var normalizedWeight = toFixedNumber(totalAgirlik, 4);
         var languageCode = getCurrentLanguageCode();
@@ -3066,8 +3148,8 @@
                 Message: message,
                 ProductGroup: firstGroup || 'SALON / LOUNGE'
             },
-            FromLocation: buildLocationObject(fromAddress, 'TR', true),
-            ToLocation: buildLocationObject(toAddress, 'DE', false),
+            FromLocation: buildLocationObject(fromAddress, fromCountry, true, fromCity, fromPost),
+            ToLocation: buildLocationObject(toAddress, toCountry, false, toCity, toPost),
             RequestDetails: requestDetails
         };
     }
@@ -3106,9 +3188,11 @@
                     resultEl.textContent = getTranslation('quote-success') || 'Teklif talebiniz alındı.';
                 }
                 if (btn) {
+
                     btn.classList.add('sent');
                     btn.textContent = 'Talebiniz alindi';
                 }
+
                 quoteModalCloseTimer = setTimeout(function () {
                     closeQuoteModalAnimated();
                     resetQuoteSendButtonState();

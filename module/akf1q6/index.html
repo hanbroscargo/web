@@ -246,9 +246,9 @@
   }
 </style>
 
-<div class="tkl-menu" id="modulex"><a class="modulex-item" href="/tr/akilli-hesaplama/#kargo" aria-label="Kargo ve Paket Taşımacılığı" data-request-type="CA"><span class="modulex-item-badge">CA</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">local_shipping</span><span class="modulex-item-title">Kargo ve Paket Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#ticari" aria-label="Ticari Eşya Taşımacılığı" data-request-type="CO"><span class="modulex-item-badge">CO</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">business_center</span><span class="modulex-item-title">Ticari Eşya Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#mobilya" aria-label="Yeni Mobilya Taşımacılığı" data-request-type="FU"><span class="modulex-item-badge">FU</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">weekend</span><span class="modulex-item-title">Yeni Mobilya Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#zati" aria-label="Uluslararası Evden Eve Taşımacılık" data-request-type="RE"><span class="modulex-item-badge">RE</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">inventory_2</span><span class="modulex-item-title">Uluslararası Evden Eve Taşımacılık</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a><a class="modulex-item" href="/tr/akilli-hesaplama/#arac" aria-label="Araç ve Motosiklet Taşımacılığı" data-request-type="AU"><span class="modulex-item-badge">AU</span><span class="modulex-item-icon material-symbols-outlined" aria-hidden="true">directions_car</span><span class="modulex-item-title">Araç ve Motosiklet Taşımacılığı</span><span class="modulex-item-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span></a></div>
+<div class="tkl-menu" id="modulex">{{menu}}</div>
 <div class="tkl-actions">
-  <button type="button" class="tkl-quote-open-btn" onclick="akf1q6OpenQuotePopup()">Teklif al</button>
+  <button type="button" class="tkl-quote-open-btn" onclick="akf1q6OpenQuotePopup()">{{quoteOpenBtn}}</button>
 </div>
 
 <div class="tkl-quote-popup tkl-hidden" id="akf1q6-quote-popup" style="display:none;">
@@ -257,49 +257,91 @@
     <div class="tkl-quote-header">
       <div>
         <div class="tkl-quote-kicker">Han Bros Cargo</div>
-        <div class="tkl-quote-title">Teklif al</div>
+        <div class="tkl-quote-title">{{quoteTitle}}</div>
       </div>
-      <button type="button" class="tkl-quote-close" onclick="akf1q6CloseQuotePopupAnimated()" aria-label="Kapat">x</button>
+      <button type="button" class="tkl-quote-close" onclick="akf1q6CloseQuotePopupAnimated()" aria-label="{{quoteClose}}">x</button>
     </div>
     <form class="tkl-quote-form" onsubmit="return akf1q6SendQuote(event);">
       <div class="tkl-quote-field tkl-quote-type-field">
-        <label for="akf1q6-request-type">Talep tipi</label>
+        <label for="akf1q6-request-type">{{quoteRequestType}}</label>
         <select id="akf1q6-request-type" class="tkl-quote-input tkl-quote-type" name="RequestType" required>
-          <option value="CA">Kargo (CA)</option>
-          <option value="CO">Ticari (CO)</option>
-          <option value="FU">Mobilya (FU)</option>
-          <option value="RE">Zati eşya (RE)</option>
-          <option value="AU">Araç (AU)</option>
+          <option value="CA">{{quoteOptCA}}</option>
+          <option value="CO">{{quoteOptCO}}</option>
+          <option value="FU">{{quoteOptFU}}</option>
+          <option value="RE">{{quoteOptRE}}</option>
+          <option value="AU">{{quoteOptAU}}</option>
         </select>
       </div>
       <div class="tkl-quote-grid">
         <div class="tkl-quote-field">
-          <label for="akf1q6-name">Ad Soyad</label>
+          <label for="akf1q6-name">{{quoteName}}</label>
           <input id="akf1q6-name" class="tkl-quote-input" type="text" required>
         </div>
         <div class="tkl-quote-field">
-          <label for="akf1q6-email">E-posta</label>
+          <label for="akf1q6-email">{{quoteEmail}}</label>
           <input id="akf1q6-email" class="tkl-quote-input" type="email" required>
         </div>
         <div class="tkl-quote-field">
-          <label for="akf1q6-phone">Telefon</label>
+          <label for="akf1q6-phone">{{quotePhone}}</label>
           <input id="akf1q6-phone" class="tkl-quote-input" type="text" required>
         </div>
         <div class="tkl-quote-field">
-          <label for="akf1q6-from">Nereden</label>
+          <label for="akf1q6-from-country">{{quoteFromCountry}}</label>
+          <select id="akf1q6-from-country" class="tkl-quote-input" required>
+            <option value="TR" selected>{{ulkeTR}}</option>
+            <option value="GB">{{ulkeGB}}</option>
+            <option value="DE">{{ulkeDE}}</option>
+            <option value="NL">{{ulkeNL}}</option>
+            <option value="FR">{{ulkeFR}}</option>
+            <option value="BE">{{ulkeBE}}</option>
+            <option value="LU">{{ulkeLU}}</option>
+            <option value="AT">{{ulkeAT}}</option>
+          </select>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-from-city">{{quoteFromCity}}</label>
+          <input id="akf1q6-from-city" class="tkl-quote-input" type="text" required>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-from-post">{{quoteFromPost}}</label>
+          <input id="akf1q6-from-post" class="tkl-quote-input" type="text">
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-from">{{quoteFrom}}</label>
           <input id="akf1q6-from" class="tkl-quote-input" type="text" required>
         </div>
         <div class="tkl-quote-field">
-          <label for="akf1q6-to">Nereye</label>
+          <label for="akf1q6-to-country">{{quoteToCountry}}</label>
+          <select id="akf1q6-to-country" class="tkl-quote-input" required>
+            <option value="TR">{{ulkeTR}}</option>
+            <option value="GB">{{ulkeGB}}</option>
+            <option value="DE" selected>{{ulkeDE}}</option>
+            <option value="NL">{{ulkeNL}}</option>
+            <option value="FR">{{ulkeFR}}</option>
+            <option value="BE">{{ulkeBE}}</option>
+            <option value="LU">{{ulkeLU}}</option>
+            <option value="AT">{{ulkeAT}}</option>
+          </select>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-to-city">{{quoteToCity}}</label>
+          <input id="akf1q6-to-city" class="tkl-quote-input" type="text" required>
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-to-post">{{quoteToPost}}</label>
+          <input id="akf1q6-to-post" class="tkl-quote-input" type="text">
+        </div>
+        <div class="tkl-quote-field">
+          <label for="akf1q6-to">{{quoteTo}}</label>
           <input id="akf1q6-to" class="tkl-quote-input" type="text" required>
         </div>
       </div>
       <div class="tkl-quote-field">
-        <label for="akf1q6-message">Mesaj</label>
+        <label for="akf1q6-message">{{quoteMessage}}</label>
         <textarea id="akf1q6-message" class="tkl-quote-input tkl-quote-textarea"></textarea>
       </div>
       <div id="akf1q6-quote-result" class="tkl-quote-result"></div>
-      <button id="akf1q6-quote-send-btn" class="tkl-quote-send-btn" type="submit">Teklifi gönder</button>
+      <button id="akf1q6-quote-send-btn" class="tkl-quote-send-btn" type="submit">{{quoteSend}}</button>
     </form>
   </div>
 </div>
@@ -362,15 +404,15 @@
   var AKF1Q6_API_BASE = 'https://api.hanbroscargo.com';
   var akf1q6CloseTimer = null;
   var AKF1Q6_TXT = {
-    send: 'Teklifi gönder',
-    sending: 'Gönderiliyor...',
-    sent: 'Gönderildi',
-    sentLine: 'Gönderildi.',
-    trackingLabel: 'Takip no:',
-    messageLabel: 'Mesaj:',
-    fail: 'Gönderim başarısız.',
-    errorPrefix: 'Gönderim hatası:',
-    unknown: 'Bilinmeyen hata'
+    send: '{{quoteSend}}',
+    sending: '{{quoteSending}}',
+    sent: '{{quoteSent}}',
+    sentLine: '{{quoteSentLine}}',
+    trackingLabel: '{{quoteTrackingLabel}}',
+    messageLabel: '{{quoteMessageLabel}}',
+    fail: '{{quoteFail}}',
+    errorPrefix: '{{quoteErrorPrefix}}',
+    unknown: '{{quoteUnknown}}'
   };
 
   function akf1q6RememberSelectedType(typeCode) {
@@ -442,14 +484,21 @@
     return akf1q6DefaultCity(countryCode);
   }
 
-  function akf1q6BuildLocation(addressText, countryCode, isFromLocation) {
+  
+  function akf1q6Deger(id) {
+    var el = document.getElementById(id);
+    return el && el.value ? String(el.value).trim() : '';
+  }
+
+  function akf1q6BuildLocation(addressText, countryCode, isFromLocation, cityText, postText) {
     var country = countryCode || (isFromLocation ? 'TR' : 'DE');
     var addr = String(addressText || '').trim() || 'Website form';
     var obj = {
       Country: country,
-      City: akf1q6GuessCity(addr, country),
+      
+      City: (cityText && String(cityText).trim()) || akf1q6GuessCity(addr, country),
       Town: '',
-      PostCode: akf1q6DefaultPostCode(country),
+      PostCode: (postText && String(postText).trim()) || akf1q6DefaultPostCode(country),
       GateNumber: '',
       AddresText: addr,
       HasLoadElevator: false,
@@ -563,6 +612,7 @@
         (parsedBody.Result && (parsedBody.Result.message || parsedBody.Result.Message)) ||
         '';
     }
+
     if ((!info.trackingNumber || !info.messageText) && rawText) {
       var trackingMatch = rawText.match(/"TrackingNumber"\s*:\s*"([^"]+)"/i);
       var messageMatch = rawText.match(/"message"\s*:\s*"([^"]+)"/i) || rawText.match(/"Message"\s*:\s*"([^"]+)"/i);
@@ -586,6 +636,13 @@
     var fromAddress = (document.getElementById('akf1q6-from') && document.getElementById('akf1q6-from').value) || '';
     var toAddress = (document.getElementById('akf1q6-to') && document.getElementById('akf1q6-to').value) || '';
     var message = (document.getElementById('akf1q6-message') && document.getElementById('akf1q6-message').value) || '';
+    
+    var fromCountry = akf1q6Deger('akf1q6-from-country') || 'TR';
+    var toCountry = akf1q6Deger('akf1q6-to-country') || 'DE';
+    var fromCity = akf1q6Deger('akf1q6-from-city');
+    var toCity = akf1q6Deger('akf1q6-to-city');
+    var fromPost = akf1q6Deger('akf1q6-from-post');
+    var toPost = akf1q6Deger('akf1q6-to-post');
     var totalVolume = akf1q6ToNumber(0, 4);
     var totalWeight = akf1q6ToNumber(0, 4);
     akf1q6RememberSelectedType(typeCode);
@@ -631,8 +688,8 @@
         LogisticsSite: 'GZT',
         Message: message
       },
-      FromLocation: akf1q6BuildLocation(fromAddress, 'TR', true),
-      ToLocation: akf1q6BuildLocation(toAddress, 'DE', false),
+      FromLocation: akf1q6BuildLocation(fromAddress, fromCountry, true, fromCity, fromPost),
+      ToLocation: akf1q6BuildLocation(toAddress, toCountry, false, toCity, toPost),
       RequestDetails: [
         {
           ItemCode: 'AKF1Q6',

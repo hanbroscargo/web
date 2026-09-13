@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=tmlqp" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=tmlqp" />
+  <link rel="stylesheet" href="/src/css.css?v=esj8i" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=esj8i" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=tmlqp" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=esj8i" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=tmlqp" />
+    <link rel="stylesheet" href="/src/cookie.css?v=esj8i" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=tmlqp" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=esj8i" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=tmlqp">
+<link rel="stylesheet" href="style.css?v=esj8i">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=ij7c3" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=rqj1a" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/turkiye-ingiltere-lojistik-firmalari/tr.webp?v=k8muo" width="100%" alt="Türkiye – İngiltere lojistik firmaları" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/turkiye-ingiltere-lojistik-firmalari/tr.webp?v=gx23n" width="100%" alt="Türkiye – İngiltere lojistik firmaları" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Türkiye İngiltere Lojistik Firmaları</h2><p class="b0000-pd5-lead">Türkiye ve İngiltere arasında kapsamlı lojistik çözümleri almak istiyorsanız, Han Bros Cargo size en uygun hizmetleri sunar. Depolama hizmetleri, dağıtım ağı ve tedarik zinciri yönetimi ile işinizi kolaylaştırıyoruz.</p><h3>Sunulan Hizmetler</h3><ul class="b0000-pd5-features"><li><strong>Kapsamlı Lojistik Çözümleri:</strong> Taşımacılıktan depolamaya kadar tüm lojistik ihtiyaçlarınız için çözümler.</li><li><strong>Depolama Hizmetleri:</strong> Türkiye ve İngiltere'de güvenli depolama alanları.</li><li><strong>Dağıtım Ağı:</strong> Geniş dağıtım ağı ile hızlı ve güvenilir teslimat.</li><li><strong>Tedarik Zinciri Yönetimi:</strong> Tüm tedarik zinciri süreçlerinizin yönetimi.</li></ul><h3>Lojistik Süreçleri</h3><p>Lojistik hizmetlerimiz kapsamlı ve profesyoneldir:</p><ul class="b0000-pd5-features"><li><strong>Planlama:</strong> Lojistik ihtiyaçlarınız analiz edilir ve detaylı planlama yapılır.</li><li><strong>Taşımacılık:</strong> Deniz, hava ve kara yolu taşımacılık seçenekleri.</li><li><strong>Depolama:</strong> Güvenli depolama alanlarında eşyalarınız korunur.</li><li><strong>Dağıtım:</strong> Geniş dağıtım ağı ile hızlı teslimat.</li><li><strong>Takip:</strong> Tüm süreçler 7/24 takip edilir ve raporlanır.</li></ul><h3>Neden Han Bros Cargo?</h3><ul class="b0000-pd5-features"><li>Lojistik hizmetlerinde uzman ekibimiz ve yılların deneyimi</li><li>Kapsamlı lojistik çözümleri ile tek noktadan hizmet</li><li>Güvenli depolama alanları ve geniş dağıtım ağı</li><li>Tedarik zinciri yönetimi ile verimlilik</li><li>7/24 takip ve müşteri desteği</li></ul><p><strong>Türkiye İngiltere lojistik firmaları arasında güvenilir hizmet için hemen teklif alın. Kapsamlı lojistik çözümlerimiz ile işinizi kolaylaştırın.</strong></p></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=in1no" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=ym8ok" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=tmlqp"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=tmlqp"></script>
-  <script defer src="/src/cookie.js?v=tmlqp"></script>
+  <script defer src="/src/mx-ui.js?v=esj8i"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=esj8i"></script>
+  <script defer src="/src/cookie.js?v=esj8i"></script>
 
   <script>
     setTimeout(function() {

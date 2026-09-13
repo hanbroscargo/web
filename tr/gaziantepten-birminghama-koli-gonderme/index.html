@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=gfsc1" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=gfsc1" />
+  <link rel="stylesheet" href="/src/css.css?v=cvzyr" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=cvzyr" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=gfsc1" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=cvzyr" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=gfsc1" />
+    <link rel="stylesheet" href="/src/cookie.css?v=cvzyr" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=gfsc1" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=cvzyr" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=gfsc1">
+<link rel="stylesheet" href="style.css?v=cvzyr">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=eouoc" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=l6lo7" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/gaziantepten-birminghama-koli-gonderme/tr.webp?v=l73hv" width="100%" alt="Gaziantep'ten Birmingham'a Koli Gönderme" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/gaziantepten-birminghama-koli-gonderme/tr.webp?v=z46ye" width="100%" alt="Gaziantep'ten Birmingham'a Koli Gönderme" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Gaziantep'ten Birmingham'a Koli Gönderme</h2><p class="b0000-pd5-lead"><strong>Gaziantep'ten Birmingham'a Koli Gönderme</strong> arayışınızda kurumsal lojistik sunuyoruz. Türkiye ve Birleşik Krallık hattında ~4100 km bir yolculuk gerektiren bu süreçte, uzun mesafe taşımacılık deneyimimizle yanınızdayız.</p><h3>Koli Gönderme Sürecinde Dikkat Edilmesi Gerekenler</h3><p>Koli Gönderme operasyonu, sadece eşyanın bir yerden bir yere gitmesi değildir. Özellikle merkezi lokasyon avantajıyla ve Güneydoğu Anadolu çıkışlı üzerindeki lojistik dinamikler süreci etkiler. Han Bros Cargo olarak, tüm bu aşamaları sizin adınıza planlar.</p><p><strong>Hizmet Detayı:</strong> Kitap, kıyafet, mutfak eşyası gibi koli bazlı gönderileriniz için ekonomik ve hızlı kapıdan kapıya kargo hizmeti. Ayrıca eşyalarınızın hacmine göre Tır veya Minivan seçeneklerini değerlendiriyoruz.</p><h3>Lojistik Rota ve Zamanlama</h3><p>Taşıma araçlarımız Güneydoğu Anadolu çıkışlı hareket ederek, Midlands bölgesi üzerinden varış noktasına ulaşır. Gaziantep'ten Birmingham'a arası mesafe yaklaşık ~4100 km olup, gümrük işlemlerine bağlı olarak teslimat süresi değişkenlik gösterebilir.</p><p>Yolculuk boyunca araç takip sistemlerimiz ile yükünüzü anlık olarak izleyebilir, operasyon ekibimizden 7/24 bilgi alabilirsiniz.</p><h3>Neden Han Bros Cargo?</h3><p>ekonomik ücretler ve sigortalı hizmet mottomuzla hareket ediyoruz. Olası hasarlara karşı "All-Risk" sigorta güvencesi sunuyoruz. Ayrıca koli gönderme süreçlerinde tecrübeli personelimizle dil bariyeri veya prosedür karmaşası yaşamadan taşınırsınız.</p><h4>NAKLIYE AŞAMALARI Adımları</h4><ul class="b0000-pd5-features"><li><strong>Planlama:</strong> Gaziantep'ten adresinizde ücretsiz ekspertiz ve hacim belirleme.</li><li><strong>Hazırlık:</strong> Tüm eşyaların uluslararası standartlarda paketlenmesi.</li><li><strong>Gümrükleme:</strong> Türkiye çıkış ve Birmingham giriş gümrük beyannamelerinin hazırlanması.</li><li><strong>Transfer:</strong> ~4100 km mesafeli güvenli yolculuk.</li><li><strong>Teslimat:</strong> Yeni adresinizde kurulum ve atık malzemelerin toplanması.</li></ul><h3>Sıkça Sorulan Sorular</h3><h4>Taşıma ne kadar sürer?</h4><p>Ortalama olarak Gaziantep'ten çıkışlı araçlarımız 10-14 gün içinde teslimat sağlar. Express servisimiz ise 4-6 gün sürebilir.</p><h4>Gümrük vergisi çıkar mı?</h4><p>Zati eşya kapsamında ToR (Transfer of Residence) şartlarını sağıyorsanız vergisiz taşıma mümkündür. <strong>Koli Gönderme</strong> için gümrük danışmanlarımız size rehberlik edecektir.</p><h4>Sigorta neleri kapsar?</h4><p>Uluslararası nakliyat sigortamız, kaza, devrilme, yanma ve hırsızlık gibi ana riskleri tam kapsamlı olarak karşılar.</p><h3>Sonuç</h3><p>Gaziantep'ten Birmingham'a Koli Gönderme taleplerinizde profesyonel destek almak için bize ulaşın. Şirketimiz olarak uzun mesafe taşımacılık deneyimimizle sizlere en iyi deneyimi sunmayı hedefliyoruz.</p><p style="font-size:0.8em; color:#666;">Anahtar Kelimeler: sigortalı nakliye, express minivan, tır nakliyesi, ingiltere lojistik, kapı teslim, türkiye ingiltere taşımacılık, gümrük danışmanlığı, zati eşya gümrük, Koli Gönderme fiyatları, Birmingham'a nakliyat firmaları.</p></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=rbxf7" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=fvn1n" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=gfsc1"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=gfsc1"></script>
-  <script defer src="/src/cookie.js?v=gfsc1"></script>
+  <script defer src="/src/mx-ui.js?v=cvzyr"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=cvzyr"></script>
+  <script defer src="/src/cookie.js?v=cvzyr"></script>
 
   <script>
     setTimeout(function() {

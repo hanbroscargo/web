@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=dr2xj" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=dr2xj" />
+  <link rel="stylesheet" href="/src/css.css?v=i1oe7" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=i1oe7" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=dr2xj" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=i1oe7" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=dr2xj" />
+    <link rel="stylesheet" href="/src/cookie.css?v=i1oe7" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=dr2xj" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=i1oe7" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=dr2xj">
+<link rel="stylesheet" href="style.css?v=i1oe7">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=ud0cq" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=gl6h0" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/balikesir-fransa-en-iyi/tr.webp?v=xxzke" width="100%" alt="Balıkesir'den Fransa'ya Ekonomik Nakliye ve Fiyat Avantajları" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/balikesir-fransa-en-iyi/tr.webp?v=sclx2" width="100%" alt="Balıkesir'den Fransa'ya Ekonomik Nakliye ve Fiyat Avantajları" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Fransa Sevkiyatlarında Balıkesir İçin En İyi Fiyat Garantisi</h2><p class="b0000-pd5-lead">Lojistik maliyetleri, bir malın satış fiyatını ve rekabet gücünü doğrudan etkiler. Han Bros Cargo olarak, Balıkesir merkezli üreticilerimiz ve bireysel müşterilerimiz için Fransa rotasında (Paris, Lyon, Marsilya, Nice vb.) "Yüksek Kalite - Optimizasyonlu Maliyet" dengesini sunuyoruz. Bandırma ve Susurluk gibi stratejik noktalar üzerindeki operasyonel gücümüzü, doğrudan navlun avantajı olarak sizlere yansıtıyoruz.</p><h3>Neden En İyi Fiyatı Han Bros Cargo Sunuyor?</h3><p>Ekonomik bir sevkiyat süreci sadece 'ucuz' olması değil, verimli olmasıyla mümkündür. Fiyat avantajlarımızı sağlayan temel faktörler şunlardır:</p><ul class="b0000-pd5-features"><li><strong>Grupaj (Parsiyel) Sistem:</strong> Tüm tırı kiralamak zorunda kalmadan, sevkiyatınızın tırda kapladığı alan (m3 veya LDM) kadar ödeme yaparsınız. Bu, özellikle KOBİ'ler için en ekonomik yöntemdir.</li><li><strong>Optimize Edilmiş Rotalar:</strong> Marmara'dan Fransa'ya en hızlı ve en az otoyol/geçiş ücreti gerektiren akıllı rotalama yaparak genel maliyeti düşürüyoruz.</li><li><strong>Erken Rezervasyon ve Kontratlı Fiyatlar:</strong> Düzenli sevkiyat yapan kurumsal müşterilerimize, piyasa dalgalanmalarından etkilenmeyen sabit navlun garantisi veriyoruz.</li><li><strong>Uçtan Uca Hizmet:</strong> Paketleme, gümrükleme ve sigorta hizmetlerini tek paket altında sunarak, ayrı ayrı alımlarda oluşacak ek maliyetleri önlüyoruz.</li></ul><h3>Balıkesir Çıkışlı Fransa Kampanyaları</h3><p>Yılın belirli dönemlerinde (özellikle kış sezonu ve yaz başı) Balıkesir'den Fransa'ya olan araç boşluklarımızı değerlendirerek 'Geri Dönüş Navlunları' uyguluyoruz. Bu sayede, Balıkesir sanayisinden veya tarımından çıkan yüklerinizi piyasa ortalamasının %15-20 altında fiyatlarla taşıyabiliyoruz. Ayrıca tekstil ve mobilya gibi hacimli ancak hafif yükleriniz için özel hacim iskontoları sağlıyoruz.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>En uygun fiyatı almak için ne kadar önceden rezervasyon yapmalıyım?</summary><p>Mümkünse sevkiyat tarihinizden 2 hafta önce bizimle iletişime geçmeniz, en avantajlı 'spot fiyat' tekliflerini yakalamanıza yardımcı olur.</p></details><details class="b0000-pd5-faq-item"><summary>Küçük bir koli veya bir palet için de fiyat alabilir miyim?</summary><p>Evet, Balıkesir'den Fransa'ya parça eşya (parsiyel) servisimiz her hafta mevcuttur. Yükünüz ne kadar küçük olursa olsun, profesyonel fiyatlandırma yapıyoruz.</p></details><details class="b0000-pd5-faq-item"><summary>Fiyata gümrükleme işlemleri dahil mi?</summary><p>Tekliflerimizi ihtiyacınıza göre düzenliyoruz. Sadece nakliye (Terminal-to-terminal) veya gümrük dahil 'Kapıdan kapıya' seçeneklerimizden birini seçebilirsiniz.</p></details><details class="b0000-pd5-faq-item"><summary>Fransa'da teslimat adresi şehir merkezindeyse ek ücret oluşur mu?</summary><p>Paris gibi büyük şehirlerdeki araç giriş kısıtlamaları (ZFE) nedeniyle küçük dağıtım araçları gerekebilir. Bu durum teklif aşamasında size şeffafça bildirilir.</p></details><details class="b0000-pd5-faq-item"><summary>Öğrenci veya taşınan aileler için özel indirim var mı?</summary><p>Balıkesir'den Fransa'ya ev eşyası taşıyan bireysel müşterilerimiz için dönemsel olarak nakit ödeme indirimleri sunuyoruz.</p></details><p>Fransa pazarında maliyetlerinizle fark yaratın! Balıkesir'in en ekonomik ve güvenilir Fransa lojistiği için Han Bros Cargo'dan bugün ücretsiz teklifinizi isteyin.</p></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=wrsgm" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=fa7fx" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=dr2xj"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=dr2xj"></script>
-  <script defer src="/src/cookie.js?v=dr2xj"></script>
+  <script defer src="/src/mx-ui.js?v=i1oe7"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=i1oe7"></script>
+  <script defer src="/src/cookie.js?v=i1oe7"></script>
 
   <script>
     setTimeout(function() {

@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=mvl44" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=mvl44" />
+  <link rel="stylesheet" href="/src/css.css?v=n7vro" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=n7vro" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=mvl44" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=n7vro" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=mvl44" />
+    <link rel="stylesheet" href="/src/cookie.css?v=n7vro" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=mvl44" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=n7vro" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=mvl44">
+<link rel="stylesheet" href="style.css?v=n7vro">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=n1ix3" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=tg61b" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/almanya-en-ucuz-tasimacilik/tr.webp?v=yyjla" width="100%" alt="Cheapest Ways for Shipping from Turkey to Germany" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/almanya-en-ucuz-tasimacilik/tr.webp?v=i5hwn" width="100%" alt="Cheapest Ways for Shipping from Turkey to Germany" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Economy-Focused Shipping to Germany: How to Protect Your Budget?</h2><p class="b0000-pd5-lead">International moving costs can be a source of concern for many people, especially with fluctuations in exchange rates and fuel prices. At Han Bros Cargo, based on the principle that "quality service doesn't have to be expensive," we optimize the cheapest transport methods from Turkey to Germany for you. With the right strategies, it is possible to provide up to 40% savings in your shipping budget without compromising on security.</p><h3>1. The Power of Partial (Piece Goods) Shipping</h3><p>If you don't have enough items to fill an entire truck, pay only for the space you use instead of paying for full capacity. Partial shipping (LTL - Less Than Truckload) is the merging of items of different customers going to the same route into a single vehicle. With this method:</p><ul class="b0000-pd5-features"><li><strong>Cost Sharing:</strong> Since road and customs expenses are shared with other senders, unit prices decrease.</li><li><strong>Security:</strong> Your belongings are separated into special compartments within the vehicle and tracked with a barcode system.</li><li><strong>Flexibility:</strong> You can join our regular weekly services for small amounts of items.</li></ul><h3>2. Volume Management: Get Rid of Unnecessary Loads</h3><p>Pricing in logistics is usually done per cubic meter (m3). Instead of transporting old furniture or heavy appliances that would be cheaper to buy new in Germany, choose only items that have sentimental or high financial value for you. The more you reduce the volume, the more the amount you pay will decrease. Additionally, thanks to our professional stacking service, we ensure your items are placed in the vehicle with minimal gaps, preventing m3 loss.</p><h3>3. Off-Season Planning and Early Booking</h3><p>The summer months are the highest demand period in the Germany shipping market. If possible, coincide your moving date with a period between October and March. During these periods, "Off-Season" discounts offered by our company will seriously pull down your shipping costs. Also, for bookings made at least 30 days before the shipment date, we provide a fixed price guarantee so you are not affected by potential fuel hikes.</p><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>What is the cheapest shipping method?</summary><p>Generally, road partial shipping is the cheapest and most preferred method from Turkey to Germany. Compared to sea container shipping, it is more advantageous in terms of customs clearance and delivery time.</p></details><details class="b0000-pd5-faq-item"><summary>Can I do the packaging myself to lower prices?</summary><p>Yes, you can save on labor costs by doing the standard packaging yourself. However, we recommend that risky items like appliances and furniture be packed by a professional team to remain within insurance coverage.</p></details><details class="b0000-pd5-faq-item"><summary>Do you have student or assignment discounts?</summary><p>Han Bros Cargo organizes special discount campaigns for students and public personnel at certain periods. You can talk with our customer representative for our current campaigns.</p></details><details class="b0000-pd5-faq-item"><summary>Are there additional costs at German customs?</summary><p>If your items are under personal belongings (used goods) status and you meet the legal requirements, no customs duty will be charged. However, it is very important to make a correct declaration to avoid accidental costs like storage or appraisal.</p></details><details class="b0000-pd5-faq-item"><summary>Why is there a price difference between courier companies and shipping companies?</summary><p>Courier companies are usually express and small package focused, with high costs per kg. Shipping companies, on the other hand, specialize in high-volume loads and offer much more economical unit prices based on m3.</p></details><p>You can get support from our professional team to create the most suitable Germany transport plan for your budget, and learn the net figures immediately by requesting a free survey!</p></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=oekqh" alt="Support agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=lqfub" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=mvl44"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=mvl44"></script>
-  <script defer src="/src/cookie.js?v=mvl44"></script>
+  <script defer src="/src/mx-ui.js?v=n7vro"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=n7vro"></script>
+  <script defer src="/src/cookie.js?v=n7vro"></script>
 
   <script>
     setTimeout(function() {

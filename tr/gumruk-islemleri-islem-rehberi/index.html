@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=rkw2p" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=rkw2p" />
+  <link rel="stylesheet" href="/src/css.css?v=evkgj" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=evkgj" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=rkw2p" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=evkgj" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=rkw2p" />
+    <link rel="stylesheet" href="/src/cookie.css?v=evkgj" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=rkw2p" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=evkgj" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=rkw2p">
+<link rel="stylesheet" href="style.css?v=evkgj">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=nvn22" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=rs0dj" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/gumruk-islemleri-nasil-yapilir/tr.webp?v=khad7" width="100%" alt="Gümrük İşlemleri Nasıl Yapılır? Adım Adım İşlem Rehberi" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/gumruk-islemleri-nasil-yapilir/tr.webp?v=vw1nk" width="100%" alt="Gümrük İşlemleri Nasıl Yapılır? Adım Adım İşlem Rehberi" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Gümrük Sürecinde Profesyonel Yol Haritası: Hazırlıktan Teslimata</h2><p class="b0000-pd5-lead">Lojistik dünyasında eşyalarınızın fiziksel yolculuğu kadar önemli olan bir diğer yolculuk da kağıt üzerindeki gümrük yolculuğudur. 'Gümrük işlemleri nasıl yapılır?' sorusunun yanıtı, gönderdiğiniz ürünün türüne (ticari veya zati eşya), varış ülkesindeki mevzuata ve hazırlanan belgelerin kalitesine bağlıdır. Han Bros Cargo olarak biz, bu karmaşık süreci sizin için dört ana faza ayırıyoruz. Amacımız, gümrük noktalarını birer 'engel' olmaktan çıkarıp, profesyonel birer 'geçiş noktası' haline getirmektir. İster tekstil numunesi gönderin, ister koca bir evi taşıyın; gümrük disiplini başarımızın anahtarıdır.</p><h3>Gümrükleme Aşamaları: Adım Adım Ne Yapıyoruz?</h3><p>Standart bir gümrük operasyonu şu kronolojik sırayla ilerler:</p><ul class="b0000-pd5-features"><li><strong>Evrak Tasnifi ve Taslak Hazırlık:</strong> Araç yüklenmeden önce fatura, çeki listesi ve yetki belgeleriniz toplanır. Gümrük beyannamenizin taslağı uzmanlarımızca oluşturulur.</li><li><strong>Çıkış Gümrük İşlemleri (Türkiye):</strong> Eşyaların Türkiye sınırından çıkabilmesi için ilgili gümrük müdürlüğünde işlemler tamamlanır ve mühürleme yapılır.</li><li><strong>Transit Süreci:</strong> Yol boyunca geçilen ülkelerdeki (Bulgaristan, Sırbistan, Macaristan vb.) transit beyanları T1/T2 belgeleriyle yönetilir.</li><li><strong>Varış Gümrüklemesi (İthalat):</strong> Hedef ülkeye (İngiltere, Almanya vb.) ulaşıldığında, oradaki yerel mevzuata göre vergiler ödenir (varsa) veya muafiyet dosyası kapatılarak eşya serbest bırakılır.</li></ul><h3>Mevzuata Uyum ve Maliyet Optimizasyonu</h3><p>Gümrükleme sadece beyan vermek değil, aynı zamanda vergi yükünü minimize etmektir. Han Bros Cargo, AB gümrük mevzuatındaki güncel indirimleri ve zati eşya muafiyet kurallarını (GDPR ve lokal kanunlara uygun) takip ederek sizi ek maliyetlerden korur. Örneğin, İngiltere'ye taşınırken ToR (Transfer of Residence) onayınızın alınması, sizi binlerce poundluk KDV ve gümrük vergisinden kurtarabilir. Biz, bu onayları almak için gerekli teknik desteği ve danışmanlığı paketimizin standart bir parçası olarak sunuyoruz. Sizin için gümrük, bir sürpriz değil, bir planlamadır.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Gümrük beyannamesini kim doldurur?</summary><p>Sizin adınıza yetkilendirdiğimiz diplomalı gümrük müşavirlerimiz, tüm teknik verileri sisteme girerek beyannameyi yasal olarak doldurur ve takip eder.</p></details><details class="b0000-pd5-faq-item"><summary>İthalat ve ihracat arasındaki fark işlem süresini etkiler mi?</summary><p>Taşımacılıkta Türkiye'den çıkış 'ihracat' (zati eşya ise çıkış beyanı), varış ülkesine giriş ise 'ithalat' olarak adlandırılır. Her ikisinin de onay süreleri o günkü sistem yoğunluğuna göre değişebilir.</p></details><details class="b0000-pd5-faq-item"><summary>Gümrükte eşyalarım zarar görürse ne olur?</summary><p>Gümrük muayenesi resmi bir işlemdir. Han Bros Cargo personeli muayene sırasında eşyaların başında durarak, kontrol bittikten sonra ambalajların yeniden güvenli hale getirilmesini sağlar.</p></details><details class="b0000-pd5-faq-item"><summary>Vergi ödemem gerekirse süreç nasıl işler?</summary><p>Eğer gümrük vergisi çıktıysa, ilgili tutar gümrük idaresine yatırılır. Bu tutarı sizin adınıza ödeyip size fatura edebiliriz veya doğrudan ödeme yapmanızı isteyebiliriz.</p></details><details class="b0000-pd5-faq-item"><summary>Zati eşya için gümrük muafiyeti ne kadar sürer?</summary><p>Genellikle ikametgahınızı taşıdığınız tarihten itibaren 12 ay içinde eşyalarınızı getirmeniz durumunda muafiyetten yararlanabilirsiniz.</p></details><p>Gümrük süreçlerini şansa bırakmayın. Han Bros Cargo ile profesyonel çözüm yollarını keşfedin!</p></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=c617w" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=lea7n" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=rkw2p"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=rkw2p"></script>
-  <script defer src="/src/cookie.js?v=rkw2p"></script>
+  <script defer src="/src/mx-ui.js?v=evkgj"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=evkgj"></script>
+  <script defer src="/src/cookie.js?v=evkgj"></script>
 
   <script>
     setTimeout(function() {

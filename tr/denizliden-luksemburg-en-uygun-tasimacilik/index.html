@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=uu019" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=uu019" />
+  <link rel="stylesheet" href="/src/css.css?v=pe5ld" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=pe5ld" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=uu019" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=pe5ld" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=uu019" />
+    <link rel="stylesheet" href="/src/cookie.css?v=pe5ld" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=uu019" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=pe5ld" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=uu019">
+<link rel="stylesheet" href="style.css?v=pe5ld">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=sp32y" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=cf9z3" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/denizli-luksemburg-en-uygun/tr.webp?v=sgkny" width="100%" alt="Denizli'den Lüksemburg'a Ekonomik Taşımacılık ve Nakliye" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/denizli-luksemburg-en-uygun/tr.webp?v=l1h3r" width="100%" alt="Denizli'den Lüksemburg'a Ekonomik Taşımacılık ve Nakliye" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Denizli'den Lüksemburg'a Uygun Fiyatlı Lojistik Köprüsü</h2><p class="b0000-pd5-lead">Türkiye'nin tekstil merkezi Denizli'den Avrupa'nın finans kalbi Lüksemburg'a yapılacak sevkiyatlarda, Han Bros Cargo olarak "Yüksek Kalite, Ekonomik Navlun" anlayışını benimsiyoruz. Denizli Organize Sanayi Bölgeleri'nden Lüksemburg'un tüm kantonlarına (Luxembourg City, Esch-sur-Alzette, Diekirch vb.) uzanan bu rotada, yükünüzü hem güvenli hem de piyasa koşullarına göre en uygun maliyetlerle taşıyoruz. Denizli'nin üretim gücünü Lüksemburg pazarına en avantajlı fiyatlarla sunmanız için yanınızdayız.</p><h3>Denizli Lüksemburg Hattında Maliyet Tasarrufu Sağlayan Yöntemler</h3><p>Lojistik bütçenizi korumanız için sunduğumuz çözümler:</p><ul class="b0000-pd5-features"><li><strong>Parsiyel Yükleme Avantajı:</strong> Lüksemburg'a gidecek eşyanız bir tırı doldurmuyorsa, diğer kargolarla birleştirilerek taşınan parsiyel sistemimizle navlun maliyetinizi %40'a varan oranlarda düşürüyoruz.</li><li><strong>Bölgesel Depolama ve Konsolidasyon:</strong> Denizli'deki depolarımızda toplanan yükleri Lüksemburg rotasında optimize ederek araç doluluk oranını maksimize ediyor ve bu verimliliği fiyatlarımıza yansıtıyoruz.</li><li><strong>Gümrükleme Danışmanlığı:</strong> Lüksemburg'un gümrük prosedürleri ve vergi uygulamaları konusunda profesyonel destek vererek, hatalı evrak kaynaklı bekleme masraflarını engelliyoruz.</li><li><strong>Sezon Dışı ve Toplu Gönderim İndirimleri:</strong> Düzenli tekstil ihracatı yapan firmalarımıza yıllık sabit fiyat garantisi ve toplu gönderim avantajları sunuyoruz.</li></ul><h3>Güvenli ve Şeffaf Lojistik Yönetimi</h3><p>Han Bros Cargo ile Denizli'den Lüksemburg'a gönderdiğiniz her yük, uluslararası CMR sigortası ile tam güvence altındadır. Denizli Organize Sanayi Bölgesi'nden (OSB) doğrudan yükleme imkanı sunarak ara taşıma masraflarınızı minimize ediyoruz. GPS takip sistemimiz sayesinde yükünüzün kargo nerede olduğunu 7/24 online olarak izleyebilir, operasyon ekibimizden anlık raporlar alabilirsiniz. Lüksemburg gibi küçük ama stratejik bir pazarda, doğru lojistik partnerle çalışarak rekabet gücünüzü artırın.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Denizli'den Lüksemburg'a nakliye fiyatları ne kadar?</summary><p>Fiyatlar, gönderilen eşyanın türü, hacmi (m3) ve mevsimsel navlun yoğunluğuna göre belirlenir. Güncel ve en uygun teklif için lütfen bizi arayın.</p></details><details class="b0000-pd5-faq-item"><summary>Lüksemburg'a ev eşyası taşımacılığı yapıyor musunuz?</summary><p>Evet, Denizli'den Lüksemburg'a taşınan bireysel müşterilerimiz için zati eşya taşıma ve kapıdan kapıya kurulum hizmetimiz mevcuttur.</p></details><details class="b0000-pd5-faq-item"><summary>Taşıma süresi ortalama kaç gündür?</summary><p>Karayolu üzerinden Türkiye'den Lüksemburg'a sevkiyatlar, gümrükleme süreçlerine bağlı olarak ortalama 10 ile 14 iş günü sürmektedir.</p></details><details class="b0000-pd5-faq-item"><summary>Tekstil ürünleri için özel askılı taşıma var mı?</summary><p>Evet, Denizli tekstilcilerine özel askılı tır seçeneklerimizle kıyafetlerin ütüsü bozulmadan Lüksemburg'daki mağazalara teslimat yapabiliyoruz.</p></details><details class="b0000-pd5-faq-item"><summary>Kargo sigortası navlun fiyatına dahil midir?</summary><p>Tekliflerimize standart CMR sorumluluk sigortası dahildir. Değerli yükler için 'Emtia Sigortası' ek seçenek olarak sunulur.</p></details><p>Denizli-Lüksemburg rotasında profesyonel, hızlı ve en uygun fiyatlı lojistik için Han Bros Cargo doğru adres. Hemen ücretsiz teklif isteyin!</p></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=v36jp" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=zliw1" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=uu019"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=uu019"></script>
-  <script defer src="/src/cookie.js?v=uu019"></script>
+  <script defer src="/src/mx-ui.js?v=pe5ld"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=pe5ld"></script>
+  <script defer src="/src/cookie.js?v=pe5ld"></script>
 
   <script>
     setTimeout(function() {

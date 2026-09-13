@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=i89w5" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=i89w5" />
+  <link rel="stylesheet" href="/src/css.css?v=wofkm" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=wofkm" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=i89w5" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=wofkm" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=i89w5" />
+    <link rel="stylesheet" href="/src/cookie.css?v=wofkm" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=i89w5" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=wofkm" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=i89w5">
+<link rel="stylesheet" href="style.css?v=wofkm">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=ai59x" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=kmh45" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/fransa-mobilya-rehber/tr.webp?v=od65g" width="100%" alt="Fransa'ya Mobilya Taşımacılığı Hakkında Her Şey" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/fransa-mobilya-rehber/tr.webp?v=lqux6" width="100%" alt="Fransa'ya Mobilya Taşımacılığı Hakkında Her Şey" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Fransa'ya Mobilya Gönderiminde Profesyonel ve Güvenli Çözümler</h2><p class="b0000-pd5-lead">Türkiye'nin eşsiz mobilya tasarımlarını Fransa'daki evinize veya iş yerinize ulaştırmak, büyük bir lojistik uzmanlık gerektirir. Han Bros Cargo olarak, Fransa hattında uzmanlaşmış kadromuzla; koltuk takımları, yatak odaları, yemek odaları ve ofis mobilyalarınızı Türkiye'deki adresinizden alıp Fransa'nın dört bir yanına (Paris, Lyon, Marsilya, Strazburg vb.) güvenle taşıyoruz. 'Fransa Mobilya Taşımacılığı' hizmetimiz, sadece bir nakliye değil; mobilyalarınızın hassasiyetini koruyan özel paketleme, gümrükleme ve talep halinde yerinde montajı kapsayan bütünsel bir operasyondur.</p><h3>Mobilyalarınız İçin Uçtan Uca Operasyonel Süreç</h3><p>Fransa yolculuğunda mobilyalarınızın güvenliğini garanti eden adımlarımız:</p><ul class="b0000-pd5-features"><li><strong>Uluslararası Ambalaj Standartları:</strong> Mobilyalarınız, uzun yolculuğa dayanıklı havalı naylonlar, köşe koruyucular ve 'Kraft' kağıtlarla profesyonelce paketlenir.</li><li><strong>Gümrük ve Mevzuat Yönetimi:</strong> Fransa girişi için gereken tüm evrak ve beyanname süreçlerini (TVA ve gümrük beyanı) uzman müşavirlerimizle sizin adınıza yönetiyoruz.</li><li><strong>Haftalık Düzenli Seferler:</strong> Karayolu üzerinden haftalık olarak düzenlediğimiz tır seferlerimizle, mobilyalarınızı bekleme süresi olmadan hızlıca ulaştırıyoruz.</li><li><strong>Montaj ve Yerleştirme Hizmeti:</strong> Fransa'daki yeni adresinizde mobilyalarınızın paketlerini açıyor, kurulumlarını yapıyor ve ambalaj atıklarını temizleyerek teslim ediyoruz.</li><li><strong>Tam KAPSAMLI Sigorta:</strong> Olası risklere karşı tüm yükünüz CMR sigortası ile finansal güvence altına alınır.</li></ul><h3>Neden Han Bros Cargo'yu Seçmelisiniz?</h3><p>Mobilya taşımacılığı, hacimli ve kırılgan yapısı nedeniyle genel kargo hizmetlerinden ayrılır. Han Bros Cargo olarak, mobilya sektörünün lojistik dinamiklerine hakimiz. Özellikle 'İnegöl, Kayseri, Ankara' gibi mobilya üretim merkezlerinden Fransa'ya kurduğumuz lojistik köprü sayesinde, en uygun fiyat ve en yüksek kalite dengesini sağlıyoruz. Hem Türkçe hem de Fransızca bilen müşteri desteğimizle tüm süreci şeffaf bir şekilde yönetiyor, GPS üzerinden tırınızın konumunu 7/24 izlemenize olanak tanıyoruz. Fransa'ya huzurla taşınmanız veya mobilya alışverişi yapmanız için biz tüm teknik altyapımızla yanınızdayız.</p><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Türkiye'den Fransa'ya mobilya kaç günde ulaşır?</summary><p>Gümrük yoğunluğuna göre değişmekle birlikte, karayolu sevkiyatlarımız ortalama 10 ile 15 gün içerisinde tamamlanmaktadır.</p></details><details class="b0000-pd5-faq-item"><summary>Fransa'ya mobilya gönderirken vergi öder miyim?</summary><p>Yeni mobilyalar ticari statüde vergilendirilir; ancak 'Zati Eşya' (kullanılmış eşya) kapsamında Fransa'ya yerleşiyorsanız vergi muafiyetlerinden yararlanabilirsiniz.</p></details><details class="b0000-pd5-faq-item"><summary>Sadece bir koltuk takımı gönderebilir miyim?</summary><p>Evet, 'Parsiyel (Grupaj)' hizmetimizle tırın tamamını kiralamadan, sadece eşyanızın kapladığı alan kadar ödeme yaparak tek bir parça dahi gönderebilirsiniz.</p></details><details class="b0000-pd5-faq-item"><summary>Mobilyaların montajını kim yapıyor?</summary><p>Talebiniz doğrultusunda, Fransa'daki profesyonel kurulum ekiplerimiz mobilyalarınızın oda içine taşınması ve montajını gerçekleştirir.</p></details><details class="b0000-pd5-faq-item"><summary>Hasar durumunda ne yapılıyor?</summary><p>Her sevkiyatımız sigortalıdır. Olası bir hasar durumunda tutulan tutanakla sigorta süreci başlatılır ve maddi zararınız tazmin edilir.</p></details><p>Fransa'ya mobilya gönderiminde uzmanlığımıza güvenin. Detaylı bilgi ve ücretsiz teklif için Han Bros Cargo ile Hemen İletişime Geçin!</p></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=mjygj" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=f7zes" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=i89w5"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=i89w5"></script>
-  <script defer src="/src/cookie.js?v=i89w5"></script>
+  <script defer src="/src/mx-ui.js?v=wofkm"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=wofkm"></script>
+  <script defer src="/src/cookie.js?v=wofkm"></script>
 
   <script>
     setTimeout(function() {

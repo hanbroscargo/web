@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=ic5v9" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=ic5v9" />
+  <link rel="stylesheet" href="/src/css.css?v=ml9w6" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=ml9w6" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=ic5v9" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=ml9w6" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=ic5v9" />
+    <link rel="stylesheet" href="/src/cookie.css?v=ml9w6" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=ic5v9" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=ml9w6" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=ic5v9">
+<link rel="stylesheet" href="style.css?v=ml9w6">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=q2znr" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=wpd7z" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/en-iyi-kampanyalar/tr.webp?v=m2m5o" width="100%" alt="Current Campaigns and Opportunities in International Shipping" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/en-iyi-kampanyalar/tr.webp?v=gcccq" width="100%" alt="Current Campaigns and Opportunities in International Shipping" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>A Shipment Full of Opportunities: Current Shipping Campaigns</h2><p class="b0000-pd5-lead">As Han Bros Cargo, we develop seasonal and category-based campaigns for you to use your budget in the most efficient way while planning logistics processes. On our 'Best Campaigns in Shipping' page, we bring together the most current opportunities that will reduce your costs on the Turkey-Europe line, expand the scope of service, and increase your operational speed. Our aim is to make quality logistics service not just a transport, but also a profitable investment for our customers.</p><h3>Star Opportunities in the Han Bros Cargo Campaign World</h3><p>Our campaigns that are currently active or repeated at regular periods are:</p><ul class="b0000-pd5-features"><li><strong>Spring Cleaning Campaign:</strong> Every year in March and April, up to 20% extra discounts on packaging services in door-to-door moves.</li><li><strong>SME Friendly Logistics Package:</strong> 'Customs Consultancy Gift' campaign for SMEs that will export abroad for the first time.</li><li><strong>Bring a Friend Discount:</strong> Freight credit for both parties in case our existing customers who receive service from us direct an acquaintance to us.</li><li><strong>University and Education Migration Support:</strong> Special suitcase/box shipping campaigns for academic staff and students moving abroad for master's or doctorate.</li></ul><h3>How Can You Be Informed and Benefit from Our Campaigns?</h3><p>To not miss the best campaign opportunities, it is enough to follow our digital channels. By participating in the newsletter membership on our website, you can be the first to reach discount codes assigned specifically to you and limited-time flash opportunities. Also, with the 'Route of the Week' campaigns we share on our social media accounts, you can catch very surprising freight prices on the routes that are most intense that week (for example, Berlin-Ankara or Brussels-Istanbul). Remember, when the right campaign is combined with the right time, logistics is no longer an expense but a strategic advantage.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>Where can I use the campaign codes?</summary><p>You can enter the campaign codes sent to you into the 'Promotion Code' field on the quote form on our website or have them reflected on your invoice by specifying them to our customer representative.</h3><details class="b0000-pd5-faq-item"><summary>How often are campaigns updated?</summary><p>New period campaigns are announced every month. We also perform special 'Flash Campaigns' on religious holidays, New Year's Eve, and logistics season transitions.</h3><h3>Do you have special package campaigns for corporate firms?</h3><p>Yes, we have corporate discount campaigns such as 'Gold Package' and 'Platinum Package' for firms that perform regular shipments or over a certain tonnage every month.</h3><h3>Does the insurance coverage change when I get a campaign/promotion price?</h3><p>No, according to Han Bros Cargo standards, all shipments within the scope of the campaign are protected to the same degree with full comprehensive CMR insurance.</h3><h3>For which countries are there more shipment campaigns?</h3><p>Much more frequent and advantageous campaigns are organized for Germany, Belgium, France, Austria, and the Netherlands routes where our network is strongest.</p></details></details><p>Continue to follow the Han Bros Cargo world to catch campaigns and opportunities in international shipping. Meet our advantageous packages today!</p></section></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=rauy1" alt="Support agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=fowcl" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=ic5v9"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=ic5v9"></script>
-  <script defer src="/src/cookie.js?v=ic5v9"></script>
+  <script defer src="/src/mx-ui.js?v=ml9w6"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=ml9w6"></script>
+  <script defer src="/src/cookie.js?v=ml9w6"></script>
 
   <script>
     setTimeout(function() {

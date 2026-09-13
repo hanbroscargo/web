@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=b98s5" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=b98s5" />
+  <link rel="stylesheet" href="/src/css.css?v=icmlr" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=icmlr" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=b98s5" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=icmlr" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=b98s5" />
+    <link rel="stylesheet" href="/src/cookie.css?v=icmlr" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=b98s5" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=icmlr" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=b98s5">
+<link rel="stylesheet" href="style.css?v=icmlr">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/tr/" aria-label="İngiltereye evede eve taşımacılık Ana Sayfa">
-      <img src="/img/logo.png?v=jcua3" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=ak078" class="module-logo" alt="İngiltereye evede eve taşımacılık Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/almanya-ne-kadar-sure/tr.webp?v=c883j" width="100%" alt="Almanya'ya Nakliye Kaç Gün Sürer? (Hız ve Süre Rehberi)" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/almanya-ne-kadar-sure/tr.webp?v=sn3ru" width="100%" alt="Almanya'ya Nakliye Kaç Gün Sürer? (Hız ve Süre Rehberi)" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Almanya Nakliye Sürelerini Etkileyen Faktörler ve Teslimat Takvimi</h2><p class="b0000-pd5-lead">Türkiye ile Almanya arasında lojistik bir bağ kurarken en çok merak edilen soruların başında "Eşyalarım ne zaman ulaşır?" gelmektedir. Han Bros Cargo olarak karayolu taşımacılığında standart ve express seçeneklerimizle zamanı sizin için optimize ediyoruz. Sevkiyat süresini sadece yol mesafesi değil, gümrük prosedürleri, sınır yoğunlukları ve hava koşulları gibi birçok dış etken de belirlemektedir.</p><h3>Taşıma Türüne Göre Tahmini Süreler</h3><p>İhtiyacınıza göre sunduğumuz farklı taşıma modlarının varış süreleri şu şekildedir:</p><ul class="b0000-pd5-features"><li><strong>Standart Karayolu (Full Truck):</strong> Aracımız sadece size tahsis edildiyse, yükleme sonrası Türkiye-Almanya arası varış süresi ortalama 5 ile 7 gündür.</li><li><strong>Parsiyel Taşımacılık (Groupage):</strong> Farklı müşterilerin yüklerinin birleştirildiği bu sistemde, toplama ve gümrük süreçleri dahil teslimat süresi genellikle 10 ile 14 gün arasındadır.</li><li><strong>Express Panelvan Taşımacılığı:</strong> Sınır kapılarındaki büyük araç yoğunluğuna girmeyen küçük ve hızlı araçlarımızla 48-72 saat içerisinde Almanya gümrüğüne ulaşıyoruz.</li><li><strong>Hava Kargo:</strong> En hızlı seçenek olup, havalimanından havalimanına süreç 1-2 gündür, kapıdan kapıya işlem 3-4 günü bulabilir.</li></ul><h3>Süreyi Uzatabilecek Kritik Faktörler</h3><p>Lojistik planlamasında aksaklık yaşamamak için şu detayları göz önünde bulundurmalısınız:</p><ul class="b0000-pd5-features"><li><strong>Sınır Kapısı Yoğunluğu:</strong> Özellikle Kapıkule ve Hamzabeyli sınır kapılarındaki TIR kuyrukları dönemsel olarak +1 veya +2 gün gecikme yaratabilir.</li><li><strong>Gümrük Kontrolleri:</strong> Eşya beyannamesindeki eksiklikler veya gümrük muayenesi süreci sevkiyatı durdurabilir. Han Bros Cargo uzmanları bu süreci hızlandırmak için evrakları önceden hazırlar.</li><li><strong>Hafta Sonu ve Tatil Yasakları:</strong> Almanya'da pazar günleri ve resmi tatillerde kamyon sürüş yasağı (Fahrverbot) olması varış süresini etkileyebilir.</li></ul><section class="b0000-pd5-faq"><h2>Sık Sorulan Sorular</h2><details class="b0000-pd5-faq-item"><summary>Almanya gümrüğünde işlemler kaç gün sürer?</summary><p>Evraklarınızın tam olması ve beyannamenin sorunsuz açılması durumunda gümrük tescil işlemleri genellikle aynı gün veya en geç 24 saat içinde tamamlanır.</p></details><details class="b0000-pd5-faq-item"><summary>Aracımı sevkiyat esnasında takip edebilir miyim?</summary><p>Evet, tüm araçlarımızda GPS takip sistemi mevcuttur. Müşteri temsilcimizden aracın rotası ve konumu hakkında her gün düzenli bilgi alabilirsiniz.</p></details><details class="b0000-pd5-faq-item"><summary>Kar yağışı veya fırtına süreyi çok etkiler mi?</summary><p>Kış aylarında Balkan geçişlerinde (Bulgaristan-Sırbistan hattı) yaşanan aşırı kar yağışı durumunda güvenlik gereği 1-3 günlük gecikmeler yaşanabilmektedir.</p></details><details class="b0000-pd5-faq-item"><summary>En hızlı teslimat seçeneği nedir?</summary><p>Kapıdan kapıya en hızlı karayolu çözümü "Express Panelvan" hizmetimizdir. Bu yöntemle gümrük dahil 3-4 gün içinde teslimat mümkündür.</p></details><details class="b0000-pd5-faq-item"><summary>Belirli bir günde teslimat garantisi veriyor musunuz?</summary><p>Uluslararası gümrüklü taşımacılıkta kesin gün garantisi verilememekle birlikte, operasyonel planlamamız sayesinde %95 oranında öngörülen takvime sadık kalarak teslimat yapıyoruz.</p></details><p>Zamanınız bizim için değerlidir. Han Bros Cargo ile en hızlı ve güvenli Almanya rotasını planlamak için hemen iletişime geçin!</p></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=l4fu4" alt="Destek temsilcisi"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=yk4v1" alt="Destek temsilcisi"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=b98s5"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=b98s5"></script>
-  <script defer src="/src/cookie.js?v=b98s5"></script>
+  <script defer src="/src/mx-ui.js?v=icmlr"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=icmlr"></script>
+  <script defer src="/src/cookie.js?v=icmlr"></script>
 
   <script>
     setTimeout(function() {

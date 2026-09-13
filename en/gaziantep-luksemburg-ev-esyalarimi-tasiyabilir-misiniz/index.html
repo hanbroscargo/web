@@ -29,17 +29,17 @@
   <link rel="preload" href="/src/fonts/rubik/rubik-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/rubik.css" />
-  <link rel="stylesheet" href="/src/css.css?v=fxlg3" />
-  <link rel="stylesheet" href="/src/mx-ui.css?v=fxlg3" />
+  <link rel="stylesheet" href="/src/css.css?v=eg48i" />
+  <link rel="stylesheet" href="/src/mx-ui.css?v=eg48i" />
   <link rel="preload" href="/src/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/material-symbols-outlined.css" />
-  <link rel="preload" href="/src/cookie.css?v=fxlg3" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/src/cookie.css?v=eg48i" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="/src/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="/src/cookie.css?v=fxlg3" />
+    <link rel="stylesheet" href="/src/cookie.css?v=eg48i" />
     <link rel="stylesheet" href="/src/swiper-bundle.min.css" />
   </noscript>
-  <link rel="shortcut icon" href="/img/icon.png?v=fxlg3" type="image/png" />
+  <link rel="shortcut icon" href="/img/icon.png?v=eg48i" type="image/png" />
   <link rel="apple-touch-icon" href="/img/icon.png" />
   <script type="application/ld+json">
 {
@@ -64,7 +64,7 @@
   <meta name="google-site-verification" content="YveTPh_U3Ynlpia668mmKC0La0YI8XHcUfE2x0jw5PE" />
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2196f3">
-<link rel="stylesheet" href="style.css?v=fxlg3">
+<link rel="stylesheet" href="style.css?v=eg48i">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
 
   <div class="h0000body">
     <a href="/en/" aria-label="Door to door shipping to England Ana Sayfa">
-      <img src="/img/logo.png?v=k087t" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
+      <img src="/img/logo.png?v=hosul" class="module-logo" alt="Door to door shipping to England Logo" width="300" height="auto"  loading="lazy"/>
     </a>
 
 
@@ -140,6 +140,7 @@
 <script>
   setTimeout(function () {
     try {
+
       var toggle = document.querySelector(".mobile-menu-toggle");
       var menuBody = document.querySelector(".h0000menulistbody");
       var overlay = document.querySelector(".mobile-menu-overlay");
@@ -150,6 +151,7 @@
       }
 
       var mql = window.matchMedia("(max-width: 768px)");
+
       function openMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -163,8 +165,10 @@
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
         }
+
         document.body.style.overflow = "hidden";
       }
+
       function closeAllSubmenus() {
         if (!menuBody) {
           return;
@@ -179,6 +183,7 @@
           }
         }
       }
+
       function initMobileSubmenuToggles() {
         var toggles = menuBody.querySelectorAll(".h0000-submenu-toggle");
         var ti;
@@ -211,6 +216,7 @@
         }
       }
       initMobileSubmenuToggles();
+
       function closeMenu() {
         closeAllSubmenus();
         if (menuBody) {
@@ -227,11 +233,14 @@
           toggle.classList.remove("is-active");
           toggle.setAttribute("aria-expanded", "false");
         }
+
         document.body.style.overflow = "";
+
         if (toggle) {
           toggle.focus();
         }
       }
+
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +250,7 @@
           openMenu();
         }
       });
+
       if (closeButton) {
         closeButton.addEventListener("click", function (e) {
           e.preventDefault();
@@ -248,6 +258,7 @@
           closeMenu();
         });
       }
+
       if (overlay) {
         overlay.addEventListener("click", function (e) {
           e.preventDefault();
@@ -255,18 +266,21 @@
           closeMenu();
         });
       }
+
       var touchStartX = 0;
       var touchStartY = 0;
       var touchCurrentX = 0;
       var isSwiping = false;
       var swipeThreshold = 50; // Minimum çekme mesafesi (px)
       var menuWidth = 0;
+
       function getMenuWidth() {
         if (menuBody) {
           return menuBody.offsetWidth || window.innerWidth * 0.8;
         }
         return 320;
       }
+
       menuBody.addEventListener("touchstart", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -277,6 +291,7 @@
         isSwiping = false;
         menuWidth = getMenuWidth();
       }, { passive: true });
+
       menuBody.addEventListener("touchmove", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -285,13 +300,16 @@
         touchCurrentX = touch.clientX;
         var deltaX = touchCurrentX - touchStartX;
         var deltaY = Math.abs(touch.clientY - touchStartY);
+
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
           isSwiping = true;
           e.preventDefault();
+
           if (deltaX > 0) {
             menuBody.classList.add("swiping");
             var translateX = Math.min(deltaX, menuWidth);
             menuBody.style.transform = "translateX(" + translateX + "px)";
+
             if (overlay) {
               var opacity = 0.6 * (1 - deltaX / menuWidth);
               overlay.style.opacity = opacity;
@@ -299,6 +317,7 @@
           }
         }
       }, { passive: false });
+
       menuBody.addEventListener("touchend", function (e) {
         if (!menuBody.classList.contains("is-visible")) {
           return;
@@ -307,9 +326,11 @@
         if (isSwiping) {
           menuBody.classList.remove("swiping");
           var deltaX = touchCurrentX - touchStartX;
+
           if (deltaX > swipeThreshold) {
             closeMenu();
           } else {
+
             menuBody.style.transform = "";
             if (overlay) {
               overlay.style.opacity = "";
@@ -319,6 +340,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("touchcancel", function (e) {
         if (isSwiping) {
           menuBody.classList.remove("swiping");
@@ -329,6 +351,7 @@
           isSwiping = false;
         }
       }, { passive: true });
+
       menuBody.addEventListener("click", function (event) {
         var link = event.target.closest("a");
         var closeBtn = event.target.closest(".mobile-menu-close");
@@ -336,11 +359,13 @@
           closeMenu();
         }
       });
+
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && menuBody && menuBody.classList.contains("is-visible")) {
           closeMenu();
         }
       });
+
       toggle.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -351,8 +376,10 @@
           }
         }
       });
+
       function handleBreakpoint() {
         if (!mql.matches) {
+
           closeAllSubmenus();
           if (menuBody) {
             menuBody.classList.remove("is-visible");
@@ -402,7 +429,7 @@
   </nav>
   <div class="b0000-main">
     
-    <div class="b0000-desc-body"><img src="/page/gaziantep-luksemburg-ev-esyasi/tr.webp?v=k7mre" width="100%" alt="Gaziantep Luxembourg Household Goods Shipping: Professional Moving" loading="lazy" /></div>
+    <div class="b0000-desc-body"><img src="/page/gaziantep-luksemburg-ev-esyasi/tr.webp?v=tmpnh" width="100%" alt="Gaziantep Luxembourg Household Goods Shipping: Professional Moving" loading="lazy" /></div>
     <div class="b0000-body"><article class="b0000-pd5-article"><h2>Gaziantep's Power to the Heart of Luxembourg: Household Goods Shipping</h2><p class="b0000-pd5-lead">Moving from a city like Gaziantep, the heart of industry and trade, to Luxembourg, the financial center of Europe, requires meticulous logistics planning. As Han Bros Cargo, we combine our local field experience in Gaziantep with our international transportation standards. We pick up all your household appliances from your furniture to white goods, from antiques to personal items from your address in Gaziantep and deliver them safely to the remotest corners of Luxembourg. We support our speed in Luxembourg's customs processes, known for its small country advantage, with our modern vehicle fleet and experienced personnel.</p><h3>Why Should You Choose Us on the Gaziantep - Luxembourg Line?</h3><p>The advantages we offer on this special route are as follows:</p><ul class="b0000-pd5-features"><li><strong>Fast Customs and Central Location:</strong> Thanks to Luxembourg's central location, your belongings reach the target address much faster from our European distribution center.</li><li><strong>Professional Packaging Service:</strong> Our expert team in Gaziantep packages your belongings with special materials that are shock-absorbing and moisture-preventing, suitable for international long-distance conditions.</li><li><strong>Full Comprehensive Insurance:</strong> Throughout the journey, your belongings are secured against all kinds of risks with CMR and additional personal effects insurance.</li><li><strong>Transparent Process Management:</strong> We inform you at every stage from the departure of your belongings from Gaziantep to the delivery in Luxembourg.</li></ul><h3>Our Logistics Advantages: Fast Access via Belgium</h3><p>In our transports to Luxembourg, we usually use our Belgium port and warehouse connections to both lower costs and shorten processing time. We offer the dynamism of Gaziantep industry with a service understanding compatible with Luxembourg's organized structure. We provide turnkey service from the de-assembly of your furniture to the assembly at your new address. Moving from Gaziantep to Luxembourg with Han Bros Cargo is no longer a source of stress, but a pleasant start.</p><section class="b0000-pd5-faq"><section class="b0000-pd5-faq"><h2>Frequently Asked Questions</h2><details class="b0000-pd5-faq-item"><summary>What is the shipping time from Gaziantep to Luxembourg?</summary><p>Our vehicles departing from Gaziantep reach the delivery address in Luxembourg in average 12-16 days.</h3><details class="b0000-pd5-faq-item"><summary>Which documents are required for customs procedures?</summary><p>Passport copy, residence permit, item list and documents showing the moving date in Gaziantep are usually sufficient for customs exemption.</h3><h3>Do you carry piece goods (partial)?</h3><p>Yes, even if you only have a few pieces of belongings that need to go from Gaziantep to Luxembourg, you can send them at affordable prices with our partial transport service.</h3><h3>Can you transport my piano or delicate antique items?</h3><p>Absolutely. We offer special crating service in Gaziantep for these types of special items and deliver them with great meticulousness in Luxembourg.</h3><h3>Do you have elevator transport service in Luxembourg?</h3><p>Yes, we do. We carry your belongings without damage by installing exterior elevators in narrow streets or multi-story buildings in Luxembourg.</h3><p>Trust Han Bros Cargo experience for a care-free move from Gaziantep to Luxembourg!</p></details></details></section></section></article></div>
     
   </div>
@@ -653,7 +680,7 @@
   <div class="f0000-wa-advanced-panel" id="f0000WaPanel">
     <div class="f0000-wa-advanced-header">
       <div class="f0000-wa-advanced-avatar">
-        <img src="/img/sy0l2u/logo.jpg?v=we4ms" alt="Support agent"  loading="lazy"/>
+        <img src="/img/sy0l2u/logo.jpg?v=zm9pb" alt="Support agent"  loading="lazy"/>
         <div class="f0000-wa-advanced-status online"></div>
       </div>
       <div class="f0000-wa-advanced-info">
@@ -776,9 +803,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <script defer src="/src/swiper-bundle.min.js"></script>
-  <script defer src="/src/mx-ui.js?v=fxlg3"></script>
-  <script defer type="text/javascript" src="/src/js.js?v=fxlg3"></script>
-  <script defer src="/src/cookie.js?v=fxlg3"></script>
+  <script defer src="/src/mx-ui.js?v=eg48i"></script>
+  <script defer type="text/javascript" src="/src/js.js?v=eg48i"></script>
+  <script defer src="/src/cookie.js?v=eg48i"></script>
 
   <script>
     setTimeout(function() {
