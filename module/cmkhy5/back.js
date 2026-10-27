@@ -1,9 +1,5 @@
 
 
-
-
-
-
 var pagesettingjson = webmakerdata.pagesetting.data.find(function (item) {
   return item.modulestatus && item.modulestatus.page;
 });
@@ -23,7 +19,6 @@ function shouldSkipSubmenu(menuRow) {
   }
   return false;
 }
-
 var backhtml =
   '<a class="modulexmenulist-menu modulexmenulist-home" href="/' +
   json.lang +
@@ -48,7 +43,6 @@ if (pagesettingjson) {
         var itemLabel = iterator.name[json.lang];
 
         if (subHtml !== "") {
-
           var sid = "modulex-dropdown-" + ix;
           subHtml = subHtml.replace(
             '<div class="dropdown-content-modulex"',
@@ -88,7 +82,6 @@ if (pagesettingjson) {
   }
   html = html.replace(new RegExp("{{html}}", "g"), backhtml);
 }
-
 langhtml = "";
 for (var key in webmakerdata.setting.langs) {
   if (webmakerdata.setting.langs[key] == true) {
@@ -158,7 +151,6 @@ function resolveCategoryListKey(parentRow) {
 function pagecategory(parentId, parentRow) {
   var parts = [];
   var labelLang = json.lang;
-
   if (pagesettingjson) {
     var mainData = webmakerdata[pagesettingjson.path];
     if (mainData && mainData.data) {
@@ -187,7 +179,6 @@ function pagecategory(parentId, parentRow) {
       }
     }
   }
-
   var catKey = resolveCategoryListKey(parentRow);
   if (catKey) {
     var arr = webmakerdata[catKey].data;
