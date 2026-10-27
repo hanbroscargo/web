@@ -2,8 +2,10 @@
 
 var fs = require('fs');
 var path = require('path');
+
 var pageDir = __dirname;
 var outputFile = path.join(pageDir, 'todolist.md');
+
 var SEO_CRITERIA = {
     textMinLength: 2500,        // text.tr minimum karakter sayısı (HTML tag'leri hariç)
     descriptionMaxLength: 180,  // description.tr maksimum karakter sayısı
@@ -11,16 +13,20 @@ var SEO_CRITERIA = {
     spotMaxLength: 180,         // spot.tr maksimum karakter sayısı
     nameMaxLength: 100         // name.tr maksimum karakter sayısı
 };
+
 function stripHtmlTags(html) {
     if (!html) return '';
     return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 }
+
 function getTextLength(text) {
     return stripHtmlTags(text).length;
 }
+
 function hasFAQSection(text) {
     if (!text) return false;
     var cleanText = stripHtmlTags(text).toLowerCase();
+
     var faqIndicators = [
         'soru',
         'cevap',
@@ -34,6 +40,7 @@ function hasFAQSection(text) {
         'hangi',
         '?'
     ];
+
     var questionMarks = (text.match(/\?/g) || []).length;
     var hasQuestionWords = faqIndicators.some(function(indicator) {
         return cleanText.includes(indicator);
@@ -41,6 +48,7 @@ function hasFAQSection(text) {
     
     return questionMarks >= 2 || (hasQuestionWords && questionMarks >= 1);
 }
+
 function analyzePage(filePath, pageId) {
     try {
         var content = fs.readFileSync(filePath, 'utf8');
@@ -48,6 +56,7 @@ function analyzePage(filePath, pageId) {
         
         var issues = [];
         var warnings = [];
+
         if (!pageData.name || !pageData.name.tr) {
             issues.push('❌ **name.tr** alanı eksik');
         } else {
@@ -58,6 +67,7 @@ function analyzePage(filePath, pageId) {
                 warnings.push('⚠️ **name.en** çevirisi eksik');
             }
         }
+
         if (!pageData.description || !pageData.description.tr) {
             issues.push('❌ **description.tr** alanı eksik');
         } else {
@@ -68,6 +78,7 @@ function analyzePage(filePath, pageId) {
                 warnings.push('⚠️ **description.en** çevirisi eksik');
             }
         }
+
         if (!pageData.keyword || !pageData.keyword.tr) {
             issues.push('❌ **keyword.tr** alanı eksik');
         } else {
@@ -78,6 +89,7 @@ function analyzePage(filePath, pageId) {
                 warnings.push('⚠️ **keyword.en** çevirisi eksik');
             }
         }
+
         if (!pageData.spot || !pageData.spot.tr) {
             issues.push('❌ **spot.tr** alanı eksik');
         } else {
@@ -88,6 +100,7 @@ function analyzePage(filePath, pageId) {
                 warnings.push('⚠️ **spot.en** çevirisi eksik');
             }
         }
+
         if (!pageData.text || !pageData.text.tr) {
             issues.push('❌ **text.tr** alanı eksik');
         } else {
@@ -95,6 +108,7 @@ function analyzePage(filePath, pageId) {
             if (textLength < SEO_CRITERIA.textMinLength) {
                 issues.push('❌ **text.tr** çok kısa (' + textLength + ' harf, min: ' + SEO_CRITERIA.textMinLength + ' harf olmalı)');
             }
+
             if (!hasFAQSection(pageData.text.tr)) {
                 issues.push('❌ **text.tr** içinde soru-cevap (FAQ) bölümü eksik');
             }
@@ -125,6 +139,7 @@ function analyzePage(filePath, pageId) {
         };
     }
 }
+
 function analyzeAllPages() {
     var results = [];
     var totalPages = 0;
@@ -132,11 +147,13 @@ function analyzeAllPages() {
     var pagesWithWarnings = 0;
     
     console.log('📊 Sayfa analizi başlatılıyor...\n');
+
     var dirs = fs.readdirSync(pageDir);
     
     dirs.forEach(function(dir) {
         var dirPath = path.join(pageDir, dir);
         var stat = fs.statSync(dirPath);
+
         if (stat.isDirectory() && dir !== 'node_modules' && dir !== '.git') {
             var indexPath = path.join(dirPath, 'index.json');
             
@@ -151,6 +168,7 @@ function analyzeAllPages() {
                 if (analysis.hasWarnings) {
                     pagesWithWarnings++;
                 }
+
                 if (totalPages % 50 === 0) {
                     console.log('  ✓ ' + totalPages + ' sayfa analiz edildi...');
                 }
@@ -172,8 +190,10 @@ function analyzeAllPages() {
         }
     };
 }
+
 function generateTodoList(analysisData) {
     var md = [];
+
     md.push('# 📋 SEO ve Dil İyileştirme Todo Listesi');
     md.push('');
     md.push('**Oluşturulma Tarihi:** ' + new Date().toLocaleString('tr-TR'));
@@ -184,9 +204,11 @@ function generateTodoList(analysisData) {
     md.push('- **Sorunlu Sayfa:** ' + analysisData.stats.withIssues);
     md.push('- **Uyarılı Sayfa:** ' + analysisData.stats.withWarnings);
     md.push('');
+
     var criticalPages = analysisData.results.filter(function(r) { return r.hasIssues; });
     var warningPages = analysisData.results.filter(function(r) { return !r.hasIssues && r.hasWarnings; });
     var okPages = analysisData.results.filter(function(r) { return !r.hasIssues && !r.hasWarnings; });
+
     if (criticalPages.length > 0) {
         md.push('## 🔴 Kritik Sorunlar (' + criticalPages.length + ' sayfa)');
         md.push('');
@@ -194,6 +216,7 @@ function generateTodoList(analysisData) {
         md.push('');
         
         criticalPages.forEach(function(page, index) {
+
             var cleanPageName = page.pageName
                 .replace(/fiyat[ılar]*/gi, 'fiyatlandırma')
                 .replace(/\d+\s*(tl|gbp|eur|usd|£|€|\$)/gi, '')
@@ -225,6 +248,7 @@ function generateTodoList(analysisData) {
             md.push('');
         });
     }
+
     if (warningPages.length > 0) {
         md.push('## ⚠️ Uyarılar (' + warningPages.length + ' sayfa)');
         md.push('');
@@ -232,6 +256,7 @@ function generateTodoList(analysisData) {
         md.push('');
         
         warningPages.forEach(function(page, index) {
+
             var cleanPageName = page.pageName
                 .replace(/fiyat[ılar]*/gi, 'fiyatlandırma')
                 .replace(/\d+\s*(tl|gbp|eur|usd|£|€|\$)/gi, '')
@@ -254,12 +279,14 @@ function generateTodoList(analysisData) {
             md.push('');
         });
     }
+
     if (okPages.length > 0) {
         md.push('## ✅ Sorunsuz Sayfalar (' + okPages.length + ' sayfa)');
         md.push('');
         md.push('> Bu sayfalar tüm SEO kriterlerini karşılıyor.');
         md.push('');
     }
+
     md.push('## 📝 SEO Kriterleri ve Yazım Yönergeleri');
     md.push('');
     md.push('### ✅ Zorunlu Kriterler');
@@ -494,11 +521,15 @@ function generateTodoList(analysisData) {
     
     return md.join('\n');
 }
+
 function main() {
     console.log('🚀 SEO Analiz Scripti Başlatılıyor...\n');
+
     var analysisData = analyzeAllPages();
+
     console.log('📝 Todo listesi oluşturuluyor...\n');
     var todoList = generateTodoList(analysisData);
+
     fs.writeFileSync(outputFile, todoList, 'utf8');
     
     console.log('✅ Todo listesi oluşturuldu: ' + outputFile);
@@ -508,4 +539,5 @@ function main() {
     console.log('   - Uyarılı sayfa: ' + analysisData.stats.withWarnings);
     console.log('\n✨ İşlem tamamlandı!\n');
 }
+
 main();
