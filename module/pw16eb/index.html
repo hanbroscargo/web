@@ -8,12 +8,12 @@
             <header class="metrekup-list-header">
                 <div class="metrekup-header-wrapper">
                     <div>
-                        <h1 id="metrekup-title" class="metrekup-list-title">{{mainTitle}}</h1>
-                        <p class="metrekup-list-subtitle">{{mainSubtitle}}</p>
+                        <h1 id="metrekup-title" class="metrekup-list-title">📦 Metreküp Hesaplama</h1>
+                        <p class="metrekup-list-subtitle">Eşyalarınızın boyutlarını girin</p>
                     </div>
                     <div class="metrekup-buttons">
-                        <button type="button" onclick="addItem()" class="metrekup-btn-add" aria-label="Yeni eşya ekle">{{btnAddItem}}</button>
-                        <button type="button" onclick="clearAll()" class="metrekup-btn-clear" aria-label="Tüm verileri temizle">{{btnClear}}</button>
+                        <button type="button" onclick="addItem()" class="metrekup-btn-add" aria-label="Yeni eşya ekle">➕ Yeni Eşya</button>
+                        <button type="button" onclick="clearAll()" class="metrekup-btn-clear" aria-label="Tüm verileri temizle">🗑️ Temizle</button>
                     </div>
                 </div>
             </header>
@@ -25,20 +25,20 @@
             <section class="metrekup-bottom-section" aria-labelledby="results-title">
                 <div class="metrekup-results-section">
                     <header class="metrekup-results-header">
-                        <h2 id="results-title" class="metrekup-results-title">{{resultsTitle}}</h2> 
-                        <p class="metrekup-results-subtitle">{{resultsSubtitle}}</p>
+                        <h2 id="results-title" class="metrekup-results-title">📊 Hesaplama Sonuçları</h2> 
+                        <p class="metrekup-results-subtitle">Toplam hacim ve ağırlık bilgileri</p>
                     </header>
                     <div class="metrekup-results-grid">
                         <div class="metrekup-result-card">
                             <div class="metrekup-result-icon">📦</div>
-                            <div class="metrekup-result-label">{{labelTotalVolume}}</div>
+                            <div class="metrekup-result-label">TOPLAM HACİM</div>
                             <div class="metrekup-result-value">
                                 <span id="total-volume">0</span> <span class="metrekup-result-unit">m³</span>
                             </div>
                         </div>
                         <div class="metrekup-result-card">
                             <div class="metrekup-result-icon">⚖️</div>
-                            <div class="metrekup-result-label">{{labelTotalWeight}}</div>
+                            <div class="metrekup-result-label">TOPLAM AĞIRLIK</div>
                             <div class="metrekup-result-value">
                                 <span id="total-weight">0</span> <span class="metrekup-result-unit">kg</span>
                             </div>
@@ -57,13 +57,11 @@
 <script>
 var items = [];
 var itemCounter = 0;
-
 setTimeout(function() {
     initializeCalculator();
 }, 100);
 
 function initializeCalculator() {
-
     for (var i = 1; i <= 3; i++) {
         addItem();
     }
@@ -84,33 +82,33 @@ function addItem() {
         '<div class="metrekup-item-header">' +
             '<div class="metrekup-item-title-wrapper">' +
                 '<div class="metrekup-item-number">' + itemId + '</div>' +
-                '<h3 class="metrekup-item-title">{{itemTitle}} ' + itemId + '</h3>' +
+                '<h3 class="metrekup-item-title">Eşya ' + itemId + '</h3>' +
             '</div>' +
             removeButton +
         '</div>' +
         '<div class="metrekup-inputs-grid">' +
             '<div class="metrekup-input-group">' +
-                '<label class="metrekup-input-label" for="length-' + itemId + '">{{labelLength}}</label>' +
-                '<input type="number" id="length-' + itemId + '" name="length-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelLength}}">' +
+                '<label class="metrekup-input-label" for="length-' + itemId + '">📏 Uzunluk (cm)</label>' +
+                '<input type="number" id="length-' + itemId + '" name="length-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="📏 Uzunluk (cm)">' +
             '</div>' +
             '<div class="metrekup-input-group">' +
-                '<label class="metrekup-input-label" for="width-' + itemId + '">{{labelWidth}}</label>' +
-                '<input type="number" id="width-' + itemId + '" name="width-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelWidth}}">' +
+                '<label class="metrekup-input-label" for="width-' + itemId + '">📐 Genişlik (cm)</label>' +
+                '<input type="number" id="width-' + itemId + '" name="width-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="📐 Genişlik (cm)">' +
             '</div>' +
             '<div class="metrekup-input-group">' +
-                '<label class="metrekup-input-label" for="height-' + itemId + '">{{labelHeight}}</label>' +
-                '<input type="number" id="height-' + itemId + '" name="height-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelHeight}}">' +
+                '<label class="metrekup-input-label" for="height-' + itemId + '">📏 Yükseklik (cm)</label>' +
+                '<input type="number" id="height-' + itemId + '" name="height-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="📏 Yükseklik (cm)">' +
             '</div>' +
             '<div class="metrekup-input-group">' +
-                '<label class="metrekup-input-label" for="quantity-' + itemId + '">{{labelQuantity}}</label>' +
-                '<input type="number" id="quantity-' + itemId + '" name="quantity-' + itemId + '" placeholder="1" step="1" min="1" value="1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelQuantity}}">' +
+                '<label class="metrekup-input-label" for="quantity-' + itemId + '">📦 Adet</label>' +
+                '<input type="number" id="quantity-' + itemId + '" name="quantity-' + itemId + '" placeholder="1" step="1" min="1" value="1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="📦 Adet">' +
             '</div>' +
             '<div class="metrekup-input-group metrekup-weight-group">' +
-                '<label class="metrekup-input-label" for="weight-' + itemId + '">{{labelWeight}}</label>' +
-                '<input type="number" id="weight-' + itemId + '" name="weight-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="{{labelWeight}}">' +
+                '<label class="metrekup-input-label" for="weight-' + itemId + '">⚖️ Ağırlık (kg)</label>' +
+                '<input type="number" id="weight-' + itemId + '" name="weight-' + itemId + '" placeholder="0" step="0.1" oninput="calculateItem(' + itemId + ')" class="metrekup-input" aria-label="⚖️ Ağırlık (kg)">' +
             '</div>' +
             '<div class="metrekup-input-group metrekup-volume-group">' +
-                '<label class="metrekup-input-label" for="item-volume-' + itemId + '">{{labelItemVolume}}</label>' +
+                '<label class="metrekup-input-label" for="item-volume-' + itemId + '">📊 Eşya Hacmi (m³)</label>' +
                 '<div class="metrekup-volume-display">' +
                     '<span id="item-volume-' + itemId + '">0.00</span>' +
                     '<span class="metrekup-volume-unit">m³</span>' +
@@ -120,7 +118,6 @@ function addItem() {
     '</div>';
     
     container.insertAdjacentHTML('beforeend', itemHtml);
-
     items.push({
         id: itemId,
         quantity: 1,
@@ -137,11 +134,9 @@ function removeItem(itemId) {
     if (itemElement) {
         itemElement.remove();
     }
-
     items = items.filter(function(item) {
         return item.id !== itemId;
     });
-
     renumberItems();
     
     updateTotals();
@@ -150,27 +145,21 @@ function removeItem(itemId) {
 function renumberItems() {
     var container = document.getElementById('esya-listesi');
     var allItems = container.querySelectorAll('.metrekup-item-card');
-
     for (var i = 0; i < allItems.length; i++) {
         var itemElement = allItems[i];
         var newNumber = i + 1;
         var oldId = itemElement.id.replace('item-', '');
         var newId = newNumber;
-
         if (parseInt(oldId) !== newId) {
-
             itemElement.id = 'item-' + newId;
-
             var numberElement = itemElement.querySelector('.metrekup-item-number');
             if (numberElement) {
                 numberElement.textContent = newId;
             }
-
             var titleElement = itemElement.querySelector('.metrekup-item-title');
             if (titleElement) {
-                titleElement.textContent = '{{itemTitle}} ' + newId;
+                titleElement.textContent = 'Eşya ' + newId;
             }
-
             var lengthInput = itemElement.querySelector('#length-' + oldId);
             if (lengthInput) {
                 lengthInput.id = 'length-' + newId;
@@ -200,17 +189,14 @@ function renumberItems() {
                 weightInput.id = 'weight-' + newId;
                 weightInput.setAttribute('oninput', 'calculateItem(' + newId + ')');
             }
-
             var volumeElement = itemElement.querySelector('#item-volume-' + oldId);
             if (volumeElement) {
                 volumeElement.id = 'item-volume-' + newId;
             }
-
             var removeButton = itemElement.querySelector('.metrekup-btn-remove');
             if (removeButton) {
                 removeButton.setAttribute('onclick', 'removeItem(' + newId + ')');
             } else if (newId > 3) {
-
                 var headerElement = itemElement.querySelector('.metrekup-item-header');
                 if (headerElement) {
                     var newRemoveButton = '<button onclick="removeItem(' + newId + ')" class="metrekup-btn-remove">×</button>';
@@ -222,22 +208,18 @@ function renumberItems() {
                     }
                 }
             }
-
             var itemIndex = items.findIndex(function(item) {
                 return item.id === parseInt(oldId);
             });
             if (itemIndex !== -1) {
-
                 var lengthValue = lengthInput ? parseFloat(lengthInput.value) || 0 : 0;
                 var widthValue = widthInput ? parseFloat(widthInput.value) || 0 : 0;
                 var heightValue = heightInput ? parseFloat(heightInput.value) || 0 : 0;
                 var quantityValue = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
                 var weightValue = weightInput ? parseFloat(weightInput.value) || 0 : 0;
-
                 var singleVolume = (lengthValue * widthValue * heightValue) / 1000000;
                 var totalVolume = singleVolume * quantityValue;
                 var totalWeight = weightValue * quantityValue;
-
                 items[itemIndex] = {
                     id: newId,
                     quantity: quantityValue,
@@ -249,13 +231,11 @@ function renumberItems() {
                     volume: totalVolume,
                     singleVolume: singleVolume
                 };
-
                 if (volumeElement) {
                     volumeElement.textContent = totalVolume.toFixed(2);
                 }
             }
         } else {
-
             var removeButton = itemElement.querySelector('.metrekup-btn-remove');
             if (newId <= 3 && removeButton) {
                 removeButton.remove();
@@ -286,11 +266,9 @@ function calculateItem(itemId) {
     var width = parseFloat(widthInput.value) || 0;
     var height = parseFloat(heightInput.value) || 0;
     var weight = parseFloat(weightInput.value) || 0;
-
     var singleVolume = (length * width * height) / 1000000;
     var totalVolume = singleVolume * quantity;
     var totalWeight = weight * quantity;
-
     var itemIndex = items.findIndex(function(item) {
         return item.id === itemId;
     });
@@ -319,7 +297,6 @@ function calculateItem(itemId) {
             singleVolume: singleVolume
         });
     }
-
     updateItemVolume(itemId, totalVolume);
     
     updateTotals();
@@ -352,7 +329,6 @@ function updateTotals() {
 }
 
 function clearAll() {
-
     items.forEach(function(item) {
         var quantityInput = document.getElementById('quantity-' + item.id);
         var lengthInput = document.getElementById('length-' + item.id);
@@ -366,9 +342,7 @@ function clearAll() {
         if (heightInput) heightInput.value = '';
         if (weightInput) weightInput.value = '';
     });
-
     items = items.map(function(item) {
-
         updateItemVolume(item.id, 0);
         
         return {
@@ -386,7 +360,6 @@ function clearAll() {
     
     updateTotals();
 }
-
 console.log('Metreküp hesaplama modülü yüklendi');
 </script>
 
