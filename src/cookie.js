@@ -403,7 +403,24 @@ function hideCookieNotice() {
   if (banner) banner.parentNode.removeChild(banner);
   if (modal) modal.parentNode.removeChild(modal);
   if (overlay) overlay.parentNode.removeChild(overlay);
+  
+  document.documentElement.style.removeProperty("--mx-cookie-pad");
 }
+
+
+function mxCerezAlanAyarla() {
+  var banner = document.querySelector(".cookie-banner");
+  var root = document.documentElement;
+  if (!banner) {
+    root.style.removeProperty("--mx-cookie-pad");
+    return;
+  }
+  var r = banner.getBoundingClientRect();
+  
+  var alt = Math.max(0, window.innerHeight - r.bottom);
+  root.style.setProperty("--mx-cookie-pad", Math.ceil(r.height + alt + 16) + "px");
+}
+window.addEventListener("resize", mxCerezAlanAyarla);
 
 function mxCerezDugmeler(ortaEtiket, ortaIslev) {
   var t = mxCookieEsc;
@@ -436,6 +453,7 @@ function mxCerezCiz() {
     mxCerezDugmeler("cookie-prefs", "showCookieDetails") +
     "</div>";
   document.body.appendChild(banner);
+  mxCerezAlanAyarla();
 
   var kategoriler =
     '<li><label class="cookie-cat"><input type="checkbox" checked disabled> <span>' +

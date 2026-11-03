@@ -88,7 +88,9 @@
     var metin;
     var loc = dil || (document.documentElement && document.documentElement.getAttribute("lang")) || "tr";
     try {
-      metin = new Intl.NumberFormat(loc === "tr" ? "tr-TR" : loc, {
+      
+      var kod = String(loc).toLowerCase().split(/[-_]/)[0];
+      metin = new Intl.NumberFormat(kod === "tr" || kod === "ar" ? "tr-TR" : loc, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       }).format(x);
@@ -707,7 +709,34 @@
     if (/[\x00-\x1f\x7f]/.test(q) || q.charAt(1) === "/" || q.charAt(1) === "\\" || q.indexOf("\\") !== -1) {
       return false;
     }
-    if (q.indexOf("://") !== -1 || /^\
+    if (q.indexOf("://") !== -1 || /^[\/]*[a-z][a-z0-9+.\-]*:/i.test(q)) {
+      return false;
+    }
+    try {
+      var origin = window.location && window.location.origin;
+      if (origin && new window.URL(q, origin).origin !== origin) {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
+  function donusYolu(varsayilan) {
+    var q = "";
+    try {
+      q = new window.URL(window.location.href).searchParams.get("donus") || "";
+    } catch (e) {
+      q = "";
+    }
+    if (guvenliDonus(q)) {
+      return q;
+    }
+    return varsayilan || "";
+  }
+
+  
   
   
 
@@ -739,6 +768,10 @@
     var kalemler = Array.isArray(d.kalemler) && d.kalemler.length ? d.kalemler : kalemlerSepetten(sepet);
     if (!kalemler.length) {
       return Promise.reject(hata(0, "bos-sepet"));
+    }
+    
+    if (apiBilgi.yok || d.demo === true) {
+      return demoSiparisOlustur(d, sepet);
     }
     var govde = { kalemler: kalemler, odeme: d.odeme || "kapida" };
     var alanlar = ["adres", "adresId", "notu", "email", "ad_soyad", "ad", "soyad", "telefon"];
@@ -785,6 +818,85 @@
       }
       return kayit;
     });
+  }
+
+  
+  function demoSiparisNo() {
+    var z = new Date();
+    var p2 = function (n) { return (n < 10 ? "0" : "") + n; };
+    var rastgele = Math.floor(Math.random() * 900 + 100);
+    return "DEMO-" + z.getFullYear() + p2(z.getMonth() + 1) + p2(z.getDate()) + "-" + p2(z.getHours()) + p2(z.getMinutes()) + p2(z.getSeconds()) + "-" + rastgele;
+  }
+
+  
+  function demoSiparisOlustur(d, sepet) {
+    if (d.basarisiz === true) {
+      var h = hata(0, "odeme-basarisiz");
+      h.demo = true;
+      return Promise.reject(h);
+    }
+    var kalemler = [];
+    var ara = 0;
+    for (var i = 0; i < sepet.length; i++) {
+      var adet = adetSinirla(sepet[i].qty || 1);
+      var fiyat = Number(sepet[i].price) || 0;
+      ara += fiyat * adet;
+      kalemler.push({
+        urun_id: sepet[i].id,
+        ad: sepet[i].name || sepet[i].id,
+        adet: adet,
+        birim_fiyat: fiyat,
+        satir_toplam: fiyat * adet,
+        varyant: sepet[i].varyant || "",
+        gorsel: sepet[i].img || ""
+      });
+    }
+    var kargo = Number(d.kargo) > 0 ? Number(d.kargo) : 0;
+    var indirim = Number(d.indirim) > 0 ? Number(d.indirim) : 0;
+    var toplam = Math.max(0, ara + kargo - indirim);
+    var no = demoSiparisNo();
+    var at = new Date().toISOString();
+    var yontem = d.odeme === "kart" || d.odeme === "havale" || d.odeme === "kapida" ? d.odeme : "kapida";
+    var veri = {
+      demo: true,
+      no: no,
+      email: d.email || "",
+      ad_soyad: d.ad_soyad || "",
+      kalemler: kalemler,
+      ara_toplam: ara,
+      kargo: kargo,
+      indirim: indirim,
+      toplam: toplam,
+      odeme_yontemi: yontem,
+      durum: "onaylandi",
+      created_at: at
+    };
+    var kayit = { no: no, email: veri.email, toplam: toplam, durum: veri.durum, data: veri, at: at, demo: true };
+    depoYaz(oturumDepo(), SON_SIPARIS_KEY, kayit);
+    try {
+      var gecmis = depoOku(yerel(), ORDERS_KEY, []);
+      if (!Array.isArray(gecmis)) {
+        gecmis = [];
+      }
+      gecmis.unshift({
+        orderNo: no,
+        date: at,
+        items: sepet,
+        total: toplam,
+        name: veri.ad_soyad,
+        phone: d.telefon || "",
+        address: d.adres && d.adres.adres ? d.adres.adres : (typeof d.adres === "string" ? d.adres : ""),
+        note: d.notu || "",
+        email: veri.email,
+        kaynak: "demo",
+        durum: veri.durum
+      });
+      depoYaz(yerel(), ORDERS_KEY, gecmis.slice(0, 50));
+    } catch (e) {}
+    if (d.sepetiTemizle !== false) {
+      sepetTemizle();
+    }
+    return Promise.resolve(kayit);
   }
 
   function siparisListem(sayfa) {
@@ -911,7 +1023,9 @@
       olustur: siparisOlustur,
       listem: siparisListem,
       detay: siparisDetay,
-      son: sonSiparis
+      son: sonSiparis,
+      
+      demoKip: function () { return !!apiBilgi.yok; }
     }
   };
 
