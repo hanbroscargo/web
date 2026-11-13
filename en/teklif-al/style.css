@@ -69,6 +69,8 @@
     display: block;
     flex: 1;
     min-width: 0;
+    
+    font-size: 16px;
     color: #cedc00 !important;
     text-decoration: none;
     text-align: center;
@@ -1269,6 +1271,8 @@
 
   .b0000-pd5-cta-wa {
     background: #fff;
+    
+    background: light-dark(#fff, var(--mx-site-surface, #fff));
     color: #111111;
     border: 1px solid rgba(30, 48, 70, 0.12);
   }
@@ -1297,6 +1301,7 @@
     gap: 10px;
     padding: 12px 14px;
     background: #fff;
+    background: light-dark(#fff, var(--mx-site-surface, #fff)); 
     border: 1px solid rgba(30, 48, 70, 0.08);
     border-radius: 8px;
     text-decoration: none;
@@ -2498,6 +2503,13 @@
     }
   }
 
+  
+  @media (max-width: 768px) {
+    .wa-advanced {
+      bottom: calc(20px + var(--mx-altbar-h, 0px) + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
 
     
     .footer-marka {
@@ -2824,3 +2836,42 @@
     }
   }
 
+  
+  @media (max-width: 768px) {
+    .menu__link {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 8px;
+      margin: 0 4px;
+    }
+
+    .social-icon__link {
+      min-width: 48px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 4px;
+    }
+
+    .footer .wm-langbar li a {
+      min-width: 48px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [data-stil="cizgili"] .menu__link,
+    [data-stil="ortali-sade"] .menu__link {
+      min-height: 48px;
+    }
+
+    [data-stil="cizgili"] .social-icon__link {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+.f0001-f1__bar,.f0001-f1__sheet{display:none}@media (max-width:768px){:root{--mx-altbar-h:56px}body{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}.f0001-f1__bar{display:flex;position:fixed;inset-inline:0;bottom:0;z-index:9990;background:#006B65;border-top:1px solid color-mix(in srgb,#fff 35%,transparent);box-shadow:0 -6px 20px rgba(0,0,0,.22);padding-bottom:env(safe-area-inset-bottom,0)}.f0001-f1__bar a,.f0001-f1__bar-dil{flex:1 1 0;min-width:0;min-height:56px;display:inline-flex;align-items:center;justify-content:center;gap:8px;color:#fff;text-decoration:none;font:inherit;font-weight:600;font-size:15px;border:0;background:transparent;cursor:pointer;padding:0 8px}.f0001-f1__bar>*+*{border-inline-start:1px solid color-mix(in srgb,#fff 25%,transparent)}.f0001-f1__bar .material-symbols-outlined,.f0001-f1__sheet .material-symbols-outlined{font-size:22px;line-height:1}.f0001-f1__bar a:focus-visible,.f0001-f1__bar-dil:focus-visible,.f0001-f1__sheet-kapat:focus-visible,.f0001-f1__sheet a:focus-visible{outline:2px solid currentColor;outline-offset:-4px}.f0001-f1__sheet:not([hidden]){display:flex;position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.55);align-items:flex-end}.f0001-f1__sheet-ic{width:100%;max-height:70vh;overflow-y:auto;background:#006B65;color:#fff;border-radius:18px 18px 0 0;padding:8px 16px calc(16px + env(safe-area-inset-bottom,0px))}.f0001-f1__sheet-ust{display:flex;align-items:center;justify-content:space-between;min-height:48px;margin-bottom:8px;font-size:16px}.f0001-f1__sheet-kapat{width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:inherit;cursor:pointer;border-radius:50%}.f0001-f1__sheet-liste{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.f0001-f1__sheet-liste ul{display:contents}.f0001-f1__sheet-liste a{display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:48px;min-height:48px;padding:0 10px;border:1px solid color-mix(in srgb,#fff 40%,transparent);border-radius:12px;font-weight:600;color:#fff;text-decoration:none;background:transparent}.f0001-f1__sheet-liste li.wm-lang-active a,.f0001-f1__sheet-liste a[aria-current]{background:#fff;color:#006B65;border-color:#fff}.f0001-f1__sheet-liste li{list-style:none;margin:0;padding:0;display:contents}}@media (prefers-reduced-motion:reduce){.f0001-f1__bar,.f0001-f1__sheet{transition:none!important;animation:none!important}}
