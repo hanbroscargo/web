@@ -1,0 +1,64 @@
+<section class="modulex-knc">
+  <div class="modulex-knc-ic">
+    <div class="modulex-knc-kart">
+      <div class="modulex-knc-yazi">
+        <h2 class="modulex-knc-baslik">Taşınmanızı birlikte planlayalım</h2>
+        <p class="modulex-knc-metin">Ücretsiz fiyat teklifi için bilgilerinizi gönderin ya da WhatsApp'tan yazın.</p>
+        <div class="modulex-knc-butonlar"><a class="modulex-knc-btn modulex-knc-btn--lime" href="/tr/teklif-al/"><span>Ücretsiz teklif al</span><span class="material-symbols-outlined mx-flip" aria-hidden="true">arrow_forward</span></a><a class="modulex-knc-btn modulex-knc-btn--cizgi" href="https://wa.me/908508002727" target="_blank" rel="noopener"><span class="material-symbols-outlined" aria-hidden="true">chat</span><span>WhatsApp'tan yazın</span></a></div>
+        <a class="modulex-knc-tel" href="tel:+908508002727"><span class="material-symbols-outlined" aria-hidden="true">call</span><bdi dir="ltr">+90 850 800 2727</bdi></a>
+      </div>
+      <div class="modulex-knc-damga" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs><path id="knc-{{id}}-cember" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" /></defs>
+          <circle cx="100" cy="100" r="94" class="modulex-knc-d1" />
+          <circle cx="100" cy="100" r="56" class="modulex-knc-d2" />
+          <text><textPath href="#knc-{{id}}-cember">Ücretsiz teklif • Ücretsiz teklif • Ücretsiz teklif • </textPath></text>
+        </svg>
+        <span class="material-symbols-outlined modulex-knc-dikon">local_shipping</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  
+  .modulex-knc { box-sizing: border-box; display: block; width: 100%; flex: 1 1 100%; background: --bg--; font-family: var(--mx-font-sans, inherit); }
+  .modulex-knc *, .modulex-knc *::before, .modulex-knc *::after { box-sizing: border-box; }
+  .modulex-knc :where(*:not(.material-symbols-outlined)) { font-size: inherit; font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-knc :where(p, h2) { margin: 0; }
+  .modulex-knc a { text-decoration: none; cursor: pointer; }
+  .modulex-knc :where(a):focus-visible { outline: 3px solid --lime--; outline-offset: 3px; }
+  .modulex-knc-ic { max-width: --max--; margin-inline: auto; padding: clamp(36px, 5vw, 64px) 20px; }
+  .modulex-knc-kart { position: relative; display: grid; grid-template-columns: 1fr 220px; gap: 28px; align-items: center; padding: clamp(26px, 4vw, 48px); background: --teal--; color: --tealYazi--; border: 2px solid --yazi--; border-radius: 8px; box-shadow: 10px 10px 0 --yazi--; overflow: hidden;
+    background-image: repeating-linear-gradient(-45deg, transparent 0 22px, color-mix(in srgb, --tealYazi-- 5%, transparent) 22px 24px); }
+  .modulex-knc-yazi { display: grid; gap: 14px; justify-items: start; }
+  .modulex-knc-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.6rem, 3.2vw, 2.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; max-width: 20ch; }
+  .modulex-knc-metin { font-size: 1.05rem; line-height: 1.6; max-width: 56ch; }
+  .modulex-knc-butonlar { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 6px; }
+  .modulex-knc-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 50px; padding: 12px 22px; border-radius: 4px; font-weight: 800; transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.2s ease-out, color 0.2s ease-out; }
+  .modulex-knc a.modulex-knc-btn--lime { background: --lime--; color: --limeYazi--; box-shadow: 4px 4px 0 --yazi--; }
+  .modulex-knc-btn--lime:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 --yazi--; }
+  .modulex-knc a.modulex-knc-btn--cizgi { border: 2px solid --tealYazi--; color: --tealYazi--; }
+  .modulex-knc a.modulex-knc-btn--cizgi:hover { background: --tealYazi--; color: --teal--; }
+  .modulex-knc-tel { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font-family: --mono--; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.04em; }
+  .modulex-knc a.modulex-knc-tel { color: --tealYazi--; }
+  .modulex-knc-tel:hover bdi { text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-knc-damga { position: relative; width: 210px; height: 210px; justify-self: center; transform: rotate(-12deg); }
+  .modulex-knc-damga svg { width: 100%; height: 100%; animation: modulex-knc-don 26s linear infinite; }
+  .modulex-knc-d1 { fill: none; stroke: --lime--; stroke-width: 3; }
+  .modulex-knc-d2 { fill: none; stroke: --lime--; stroke-width: 2; stroke-dasharray: 5 6; }
+  .modulex-knc-damga text { fill: --tealYazi--; font-family: --mono--; font-size: 15px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+  .modulex-knc-dikon { position: absolute; inset: 0; margin: auto; width: 56px; height: 56px; display: grid; place-items: center; font-size: 44px; color: --lime--; }
+  @keyframes modulex-knc-don { to { transform: rotate(360deg); } }
+  .modulex-knc--damgasiz .modulex-knc-kart { grid-template-columns: 1fr; }
+  .modulex-knc--damgasiz .modulex-knc-damga { display: none; }
+  @media (max-width: 768px) {
+    .modulex-knc-ic { padding-inline: 14px; }
+    .modulex-knc-kart { grid-template-columns: 1fr; box-shadow: 6px 6px 0 --yazi--; }
+    .modulex-knc-damga { display: none; }
+    .modulex-knc-btn { flex: 1 1 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-knc *, .modulex-knc *::before, .modulex-knc *::after { animation: none !important; transition: none !important; }
+  }
+</style>
